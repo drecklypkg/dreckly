@@ -1,32 +1,48 @@
-pkgsrc
-======
+dreckly
+=======
 
-[pkgsrc](https://pkgsrc.org/) is a framework for building software for a
-variety of UNIX-like systems.
+dreckly is a framework for building software for a variety of UNIX-like
+systems.  dreckly is a fork of pkgsrc, with a specific focus on the following
+values:
 
-It produces binary packages, which can be managed with tools such as
-[pkgin](http://pkgin.net/). pkgsrc is highly configurable, supporting
-building packages for an arbitrary installation prefix (the default is
-`/usr/pkg`), allowing multiple branches to coexist on one machine, a
-build options framework, and a compiler transformation framework, among
-other advanced features. Unprivileged use and installation is also supported.
+  * Stability.  One of our major frustrations with pkgsrc is that the value
+    that is prioritised above all is velocity.  The culture is very much "move
+    fast and break things", and packages are frequently updated to bleeding
+    edge releases, regardless of whether all packages that depend on them will
+    continue to build correctly.  Adding large patchsets to fix dependent
+    packages significantly bloats the repository.  The high rate of churn also
+    results in users having to frequently rebuild the majority of their
+    packages, and makes bulk builds of all packages take days, if not weeks
+    for older architectures.
 
-pkgsrc is the default package manager for [NetBSD](https://www.NetBSD.org/)
-and [SmartOS](https://www.tritondatacenter.com/smartos).
-It's also supported as a first-class option in [OmniOS CE](https://omniosce.org/)
-and [Oasis Linux](https://github.com/oasislinux/oasis).
+  * Portability.  pkgsrc claims to support over 20 operating systems, however
+    in reality the quality of that support varies dramatically, with some
+    systems unable to even bootstrap.  The majority of pkgsrc developers only
+    test on NetBSD, and packages are frequently left broken on other platforms,
+    leaving other developers to spend the majority of their time cleaning up
+    after them and fixing regressions, rather than working on new features or
+    improving support.
 
+  * Quality.  All changes to dreckly must be reviewed by another developer, and
+    tested prior to integration.  pkglint must be clean.  Code should be
+    readable, comments should be specific and focused, and not rambly or
+    littered with opinions or unnecessary "XXX".  No work-in-progress.  It
+    should be a joy for anyone to open an existing package and start hacking.
+
+Dreckly is a Cornish word that means a task will be done at some point in the
+future.  "I'll do it dreckly."  There's no mad rush to do it as quickly as
+possible, it'll be done when it's done.  Quality takes time and consideration.
+This is very much our ethos.
 
 Bootstrapping
 -------------
 
-To use pkgsrc on operating systems other than NetBSD, you first need to
-bootstrap:
+To use dreckly, you first need to bootstrap:
 
-	cd pkgsrc/bootstrap
+	cd bootstrap
 	./bootstrap
 
-Note that this is only for the most simple case, using pkgsrc's defaults.
+Note that this is only for the most simple case, using all defaults.
 
 Please consult `bootstrap/README` and `bootstrap/README.OS` for detailed
 information about bootstrapping.
@@ -34,7 +50,7 @@ information about bootstrapping.
 Building packages
 -----------------
 
-	cd pkgsrc/category/package-name
+	cd category/package-name
 	$PREFIX/bin/bmake install
 
 Where `$PREFIX` is where you've chosen to install packages
@@ -48,24 +64,13 @@ To build packages in bulk, tools such as `pkgtools/pbulk` and
 Community / Troubleshooting
 ---------------------------
 
-- Join the community IRC channel [#pkgsrc @ libera.chat](https://web.libera.chat/#pkgsrc).
-- Join the community Matrix room [#pkgsrc:netbsd.org](https://matrix.to/#/#pkgsrc:netbsd.org)
-- Subscribe to the [pkgsrc-users](https://www.NetBSD.org/mailinglists/#pkgsrc-users) mailing list
-- Send bugs and patches [via web form](https://www.NetBSD.org/cgi-bin/sendpr.cgi?gndb=netbsd) (use the `pkg` category).
-
-Latest sources
---------------
-
-To fetch the main CVS repository:
-
-	cvs -d anoncvs@anoncvs.NetBSD.org:/cvsroot checkout -P pkgsrc
-
-To work in the Git mirror, which is updated every few hours from CVS:
-
-	git clone https://github.com/NetBSD/pkgsrc.git
+- Join the community IRC channel [#dreckly @ libera.chat](https://web.libera.chat/#dreckly).
+- Pull requests and issues are welcome!
 
 Additional links
 ----------------
+
+Tutorials and guides related to pkgsrc are still applicable to dreckly.
 
 - [pkgsrc guide](https://www.NetBSD.org/docs/pkgsrc/) - the authoritative document on pkgsrc, also available as `doc/pkgsrc.txt`
 - [pkgsrc in the NetBSD Wiki](https://wiki.NetBSD.org/pkgsrc/) - miscellaneous articles and tutorials
