@@ -49,3 +49,8 @@ runs:
       shell: bash
       run: |
         $HOME/go/bin/pkglint -Wall -Werror -e ${CHANGED_FILES}
+
+    - name: Report failure
+      if: failure()
+      run: |
+        echo "::warning::pkglint did not exit cleanly"
