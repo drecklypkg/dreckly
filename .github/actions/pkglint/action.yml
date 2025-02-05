@@ -3,7 +3,7 @@ description: Run pkglint on changed files
 inputs:
   version:
     description: Version of pkglint to build and run
-    default: v23.5.0
+    default: v23.13.0
 runs:
   using: composite
   steps:
