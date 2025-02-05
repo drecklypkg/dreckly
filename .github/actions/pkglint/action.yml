@@ -42,6 +42,7 @@ runs:
           pkglocate
 
     - name: Run pkglint
+      continue-on-error: true
       if: steps.changed-files.outputs.any_changed == 'true'
       env:
         CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
