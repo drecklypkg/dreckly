@@ -52,5 +52,6 @@ runs:
 
     - name: Report failure
       if: failure()
+      shell: bash
       run: |
         echo "::warning::pkglint did not exit cleanly"
