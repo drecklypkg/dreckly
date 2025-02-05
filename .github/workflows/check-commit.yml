@@ -6,7 +6,7 @@ name: check-commit
 on:
   push:
     branches:
-      - 'trunk'
+      - 'ci'
   pull_request:
     branches:
       - 'trunk'
