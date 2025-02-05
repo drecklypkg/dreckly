@@ -1,0 +1,193 @@
+name: populate-package-cache
+on:
+  workflow_dispatch:
+    inputs:
+      pkgpaths:
+        description: 'List of package paths to build'
+        required: true
+      clear-cache:
+        description: 'Delete all current binary packages'
+        type: boolean
+        default: false
+jobs:
+  what-changed:
+    runs-on: ubuntu-latest
+    outputs:
+      bootstrap-hash: ${{ steps.what-changed.outputs.bootstrap-hash }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          show-progress: 'false'
+      - name: Calculate changes
+        id: what-changed
+        uses: ./.github/actions/what-changed
+  build-native:
+    needs: what-changed
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - name: macos-13-x86_64
+            os: macos-13
+          - name: macos-14-arm64
+            os: macos-14
+          - name: ubuntu-22.04-x86_64
+            os: ubuntu-22.04
+          - name: cygwin-2022-x86_64
+            os: windows-2022
+    runs-on: ${{ matrix.platform.os }}
+    steps:
+      - name: Set autocrlf
+        if: runner.os == 'Windows'
+        run: git config --global core.autocrlf input
+      - uses: actions/checkout@v4
+      - name: Install Cygwin
+        uses: egor-tensin/setup-cygwin@v4
+        if: runner.os == 'Windows'
+        with:
+          packages: gcc-g++ rsync ssh
+      - name: Configure SSH
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.CI_SSH_KEY }}
+          known_hosts: ${{ secrets.CI_KNOWN_HOSTS }}
+      - name: Configure bootstrap kit
+        uses: ./.github/actions/bootstrap
+        with:
+          platform: ${{ matrix.platform.name }}
+          hash: ${{ needs.what-changed.outputs.bootstrap-hash }}
+      - name: Build requested packages
+        uses: ./.github/actions/pkgbuild
+        with:
+          platform: ${{ matrix.platform.name }}
+          files: ${{ inputs.pkgpaths }}
+          binpkg-sites: http://${{ secrets.CI_SSH_HOST }}/packages/${{ matrix.platform.name }}
+          use-binpkg: ${{ ! inputs.clear-cache }}
+      - name: Upload packages
+        if: always()
+        shell: bash
+        env:
+          CLEAR_BINPKG_CACHE: ${{ inputs.clear-cache }}
+          CI_SSH_USER: ${{ secrets.CI_SSH_USER }}
+          CI_SSH_HOST: ${{ secrets.CI_SSH_HOST }}
+          CI_REMOTE_DIR: ${{ secrets.CI_PACKAGE_DIR }}/${{ matrix.platform.name }}/
+        run: ./.github/scripts/upload.sh
+  build-bsd:
+    needs: what-changed
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - name: freebsd-14.1-x86_64
+            os: freebsd
+            arch: x86-64
+            version: '14.1'
+          - name: netbsd-10.0-x86_64
+            os: netbsd
+            arch: x86-64
+            version: '10.0'
+          - name: openbsd-7.5-x86_64
+            os: openbsd
+            arch: x86-64
+            version: '7.5'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure SSH
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.CI_SSH_KEY }}
+          known_hosts: ${{ secrets.CI_KNOWN_HOSTS }}
+      - name: Check for cached bootstrap kit
+        id: bootstrap-kit
+        uses: actions/cache@v4
+        with:
+          key: bootstrap-kit-${{ matrix.platform.name }}-${{ needs.what-changed.outputs.bootstrap-hash }}
+          path: bootstrap.tar
+      # Note that this action can only be called once in the same job, so we
+      # need to do everything in one go.
+      - name: Run jobs inside VM
+        uses: cross-platform-actions/action@v0.25.0
+        env:
+          DO_BOOTSTRAP: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' }}
+          BINPKG_SITES: http://${{ secrets.CI_SSH_HOST }}/packages/${{ matrix.platform.name }}
+          INPUT_FILES: ${{ inputs.pkgpaths }}
+          USE_BINPKG: ${{ ! inputs.clear-cache }}
+        with:
+          environment_variables: DO_BOOTSTRAP BINPKG_SITES INPUT_FILES USE_BINPKG
+          operating_system: ${{ matrix.platform.os }}
+          architecture: ${{ matrix.platform.arch }}
+          version: ${{ matrix.platform.version }}
+          shell: bash
+          run: |
+            if ${DO_BOOTSTRAP}; then
+                .github/scripts/bootstrap.sh
+            fi
+            .github/scripts/pkgbuild.sh
+      - name: Archive build logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs-${{ matrix.platform.name }}
+          path: work
+      - name: Upload packages
+        if: always()
+        env:
+          CLEAR_BINPKG_CACHE: ${{ inputs.clear-cache }}
+          CI_SSH_USER: ${{ secrets.CI_SSH_USER }}
+          CI_SSH_HOST: ${{ secrets.CI_SSH_HOST }}
+          CI_REMOTE_DIR: ${{ secrets.CI_PACKAGE_DIR }}/${{ matrix.platform.name }}/
+        run: ./.github/scripts/upload.sh
+  build-omnios:
+    needs: what-changed
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - name: omnios-r151050-x86_64
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure SSH
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.CI_SSH_KEY }}
+          known_hosts: ${{ secrets.CI_KNOWN_HOSTS }}
+      - name: Check for cached bootstrap kit
+        id: bootstrap-kit
+        uses: actions/cache@v4
+        with:
+          key: bootstrap-kit-${{ matrix.platform.name }}-${{ needs.what-changed.outputs.bootstrap-hash }}
+          path: bootstrap.tar
+      # Note that this action can only be called once in the same job, so we
+      # need to do everything in one go.
+      - name: Run jobs inside VM
+        uses: vmactions/omnios-vm@v1
+        env:
+          DO_BOOTSTRAP: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' }}
+          BINPKG_SITES: http://${{ secrets.CI_SSH_HOST }}/packages/${{ matrix.platform.name }}
+          INPUT_FILES: ${{ inputs.pkgpaths }}
+          USE_BINPKG: ${{ ! inputs.clear-cache }}
+        with:
+          envs: 'DO_BOOTSTRAP DO_PKGBUILD BINPKG_SITES INPUT_FILES USE_BINPKG'
+          prepare: |
+            pkg install gcc13
+          run: |
+            if ${DO_BOOTSTRAP}; then
+                .github/scripts/bootstrap.sh
+            fi
+            .github/scripts/pkgbuild.sh
+      - name: Archive build logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs-${{ matrix.platform.name }}
+          path: work
+      - name: Upload packages
+        if: always()
+        env:
+          CLEAR_BINPKG_CACHE: ${{ inputs.clear-cache }}
+          CI_SSH_USER: ${{ secrets.CI_SSH_USER }}
+          CI_SSH_HOST: ${{ secrets.CI_SSH_HOST }}
+          CI_REMOTE_DIR: ${{ secrets.CI_PACKAGE_DIR }}/${{ matrix.platform.name }}/
+        run: ./.github/scripts/upload.sh

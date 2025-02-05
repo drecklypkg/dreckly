@@ -1,0 +1,24 @@
+name: 'Bootstrap dreckly'
+description: 'Bootstrap dreckly prefix'
+inputs:
+  platform:
+    required: true
+  hash:
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Check for cached bootstrap kit
+      id: bootstrap-kit
+      uses: actions/cache@v4
+      with:
+        key: bootstrap-kit-${{ inputs.platform }}-${{ inputs.hash }}
+        path: bootstrap.tar
+        enableCrossOsArchive: true
+
+    # Note that "actions/cache" above will look for and save bootstrap.tar
+    # automatically after this action finishes.
+    - name: Bootstrap if required
+      if: steps.bootstrap-kit.outputs.cache-hit != 'true'
+      shell: bash
+      run: ./.github/scripts/bootstrap.sh

@@ -1,0 +1,262 @@
+#
+# Run a series of tests for each commit.
+#
+
+name: check-commit
+on:
+  push:
+    branches:
+      - 'trunk'
+  pull_request:
+    branches:
+      - 'trunk'
+jobs:
+
+  #
+  # Verify commit message conforms to our standards.
+  #
+  commit-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify commit messages
+        uses: actions/github-script@v7
+        with:
+          script: |
+            var rc = 0;
+            var commits = ${{ toJSON(github.event.commits) }}
+            if (commits === null) {
+                const commits_url = ${{ toJSON(github.event.pull_request.commits_url) }}
+                const req = await github.request(commits_url)
+                var commits = req.data
+            }
+            for (const commit of commits) {
+                if (commit.commit) {
+                    var c = commit.commit.message.split(/\r\n|\r|\n/);
+                } else {
+                    var c = commit.message.split(/\r\n|\r|\n/);
+                }
+                if (c[0].length > 50) {
+                    console.log("ERROR: First line should be <= 50 characters");
+                    console.log("Line %d: '%s'", 1, c[0]);
+                    rc++;
+                }
+                if (!c[0].match(/^[^ ]+: .+$/)) {
+                    console.log("ERROR: First line should match 'pkg: description'");
+                    console.log("Line %d: '%s'", 1, c[0]);
+                    rc++;
+                }
+                if (c.length > 1 && c[1].length > 0) {
+                    console.log("ERROR: Second line should be empty");
+                    console.log("Line %d: '%s'", 2, c[1]);
+                    rc++;
+                }
+                for (var i = 2; i < c.length; i++) {
+                    if (c[i].length > 80) {
+                        console.log("ERROR: No line should be > 80 characters");
+                        console.log("Line %d: '%s'", i + 1, c[i]);
+                        rc++;
+                    }
+                }
+            }
+            process.exit(rc);
+
+  #
+  # Calculate changes made to the repository, to determine which jobs
+  # should be run.
+  #
+  what-changed:
+    runs-on: ubuntu-latest
+    # There's surely a DRY way to do this?
+    outputs:
+      bootstrap-hash: ${{ steps.what-changed.outputs.bootstrap-hash }}
+      run-pkglint: ${{ steps.what-changed.outputs.run-pkglint }}
+      pkglint-files: ${{ steps.what-changed.outputs.pkglint-files }}
+      run-pkgbuild: ${{ steps.what-changed.outputs.run-pkgbuild }}
+      pkgbuild-files: ${{ steps.what-changed.outputs.pkgbuild-files }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          show-progress: false
+      - id: what-changed
+        uses: ./.github/actions/what-changed
+  show-vars:
+    runs-on: ubuntu-latest
+    needs: what-changed
+    steps:
+      - name: Debug variables from what-changed
+        run: echo "${{ toJSON(needs.what-changed) }}"
+
+  #
+  # Run pkglint if any files changed that need testing.
+  #
+  pkglint:
+    runs-on: ubuntu-latest
+    needs: what-changed
+    if: needs.what-changed.outputs.run-pkglint == 'true'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          show-progress: 'false'
+      - name: Run pkglint if required
+        uses: ./.github/actions/pkglint
+
+  #
+  # Perform builds.  There's quite a bit of duplication here unfortunately
+  # due to the way actions are handled within virtual machines.
+  #
+  build-native:
+    needs: what-changed
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - name: macos-13-x86_64
+            os: macos-13
+          - name: macos-14-arm64
+            os: macos-14
+          - name: ubuntu-22.04-x86_64
+            os: ubuntu-22.04
+          - name: cygwin-2022-x86_64
+            os: windows-2022
+    runs-on: ${{ matrix.platform.os }}
+    steps:
+      - name: Set autocrlf
+        if: runner.os == 'Windows'
+        run: git config --global core.autocrlf input
+      - uses: actions/checkout@v4
+      - name: Check for cached bootstrap kit
+        id: bootstrap-kit
+        uses: actions/cache@v4
+        with:
+          key: bootstrap-kit-${{ matrix.platform.name }}-${{ needs.what-changed.outputs.bootstrap-hash }}
+          path: bootstrap.tar
+          enableCrossOsArchive: true
+      - name: Check if there is any work to do
+        id: vars
+        env:
+          DO_WORK: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' || needs.what-changed.outputs.run-pkgbuild == 'true' }}
+        shell: bash
+        run: echo "do-work=${DO_WORK}" >> "${GITHUB_OUTPUT}"
+      - name: Install Cygwin
+        uses: egor-tensin/setup-cygwin@v4
+        if: steps.vars.outputs.do-work == 'true' && runner.os == 'Windows'
+        with:
+          packages: gcc-g++
+      - name: Build updated bootstrap kit
+        if: steps.bootstrap-kit.outputs.cache-hit != 'true'
+        shell: bash
+        run: ./.github/scripts/bootstrap.sh
+      - name: Build any modified packages
+        uses: ./.github/actions/pkgbuild
+        if: needs.what-changed.outputs.run-pkgbuild == 'true'
+        with:
+          platform: ${{ matrix.platform.name }}
+          files: ${{ needs.what-changed.outputs.pkgbuild-files }}
+          binpkg-sites: http://${{ secrets.CI_SSH_HOST }}/packages/${{ matrix.platform.name }}
+
+  #
+  # Cross-platform builds that use some kind of virtual machine to run an OS on
+  # Ubuntu.  Due to the way this action works we have to duplicate some bits
+  # from .github/actions/* as we cannot run them inside (that I know of?)
+  #
+  build-bsd:
+    needs: what-changed
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          # The cross-platform action does support arm64 guests, but in reality
+          # they are just far too slow (e.g. 18m vs 2m for bootstrap).  Worth
+          # investigating in the future if they start supporting arm64 hosts.
+          - name: freebsd-14.1-x86_64
+            os: freebsd
+            arch: x86-64
+            version: '14.1'
+          - name: netbsd-10.0-x86_64
+            os: netbsd
+            arch: x86-64
+            version: '10.0'
+          - name: openbsd-7.5-x86_64
+            os: openbsd
+            arch: x86-64
+            version: '7.5'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for cached bootstrap kit
+        id: bootstrap-kit
+        uses: actions/cache@v4
+        with:
+          key: bootstrap-kit-${{ matrix.platform.name }}-${{ needs.what-changed.outputs.bootstrap-hash }}
+          path: bootstrap.tar
+      - uses: cross-platform-actions/action@v0.25.0
+        # This action does not support being called multiple times inside the
+        # same job, so we need to do all work in one script.
+        if: steps.bootstrap-kit.outputs.cache-hit != 'true' || needs.what-changed.outputs.run-pkgbuild == 'true'
+        env:
+          DO_BOOTSTRAP: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' }}
+          DO_PKGBUILD: ${{ needs.what-changed.outputs.run-pkgbuild == 'true' }}
+          BINPKG_SITES: http://${{ secrets.CI_SSH_HOST }}/packages/${{ matrix.platform.name }}
+          INPUT_FILES: ${{ needs.what-changed.outputs.pkgbuild-files }}
+          USE_BINPKG: 'true'
+        with:
+          environment_variables: DO_BOOTSTRAP DO_PKGBUILD BINPKG_SITES INPUT_FILES USE_BINPKG
+          operating_system: ${{ matrix.platform.os }}
+          architecture: ${{ matrix.platform.arch }}
+          version: ${{ matrix.platform.version }}
+          shell: bash
+          run: |
+            if ${DO_BOOTSTRAP}; then
+                .github/scripts/bootstrap.sh
+            fi
+            if ${DO_PKGBUILD}; then
+                .github/scripts/pkgbuild.sh
+            fi
+      - name: Archive build logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs-${{ matrix.platform.name }}
+          path: work
+
+  build-omnios:
+    needs: what-changed
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - name: omnios-r151050-x86_64
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for cached bootstrap kit
+        id: bootstrap-kit
+        uses: actions/cache@v4
+        with:
+          key: bootstrap-kit-${{ matrix.platform.name }}-${{ needs.what-changed.outputs.bootstrap-hash }}
+          path: bootstrap.tar
+      - uses: vmactions/omnios-vm@v1
+        if: steps.bootstrap-kit.outputs.cache-hit != 'true' || needs.what-changed.outputs.run-pkgbuild == 'true'
+        env:
+          DO_BOOTSTRAP: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' }}
+          DO_PKGBUILD: ${{ needs.what-changed.outputs.run-pkgbuild == 'true' }}
+          BINPKG_SITES: http://${{ secrets.CI_SSH_HOST }}/packages/${{ matrix.platform.name }}
+          INPUT_FILES: ${{ needs.what-changed.outputs.pkgbuild-files }}
+          USE_BINPKG: 'true'
+        with:
+          envs: 'DO_BOOTSTRAP DO_PKGBUILD BINPKG_SITES INPUT_FILES USE_BINPKG'
+          prepare: |
+            pkg install gcc13
+          run: |
+            if ${DO_BOOTSTRAP}; then
+                .github/scripts/bootstrap.sh
+            fi
+            if ${DO_PKGBUILD}; then
+                .github/scripts/pkgbuild.sh
+            fi
+      - name: Archive build logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs-${{ matrix.platform.name }}
+          path: work

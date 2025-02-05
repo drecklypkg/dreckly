@@ -1,0 +1,64 @@
+name: what-changed
+description: Calculate what changes were made
+outputs:
+  bootstrap-hash:
+    description: Computed hash of all files used by bootstrap
+    value: ${{ steps.bootstrap.outputs.hash }}
+  run-pkglint:
+    description: Whether we need to run pkglint
+    value: ${{ steps.pkglint.outputs.any_changed }}
+  pkglint-files:
+    description: List of files to lint
+    value: ${{ steps.pkglint.outputs.all_changed_files }}
+  run-pkgbuild:
+    description: Whether we need to run any package builds
+    value: ${{ steps.pkgpath.outputs.any_changed }}
+  pkgbuild-files:
+    description: List of modified package files
+    value: ${{ steps.pkgpath.outputs.all_changed_files }}
+runs:
+  using: composite
+  steps:
+    - id: bootstrap
+      shell: bash
+      run: |
+        echo hash=${{ hashFiles(
+          'archivers/libarchive/**',
+          'archivers/pax/**',
+          'bootstrap/bootstrap',
+          'devel/bmake/**',
+          'mk/**',
+          'pkgtools/bootstrap-extras/**',
+          'pkgtools/bootstrap-mk-files/**',
+          'pkgtools/cwrappers/**',
+          'pkgtools/mktools/**',
+          'pkgtools/pkg_install/**',
+          'shells/mksh/**',
+          'sysutils/bsdinstall/**',
+          'sysutils/install-sh/**',
+          'textproc/nbsed/**') }} >> "$GITHUB_OUTPUT"
+    - id: pkglint
+      uses: tj-actions/changed-files@v44
+      with:
+        files_ignore: |
+          .github/**
+          README.*
+          _NetBSD-pkgdb
+          doc/**
+          pkglocate
+    - id: pkgpath
+      uses: tj-actions/changed-files@v44
+      with:
+        files_ignore: |
+          */Makefile
+          .github/**
+          Makefile
+          README.*
+          _NetBSD-pkgdb
+          bootstrap/**
+          distfiles/**
+          doc/**
+          licenses/**
+          mk/**
+          pkglocate
+          regress/**

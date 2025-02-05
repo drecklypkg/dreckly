@@ -1,0 +1,33 @@
+name: pkgbuild
+inputs:
+  platform:
+    description: 'Target platform to build on'
+    required: true
+    type: string
+  files:
+    description: 'List of files to consider for building'
+    required: true
+    type: string
+  binpkg-sites:
+    description: 'Setting for BINPKG_SITES'
+    type: string
+  use-binpkg:
+    description: 'Whether to use BINPKG_SITES'
+    type: boolean
+    default: true
+runs:
+  using: composite
+  steps:
+    - name: Build packages
+      shell: bash
+      env:
+        BINPKG_SITES: ${{ inputs.binpkg-sites }}
+        USE_BINPKG: ${{ inputs.use-binpkg }}
+        INPUT_FILES: ${{ inputs.files }}
+      run: ./.github/scripts/pkgbuild.sh
+    - name: Archive build logs
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-logs-${{ inputs.platform }}
+        path: work

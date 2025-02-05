@@ -1,0 +1,50 @@
+name: pkglint
+description: Run pkglint on changed files
+inputs:
+  version:
+    description: Version of pkglint to build and run
+    default: v23.5.0
+runs:
+  using: composite
+  steps:
+    - name: Configure pkglint build cache
+      id: pkglint-binary
+      uses: actions/cache@v4
+      with:
+        key: pkglint-${{ inputs.version }}
+        path: ~/go/bin/pkglint
+
+    - name: Checkout pkglint
+      if: steps.pkglint-binary.outputs.cache-hit != 'true'
+      uses: actions/checkout@v4
+      with:
+        repository: rillig/pkglint
+        path: pkglint
+        ref: ${{ inputs.version }}
+
+    - name: Build pkglint
+      if: steps.pkglint-binary.outputs.cache-hit != 'true'
+      shell: bash
+      run: |
+        cd pkglint/v23
+        go install -v ./...
+
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v44
+      with:
+        files_ignore: |
+          .github/**
+          README.*
+          _NetBSD-pkgdb
+          bootstrap/**
+          doc/**
+          pkglocate
+
+    - name: Run pkglint
+      if: steps.changed-files.outputs.any_changed == 'true'
+      env:
+        CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+      shell: bash
+      run: |
+        $HOME/go/bin/pkglint -Wall -Werror -e ${CHANGED_FILES}
