@@ -54,4 +54,4 @@ cd ${DRECKLY_SRCDIR}/bootstrap
 	--mk-fragment=${DRECKLY_WORKSPACE}/bootstrap-include.mk \
 	--prefix=${PREFIX} \
 	--unprivileged \
-	--workdir=${DRECKLY_WORKSPACE}/wrkdir
+	--workdir=${DRECKLY_SRCDIR}/wrkdir

@@ -130,7 +130,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-logs-${{ matrix.platform.name }}
-          path: work
+          path: wrkdir
       - name: Upload packages
         if: always()
         env:
@@ -184,7 +184,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-logs-${{ matrix.platform.name }}
-          path: work
+          path: wrkdir
       - name: Upload packages
         if: always()
         env:
