@@ -103,7 +103,7 @@ jobs:
         uses: actions/cache@v4
         with:
           key: bootstrap-kit-${{ matrix.platform.name }}-${{ needs.what-changed.outputs.bootstrap-hash }}
-          path: bootstrap.tar
+          path: ../bootstrap.tar
       # Note that this action can only be called once in the same job, so we
       # need to do everything in one go.
       - name: Run jobs inside VM
@@ -158,7 +158,7 @@ jobs:
         uses: actions/cache@v4
         with:
           key: bootstrap-kit-${{ matrix.platform.name }}-${{ needs.what-changed.outputs.bootstrap-hash }}
-          path: bootstrap.tar
+          path: ../bootstrap.tar
       # Note that this action can only be called once in the same job, so we
       # need to do everything in one go.
       - name: Run jobs inside VM

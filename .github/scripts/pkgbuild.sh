@@ -3,18 +3,24 @@
 # Wrapper script to build a set of packages.
 #
 
-# Get our own variable for where the runner is executed from.  We can't rely on
-# GITHUB_WORKSPACE because it has Windows paths, and this is cleaner than using
-# cygpath everywhere.
 #
-DRECKLY_TOPDIR=$(pwd)
+# Script is executed from within the dreckly checkout.  To simplify path
+# settings across all OS (i.e. Cygwin), calculate our own variables.  We
+# will put everything in DRECKLY_WORKSPACE to keep things simple, and use
+# pwd -P explicitly here to avoid any later issues with buildlink symlinks.
+#
+DRECKLY_WORKSPACE=$(cd ..; pwd -P)
+DRECKLY_SRCDIR=$(pwd -P)
+
+BOOTSTRAP_KIT="${DRECKLY_WORKSPACE}/bootstrap.tar"
+PREFIX="${DRECKLY_WORKSPACE}/pkg"
 
 #
 # Unpack bootstrap kit if we don't have it already unpacked from a previous
 # build session.  Obviously requires that a prior step puts it in place.
 #
-if [ ! -d ${HOME}/pkg ]; then
-	tar -xvf bootstrap.tar -C /
+if [ ! -d ${PREFIX} ]; then
+	tar -xvf ${BOOTSTRAP_KIT} -C /
 fi
 
 # USE_BINPKG is set to true or false in the environment via input variables.
@@ -27,13 +33,13 @@ else
 	unset BINPKG_SITES
 fi
 
-PATH=$HOME/pkg/sbin:$HOME/pkg/bin:/usr/sbin:/sbin:/usr/bin:/bin
+PATH=${PREFIX}/sbin:${PREFIX}/bin:/usr/sbin:/sbin:/usr/bin:/bin
 
 # INPUT_FILES contains a list of files that were modified by the commit for
 # testing.  We extract a uniq list of package directories from it and build
 # them.  This is pretty basic, no ordering or whatever, but it'll do for now.
 #
-export WRKOBJDIR=${DRECKLY_TOPDIR}/work
+export WRKOBJDIR=${DRECKLY_WORKSPACE}/wrkdir
 mkdir -p ${WRKOBJDIR}
 
 for file in ${INPUT_FILES}; do

@@ -1,13 +1,24 @@
 #!/usr/bin/env bash
 #
-# Wrapper script helps to consolidate per-platform configuration.
+# Bootstrap a dreckly prefix.
 #
 
-BINARY_KIT=${GITHUB_WORKSPACE}/bootstrap.tar
+
+#
+# Script is executed from within the dreckly checkout.  To simplify path
+# settings across all OS (i.e. Cygwin), calculate our own variables.  We
+# will put everything in DRECKLY_WORKSPACE to keep things simple, and use
+# pwd -P explicitly here to avoid any later issues with buildlink symlinks.
+#
+DRECKLY_WORKSPACE=$(cd ..; pwd -P)
+DRECKLY_SRCDIR=$(pwd -P)
+
+BOOTSTRAP_KIT="${DRECKLY_WORKSPACE}/bootstrap.tar"
+PREFIX="${DRECKLY_WORKSPACE}/pkg"
+
 case "$(uname)" in
 CYGWIN*)
-	PATH=/cygdrive/c/tools/cygwin/bin
-	BINARY_KIT=$(cygpath ${GITHUB_WORKSPACE})/bootstrap.tar
+	PATH="/cygdrive/c/tools/cygwin/bin"
 	;;
 NetBSD)
 	# As these differences are often missed by NetBSD developers, enforce
@@ -16,15 +27,29 @@ NetBSD)
 	;;
 esac
 
-cat >${HOME}/bootstrap-include.mk <<EOF
+cat >${DRECKLY_WORKSPACE}/bootstrap-include.mk <<EOF
 MAKE_JOBS=4
 EOF
 
-cd ${GITHUB_WORKSPACE}/bootstrap
+#
+# This really needs to go in mk/tools at some point, but needs better
+# understanding of what is shipped by default in Cygwin and how to detect the
+# path correctly.
+#
+case "$(uname)" in
+CYGWIN*)
+	cat >>${DRECKLY_WORKSPACE}/bootstrap-include.mk <<-EOF
+		FETCH_USING=		curl
+		TOOLS_PLATFORM.curl=	curl
+	EOF
+	;;
+esac
+
+cd ${DRECKLY_SRCDIR}/bootstrap
 ./bootstrap ${BOOTSTRAP_ARGS} \
-	--binary-kit=${BINARY_KIT} \
+	--binary-kit=${BOOTSTRAP_KIT} \
 	--make-jobs=4 \
-	--mk-fragment=${HOME}/bootstrap-include.mk \
-	--prefix=${HOME}/pkg \
+	--mk-fragment=${DRECKLY_WORKSPACE}/bootstrap-include.mk \
+	--prefix=${PREFIX} \
 	--unprivileged \
-	--workdir=${HOME}/wrkdir
+	--workdir=${DRECKLY_WORKSPACE}/wrkdir
