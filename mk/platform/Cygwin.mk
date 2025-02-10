@@ -21,7 +21,7 @@ _PKG_USER_HOME?=	# empty by default
 _USER_DEPENDS=		user-cygwin>=20130712:../../sysutils/user_cygwin
 
 CPP_PRECOMP_FLAGS?=	# unset
-DEF_UMASK?=		002
+DEF_UMASK?=		0022
 EXPORT_SYMBOLS_LDFLAGS?=-Wl,-E	# add symbols to the dynamic symbol table
 
 MOTIF_TYPE_DEFAULT?=	motif	# default 2.0 compatible libs type
