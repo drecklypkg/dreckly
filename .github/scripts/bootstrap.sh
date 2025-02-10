@@ -35,14 +35,14 @@ EOF
 
 #
 # This really needs to go in mk/tools at some point, but needs better
-# understanding of what is shipped by default in Cygwin and how to detect the
+# understanding of what is shipped by default and how to detect the
 # path correctly.
 #
 case "$(uname)" in
 CYGWIN*)
 	cat >>${DRECKLY_WORKSPACE}/bootstrap-include.mk <<-EOF
 		FETCH_USING=		curl
-		TOOLS_PLATFORM.curl=	curl
+		TOOLS_PLATFORM.curl=	/cygdrive/c/msys64/usr/bin/curl
 	EOF
 	;;
 esac
