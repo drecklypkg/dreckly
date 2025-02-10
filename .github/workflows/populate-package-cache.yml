@@ -41,6 +41,13 @@ jobs:
         if: runner.os == 'Windows'
         run: git config --global core.autocrlf input
       - uses: actions/checkout@v4
+      - name: Check for cached bootstrap kit
+        id: bootstrap-kit
+        uses: actions/cache@v4
+        with:
+          key: bootstrap-kit-${{ matrix.platform.name }}-${{ needs.what-changed.outputs.bootstrap-hash }}
+          # Must live in checkout dir due to actions/cache limitations.
+          path: bootstrap.tar
       - name: Install Cygwin
         uses: egor-tensin/setup-cygwin@v4
         if: runner.os == 'Windows'
@@ -51,11 +58,10 @@ jobs:
         with:
           key: ${{ secrets.CI_SSH_KEY }}
           known_hosts: ${{ secrets.CI_KNOWN_HOSTS }}
-      - name: Configure bootstrap kit
-        uses: ./.github/actions/bootstrap
-        with:
-          platform: ${{ matrix.platform.name }}
-          hash: ${{ needs.what-changed.outputs.bootstrap-hash }}
+      - name: Bootstrap if required
+        if: steps.bootstrap-kit.outputs.cache-hit != 'true'
+        shell: bash
+        run: ./.github/scripts/bootstrap.sh
       - name: Build requested packages
         uses: ./.github/actions/pkgbuild
         with:
