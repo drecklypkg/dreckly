@@ -129,7 +129,8 @@ jobs:
         uses: actions/cache@v4
         with:
           key: bootstrap-kit-${{ matrix.platform.name }}-${{ needs.what-changed.outputs.bootstrap-hash }}
-          path: ../bootstrap.tar
+          # Must live in checkout dir due to actions/cache limitations.
+          path: bootstrap.tar
           enableCrossOsArchive: true
       - name: Check if there is any work to do
         id: vars
@@ -188,7 +189,8 @@ jobs:
         uses: actions/cache@v4
         with:
           key: bootstrap-kit-${{ matrix.platform.name }}-${{ needs.what-changed.outputs.bootstrap-hash }}
-          path: ../bootstrap.tar
+          # Must live in checkout dir due to actions/cache limitations.
+          path: bootstrap.tar
       - uses: cross-platform-actions/action@v0.25.0
         # This action does not support being called multiple times inside the
         # same job, so we need to do all work in one script.
@@ -234,7 +236,8 @@ jobs:
         uses: actions/cache@v4
         with:
           key: bootstrap-kit-${{ matrix.platform.name }}-${{ needs.what-changed.outputs.bootstrap-hash }}
-          path: ../bootstrap.tar
+          # Must live in checkout dir due to actions/cache limitations.
+          path: bootstrap.tar
       - uses: vmactions/omnios-vm@v1
         if: steps.bootstrap-kit.outputs.cache-hit != 'true' || needs.what-changed.outputs.run-pkgbuild == 'true'
         env:

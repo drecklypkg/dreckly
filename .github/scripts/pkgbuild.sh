@@ -12,7 +12,9 @@
 DRECKLY_WORKSPACE=$(cd ..; pwd -P)
 DRECKLY_SRCDIR=$(pwd -P)
 
-BOOTSTRAP_KIT="${DRECKLY_WORKSPACE}/bootstrap.tar"
+# Putting the bootstrap tar inside the checkout isn't ideal but due to
+# limitations in actions/cache it has to exist there for it to be picked up.
+BOOTSTRAP_KIT="${DRECKLY_SRCDIR}/bootstrap.tar"
 PREFIX="${DRECKLY_WORKSPACE}/pkg"
 
 #
