@@ -3,7 +3,7 @@ description: Run pkglint on changed files
 inputs:
   version:
     description: Version of pkglint to build and run
-    default: v23.13.0
+    default: main
 runs:
   using: composite
   steps:
@@ -18,7 +18,7 @@ runs:
       if: steps.pkglint-binary.outputs.cache-hit != 'true'
       uses: actions/checkout@v4
       with:
-        repository: rillig/pkglint
+        repository: drecklypkg/pkglint
         path: pkglint
         ref: ${{ inputs.version }}
 
