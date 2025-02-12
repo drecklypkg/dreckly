@@ -583,7 +583,6 @@ CYGWIN_*)
 	root_user=Administrators
 	root_group=Administrators
 	opsys=`uname -o`
-	need_sed=yes
 	machine_arch=`uname -m`
 	# only used for unprivileged builds.
 	whoamiprog='id -u'
