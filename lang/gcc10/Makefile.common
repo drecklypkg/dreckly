@@ -1,4 +1,4 @@
-# $NetBSD: Makefile.common,v 1.10 2024/04/24 10:56:06 jperkin Exp $
+# $NetBSD: Makefile.common,v 1.11 2025/01/07 19:54:31 riastradh Exp $
 # used by lang/gcc10-libjit/Makefile
 
 GCC_PKGNAME=		gcc10
@@ -137,6 +137,15 @@ SUBST_STAGE.ccs=	pre-configure
 SUBST_FILES.ccs=	contrib/make_sunver.pl
 SUBST_SED.ccs=		-e 's,/usr/ccs/bin,/usr/bin,g'
 .endif
+
+SUBST_CLASSES+=		vars
+SUBST_MESSAGE.vars=	Setting target machine name path in ${SUBST_FILES.vars}
+SUBST_STAGE.vars=	pre-configure
+SUBST_FILES.vars=	gcc/Makefile.in
+SUBST_VARS.vars=	GCC_TARGET_MACHINE
+
+GCC_TARGET_MACHINE?=	${MACHINE_GNU_PLATFORM}
+BUILD_DEFS+=		GCC_TARGET_MACHINE
 
 pre-configure:
 	${RUN} cd ${WRKSRC} && ${MKDIR} ${OBJDIR}

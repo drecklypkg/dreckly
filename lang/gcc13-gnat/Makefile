@@ -1,9 +1,10 @@
-# $NetBSD: Makefile,v 1.2 2024/03/08 13:25:12 wiz Exp $
+# $NetBSD: Makefile,v 1.3 2025/01/07 19:55:52 riastradh Exp $
 
 GCC_PKGNAME=gcc13
 .include "../../lang/${GCC_PKGNAME}/version.mk"
 
 PKGNAME=	${GCC_PKGNAME}-gnat-${GCC13_DIST_VERSION}
+PKGREVISION=	1
 COMMENT=	GNAT Compiler and Ada tools
 DISTNAME=	gcc-${GCC13_DIST_VERSION}
 CATEGORIES=	lang
@@ -179,6 +180,15 @@ SUBST_STAGE.ccs=	pre-configure
 SUBST_FILES.ccs=	contrib/make_sunver.pl
 SUBST_SED.ccs=		-e 's,/usr/ccs/bin,/usr/bin,g'
 .endif
+
+SUBST_CLASSES+=		vars
+SUBST_MESSAGE.vars=	Setting target machine name path in ${SUBST_FILES.vars}
+SUBST_STAGE.vars=	pre-configure
+SUBST_FILES.vars=	gcc/Makefile.in
+SUBST_VARS.vars=	GCC_TARGET_MACHINE
+
+GCC_TARGET_MACHINE?=	${MACHINE_GNU_PLATFORM}
+BUILD_DEFS+=		GCC_TARGET_MACHINE
 
 CTF_FILES_SKIP+=	*/gengtype	# CPU limit exceeded
 
