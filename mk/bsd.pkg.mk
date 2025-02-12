@@ -632,7 +632,7 @@ ${WRKDIR}:
 # include files. See also checkarg_sane_absolute_path in bootstrap/bootstrap.
 .PHONY: _check-wrkdir-canonical
 _check-wrkdir-canonical: ${WRKDIR}
-	${RUN} cd ${WRKDIR}; d=`exec pwd`; ${TEST} "$$d" = ${WRKDIR}	\
+	${RUN} cd ${WRKDIR}; d=`exec pwd -P`; ${TEST} "$$d" = ${WRKDIR}	\
 	|| ${FAIL_MSG} "[bsd.pkg.mk] The path to WRKDIR ${WRKDIR} must be canonical ($$d)."
 
 # Create a symlink from ${WRKDIR} to the package directory if
