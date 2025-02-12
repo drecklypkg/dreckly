@@ -30,7 +30,8 @@ NetBSD)
 esac
 
 cat >${DRECKLY_WORKSPACE}/bootstrap-include.mk <<EOF
-MAKE_JOBS=4
+MAKE_JOBS=	4
+X11_TYPE=	modular
 EOF
 
 #
