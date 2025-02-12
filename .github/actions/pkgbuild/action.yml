@@ -25,11 +25,6 @@ runs:
         USE_BINPKG: ${{ inputs.use-binpkg }}
         INPUT_FILES: ${{ inputs.files }}
       run: ./.github/scripts/pkgbuild.sh
-    - name: Run debug tmate session
-      if: failure()
-      uses: mxschmitt/action-tmate@v3
-      with:
-        limit-access-to-actor: true
     - name: Archive build logs
       if: failure()
       uses: actions/upload-artifact@v4
