@@ -30,8 +30,9 @@ NetBSD)
 esac
 
 cat >${DRECKLY_WORKSPACE}/bootstrap-include.mk <<EOF
-MAKE_JOBS=	4
-X11_TYPE=	modular
+MAKE_JOBS=		4
+NO_PKGTOOLS_REQD_CHECK=	yes
+X11_TYPE=		modular
 EOF
 
 #
