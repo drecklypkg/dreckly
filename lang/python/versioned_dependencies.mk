@@ -10,13 +10,14 @@
 # PYTHON_VERSIONED_DEPENDENCIES
 #       The Python package which should be added as a dependency.
 #
-#       Possible values: OpenSSL cryptography
+#       Possible values: OpenSSL bcrypt cryptography
 #       Default: (nothing)
 #
 
 .include "../../lang/python/pyversion.mk"
 
 _PY_VERS_PKG.OpenSSL=		security/py-OpenSSL
+_PY_VERS_PKG.bcrypt=		security/py-bcrypt
 _PY_VERS_PKG.cryptography=	security/py-cryptography
 
 .for pattern in ${PYTHON_VERSIONED_DEPENDENCIES}
