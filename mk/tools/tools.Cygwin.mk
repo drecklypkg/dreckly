@@ -85,7 +85,9 @@ TOOLS_PLATFORM.m4?=		/bin/m4
 .if exists(/bin/make)
 TOOLS_PLATFORM.gmake?=		/bin/make
 .endif
+.if exists(/bin/makeinfo)
 TOOLS_PLATFORM.makeinfo?=	/bin/makeinfo
+.endif
 TOOLS_PLATFORM.mkdir?=		/bin/mkdir -p
 TOOLS_PLATFORM.mktemp?=		/bin/mktemp
 .if exists(/bin/msgconv)
