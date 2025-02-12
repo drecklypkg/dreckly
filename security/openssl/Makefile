@@ -3,7 +3,7 @@
 # Remember to upload-distfiles when updating OpenSSL -- otherwise it
 # is not possible for users who have bootstrapped without OpenSSL
 # to install it and enable HTTPS fetching.
-DISTNAME=	openssl-3.3.2
+DISTNAME=	openssl-3.3.3
 CATEGORIES=	security
 MASTER_SITES=	${MASTER_SITE_GITHUB:=openssl/}
 GITHUB_RELEASE=	${DISTNAME}
@@ -97,7 +97,7 @@ SUBST_STAGE.perlcross=		pre-install
 SUBST_FILES.perlcross+=		tools/c_rehash
 SUBST_FILES.perlcross+=		apps/CA.pl
 SUBST_FILES.perlcross+=		apps/tsget.pl
-SUBST_SED.perlcross=		-e s,${PERL5:Q},${LOCALBASE:Q}/bin/perl5,g
+SUBST_SED.perlcross=		-e s,${PERL5:Q},${PREFIX}/bin/perl5,g
 CHECK_INTERPRETER_SKIP+=	bin/c_rehash
 
 .endif                         # USE_CROSS_COMPILE
