@@ -1,14 +1,14 @@
-$NetBSD: distinfo,v 1.17 2024/12/05 16:54:05 nia Exp $
+$NetBSD: distinfo,v 1.19 2025/02/07 16:18:26 nia Exp $
 
-BLAKE2s (palemoon-33.5.0/palemoon.tar.gz) = 570cb22d9a3ac6fe70ede62547cc1a67b621c4aff278175d299ef0966c7f01d7
-SHA512 (palemoon-33.5.0/palemoon.tar.gz) = 6f696e9a9659c76479d336c842806dc5040f8ff8cc922427aaa4c0b8d14e3b3b7c9da47630b013c1298e288a052dd4d7d659c798de8df5dafb672dbe3302d6b8
-Size (palemoon-33.5.0/palemoon.tar.gz) = 8569542 bytes
-BLAKE2s (palemoon-33.5.0/psutil.tar.gz) = 7a2c5c938910795453cf1cdfd5fbfa4dc8cac15e6eb43a5e9aba91ac032b37ce
-SHA512 (palemoon-33.5.0/psutil.tar.gz) = 95c246ed4ce68a476f83868312101d88dafa9d4cef96ff60af646a443c00e6cc447d37cc1ac4e85224db16c24390575174bb7ef76f48cb839fe2e93749107ffb
-Size (palemoon-33.5.0/psutil.tar.gz) = 274361 bytes
-BLAKE2s (palemoon-33.5.0/uxp.tar.gz) = 47b78d3362951f314a6221b2b895751607cf06d4fc7dff6fda1bfd974bfceff4
-SHA512 (palemoon-33.5.0/uxp.tar.gz) = 31fc9342547a5094232034674dad53ad13e9863725556adfc60c77392fbca98b28e1f88cabec484b9fccea958e588ee43b627a0a64ed7cf880978a12287e9b1f
-Size (palemoon-33.5.0/uxp.tar.gz) = 264062755 bytes
+BLAKE2s (palemoon-33.6.0/palemoon.tar.gz) = 6f468e233db2c7df2fdfb67015b059dfc1e0640526c2a3fc10b947b920b5429a
+SHA512 (palemoon-33.6.0/palemoon.tar.gz) = 901f20dcc9a86e195b5b2c4ccda9a383817b60d7111c2018213c8f9451528b3d5ef9d3fe09fd7beb6572d57c20c0d0af57b91dbbe9d7cb7ea1278320ce815f51
+Size (palemoon-33.6.0/palemoon.tar.gz) = 5607465 bytes
+BLAKE2s (palemoon-33.6.0/psutil.tar.gz) = 7a2c5c938910795453cf1cdfd5fbfa4dc8cac15e6eb43a5e9aba91ac032b37ce
+SHA512 (palemoon-33.6.0/psutil.tar.gz) = 95c246ed4ce68a476f83868312101d88dafa9d4cef96ff60af646a443c00e6cc447d37cc1ac4e85224db16c24390575174bb7ef76f48cb839fe2e93749107ffb
+Size (palemoon-33.6.0/psutil.tar.gz) = 274361 bytes
+BLAKE2s (palemoon-33.6.0/uxp.tar.gz) = c75ad7d0b8a75d2298d56eec7ac3f9fcd6e7876a9e71991f0b449fdfb4dd971e
+SHA512 (palemoon-33.6.0/uxp.tar.gz) = a47a9dbfe4e94727e1fdb40bdd96833d4b5292e445bfcbd0dc36997be763c32c098bb5ca12bba3f8ad01af7b4e2c3e69882e00c9faa9906833686123a7425251
+Size (palemoon-33.6.0/uxp.tar.gz) = 264064692 bytes
 SHA1 (patch-palemoon_app_profile_palemoon.js) = 0687dccbb5adff1ee0ea71fef4ebd46174a434d4
 SHA1 (patch-platform_build_moz.build) = 7b45929d58ad0963423f7c859922df6d98413c67
 SHA1 (patch-platform_gfx_angle_src_libANGLE_renderer_gl_glx_FunctionsGLX.cpp) = 502d79eb3ef41e08328bbac9fbb5048b96660bbb
