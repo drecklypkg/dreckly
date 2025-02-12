@@ -6,7 +6,6 @@
 
 # Default to needing Perl 5.
 PERL5_REQD+=	5.0
-PERL5_REQD+=	${_OPSYS_PERL_REQD}
 
 .if !defined(_PERL5_REQD)
 _PERL5_REQD?=	none
