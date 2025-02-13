@@ -23,6 +23,10 @@ INFO_FILES=		yes
 CFLAGS+=		-fheinous-gnu-extensions
 .endif
 
+# Parts of the code actively reject optimisation.  The configure script
+# strips out most flags but oddly does not handle -O so do it ourselves.
+CFLAGS:=		${CFLAGS:C/^-O$//g}
+
 SUBST_CLASSES+=		rpath
 SUBST_FILES.rpath=	src/libgcrypt-config.in
 SUBST_STAGE.rpath=	pre-configure
