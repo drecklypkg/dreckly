@@ -7,6 +7,7 @@ LIBXML2_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libxml2+=	libxml2>=2.6.2
 BUILDLINK_ABI_DEPENDS.libxml2+=	libxml2>=2.12.9nb3
+BUILDLINK_INCDIRS.libxml2?=	include/libxml2
 BUILDLINK_PKGSRCDIR.libxml2?=	../../textproc/libxml2
 
 BUILDLINK_FILES.libxml2+=	bin/xml2-config
