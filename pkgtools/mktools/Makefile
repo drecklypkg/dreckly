@@ -1,6 +1,6 @@
 # $NetBSD: Makefile,v 1.3 2022/07/06 05:03:09 dbj Exp $
 
-PKGNAME=		mktools-20220614
+PKGNAME=		mktools-20250213
 CATEGORIES=		pkgtools sysutils
 
 MAINTAINER=		jperkin@pkgsrc.org
