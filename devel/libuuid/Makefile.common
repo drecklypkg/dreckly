@@ -16,7 +16,6 @@ PATCHDIR=	${.CURDIR}/../../devel/libuuid/patches
 
 USE_GCC_RUNTIME=	yes
 USE_LIBTOOL=		yes
-USE_TOOLS+=		pkg-config
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--disable-all-programs
 CONFIGURE_ARGS+=	--disable-bash-completion
@@ -33,7 +32,7 @@ TEST_TARGET=		check
 .include "../../mk/bsd.fast.prefs.mk"
 
 # XXX PR pkg/52877: configure is broken on netbsd6
-.if (${OPSYS} == "NetBSD" && ${OPSYS_VERSION} < 070000)
+.if ${OPSYS} == "NetBSD" && ${OPSYS_VERSION} < 070000
 USE_TOOLS+=	ksh
 CONFIG_SHELL=	ksh
 .endif
@@ -42,6 +41,4 @@ CONFIG_SHELL=	ksh
 # incorrectly assumes that its contents are identical to those on Linux.
 # Therefore, behave like NetBSD et al. and assume we *don't* have cpu_set_t
 # after all.
-.if (${OPSYS} == "DragonFly")
-CONFIGURE_ARGS+=	ac_cv_type_cpu_set_t=no
-.endif
+CONFIGURE_ARGS.DragonFly+=	ac_cv_type_cpu_set_t=no
