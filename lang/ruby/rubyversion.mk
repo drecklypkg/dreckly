@@ -679,17 +679,6 @@ RUBY_SLEXT=	so
 
 RUBY_DISTNAME?=		ruby-${RUBY_VERSION}
 
-#
-# Use pthread library with Ruby
-#
-.if !empty(MACHINE_PLATFORM:MDarwin-9.*-powerpc)
-# Workaround for Ruby Bug #193
-# http://redmine.ruby-lang.org/issues/show/193
-RUBY_USE_PTHREAD?=	no
-.else
-RUBY_USE_PTHREAD?=	yes
-.endif
-
 RUBY_DYNAMIC_DIRS?=	# empty
 
 #

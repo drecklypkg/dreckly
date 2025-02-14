@@ -25,12 +25,11 @@ buildlink-bin-ruby:
 		${LN} -s $$f ${BUILDLINK_DIR}/bin/ruby; \
 	fi
 
-.include "../../converters/libiconv/buildlink3.mk"
-.if empty(RUBY_USE_PTHREAD:M[nN][oO])
 PTHREAD_OPTS+=		native
 PTHREAD_AUTO_VARS=	yes
+
+.include "../../converters/libiconv/buildlink3.mk"
 .include "../../mk/pthread.buildlink3.mk"
-.endif
 .include "../../mk/dlopen.buildlink3.mk"
 
 .endif # RUBY_BUILDLINK3_MK
