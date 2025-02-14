@@ -8,6 +8,9 @@
 .if !defined(_RUBY_PLATFORM_MK)
 _RUBY_PLATFORM_MK=	# defined
 
+USE_TOOLS+=	gmake
+MAKE_FILE=	GNUmakefile
+
 .include "../../lang/ruby/rubyversion.mk"
 .include "../../mk/compiler.mk"
 
@@ -146,13 +149,6 @@ post-wrapper:
 		${ECHO} '/usr/sbin/dtrace $$@') \
 		> "${WRAPPER_BINDIR}/dtrace"
 	${RUN}${CHMOD} +x "${WRAPPER_BINDIR}/dtrace"
-.endif
-#
-# bmake doesn't like the codesign/POSTLINK constructs for Darwin.
-#
-.if ${OPSYS} == "Cygwin" || ${OPSYS} == "Darwin"
-USE_TOOLS+=	gmake
-MAKE_FILE=	GNUmakefile
 .endif
 
 ########
