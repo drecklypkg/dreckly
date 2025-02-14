@@ -37,16 +37,6 @@ REQD_DIRS+=	${GEM_HOME}/cache
 REQD_DIRS+=	${GEM_HOME}/doc
 
 #
-# substitute path in rubygems.
-#
-SUBST_CLASSES+=		conf
-SUBST_STAGE.conf=	pre-install
-SUBST_FILES.conf=	lib/rubygems/config_file.rb
-SUBST_VARS.conf=	PKG_SYSCONFDIR
-SUBST_MESSAGE.conf=	Fixing configuration files.
-SUBST_NOOP_OK.conf=	yes # not needed for ruby-base>=2.6
-
-#
 # Don't reference pkgsrc's INSTALL macro since Ruby expects it could
 # be executed by an unprivileged user.
 #
