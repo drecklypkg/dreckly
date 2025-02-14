@@ -171,4 +171,4 @@ PLIST_VARS+=	io
 PLIST.io=	yes
 .endif
 
-.endif # _RUBY_REPLACE_MK
+.endif # _RUBY_PLATFORM_MK
