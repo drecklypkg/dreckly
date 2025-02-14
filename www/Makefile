@@ -103,6 +103,7 @@ SUBDIR+=	davical
 SUBDIR+=	ddgr
 SUBDIR+=	deforaos-surfer
 SUBDIR+=	dillo
+SUBDIR+=	dillo-cxx98
 SUBDIR+=	drraw
 SUBDIR+=	drupal7
 SUBDIR+=	drupal9
