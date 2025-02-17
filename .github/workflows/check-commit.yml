@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - 'ci'
+      - 'ci/**'
   pull_request:
     branches:
       - 'trunk'
