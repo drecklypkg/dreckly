@@ -17,13 +17,6 @@ DRECKLY_SRCDIR=$(pwd -P)
 BOOTSTRAP_KIT="${DRECKLY_SRCDIR}/bootstrap.tar"
 PREFIX="${DRECKLY_WORKSPACE}/pkg"
 
-# Unpack bootstrap kit if we don't have it already unpacked from a previous
-# build session.  Obviously requires that a prior step puts it in place.
-#
-if [ ! -d ${PREFIX} ]; then
-	tar -xvf ${BOOTSTRAP_KIT} -C /
-fi
-
 # USE_BINPKG is set to true or false in the environment via input variables.
 # BINPKG_SITES is set to the correct URL, all we do is ensure it's exported
 # if we're using them, otherwise ensure it's unset.
@@ -41,7 +34,25 @@ PATH=${PREFIX}/sbin:${PREFIX}/bin:/usr/sbin:/sbin:/usr/bin:/bin
 # support saving failed work areas and this is needed for them to be picked up.
 #
 export WRKOBJDIR=${DRECKLY_SRCDIR}/wrkdir
-mkdir -p ${WRKOBJDIR}
+
+# Build a package using a clean prefix, extracting a fresh bootstrap kit each
+# time.
+#
+build_pkg() {
+	pkgdir=$1; shift
+
+	rm -rf ${PREFIX} ${WRKOBJDIR}
+	tar -xvf ${BOOTSTRAP_KIT} -C /
+
+	logfile=${WRKOBJDIR}/${pkgdir}/bmake.log
+	mkdir -p ${WRKOBJDIR}/${pkgdir}
+
+	(
+		set -o pipefail
+		cd ${pkgdir}
+		bmake install 2>&1 | tee ${logfile} && bmake clean
+	)
+}
 
 # INPUT_FILES contains a list of files that were modified by the commit for
 # testing.  We extract a uniq list of package directories from it and build
@@ -50,11 +61,5 @@ mkdir -p ${WRKOBJDIR}
 for file in ${INPUT_FILES}; do
 	echo ${file} | cut -d/ -f1,2
 done | sort | uniq | while read dir; do
-	logfile=${WRKOBJDIR}/${dir}/bmake.log
-	mkdir -p ${WRKOBJDIR}/${dir}
-	(
-		set -o pipefail
-		cd ${dir}
-		bmake install 2>&1 | tee ${logfile} && bmake clean
-	)
+	build_pkg ${dir}
 done
