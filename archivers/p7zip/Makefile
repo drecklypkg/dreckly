@@ -1,11 +1,9 @@
 # $NetBSD: Makefile,v 1.70 2023/07/17 22:00:22 nia Exp $
 
-DISTNAME=	p7zip_16.02_src_all
-PKGNAME=	${DISTNAME:S/_src_all//S/_/-/}
-PKGREVISION=	2
+DISTNAME=	p7zip-17.01
 CATEGORIES=	archivers
-MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=p7zip/}
-EXTRACT_SUFX=	.tar.bz2
+MASTER_SITES=	${MASTER_SITE_GITHUB:=p7zip-project/}
+GITHUB_TAG=	v${PKGVERSION_NOREV}
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	http://p7zip.sourceforge.net/
@@ -20,8 +18,6 @@ NO_CONFIGURE=		yes
 PTHREAD_OPTS+=		require
 
 .include "options.mk"
-
-WRKSRC=			${WRKDIR}/${PKGNAME_NOREV:S/-/_/}
 
 INSTALLATION_DIRS+=	bin ${PKGMANDIR}/man1
 INSTALLATION_DIRS+=	share/doc/p7zip

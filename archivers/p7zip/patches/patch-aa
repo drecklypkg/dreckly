@@ -1,16 +1,17 @@
 $NetBSD: patch-aa,v 1.21 2015/12/29 19:39:21 adam Exp $
 
---- makefile.machine.orig	2015-02-25 20:12:06.000000000 +0000
+--- makefile.machine.orig	2025-02-18 16:50:36.505486330 +0000
 +++ makefile.machine
-@@ -2,20 +2,18 @@
+@@ -2,21 +2,19 @@
  # makefile for Linux (x86, PPC, alpha ...)
  #
  
--OPTFLAGS=-O -s
-+OPTFLAGS=
+-OPTFLAGS=-O2 -s
++#OPTFLAGS=-O2 -s
+ #OPTFLAGS=-O0 -g
  
 -ALLFLAGS=${OPTFLAGS} -pipe \
-+ALLFLAGS=${OPTFLAGS} -Wall \
++ALLFLAGS=${OPTFLAGS} \
      	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
  	-DNDEBUG -D_REENTRANT -DENV_UNIX \
  	-D_7ZIP_LARGE_PAGES \
