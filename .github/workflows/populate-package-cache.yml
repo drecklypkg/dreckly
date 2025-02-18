@@ -66,8 +66,8 @@ jobs:
         uses: ./.github/actions/pkgbuild
         with:
           platform: ${{ matrix.platform.name }}
-          files: ${{ inputs.pkgpaths }}
-          binpkg-sites: http://${{ secrets.CI_SSH_HOST }}/packages/${{ matrix.platform.name }}
+          pkgbuild-files: ${{ inputs.pkgpaths }}
+          binpkg-sites: http://cipkg.dreckly.dev/packages/${{ matrix.platform.name }}
           use-binpkg: ${{ ! inputs.clear-cache }}
       - name: Upload packages
         if: always()
@@ -78,6 +78,16 @@ jobs:
           CI_SSH_HOST: ${{ secrets.CI_SSH_HOST }}
           CI_REMOTE_DIR: ${{ secrets.CI_PACKAGE_DIR }}/${{ matrix.platform.name }}/
         run: ./.github/scripts/upload.sh
+  jenkins:
+    needs: what-changed
+    uses: ./.github/workflows/jenkins.yml
+    with:
+      bootstrap-hash: ${{ needs.what-changed.outputs.bootstrap-hash }}
+      pkgbuild-files: ${{ needs.what-changed.outputs.pkgbuild-files }}
+      use-binpkg: ${{ ! inputs.clear-cache }}
+    secrets:
+      CI_JENKINS_TRIGGER_URL: ${{ secrets.CI_JENKINS_TRIGGER_URL }}
+      CI_JENKINS_TOKEN: ${{ secrets.CI_JENKINS_TOKEN }}
   build-bsd:
     needs: what-changed
     strategy:
@@ -116,18 +126,18 @@ jobs:
       - name: Run jobs inside VM
         uses: cross-platform-actions/action@v0.25.0
         env:
-          DO_BOOTSTRAP: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' }}
-          BINPKG_SITES: http://${{ secrets.CI_SSH_HOST }}/packages/${{ matrix.platform.name }}
-          INPUT_FILES: ${{ inputs.pkgpaths }}
+          RUN_BOOTSTRAP: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' }}
+          BINPKG_SITES: http://cipkg.dreckly.dev/packages/${{ matrix.platform.name }}
+          PKGBUILD_FILES: ${{ inputs.pkgpaths }}
           USE_BINPKG: ${{ ! inputs.clear-cache }}
         with:
-          environment_variables: DO_BOOTSTRAP BINPKG_SITES INPUT_FILES USE_BINPKG
+          environment_variables: RUN_BOOTSTRAP BINPKG_SITES PKGBUILD_FILES USE_BINPKG
           operating_system: ${{ matrix.platform.os }}
           architecture: ${{ matrix.platform.arch }}
           version: ${{ matrix.platform.version }}
           shell: bash
           run: |
-            if ${DO_BOOTSTRAP}; then
+            if ${RUN_BOOTSTRAP}; then
                 .github/scripts/bootstrap.sh
             fi
             .github/scripts/pkgbuild.sh
@@ -172,16 +182,16 @@ jobs:
       - name: Run jobs inside VM
         uses: vmactions/omnios-vm@v1
         env:
-          DO_BOOTSTRAP: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' }}
-          BINPKG_SITES: http://${{ secrets.CI_SSH_HOST }}/packages/${{ matrix.platform.name }}
-          INPUT_FILES: ${{ inputs.pkgpaths }}
+          RUN_BOOTSTRAP: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' }}
+          BINPKG_SITES: http://cipkg.dreckly.dev/packages/${{ matrix.platform.name }}
+          PKGBUILD_FILES: ${{ inputs.pkgpaths }}
           USE_BINPKG: ${{ ! inputs.clear-cache }}
         with:
-          envs: 'DO_BOOTSTRAP DO_PKGBUILD BINPKG_SITES INPUT_FILES USE_BINPKG'
+          envs: 'RUN_BOOTSTRAP BINPKG_SITES PKGBUILD_FILES USE_BINPKG'
           prepare: |
             pkg install gcc13
           run: |
-            if ${DO_BOOTSTRAP}; then
+            if ${RUN_BOOTSTRAP}; then
                 .github/scripts/bootstrap.sh
             fi
             .github/scripts/pkgbuild.sh

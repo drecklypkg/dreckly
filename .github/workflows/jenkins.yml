@@ -1,0 +1,100 @@
+#
+# Jenkins workflow.  Trigger a Jenkins build, parse the configuration matrix it
+# generates and then wait for them to return a result.
+#
+name:
+on:
+  workflow_call:
+    inputs:
+      bootstrap-hash:
+        description: 'Hash of input bootstrap files from what-changed'
+        required: true
+        type: string
+      pkgbuild-files:
+        description: 'List of files to consider for building'
+        required: true
+        type: string
+      use-binpkg:
+        description: 'Whether to use BINPKG_SITES'
+        type: boolean
+        default: true
+    secrets:
+      CI_JENKINS_TRIGGER_URL:
+        required: true
+      CI_JENKINS_TOKEN:
+        required: true
+jobs:
+  trigger:
+    outputs:
+      matrix: ${{ steps.trigger.outputs.matrix }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Jenkins build
+        id: trigger
+        run: |
+          set -eux
+
+          # Trigger Jenkins build and retrieve the queue URL
+          curl -s -i -o trigger.txt \
+            -X POST "${{ secrets.CI_JENKINS_TRIGGER_URL }}&token=${{ secrets.CI_JENKINS_TOKEN }}" \
+            --data-urlencode "BOOTSTRAP_HASH=${{ inputs.bootstrap-hash }}" \
+            --data-urlencode "PKGBUILD_FILES=${{ inputs.pkgbuild-files }}" \
+            --data-urlencode "USE_BINPKG=${{ inputs.use-binpkg }}"
+          queue_url=$(awk '/^Location:/ {sub("\r", ""); print $2}' trigger.txt)
+
+          # Poll Jenkins until the build has been assigned
+          while true; do
+            curl -s --fail -o queue.json "https://ci.dreckly.dev${queue_url}api/json"
+            build_url=$(jq -r '.executable.url // empty' < queue.json)
+            [ -n "${build_url}" ] && break
+            sleep 5
+          done
+
+          # From the queue response, get the job URL and fetch the number of
+          # expected configurations for it so that we know when they have all
+          # been launched.
+          job_url=$(jq -r .task.url < queue.json)
+          curl -s --fail -o job.json "${job_url}api/json"
+          num_configs=$(jq '.activeConfigurations | length' < job.json)
+
+          # Poll Jenkins for the build information and wait until the build
+          # has spawned the expected number of configurations
+          while true; do
+            curl -s --fail -o build.json "${build_url}api/json"
+            build_id=$(jq -r .id < build.json)
+            num_urls=$(jq -r "[.runs[] | select(.number == $build_id)] | length" < build.json)
+            if [ $num_configs -ne $num_urls ]; then
+              sleep 5
+              continue
+            fi
+            config_urls=$(jq -r '[.runs[] | select(.number == '$build_id') | .url] |join(" ")' < build.json)
+            [ -n "${config_urls}" ] && break
+            sleep 5
+          done
+
+          # Extract matrix information from each configuration job
+          matrix=$(for url in ${config_urls}; do
+            curl -s --fail "${url}/api/json"
+          done | jq -c -s '[.[] | { name: .builtOn, url }]')
+          echo "matrix=${matrix}" >> ${GITHUB_OUTPUT}
+  build:
+    needs: trigger
+    strategy:
+      fail-fast: false
+      matrix:
+        config: ${{ fromJson(needs.trigger.outputs.matrix) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Monitor Jenkins build for job status
+        run: |
+          set -eux
+          while true; do
+            curl -s --fail -o response.json "${{ matrix.config.url }}/api/json"
+            status=$(jq -r '.result // empty' < response.json)
+            if [ "${status}" = "SUCCESS" ]; then
+              exit 0
+            elif [ "${status}" = "FAILURE" ]; then
+              exit 1
+            fi
+            sleep 5
+          done

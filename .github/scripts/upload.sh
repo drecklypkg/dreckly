@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
+#
+# Upload a packages directory to remote host for BINPKG_SITES.
+#
 
-set -x
+set -eux
+
+. $(dirname $0)/common.sh
+
+PATH="${CI_SYSTEM_PATH}"
 
 if ${CLEAR_BINPKG_CACHE}; then
 	RSYNC_DELETE="--delete"
@@ -18,11 +25,11 @@ CYGWIN*)
 			rm -rf ${CI_REMOTE_DIR}
 		fi
 		mkdir -p ${CI_REMOTE_DIR}"
-	scp -rp ./packages/All ${CI_SSH_USER}@${CI_SSH_HOST}:${CI_REMOTE_DIR}/
+	scp -rp ${CI_PACKAGES}/All ${CI_SSH_USER}@${CI_SSH_HOST}:${CI_REMOTE_DIR}/
 	;;
 *)
 	rsync -av ${RSYNC_DELETE} --exclude .cvsignore \
-	    ./packages/ \
+	    ${CI_PACKAGES}/ \
 	    ${CI_SSH_USER}@${CI_SSH_HOST}:${CI_REMOTE_DIR}
 	;;
 esac
