@@ -27,12 +27,11 @@
 
 PATCHFILES?=	# none
 
-pkgsrc_patches=	${:!echo ${PATCHDIR}/patch-* ${PATCHDIR}/emul-*-patch-*!:N*\*}
 .if !empty(LOCALPATCHES)
 local_patches=	${:!echo ${LOCALPATCHES}/${PKGPATH}/*!:N*/CVS:N*/\*}
 .endif
 
-.if !empty(PATCHFILES) || !empty(pkgsrc_patches) || !empty(local_patches)
+.if !empty(PATCHFILES) || exists(${PATCHDIR}) || !empty(local_patches)
 USE_TOOLS+=	patch
 .endif
 .if (!empty(PATCHFILES) || !empty(pkgsrc_patches)) \
