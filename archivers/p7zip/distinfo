@@ -1,11 +1,9 @@
 $NetBSD: distinfo,v 1.54 2021/10/26 09:57:12 nia Exp $
 
-BLAKE2s (p7zip_16.02_src_all.tar.bz2) = 9e6648578e3fb3a78ffbe3b429b0021b2bb6b8ab87ffcef529d1e7170b8316b2
-SHA512 (p7zip_16.02_src_all.tar.bz2) = d2c4d53817f96bb4c7683f42045198d4cd509cfc9c3e2cb85c8d9dc4ab6dfa7496449edeac4e300ecf986a9cbbc90bd8f8feef8156895d94617c04e507add55f
-Size (p7zip_16.02_src_all.tar.bz2) = 4239909 bytes
-SHA1 (patch-CPP_7zip_Archive_7z_7zIn.cpp) = cce409d45be6ae8e96314dad1c51d9feb09bc817
+BLAKE2s (p7zip-17.01.tar.gz) = 4302ea7da3232a5051b376e2a25924623ddc970160f6108b4c22dea93ee8802b
+SHA512 (p7zip-17.01.tar.gz) = cba300085ecb6d43c5dd012a7fabe70d2f3af51d67c58a7d25606fcd0b33f21957fd8278ba405a56aaafbb925c2587c6a7752f30df567d5fab4b05fa6d54bdf4
+Size (p7zip-17.01.tar.gz) = 5257647 bytes
 SHA1 (patch-CPP_Windows_DLL.cpp) = 12fb3f3cf4d32b8848f741dde6bcb0e56a9c6745
-SHA1 (patch-CVE-2017-17969) = 4e22cf6640469a53030b956073924252e68f1ced
-SHA1 (patch-aa) = 9c103fa831cc6ff099e3a604c763ff416f1b48ec
+SHA1 (patch-aa) = 9abd1fc59c1fa8fc80809627e9e2e348e16d688f
 SHA1 (patch-ab) = c680fb037b9ef5e19e4c8dc71dd710598277a61b
 SHA1 (patch-ac) = 747d8ab9ba3b4069227efcfce9a4b26096e68b9b
