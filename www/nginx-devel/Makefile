@@ -54,11 +54,11 @@ CONFIGURE_ARGS+=	--http-fastcgi-temp-path=${NGINX_DATADIR}/fstcgi_temp
 CONFIGURE_ARGS+=	--http-scgi-temp-path=${NGINX_DATADIR}/scgi_temp
 CONFIGURE_ARGS+=	--with-pcre
 
-SUBST_CLASSES+=		fix-pcre2
-SUBST_STAGE.fix-pcre2=	pre-configure
-SUBST_FILES.fix-pcre2=	auto/lib/pcre/conf
-SUBST_SED.fix-pcre2=	-e 's,/usr/pkg,${BUILDLINK_PREFIX.pcre2},g'
-SUBST_NOOP_OK.fix-pcre2=yes
+SUBST_CLASSES+=			fix-pcre2
+SUBST_STAGE.fix-pcre2=		pre-configure
+SUBST_FILES.fix-pcre2=		auto/lib/pcre/conf
+SUBST_SED.fix-pcre2=		-e 's,/usr/pkg,${BUILDLINK_PREFIX.pcre2},g'
+SUBST_NOOP_OK.fix-pcre2=	yes
 
 PKG_SYSCONFSUBDIR=	nginx
 
