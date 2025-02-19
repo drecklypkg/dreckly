@@ -44,7 +44,7 @@ jobs:
         uses: egor-tensin/setup-cygwin@v4
         if: runner.os == 'Windows'
         with:
-          packages: gcc-g++ rsync ssh
+          packages: gcc-g++ openssh rsync
       - name: Configure SSH
         uses: shimataro/ssh-key-action@v2
         with:
