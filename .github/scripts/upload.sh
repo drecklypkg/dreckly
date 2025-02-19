@@ -8,10 +8,8 @@ else
 	RSYNC_DELETE=
 fi
 
-#
-# Annoyingly rsync doesn't work for some reason on Cygwin, with nothing more
-# helpful than "connection unexpectedly closed", even though ssh works fine
-# as per the below.
+# On Windows we can't use rsync, only the "native" SSH has access to the
+# GitHub secrets, and Cygwin rsync does not work with the native SSH.
 #
 case "$(uname)" in
 CYGWIN*)
