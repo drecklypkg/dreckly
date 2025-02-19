@@ -20,21 +20,17 @@ PLIST.plugins=		yes
 CONFIGURE_ARGS+=	--enable-plugins
 .endif
 
-.if empty(PKG_OPTIONS:Mx11)
-PLIST.nox11=		yes
-CONFIGURE_ARGS+=	--without-x
-CONFIGURE_ARGS+=	--without-x11
-CONFIGURE_ARGS+=	--with-term
-CONFIGURE_ARGS+=	--with-sdl
-.else
-PLIST.x11=		yes
-.endif
-
 .if !empty(PKG_OPTIONS:Mdebug) && !empty(PKG_OPTIONS:Mx11)
 .include "../../x11/gtk3/buildlink3.mk"
 .endif
 
 .if !empty(PKG_OPTIONS:Mx11)
+PLIST.x11=			yes
+LIBS+=				-lX11
+CONFIGURE_ARGS+=		--with-x
+CONFIGURE_ARGS+=		--with-x11
+CONFIGURE_ARGS+=		--with-sdl
+CONFIGURE_ARGS+=		--with-sdl2
 BUILDLINK_DEPMETHOD.libXt?=	build
 .  include "../../x11/libSM/buildlink3.mk"
 .  include "../../x11/libX11/buildlink3.mk"
@@ -42,10 +38,15 @@ BUILDLINK_DEPMETHOD.libXt?=	build
 .  include "../../x11/libXrandr/buildlink3.mk"
 .  include "../../x11/libXt/buildlink3.mk"
 .else
+PLIST.nox11=		yes
 .  include "../../mk/curses.buildlink3.mk"
 .  if ${OPSYS} == "NetBSD"
 .    if ${CURSES_TYPE} == "curses"
 GUI_LINK_OPTS_TERM=	-lcurses
 .    endif
 .  endif
+CONFIGURE_ARGS+=	--without-sdl
+CONFIGURE_ARGS+=	--without-x
+CONFIGURE_ARGS+=	--without-x11
+CONFIGURE_ARGS+=	--with-term
 .endif

@@ -19,7 +19,6 @@ FORCE_CXX_STD=		c++11
 USE_LIBTOOL=		yes
 
 CXXFLAGS+=		-DPARANOID
-LIBS+=			-lX11
 
 CONFIGURE_ARGS+=	--disable-docbook
 CONFIGURE_ARGS+=	--enable-cdrom
@@ -109,4 +108,5 @@ pre-configure:
 	mv ${WRKSRC}/.bochsrc.new ${WRKSRC}/.bochsrc
 .endif
 
+.include "options.mk"
 .include "../../mk/bsd.pkg.mk"
