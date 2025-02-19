@@ -1,10 +1,16 @@
 # $NetBSD$
 
 PKG_OPTIONS_VAR=	PKG_OPTIONS.bochs
-PKG_SUPPORTED_OPTIONS+=	debug x11
-PKG_SUGGESTED_OPTIONS+=	x11
+PKG_SUPPORTED_OPTIONS+=	debug sdl x11
 
-PLIST_VARS+=		nox11 plugins x11
+.include "../../mk/bsd.fast.prefs.mk"
+.if ${OPSYS} != "Darwin"
+PKG_SUGGESTED_OPTIONS=	sdl x11
+.else
+PKG_SUGGESTED_OPTIONS=	sdl
+.endif
+
+PLIST_VARS+=		nox11 plugins x11 sdl
 
 .include "../../mk/bsd.options.mk"
 
@@ -24,13 +30,20 @@ CONFIGURE_ARGS+=	--enable-plugins
 .include "../../x11/gtk3/buildlink3.mk"
 .endif
 
+# want SDL for sound and portable graphics
+.if !empty(PKG_OPTIONS:Msdl)
+PLIST.sdl=		yes
+CONFIGURE_ARGS+=	--with-sdl
+.  include "../../devel/SDL/buildlink3.mk"
+.else
+CONFIGURE_ARGS+=	--without-sdl
+.endif
+
 .if !empty(PKG_OPTIONS:Mx11)
 PLIST.x11=			yes
 LIBS+=				-lX11
 CONFIGURE_ARGS+=		--with-x
 CONFIGURE_ARGS+=		--with-x11
-CONFIGURE_ARGS+=		--with-sdl
-CONFIGURE_ARGS+=		--with-sdl2
 BUILDLINK_DEPMETHOD.libXt?=	build
 .  include "../../x11/libSM/buildlink3.mk"
 .  include "../../x11/libX11/buildlink3.mk"
@@ -45,7 +58,6 @@ PLIST.nox11=		yes
 GUI_LINK_OPTS_TERM=	-lcurses
 .    endif
 .  endif
-CONFIGURE_ARGS+=	--without-sdl
 CONFIGURE_ARGS+=	--without-x
 CONFIGURE_ARGS+=	--without-x11
 CONFIGURE_ARGS+=	--with-term
