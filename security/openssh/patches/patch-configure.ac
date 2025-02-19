@@ -1,6 +1,10 @@
-$NetBSD: patch-configure.ac,v 1.10 2024/07/01 09:19:40 wiz Exp $
+$NetBSD$
 
---- configure.ac.orig	2024-07-01 04:36:28.000000000 +0000
+Do not force through rpath settings, let rpath handle them.
+
+Use askpass provided by pkgsrc.
+
+--- configure.ac.orig	2025-02-18 08:15:08.000000000 +0000
 +++ configure.ac
 @@ -380,6 +380,9 @@ AC_ARG_WITH([rpath],
  	]
@@ -12,12 +16,12 @@ $NetBSD: patch-configure.ac,v 1.10 2024/07/01 09:19:40 wiz Exp $
  # Allow user to specify flags
  AC_ARG_WITH([cflags],
  	[  --with-cflags           Specify additional flags to pass to compiler],
-@@ -5568,9 +5628,17 @@ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
+@@ -5578,9 +5581,17 @@ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
  ])
  if test -z "$conf_wtmpx_location"; then
  	if test x"$system_wtmpx_path" = x"no" ; then
 -		AC_DEFINE([DISABLE_WTMPX])
-+		for f in /var/log/wtmpx; do
++		for f in ${VARBASE}/log/wtmpx; do
 +			if test -f $f ; then
 +				conf_wtmpx_location=$f
 +			fi
@@ -32,7 +36,7 @@ $NetBSD: patch-configure.ac,v 1.10 2024/07/01 09:19:40 wiz Exp $
  	AC_DEFINE_UNQUOTED([CONF_WTMPX_FILE], ["$conf_wtmpx_location"],
  		[Define if you want to specify the path to your wtmpx file])
  fi
-@@ -5677,7 +5745,7 @@ echo "OpenSSH has been configured with t
+@@ -5687,7 +5698,7 @@ echo "OpenSSH has been configured with t
  echo "                     User binaries: $B"
  echo "                   System binaries: $C"
  echo "               Configuration files: $D"

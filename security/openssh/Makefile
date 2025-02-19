@@ -1,6 +1,6 @@
 # $NetBSD: Makefile,v 1.286 2024/09/24 21:43:13 wiz Exp $
 
-DISTNAME=		openssh-9.9p1
+DISTNAME=		openssh-9.9p2
 CATEGORIES=		security
 MASTER_SITES=		${MASTER_SITE_OPENBSD:=OpenSSH/portable/}
 
@@ -65,6 +65,8 @@ CONFIGURE_ARGS+=	--with-pie
 # linker directly results in undefined symbols for obvious reasons.
 #
 CONFIGURE_ENV+=		LD=${CC:Q}
+
+CONFIGURE_ENV+=		VARBASE=${VARBASE}
 
 # Enable S/Key support on NetBSD, Darwin, and Solaris.
 .if (${OPSYS} == "NetBSD") || (${OPSYS} == "Darwin") || (${OPSYS} == "SunOS")
