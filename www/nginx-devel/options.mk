@@ -338,25 +338,25 @@ CONFIGURE_ENV+=		NJS_LIBXSLT=NO
 .endif
 
 .if !empty(PKG_OPTIONS:Mupload) || make(makesum) || make(mdi) || make(distclean)
-UPLOAD_VERSION=		2.3.0
+UPLOAD_VERSION=			2.3.0
 UPLOAD_DISTNAME=		nginx-upload-module-${UPLOAD_VERSION}
 UPLOAD_DISTFILE=		${UPLOAD_DISTNAME}.tar.gz
 SITES.${UPLOAD_DISTFILE}=	-${MASTER_SITE_GITHUB:=vkholodkov/nginx-upload-module/archive/refs/tags/}${UPLOAD_VERSION}.tar.gz
-DISTFILES+=		${UPLOAD_DISTFILE}
-DSO_EXTMODS+=		upload
-PLIST.upload=		yes
+DISTFILES+=			${UPLOAD_DISTFILE}
+DSO_EXTMODS+=			upload
+PLIST.upload=			yes
 .endif
 
 .if !empty(PKG_OPTIONS:Mgssapi) || make(makesum) || make(mdi) || make(distclean)
-GSSAPI_GH_ACCOUNT=	stnoonan
-GSSAPI_GH_PROJECT=	spnego-http-auth-nginx-module
-GSSAPI_VERSION=		3575542
+GSSAPI_GH_ACCOUNT=		stnoonan
+GSSAPI_GH_PROJECT=		spnego-http-auth-nginx-module
+GSSAPI_VERSION=			3575542
 GSSAPI_DISTNAME=		${GSSAPI_GH_PROJECT}-${GSSAPI_VERSION}
 GSSAPI_DISTFILE=		${GSSAPI_GH_ACCOUNT}-${GSSAPI_DISTNAME}_GH.tar.gz
 SITES.${GSSAPI_DISTFILE}=	-${CODELOAD_SITE_GITHUB:=${GSSAPI_GH_ACCOUNT}/${GSSAPI_GH_PROJECT}/tar.gz/${GSSAPI_VERSION}?dummy=${GSSAPI_DISTFILE}}
-DISTFILES+=		${GSSAPI_DISTFILE}
-DSO_EXTMODS+=		gssapi
-PLIST.gssapi=		yes
+DISTFILES+=			${GSSAPI_DISTFILE}
+DSO_EXTMODS+=			gssapi
+PLIST.gssapi=			yes
 .endif
 
 .if !empty(PKG_OPTIONS:Msts) || make(makesum) || make(mdi) || make(distclean)
