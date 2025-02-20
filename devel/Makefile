@@ -1092,7 +1092,6 @@ SUBDIR+=	lua-filesystem
 SUBDIR+=	lua-fun
 SUBDIR+=	lua-gi
 SUBDIR+=	lua-inspect
-SUBDIR+=	lua-language-server
 SUBDIR+=	lua-linenoise
 SUBDIR+=	lua-ljsyscall
 SUBDIR+=	lua-loadkit
