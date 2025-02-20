@@ -443,7 +443,5 @@ SUBDIR+=	xygrib-devel
 SUBDIR+=	yelp3
 SUBDIR+=	yrolo
 SUBDIR+=	zorro
-SUBDIR+=	zyGrib
-SUBDIR+=	zyGrib-maps
 
 .include "../mk/misc/category.mk"
