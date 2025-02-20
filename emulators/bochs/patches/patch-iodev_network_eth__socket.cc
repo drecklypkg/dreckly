@@ -1,5 +1,7 @@
 $NetBSD: patch-iodev_network_eth__socket.cc,v 1.2 2024/02/11 23:30:39 ryoon Exp $
 
+Move linux-only header to the #ifdef __linux__ block.
+
 --- iodev/network/eth_socket.cc.orig	2021-03-12 21:31:51.747171000 +0000
 +++ iodev/network/eth_socket.cc
 @@ -93,10 +93,10 @@ extern "C" {
