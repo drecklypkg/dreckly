@@ -7,7 +7,6 @@
 # used by sysutils/collectd-dns/Makefile
 # used by sysutils/collectd-gmond/Makefile
 # used by sysutils/collectd-gps/Makefile
-# used by sysutils/collectd-grpc/Makefile
 # used by sysutils/collectd-kafka/Makefile
 # used by sysutils/collectd-lua/Makefile
 # used by sysutils/collectd-memcachec/Makefile
