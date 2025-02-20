@@ -1,2 +1,2 @@
 @comment $NetBSD$
-${PLIST.notiny}${PLIST.plugins}lib/bochs/plugins/libbx_eth_fbsd.la
+lib/bochs/plugins/libbx_eth_fbsd.la

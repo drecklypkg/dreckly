@@ -83,9 +83,6 @@ BOCHSRC_SUBST.Darwin+=	-e 's,@FLOPPY_LINUX@,\#,'
 BOCHSRC_SUBST.*+=	-e 's,@FLOPPY_BSD@,,'
 BOCHSRC_SUBST.*+=	-e 's,@FLOPPY_LINUX@,\#,'
 
-PRINT_PLIST_AWK+=	/\/plugins\// { $$0 = "$${PLIST.plugins}" $$0 }
-PRINT_PLIST_AWK+=	/libbx_/ { $$0 = "$${PLIST.notiny}" $$0 }
-
 .if ${OPSYS} == "Darwin"
 MESSAGE_SRC=		${.CURDIR}/MESSAGE.Darwin
 PLIST_SRC=		${.CURDIR}/PLIST.Darwin

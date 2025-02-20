@@ -1,7 +1,7 @@
 # $NetBSD$
 
 PKG_OPTIONS_VAR=	PKG_OPTIONS.bochs
-PKG_SUPPORTED_OPTIONS+=	debug sdl x11
+PKG_SUPPORTED_OPTIONS+=	sdl x11
 
 .include "../../mk/bsd.fast.prefs.mk"
 .if ${OPSYS} != "Darwin"
@@ -10,25 +10,9 @@ PKG_SUGGESTED_OPTIONS=	sdl x11
 PKG_SUGGESTED_OPTIONS=	sdl
 .endif
 
-PLIST_VARS+=		nox11 plugins x11 sdl
+PLIST_VARS+=		nox11 x11 sdl
 
 .include "../../mk/bsd.options.mk"
-
-# Debugging features for the client operating systems. These options are
-# not enabled by default because they can adversely impact performance.
-.if !empty(PKG_OPTIONS:Mdebug)
-CONFIGURE_ARGS+=	--disable-plugins
-CONFIGURE_ARGS+=	--enable-debugger
-CONFIGURE_ARGS+=	--enable-iodebug
-CONFIGURE_ARGS+=	--enable-x86-debugger
-.else
-PLIST.plugins=		yes
-CONFIGURE_ARGS+=	--enable-plugins
-.endif
-
-.if !empty(PKG_OPTIONS:Mdebug) && !empty(PKG_OPTIONS:Mx11)
-.include "../../x11/gtk3/buildlink3.mk"
-.endif
 
 # want SDL for sound and portable graphics
 .if !empty(PKG_OPTIONS:Msdl)
