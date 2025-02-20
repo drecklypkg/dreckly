@@ -429,7 +429,6 @@ SUBDIR+=	sys161
 SUBDIR+=	tcl-hp-15c
 SUBDIR+=	tme
 SUBDIR+=	tuxnes
-SUBDIR+=	twin
 SUBDIR+=	uae
 SUBDIR+=	ucon64
 SUBDIR+=	unicorn
