@@ -62,7 +62,7 @@ CI_CMD_TAR=tar
 
 case "$(uname)" in
 CYGWIN*)
-	CI_SYSTEM_PATH="/cygdrive/c/tools/cygwin/bin"
+	CI_SYSTEM_PATH="/cygdrive/c/tools/cygwin/bin:/c/Windows/System32/OpenSSH"
 	;;
 SunOS)
 	CI_CMD_TAR=gtar
