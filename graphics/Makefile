@@ -492,7 +492,6 @@ SUBDIR+=	pstoedit
 SUBDIR+=	ptex
 SUBDIR+=	py-DPainter
 SUBDIR+=	py-OpenGL
-SUBDIR+=	py-OpenGL-accelerate
 SUBDIR+=	py-Pillow
 SUBDIR+=	py-Willow
 SUBDIR+=	py-aafigure
