@@ -600,7 +600,6 @@ SUBDIR+=	sane-backends
 SUBDIR+=	sane-frontends
 SUBDIR+=	screengrab
 SUBDIR+=	scrot
-SUBDIR+=	shotwell
 SUBDIR+=	silgraphite
 SUBDIR+=	silgraphite-ft
 SUBDIR+=	silgraphite-xft
