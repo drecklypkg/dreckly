@@ -33,7 +33,6 @@ SUBDIR+=	gnuradio-wavelet
 SUBDIR+=	gnuradio-zeromq
 SUBDIR+=	gpredict
 SUBDIR+=	gr-osmosdr
-SUBDIR+=	grig
 SUBDIR+=	hackrf
 SUBDIR+=	hamlib
 SUBDIR+=	kalibrate-hackrf
