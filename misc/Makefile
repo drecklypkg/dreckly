@@ -438,7 +438,6 @@ SUBDIR+=	xorg-sgml-doctools
 SUBDIR+=	xrolodex
 SUBDIR+=	xtail
 SUBDIR+=	xtend
-SUBDIR+=	xygrib
 SUBDIR+=	xygrib-devel
 SUBDIR+=	yelp3
 SUBDIR+=	yrolo
