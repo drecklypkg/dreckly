@@ -110,7 +110,6 @@ SUBDIR+=	collectd-dbi
 SUBDIR+=	collectd-dns
 SUBDIR+=	collectd-gmond
 SUBDIR+=	collectd-gps
-SUBDIR+=	collectd-grpc
 SUBDIR+=	collectd-haproxy
 SUBDIR+=	collectd-kafka
 SUBDIR+=	collectd-lua
