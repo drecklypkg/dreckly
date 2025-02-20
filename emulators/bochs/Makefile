@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.113 2024/11/17 07:15:51 wiz Exp $
 
 DISTNAME=		bochs-2.7
-PKGREVISION=		4
+PKGREVISION=		5
 CATEGORIES=		emulators
 MASTER_SITES=		${MASTER_SITE_SOURCEFORGE:=bochs/}
 
@@ -58,6 +58,7 @@ CONFIGURE_ARGS+=	--enable-alignment-check
 #CONFIGURE_ARGS+=	--enable-gdb-stub
 CONFIGURE_ARGS+=	--enable-gameport
 CONFIGURE_ARGS+=	--enable-busmouse
+CONFIGURE_ARGS+=	--enable-plugins
 
 .if !empty(MACHINE_PLATFORM:M*-*-i386)
 CONFIGURE_ARGS+=	--enable-fast-function-calls
