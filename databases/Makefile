@@ -41,7 +41,6 @@ SUBDIR+=	galera
 SUBDIR+=	gdbm
 SUBDIR+=	gdbm_compat
 SUBDIR+=	gdbm_primitive
-SUBDIR+=	geneweb
 SUBDIR+=	gigabase
 SUBDIR+=	gnats
 SUBDIR+=	gom
