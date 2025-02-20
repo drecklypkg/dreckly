@@ -8,7 +8,6 @@ ${PLIST.plugins}lib/bochs/plugins/libbx_busmouse.la
 ${PLIST.plugins}lib/bochs/plugins/libbx_cmos.la
 ${PLIST.plugins}lib/bochs/plugins/libbx_dma.la
 ${PLIST.plugins}lib/bochs/plugins/libbx_es1370.la
-${PLIST.plugins}lib/bochs/plugins/libbx_eth_fbsd.la
 ${PLIST.plugins}lib/bochs/plugins/libbx_eth_null.la
 ${PLIST.plugins}lib/bochs/plugins/libbx_eth_slirp.la
 ${PLIST.plugins}lib/bochs/plugins/libbx_eth_socket.la
