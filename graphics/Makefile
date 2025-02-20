@@ -59,7 +59,6 @@ SUBDIR+=	apngasm
 SUBDIR+=	arc-theme
 SUBDIR+=	argyllcms
 SUBDIR+=	artist
-SUBDIR+=	asymptote
 SUBDIR+=	autopano-sift-C
 SUBDIR+=	autotrace
 SUBDIR+=	aview
