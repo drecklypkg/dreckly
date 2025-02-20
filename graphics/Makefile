@@ -83,7 +83,6 @@ SUBDIR+=	cdlabelgen
 SUBDIR+=	cglm
 SUBDIR+=	chafa
 SUBDIR+=	charls
-SUBDIR+=	cheese
 SUBDIR+=	cinepaint
 SUBDIR+=	circos
 SUBDIR+=	claraocr
