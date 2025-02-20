@@ -2,7 +2,6 @@
 # Jenkins workflow.  Trigger a Jenkins build, parse the configuration matrix it
 # generates and then wait for them to return a result.
 #
-name:
 on:
   workflow_call:
     inputs:

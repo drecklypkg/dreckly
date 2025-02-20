@@ -83,7 +83,7 @@ jobs:
     uses: ./.github/workflows/jenkins.yml
     with:
       bootstrap-hash: ${{ needs.what-changed.outputs.bootstrap-hash }}
-      pkgbuild-files: ${{ needs.what-changed.outputs.pkgbuild-files }}
+      pkgbuild-files: ${{ inputs.pkgpaths }}
       use-binpkg: ${{ ! inputs.clear-cache }}
     secrets:
       CI_JENKINS_TRIGGER_URL: ${{ secrets.CI_JENKINS_TRIGGER_URL }}
