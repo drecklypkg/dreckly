@@ -335,7 +335,6 @@ SUBDIR+=	sigscheme
 SUBDIR+=	siod
 SUBDIR+=	smalltalk
 SUBDIR+=	smlnj
-SUBDIR+=	smlnj11072
 SUBDIR+=	snobol
 SUBDIR+=	spago
 SUBDIR+=	spidermonkey
