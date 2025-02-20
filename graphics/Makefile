@@ -563,7 +563,6 @@ SUBDIR+=	qt6-qtsvg
 SUBDIR+=	quesoglc
 SUBDIR+=	qvplay
 SUBDIR+=	rabbit
-SUBDIR+=	radiance
 SUBDIR+=	raleigh-reloaded
 SUBDIR+=	raqm
 SUBDIR+=	rawtherapee
