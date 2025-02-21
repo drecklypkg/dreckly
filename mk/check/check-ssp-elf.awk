@@ -70,10 +70,18 @@ function shquote(IN, out) {
 }
 
 function checkssp(ELF, got_ssp, found) {
-	cmd = readelf " -Wd " shquote(ELF) " 2>/dev/null"
+	if (checklib) {
+		cmd = readelf " -Wd " shquote(ELF) " 2>/dev/null"
+	} else {
+		cmd = readelf " -Ws " shquote(ELF) " 2>/dev/null"
+	}
 	while ((cmd | getline) > 0) {
 		found = 1
-		if ($2 == "(NEEDED)" && $5 ~ /libssp/) {
+		if (checklib && $2 == "(NEEDED)" && $5 ~ /libssp/) {
+			got_ssp = 1
+			break
+		}
+		if (!checklib && $NF == "__stack_chk_guard") {
 			got_ssp = 1
 			break
 		}
@@ -85,6 +93,7 @@ function checkssp(ELF, got_ssp, found) {
 }
 
 BEGIN {
+	checklib = ENVIRON["CHECK_LIBSSP"]
 	readelf = ENVIRON["READELF"]
 	if (readelf == "")
 		readelf = "readelf"
