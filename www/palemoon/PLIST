@@ -29,7 +29,6 @@ lib/${PKGNAME}/dictionaries/en-US.aff
 lib/${PKGNAME}/dictionaries/en-US.dic
 lib/${PKGNAME}/fonts/TwemojiMozilla.ttf
 lib/${PKGNAME}/icudt63l.dat
-lib/${PKGNAME}/libfreebl3.so
 lib/${PKGNAME}/libhunspell.so
 lib/${PKGNAME}/liblgpllibs.so
 ${PLIST.ffvpx}lib/${PKGNAME}/libmozavcodec.so

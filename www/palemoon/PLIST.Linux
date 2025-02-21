@@ -1,0 +1,2 @@
+@comment $NetBSD$
+lib/${PKGNAME}/libfreeblpriv3.so
