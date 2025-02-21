@@ -25,7 +25,10 @@ CYGWIN*)
 			rm -rf ${CI_REMOTE_DIR}
 		fi
 		mkdir -p ${CI_REMOTE_DIR}"
-	scp -rp ${CI_PACKAGES}/All ${CI_SSH_USER}@${CI_SSH_HOST}:${CI_REMOTE_DIR}/
+	# The native ssh/scp cannot use Cygwin paths so change to the parent
+	# directory first to avoid complications.
+	cd ${CI_PACKAGES}
+	scp -rp All ${CI_SSH_USER}@${CI_SSH_HOST}:${CI_REMOTE_DIR}/
 	;;
 *)
 	rsync -av ${RSYNC_DELETE} --exclude .cvsignore \
