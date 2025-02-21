@@ -13,6 +13,10 @@ on:
         description: 'List of files to consider for building'
         required: true
         type: string
+      upload-pkgs:
+        description: 'Whether to upload the built binary packages'
+        type: boolean
+        default: false
       use-binpkg:
         description: 'Whether to use BINPKG_SITES'
         type: boolean
@@ -21,6 +25,12 @@ on:
       CI_JENKINS_TRIGGER_URL:
         required: true
       CI_JENKINS_TOKEN:
+        required: true
+      CI_PACKAGE_DIR:
+        required: true
+      CI_SSH_HOST:
+        required: true
+      CI_SSH_USER:
         required: true
 jobs:
   trigger:
@@ -36,8 +46,12 @@ jobs:
           # Trigger Jenkins build and retrieve the queue URL
           curl -s -i -o trigger.txt \
             -X POST "${{ secrets.CI_JENKINS_TRIGGER_URL }}&token=${{ secrets.CI_JENKINS_TOKEN }}" \
+            --data-urlencode "CI_PACKAGE_DIR=${{ secrets.CI_PACKAGE_DIR }}" \
+            --data-urlencode "CI_SSH_USER=${{ secrets.CI_SSH_USER }}" \
+            --data-urlencode "CI_SSH_HOST=${{ secrets.CI_SSH_HOST }}" \
             --data-urlencode "BOOTSTRAP_HASH=${{ inputs.bootstrap-hash }}" \
             --data-urlencode "PKGBUILD_FILES=${{ inputs.pkgbuild-files }}" \
+            --data-urlencode "UPLOAD_PKGS=${{ inputs.upload-pkgs }}" \
             --data-urlencode "USE_BINPKG=${{ inputs.use-binpkg }}"
           queue_url=$(awk '/^Location:/ {sub("\r", ""); print $2}' trigger.txt)
 

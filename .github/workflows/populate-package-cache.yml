@@ -84,10 +84,14 @@ jobs:
     with:
       bootstrap-hash: ${{ needs.what-changed.outputs.bootstrap-hash }}
       pkgbuild-files: ${{ inputs.pkgpaths }}
+      upload-pkgs: true
       use-binpkg: ${{ ! inputs.clear-cache }}
     secrets:
       CI_JENKINS_TRIGGER_URL: ${{ secrets.CI_JENKINS_TRIGGER_URL }}
       CI_JENKINS_TOKEN: ${{ secrets.CI_JENKINS_TOKEN }}
+      CI_PACKAGE_DIR: ${{ secrets.CI_PACKAGE_DIR }}
+      CI_SSH_HOST: ${{ secrets.CI_SSH_HOST }}
+      CI_SSH_USER: ${{ secrets.CI_SSH_USER }}
   build-bsd:
     needs: what-changed
     strategy:
