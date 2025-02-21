@@ -30,7 +30,8 @@ _USER_VARS.check-ssp=		CHECK_SSP
 _PKG_VARS.check-ssp=		CHECK_SSP_SUPPORTED
 
 .if ${_PKGSRC_USE_SSP:Uno} != "no" && \
-    ${PKG_DEVELOPER:Uno} != "no"
+    ${PKG_DEVELOPER:Uno} != "no" && \
+    ${_OPSYS_CHECK_LIBSSP:Uyes} == "yes"
 CHECK_SSP?=			yes
 .else
 CHECK_SSP?=			no
