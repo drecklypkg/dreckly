@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.113 2024/11/17 07:15:51 wiz Exp $
 
 DISTNAME=		bochs-2.7
-PKGREVISION=		6
+PKGREVISION=		7
 CATEGORIES=		emulators
 MASTER_SITES=		${MASTER_SITE_SOURCEFORGE:=bochs/}
 
@@ -47,6 +47,7 @@ CONFIGURE_ARGS+=	--enable-configurable-msrs
 CONFIGURE_ARGS+=	--enable-all-optimizations
 #CONFIGURE_ARGS+=	--enable-instrumentation
 CONFIGURE_ARGS+=	--enable-clgd54xx
+CONFIGURE_ARGS+=	--enable-e1000
 CONFIGURE_ARGS+=	--enable-voodoo
 CONFIGURE_ARGS+=	--enable-fpu
 CONFIGURE_ARGS+=	--enable-vmx=2

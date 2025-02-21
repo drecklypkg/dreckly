@@ -7,6 +7,7 @@ lib/bochs/plugins/libbx_biosdev.la
 lib/bochs/plugins/libbx_busmouse.la
 lib/bochs/plugins/libbx_cmos.la
 lib/bochs/plugins/libbx_dma.la
+lib/bochs/plugins/libbx_e1000.la
 lib/bochs/plugins/libbx_es1370.la
 lib/bochs/plugins/libbx_eth_null.la
 lib/bochs/plugins/libbx_eth_slirp.la
