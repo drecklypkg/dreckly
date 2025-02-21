@@ -1145,6 +1145,7 @@ ${PLIST.nls}share/locale/ko/LC_MESSAGES/pg_amcheck-17.mo
 ${PLIST.nls}share/locale/ko/LC_MESSAGES/pg_archivecleanup-17.mo
 ${PLIST.nls}share/locale/ko/LC_MESSAGES/pg_basebackup-17.mo
 ${PLIST.nls}share/locale/ko/LC_MESSAGES/pg_checksums-17.mo
+${PLIST.nls}share/locale/ko/LC_MESSAGES/pg_combinebackup-17.mo
 ${PLIST.nls}share/locale/ko/LC_MESSAGES/pg_config-17.mo
 ${PLIST.nls}share/locale/ko/LC_MESSAGES/pg_controldata-17.mo
 ${PLIST.nls}share/locale/ko/LC_MESSAGES/pg_ctl-17.mo
@@ -1156,6 +1157,7 @@ ${PLIST.nls}share/locale/ko/LC_MESSAGES/pg_test_timing-17.mo
 ${PLIST.nls}share/locale/ko/LC_MESSAGES/pg_upgrade-17.mo
 ${PLIST.nls}share/locale/ko/LC_MESSAGES/pg_verifybackup-17.mo
 ${PLIST.nls}share/locale/ko/LC_MESSAGES/pg_waldump-17.mo
+${PLIST.nls}share/locale/ko/LC_MESSAGES/pg_walsummary-17.mo
 ${PLIST.nls}share/locale/ko/LC_MESSAGES/pgscripts-17.mo
 ${PLIST.nls}share/locale/ko/LC_MESSAGES/psql-17.mo
 ${PLIST.nls}share/locale/nb/LC_MESSAGES/pg_config-17.mo
