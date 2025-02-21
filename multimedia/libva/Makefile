@@ -14,6 +14,7 @@ LICENSE=	mit
 GNU_CONFIGURE=	yes
 USE_LIBTOOL=	yes
 USE_TOOLS+=	gmake pkg-config
+USE_LANGUAGES=	c c++
 
 USE_CC_FEATURES=	c99
 
