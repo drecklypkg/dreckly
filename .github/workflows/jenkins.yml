@@ -9,6 +9,10 @@ on:
         description: 'Hash of input bootstrap files from what-changed'
         required: true
         type: string
+      clear-binpkg-cache:
+        description: 'Whether to remove existing binary packages'
+        type: boolean
+        default: false
       pkgbuild-files:
         description: 'List of files to consider for building'
         required: true
@@ -46,10 +50,11 @@ jobs:
           # Trigger Jenkins build and retrieve the queue URL
           curl -s -i -o trigger.txt \
             -X POST "${{ secrets.CI_JENKINS_TRIGGER_URL }}&token=${{ secrets.CI_JENKINS_TOKEN }}" \
+            --data-urlencode "BOOTSTRAP_HASH=${{ inputs.bootstrap-hash }}" \
             --data-urlencode "CI_PACKAGE_DIR=${{ secrets.CI_PACKAGE_DIR }}" \
             --data-urlencode "CI_SSH_USER=${{ secrets.CI_SSH_USER }}" \
             --data-urlencode "CI_SSH_HOST=${{ secrets.CI_SSH_HOST }}" \
-            --data-urlencode "BOOTSTRAP_HASH=${{ inputs.bootstrap-hash }}" \
+            --data-urlencode "CLEAR_BINPKG_CACHE=${{ inputs.clear-binpkg-cache }}" \
             --data-urlencode "PKGBUILD_FILES=${{ inputs.pkgbuild-files }}" \
             --data-urlencode "UPLOAD_PKGS=${{ inputs.upload-pkgs }}" \
             --data-urlencode "USE_BINPKG=${{ inputs.use-binpkg }}"

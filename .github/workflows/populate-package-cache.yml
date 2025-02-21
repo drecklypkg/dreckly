@@ -83,6 +83,7 @@ jobs:
     uses: ./.github/workflows/jenkins.yml
     with:
       bootstrap-hash: ${{ needs.what-changed.outputs.bootstrap-hash }}
+      clear-binpkg-cache: ${{ inputs.clear-cache }}
       pkgbuild-files: ${{ inputs.pkgpaths }}
       upload-pkgs: true
       use-binpkg: ${{ ! inputs.clear-cache }}
