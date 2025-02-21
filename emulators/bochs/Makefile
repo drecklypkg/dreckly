@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.113 2024/11/17 07:15:51 wiz Exp $
 
 DISTNAME=		bochs-2.7
-PKGREVISION=		5
+PKGREVISION=		6
 CATEGORIES=		emulators
 MASTER_SITES=		${MASTER_SITE_SOURCEFORGE:=bochs/}
 
@@ -99,12 +99,11 @@ post-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/bximage ${PREFIX}/bin
 	${RM} -rf ${PREFIX}/libexec/bochs.app/.build
 	${INSTALL_SCRIPT} ${WRKDIR}/bochs.sh ${PREFIX}/bin/bochs
-.else
+.endif
 
 pre-configure:
 	${SED} ${BOCHSRC_SUBST} <${WRKSRC}/.bochsrc >${WRKSRC}/.bochsrc.new
 	mv ${WRKSRC}/.bochsrc.new ${WRKSRC}/.bochsrc
-.endif
 
 .include "options.mk"
 .include "../../mk/bsd.pkg.mk"
