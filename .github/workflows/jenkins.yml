@@ -13,6 +13,10 @@ on:
         description: 'Whether to remove existing binary packages'
         type: boolean
         default: false
+      github-ref:
+        description: 'Branch to build'
+        required: false
+        type: string
       pkgbuild-files:
         description: 'List of files to consider for building'
         required: true
@@ -31,11 +35,8 @@ on:
       CI_JENKINS_TOKEN:
         required: true
       CI_PACKAGE_DIR:
-        required: true
       CI_SSH_HOST:
-        required: true
       CI_SSH_USER:
-        required: true
 jobs:
   trigger:
     outputs:
@@ -55,6 +56,7 @@ jobs:
             --data-urlencode "CI_SSH_USER=${{ secrets.CI_SSH_USER }}" \
             --data-urlencode "CI_SSH_HOST=${{ secrets.CI_SSH_HOST }}" \
             --data-urlencode "CLEAR_BINPKG_CACHE=${{ inputs.clear-binpkg-cache }}" \
+            --data-urlencode "GITHUB_REF=${{ inputs.github-ref }}" \
             --data-urlencode "PKGBUILD_FILES=${{ inputs.pkgbuild-files }}" \
             --data-urlencode "UPLOAD_PKGS=${{ inputs.upload-pkgs }}" \
             --data-urlencode "USE_BINPKG=${{ inputs.use-binpkg }}"
