@@ -107,14 +107,20 @@ jobs:
     steps:
       - name: Monitor Jenkins build for job status
         run: |
-          set -eux
+          set -eu
+          echo "Watching ${{ matrix.config.url }} for build result."
           while true; do
             curl -s --fail -o response.json "${{ matrix.config.url }}/api/json"
             status=$(jq -r '.result // empty' < response.json)
-            if [ "${status}" = "SUCCESS" ]; then
-              exit 0
-            elif [ "${status}" = "FAILURE" ]; then
-              exit 1
+            if [ -z "${status}" ]; then
+              sleep 5
+              printf "."
+              continue
             fi
-            sleep 5
           done
+          echo "status=${status}"
+          if [ "${status}" = "SUCCESS" ]; then
+            exit 0
+          fi
+          # Any other text is fail (FAILURE / ABORTED / ...)
+          exit 1
