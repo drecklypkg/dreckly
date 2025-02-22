@@ -32,8 +32,12 @@ REPLACE_PERL+=	src/dep/scripts/*.pl
 .include "../../mk/bsd.prefs.mk"
 
 .if ${MACHINE_ARCH} == "i386" || ${MACHINE_ARCH} == "x86_64"
-MAKE_FLAGS+=	LSB_FIRST=1
 TOOL_DEPENDS+=	nasm-[0-9]*:../../devel/nasm
+.endif
+
+.include "../../mk/endian.mk"
+.if ${MACHINE_ENDIAN} == "little"
+MAKE_FLAGS+=	LSB_FIRST=1
 .endif
 
 LDFLAGS+=	-lpng -lz
