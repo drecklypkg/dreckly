@@ -11,10 +11,13 @@ HOMEPAGE=	https://github.com/rhash/RHash
 COMMENT=	Calculate/check CRC32, MD5, SHA1, GOST, TTH, BTIH or other hash sums
 LICENSE=	mit
 
-WRKSRC=			${WRKDIR}/${DISTNAME:S/rh/RH/}
+WRKSRC=		${WRKDIR}/${DISTNAME:S/rh/RH/}
+
+FORCE_C_STD=	c99
+USE_LIBTOOL=	yes
+USE_TOOLS+=	gmake
+
 HAS_CONFIGURE=		yes
-USE_GCC_RUNTIME=	yes
-USE_TOOLS+=		gmake
 CONFIGURE_ARGS+=	--disable-gettext
 CONFIGURE_ARGS+=	--disable-symlinks
 CONFIGURE_ARGS+=	--enable-lib-shared
@@ -25,14 +28,16 @@ CONFIGURE_ARGS+=	--prefix=${PREFIX}
 CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFDIR}
 CONFIGURE_ARGS+=	--extra-cflags=-I${BUILDLINK_PREFIX.openssl}/include
 CONFIGURE_ARGS+=	--extra-ldflags=-L${BUILDLINK_PREFIX.openssl}/lib\ ${COMPILER_RPATH_FLAG}${BUILDLINK_PREFIX.openssl}/lib\ ${LDFLAGS:Q}
+
+BUILD_TARGET=		build
+
 INSTALL_TARGET=		build-install-binary install-man
 INSTALL_TARGET+=	install-pkg-config install-lib-shared
 INSTALL_TARGET+=	install-lib-headers
-INSTALLATION_DIRS=	share/examples/rhash
 
-USE_LIBTOOL=		yes
-BUILD_TARGET+=		librhash/librhash.la rhash
 TEST_TARGET=		test
+
+INSTALLATION_DIRS=	share/examples/rhash
 
 MAKE_FLAGS+=		LIBRHASH_SHARED=librhash/librhash.la
 MAKE_FLAGS+=		CFLAGS=${CFLAGS:Q}
