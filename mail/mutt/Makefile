@@ -1,7 +1,6 @@
 # $NetBSD: Makefile,v 1.285 2025/01/08 11:32:16 jperkin Exp $
 
-DISTNAME=		mutt-2.2.13
-PKGREVISION=		7
+DISTNAME=		mutt-2.2.14
 CATEGORIES=		mail
 MASTER_SITES=		http://ftp.mutt.org/pub/mutt/
 
@@ -11,8 +10,6 @@ COMMENT=		Text-based MIME mail client with PGP & S/MIME support
 LICENSE=		gnu-gpl-v2 OR gnu-gpl-v3 # or newer
 
 DEPENDS+=		mime-types-[0-9]*:../../misc/mime-types
-
-TOOL_DEPENDS+=		docbook-xsl-[0-9]*:../../textproc/docbook-xsl
 TOOL_DEPENDS+=		lynx-[0-9]*:../../www/lynx
 
 BUILD_DEFS+=		VARBASE
@@ -75,6 +72,5 @@ CHECK_WRKREF_SKIP+=	bin/mutt	# Embeds lots of build information.
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../converters/libiconv/buildlink3.mk"
 .include "../../devel/gettext-lib/buildlink3.mk"
-.include "../../textproc/libxslt/xsltproc-nonet.mk"
 .include "../../lang/python/application.mk"
 .include "../../mk/bsd.pkg.mk"
