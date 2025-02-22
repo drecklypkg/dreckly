@@ -7,6 +7,14 @@ set -eux
 
 . $(dirname $0)/common.sh
 
+# This script is often called regardless of whether the previous step
+# completed successfully or not (so that we still get to keep any packages
+# that did build), but if nothing built then exit early and successfully.
+#
+if [ ! -d ${CI_PACKAGES} ]; then
+	exit
+fi
+
 PATH="${CI_SYSTEM_PATH}"
 
 if ${CLEAR_BINPKG_CACHE}; then
