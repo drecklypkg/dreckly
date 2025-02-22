@@ -109,14 +109,15 @@ jobs:
         run: |
           set -eu
           echo "Watching ${{ matrix.config.url }} for build result."
+          i=0
           while true; do
             curl -s --fail -o response.json "${{ matrix.config.url }}/api/json"
             status=$(jq -r '.result // empty' < response.json)
-            if [ -z "${status}" ]; then
-              sleep 5
-              printf "."
-              continue
-            fi
+            [ -n "${status}" ] && break
+            sleep 5
+            printf "."
+            i=$((i + 1))
+            [ $((i % 60)) -eq 0 ] && printf "\n"
           done
           echo "status=${status}"
           if [ "${status}" = "SUCCESS" ]; then
