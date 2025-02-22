@@ -1,5 +1,12 @@
-name: populate-package-cache
+#
+# On push to trunk or manual workflow call, build touched or requested
+# pkgpaths and sync the built binary packages to the BINPKG_SITES cache.
+#
+name: update-binpkg
 on:
+  push:
+    branches:
+      - trunk
   workflow_dispatch:
     inputs:
       pkgpaths:
@@ -14,13 +21,23 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       bootstrap-hash: ${{ steps.what-changed.outputs.bootstrap-hash }}
+      pkgbuild-files: ${{ steps.pkgpaths.outputs.paths }}
     steps:
       - uses: actions/checkout@v4
         with:
-          show-progress: 'false'
+          show-progress: false
       - name: Calculate changes
         id: what-changed
         uses: ./.github/actions/what-changed
+      - name: Set pkgpaths based on push or workflow call
+        id: pkgpaths
+        run: |
+          if [ -n "${{ inputs.pkgpaths }}" ]; then
+            paths="${{ inputs.pkgpaths }}"
+          else
+            paths="${{ steps.what-changed.outputs.pkgbuild-files }}"
+          fi
+          echo "paths=${paths}" >> ${GITHUB_OUTPUT}
   build-native:
     needs: what-changed
     strategy:
@@ -66,7 +83,7 @@ jobs:
         uses: ./.github/actions/pkgbuild
         with:
           platform: ${{ matrix.platform.name }}
-          pkgbuild-files: ${{ inputs.pkgpaths }}
+          pkgbuild-files: ${{ needs.what-changed.outputs.pkgbuild-files }}
           binpkg-sites: http://cipkg.dreckly.dev/packages/${{ matrix.platform.name }}
           use-binpkg: ${{ ! inputs.clear-cache }}
       - name: Upload packages
@@ -85,7 +102,7 @@ jobs:
       bootstrap-hash: ${{ needs.what-changed.outputs.bootstrap-hash }}
       clear-binpkg-cache: ${{ inputs.clear-cache }}
       github-ref: ${{ github.ref }}
-      pkgbuild-files: ${{ inputs.pkgpaths }}
+      pkgbuild-files: ${{ needs.what-changed.outputs.pkgbuild-files }}
       upload-pkgs: true
       use-binpkg: ${{ ! inputs.clear-cache }}
     secrets:
@@ -134,7 +151,7 @@ jobs:
         env:
           RUN_BOOTSTRAP: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' }}
           BINPKG_SITES: http://cipkg.dreckly.dev/packages/${{ matrix.platform.name }}
-          PKGBUILD_FILES: ${{ inputs.pkgpaths }}
+          PKGBUILD_FILES: ${{ needs.what-changed.outputs.pkgbuild-files }}
           USE_BINPKG: ${{ ! inputs.clear-cache }}
         with:
           environment_variables: RUN_BOOTSTRAP BINPKG_SITES PKGBUILD_FILES USE_BINPKG
@@ -190,7 +207,7 @@ jobs:
         env:
           RUN_BOOTSTRAP: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' }}
           BINPKG_SITES: http://cipkg.dreckly.dev/packages/${{ matrix.platform.name }}
-          PKGBUILD_FILES: ${{ inputs.pkgpaths }}
+          PKGBUILD_FILES: ${{ needs.what-changed.outputs.pkgbuild-files }}
           USE_BINPKG: ${{ ! inputs.clear-cache }}
         with:
           envs: 'RUN_BOOTSTRAP BINPKG_SITES PKGBUILD_FILES USE_BINPKG'
