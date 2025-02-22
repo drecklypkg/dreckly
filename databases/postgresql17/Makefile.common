@@ -97,6 +97,8 @@ CONFIGURE_ENV+=		pgac_cv_prog_cc_ldflags__Wl___as_needed=no
 # https://www.postgresql.org/message-id/E1X0yaj-000753-N6%40gemulon.postgresql.org
 BROKEN_ON_PLATFORM+=	*-*-alpha
 
+MAKE_JOBS_SAFE=		no
+
 .if ${MACHINE_ARCH} == "sparc"
 CFLAGS.NetBSD+=		-D__sparc_v8__
 .endif
