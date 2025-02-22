@@ -16,7 +16,7 @@
 # used by databases/postgresql13-pltcl/Makefile
 # used by databases/postgresql13-server/Makefile
 
-DISTNAME=	postgresql-13.18
+DISTNAME=	postgresql-13.20
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_PGSQL:=source/v${PKGVERSION_NOREV}/}
 EXTRACT_SUFX=	.tar.bz2
