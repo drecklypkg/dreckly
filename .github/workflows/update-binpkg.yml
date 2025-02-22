@@ -22,7 +22,7 @@ jobs:
     outputs:
       bootstrap-hash: ${{ steps.what-changed.outputs.bootstrap-hash }}
       pkgbuild-files: ${{ steps.vars.outputs.pkgpaths }}
-      use-binpkg: ${{ steps.vars.outputs.usecache }}
+      use-binpkg: ${{ steps.vars.outputs.usecache == 'true' }}
     steps:
       - uses: actions/checkout@v4
         with:
