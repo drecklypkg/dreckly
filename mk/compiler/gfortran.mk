@@ -48,11 +48,9 @@ POSSIBLE_GFORTRAN_VERSION?=	${CC_VERSION:S/gcc-//:C/.[0-9].[0-9]$//}
 # On a variety of platforms various versions of gfortran are
 # problematic.
 
-# gcc14 is the only one that builds on macOS 15, SDK 16 aarch64 as of 2025-02-23
+# Choose gcc12 for Darwin/aarch64.  \todo Explain why.
 # gcc7 does not build on Darwin 12.6.x, so match aarch64.
-.if ${MACHINE_PLATFORM:MDarwin-*-aarch64*}
-POSSIBLE_GFORTRAN_VERSION=	14
-.elif ${MACHINE_PLATFORM:MDarwin-*-*}
+.if ${MACHINE_PLATFORM:MDarwin-*-*}
 POSSIBLE_GFORTRAN_VERSION=	12
 .endif
 
