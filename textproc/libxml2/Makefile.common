@@ -3,7 +3,7 @@
 # used by textproc/libxml2/Makefile
 # used by textproc/py-libxml2/Makefile
 
-DISTNAME=	libxml2-2.12.9
+DISTNAME=	libxml2-2.12.10
 CATEGORIES=	textproc
 MASTER_SITES=	${MASTER_SITE_GNOME:=sources/libxml2/${PKGVERSION_NOREV:R}/}
 EXTRACT_SUFX=	.tar.xz
