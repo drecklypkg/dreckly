@@ -9,6 +9,7 @@ CONFIGURE_ARGS+=	--disable-bsdcat
 CONFIGURE_ARGS+=	--disable-bsdcpio
 CONFIGURE_ARGS+=	--disable-bsdtar
 CONFIGURE_ARGS+=	--disable-bsdunzip
+CONFIGURE_ARGS+=	--without-cng
 CONFIGURE_ARGS+=	--without-iconv
 
 do-extract:

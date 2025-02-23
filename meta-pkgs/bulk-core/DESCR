@@ -1,0 +1,4 @@
+Meta-package for testing core packages.
+
+These are packages that are expected to build on every single supported
+platform.  Any failures should be investigated with the utmost urgency.

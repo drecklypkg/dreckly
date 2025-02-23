@@ -129,8 +129,15 @@ _OPSYS_SUPPORTS_FORTIFY=	yes # Requires GCC
 .if ${OPSYS_VERSION} >= 051100
 _OPSYS_SUPPORTS_MKTOOLS=	yes # Requires err.h
 .endif
-_OPSYS_SUPPORTS_SSP?=		yes # Requires GCC
+_OPSYS_SUPPORTS_SSP?=		yes
 _OPSYS_CAN_CHECK_SHLIBS=	yes # Requires readelf
+
+# Support for libc stack guard was introduced in ILLUMOS_0.37 in 2020.  Ideally
+# we would detect it and set automatically, but executing pvs(1) for every make
+# would be highly inefficient, so simply assume we're running a modern release.
+.if ${OPSYS_VERSION} >= 051100
+_OPSYS_CHECK_LIBSSP?=		no
+.endif
 
 # The Solaris/illumos linker requires explicit library dependencies.
 OPSYS_EXPLICIT_LIBDEPS=		yes

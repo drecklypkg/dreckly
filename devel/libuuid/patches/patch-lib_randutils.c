@@ -2,12 +2,22 @@ $NetBSD: patch-lib_randutils.c,v 1.6 2021/07/25 04:00:34 dholland Exp $
 
 O_CLOEXEC is not available on every platform (e.g. MacOS X < 10.7). It
 was introduced in POSIX 2008.
-
 Rename random_get_bytes to avoid symbol name conflict on Solaris.
+Include <sys/syscall.h> only when available.
 
 --- lib/randutils.c.orig	2018-06-21 09:58:10.352568488 +0000
 +++ lib/randutils.c
-@@ -74,6 +74,10 @@ static void crank_random(void)
+@@ -13,7 +13,9 @@
+ #include <string.h>
+ #include <sys/time.h>
+ 
++#ifdef HAVE_SYS_SYSCALL_H
+ #include <sys/syscall.h>
++#endif
+ 
+ #include "c.h"
+ #include "randutils.h"
+@@ -74,6 +76,10 @@ static void crank_random(void)
  		rand();
  }
  
@@ -18,7 +28,7 @@ Rename random_get_bytes to avoid symbol name conflict on Solaris.
  int random_get_fd(void)
  {
  	int i, fd;
-@@ -98,7 +102,7 @@ int random_get_fd(void)
+@@ -98,7 +104,7 @@ int random_get_fd(void)
  #define UL_RAND_READ_ATTEMPTS	8
  #define UL_RAND_READ_DELAY	125000	/* microseconds */
  
@@ -27,7 +37,7 @@ Rename random_get_bytes to avoid symbol name conflict on Solaris.
  {
  	unsigned char *cp = (unsigned char *)buf;
  	size_t i, n = nbytes;
-@@ -213,7 +217,7 @@ int main(int argc, char *argv[])
+@@ -213,7 +219,7 @@ int main(int argc, char *argv[])
  
  	printf("Multiple random calls:\n");
  	for (i = 0; i < n; i++) {
@@ -36,7 +46,7 @@ Rename random_get_bytes to avoid symbol name conflict on Solaris.
  		printf("#%02zu: %25"PRIu64"\n", i, v);
  	}
  
-@@ -224,7 +228,7 @@ int main(int argc, char *argv[])
+@@ -224,7 +230,7 @@ int main(int argc, char *argv[])
  	if (!buf)
  		err(EXIT_FAILURE, "failed to allocate buffer");
  

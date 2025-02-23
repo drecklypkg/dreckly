@@ -14,6 +14,7 @@ CONFIGURE_ARGS+=	--disable-bsdcat
 CONFIGURE_ARGS+=	--disable-bsdcpio
 CONFIGURE_ARGS+=	--disable-bsdunzip
 CONFIGURE_ARGS+=	--disable-shared
+CONFIGURE_ARGS+=	--without-cng
 CONFIGURE_ARGS+=	--without-iconv
 .if "${OS_VARIANT}" == "chromeos"
 CONFIGURE_ARGS+=	--disable-acl

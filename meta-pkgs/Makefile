@@ -5,6 +5,7 @@ COMMENT=	Collections of other packages
 
 SUBDIR+=	aspell-languages
 SUBDIR+=	boost
+SUBDIR+=	bulk-core
 SUBDIR+=	bulk-large
 #SUBDIR+=	bulk-medium # has CONFLICTing dependencies
 SUBDIR+=	bulk-small

@@ -1,0 +1,60 @@
+name: debug
+on:
+  workflow_dispatch:
+jobs:
+  what-changed:
+    runs-on: ubuntu-latest
+    outputs:
+      bootstrap-hash: ${{ steps.what-changed.outputs.bootstrap-hash }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          show-progress: 'false'
+      - name: Calculate changes
+        id: what-changed
+        uses: ./.github/actions/what-changed
+  build-native:
+    needs: what-changed
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - name: macos-13-x86_64
+            os: macos-13
+          - name: macos-14-arm64
+            os: macos-14
+          - name: ubuntu-22.04-x86_64
+            os: ubuntu-22.04
+          - name: cygwin-2022-x86_64
+            os: windows-2022
+    runs-on: ${{ matrix.platform.os }}
+    steps:
+      - name: Set autocrlf
+        if: runner.os == 'Windows'
+        run: git config --global core.autocrlf input
+      - uses: actions/checkout@v4
+      - name: Check for cached bootstrap kit
+        id: bootstrap-kit
+        uses: actions/cache@v4
+        with:
+          key: bootstrap-kit-${{ matrix.platform.name }}-${{ needs.what-changed.outputs.bootstrap-hash }}
+          # Must live in checkout dir due to actions/cache limitations.
+          path: bootstrap.tar
+      - name: Install Cygwin
+        uses: egor-tensin/setup-cygwin@v4
+        if: runner.os == 'Windows'
+        with:
+          packages: gcc-g++
+      - name: Configure SSH
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.CI_SSH_KEY }}
+          known_hosts: ${{ secrets.CI_KNOWN_HOSTS }}
+      - name: Bootstrap if required
+        if: steps.bootstrap-kit.outputs.cache-hit != 'true'
+        shell: bash
+        run: ./.github/scripts/bootstrap.sh
+      - name: Run debug tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: true

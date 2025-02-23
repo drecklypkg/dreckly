@@ -30,7 +30,8 @@ _USER_VARS.check-ssp=		CHECK_SSP
 _PKG_VARS.check-ssp=		CHECK_SSP_SUPPORTED
 
 .if ${_PKGSRC_USE_SSP:Uno} != "no" && \
-    ${PKG_DEVELOPER:Uno} != "no"
+    ${PKG_DEVELOPER:Uno} != "no" && \
+    ${_OPSYS_CHECK_LIBSSP:Uyes} == "yes"
 CHECK_SSP?=			yes
 .else
 CHECK_SSP?=			no
@@ -53,6 +54,9 @@ CHECK_SSP_NATIVE_ENV=
 .  if ${OBJECT_FMT} == "ELF"
 USE_TOOLS+=		readelf
 CHECK_SSP_NATIVE=	${PKGSRCDIR}/mk/check/check-ssp-elf.awk
+.    if ${_OPSYS_CHECK_LIBSSP:Uyes} == "yes"
+CHECK_SSP_NATIVE_ENV+=	CHECK_LIBSSP=1
+.    endif
 CHECK_SSP_NATIVE_ENV+=	PLATFORM_RPATH=${_OPSYS_SYSTEM_RPATH:Q}
 CHECK_SSP_NATIVE_ENV+=	READELF=${TOOLS_PATH.readelf:Q}
 .  endif

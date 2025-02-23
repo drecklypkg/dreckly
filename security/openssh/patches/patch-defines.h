@@ -1,10 +1,10 @@
-$NetBSD: patch-defines.h,v 1.5 2024/07/01 09:19:40 wiz Exp $
+$NetBSD$
 
 Define ROOTUID, UTMPX_FILE and WTMPX_FILE
 
---- defines.h.orig	2015-08-21 04:49:03.000000000 +0000
+--- defines.h.orig	2025-02-18 08:15:08.000000000 +0000
 +++ defines.h
-@@ -721,6 +730,24 @@ struct winsize {
+@@ -821,6 +821,24 @@ struct winsize {
  #    endif
  #  endif
  #endif

@@ -31,8 +31,6 @@ PATCHFILES?=	# none
 local_patches=	${:!echo ${LOCALPATCHES}/${PKGPATH}/*!:N*/CVS:N*/\*}
 .endif
 
-# Optimise away check for patch-*, requires using version control that cleans
-# up empty directories.
 .if !empty(PATCHFILES) || exists(${PATCHDIR}) || !empty(local_patches)
 USE_TOOLS+=	patch
 .endif

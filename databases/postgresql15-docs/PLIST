@@ -1001,6 +1001,8 @@ share/doc/postgresql/html/regress-variant.html
 share/doc/postgresql/html/regress.html
 share/doc/postgresql/html/release-15-1.html
 share/doc/postgresql/html/release-15-10.html
+share/doc/postgresql/html/release-15-11.html
+share/doc/postgresql/html/release-15-12.html
 share/doc/postgresql/html/release-15-2.html
 share/doc/postgresql/html/release-15-3.html
 share/doc/postgresql/html/release-15-4.html

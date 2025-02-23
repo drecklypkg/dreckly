@@ -1,5 +1,7 @@
 $NetBSD: patch-libblkid_docs_Makefile.in,v 1.1 2020/03/12 10:11:34 ryoon Exp $
 
+Shell portability.
+
 --- libblkid/docs/Makefile.in.orig	2018-07-16 10:34:43.928171337 +0000
 +++ libblkid/docs/Makefile.in
 @@ -806,7 +806,7 @@ distclean-local:

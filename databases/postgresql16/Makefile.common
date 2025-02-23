@@ -16,7 +16,7 @@
 # used by databases/postgresql16-pltcl/Makefile
 # used by databases/postgresql16-server/Makefile
 
-DISTNAME=	postgresql-16.6
+DISTNAME=	postgresql-16.8
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_PGSQL:=source/v${PKGVERSION_NOREV}/}
 EXTRACT_SUFX=	.tar.bz2
@@ -96,6 +96,8 @@ CONFIGURE_ENV+=		pgac_cv_prog_cc_ldflags__Wl___as_needed=no
 # and is "unlikely to work correctly".
 # https://www.postgresql.org/message-id/E1X0yaj-000753-N6%40gemulon.postgresql.org
 BROKEN_ON_PLATFORM+=	*-*-alpha
+
+MAKE_JOBS_SAFE=		no
 
 .if ${MACHINE_ARCH} == "sparc"
 CFLAGS.NetBSD+=		-D__sparc_v8__

@@ -85,7 +85,9 @@ TOOLS_PLATFORM.m4?=		/bin/m4
 .if exists(/bin/make)
 TOOLS_PLATFORM.gmake?=		/bin/make
 .endif
+.if exists(/bin/makeinfo)
 TOOLS_PLATFORM.makeinfo?=	/bin/makeinfo
+.endif
 TOOLS_PLATFORM.mkdir?=		/bin/mkdir -p
 TOOLS_PLATFORM.mktemp?=		/bin/mktemp
 .if exists(/bin/msgconv)
@@ -123,7 +125,7 @@ TOOLS_PLATFORM.readlink?=	/bin/readlink
 TOOLS_PLATFORM.rm?=		/bin/rm
 TOOLS_PLATFORM.rmdir?=		/bin/rmdir
 TOOLS_PLATFORM.sdiff?=		/bin/sdiff
-TOOLS_PLATFORM.sed?=		/bin/sed -b
+TOOLS_PLATFORM.sed?=		/bin/sed
 TOOLS_PLATFORM.sh?=		/bin/sh
 TOOLS_PLATFORM.sleep?=		/bin/sleep
 TOOLS_PLATFORM.soelim?=		/bin/soelim

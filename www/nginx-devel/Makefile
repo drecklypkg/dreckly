@@ -1,7 +1,6 @@
 # $NetBSD: Makefile,v 1.139 2024/11/26 19:48:45 osa Exp $
 
-DISTNAME=	nginx-1.27.3
-PKGREVISION=	1
+DISTNAME=	nginx-1.27.4
 PKGNAME=	${DISTNAME:S/-/-devel-/1}
 CATEGORIES=	www
 MASTER_SITES=	https://nginx.org/download/
@@ -55,11 +54,11 @@ CONFIGURE_ARGS+=	--http-fastcgi-temp-path=${NGINX_DATADIR}/fstcgi_temp
 CONFIGURE_ARGS+=	--http-scgi-temp-path=${NGINX_DATADIR}/scgi_temp
 CONFIGURE_ARGS+=	--with-pcre
 
-SUBST_CLASSES+=		fix-pcre2
-SUBST_STAGE.fix-pcre2=	pre-configure
-SUBST_FILES.fix-pcre2=	auto/lib/pcre/conf
-SUBST_SED.fix-pcre2=	-e 's,/usr/pkg,${BUILDLINK_PREFIX.pcre2},g'
-SUBST_NOOP_OK.fix-pcre2=yes
+SUBST_CLASSES+=			fix-pcre2
+SUBST_STAGE.fix-pcre2=		pre-configure
+SUBST_FILES.fix-pcre2=		auto/lib/pcre/conf
+SUBST_SED.fix-pcre2=		-e 's,/usr/pkg,${BUILDLINK_PREFIX.pcre2},g'
+SUBST_NOOP_OK.fix-pcre2=	yes
 
 PKG_SYSCONFSUBDIR=	nginx
 

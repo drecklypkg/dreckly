@@ -1,5 +1,7 @@
 $NetBSD: patch-libmount_docs_Makefile.in,v 1.1 2020/03/12 10:11:34 ryoon Exp $
 
+Shell portability.
+
 --- libmount/docs/Makefile.in.orig	2018-07-16 10:34:43.977171044 +0000
 +++ libmount/docs/Makefile.in
 @@ -803,7 +803,7 @@ distclean-local:

@@ -453,6 +453,7 @@ SUBDIR+=	py-aws-sso-util
 SUBDIR+=	py-backports.ssl_match_hostname
 SUBDIR+=	py-bandit
 SUBDIR+=	py-bcrypt
+SUBDIR+=	py-bcrypt3
 SUBDIR+=	py-botan3
 SUBDIR+=	py-certbot
 SUBDIR+=	py-certbot-apache

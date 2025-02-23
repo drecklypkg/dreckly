@@ -14,13 +14,18 @@ LICENSE=	mit
 GNU_CONFIGURE=	yes
 USE_LIBTOOL=	yes
 USE_TOOLS+=	gmake pkg-config
+USE_LANGUAGES=	c c++
 
 USE_CC_FEATURES=	c99
 
 # error: 'for' loop initial declarations are only allowed in C99 mode
 FORCE_C_STD=		gnu99
 
-.include "../../mk/bsd.prefs.mk"
+.include "available.mk"
+
+.if ${VAAPI_AVAILABLE:tl} == "no"
+PKG_SKIP_REASON+=	"VAAPI unavailable on this platform"
+.endif
 
 #
 # vaapi drivers (e.g. intel-vaapi-driver) can be installed under

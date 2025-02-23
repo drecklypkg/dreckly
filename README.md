@@ -3,36 +3,24 @@ dreckly
 
 dreckly is a framework for building software for a variety of UNIX-like
 systems.  dreckly is a fork of pkgsrc, with a specific focus on the following
-values:
+mission:
 
-  * Stability.  One of our major frustrations with pkgsrc is that the value
-    that is prioritised above all is velocity.  The culture is very much "move
-    fast and break things", and packages are frequently updated to bleeding
-    edge releases, regardless of whether all packages that depend on them will
-    continue to build correctly.  Adding large patchsets to fix dependent
-    packages significantly bloats the repository.  The high rate of churn also
-    results in users having to frequently rebuild the majority of their
-    packages, and makes bulk builds of all packages take days, if not weeks
-    for older architectures.
+**To provide a useful collection of software for all UNIX-like systems.**
 
-  * Portability.  pkgsrc claims to support over 20 operating systems, however
-    in reality the quality of that support varies dramatically, with some
-    systems unable to even bootstrap.  The majority of pkgsrc developers only
-    test on NetBSD, and packages are frequently left broken on other platforms,
-    leaving other developers to spend the majority of their time cleaning up
-    after them and fixing regressions, rather than working on new features or
-    improving support.
+To achieve that mission we are guided by our principle values:
 
-  * Quality.  All changes to dreckly must be reviewed by another developer, and
-    tested prior to integration.  pkglint must be clean.  Code should be
-    readable, comments should be specific and focused, and not rambly or
-    littered with opinions or unnecessary "XXX".  No work-in-progress.  It
-    should be a joy for anyone to open an existing package and start hacking.
+  * **Portability**
+  * **Stability**
+  * **Robustness**
+  * **Maintainability**
+
+Further background on our mission and values can be found
+[here](https://github.com/drecklypkg/dreckly/discussions/5).
 
 Dreckly is a Cornish word that means a task will be done at some point in the
-future.  "I'll do it dreckly."  There's no mad rush to do it as quickly as
-possible, it'll be done when it's done.  Quality takes time and consideration.
-This is very much our ethos.
+future.  "I'll do it dreckly".  There's no mad rush to do things as quickly as
+possible, with no thought to the consequences.  Quality takes time and
+consideration.  This is very much our ethos.
 
 Bootstrapping
 -------------

@@ -6,7 +6,7 @@ name: check-commit
 on:
   push:
     branches:
-      - 'ci'
+      - 'ci/**'
   pull_request:
     branches:
       - 'trunk'
@@ -79,6 +79,10 @@ jobs:
           show-progress: false
       - id: what-changed
         uses: ./.github/actions/what-changed
+
+  #
+  # A useful job to print any debug information.
+  #
   show-vars:
     runs-on: ubuntu-latest
     needs: what-changed
@@ -132,15 +136,15 @@ jobs:
           # Must live in checkout dir due to actions/cache limitations.
           path: bootstrap.tar
           enableCrossOsArchive: true
-      - name: Check if there is any work to do
+      - name: Check if there is any setup work to do
         id: vars
         env:
-          DO_WORK: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' || needs.what-changed.outputs.run-pkgbuild == 'true' }}
+          RUN_SETUP: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' || needs.what-changed.outputs.run-pkgbuild == 'true' }}
         shell: bash
-        run: echo "do-work=${DO_WORK}" >> "${GITHUB_OUTPUT}"
+        run: echo "run-setup=${RUN_SETUP}" >> "${GITHUB_OUTPUT}"
       - name: Install Cygwin
         uses: egor-tensin/setup-cygwin@v4
-        if: steps.vars.outputs.do-work == 'true' && runner.os == 'Windows'
+        if: steps.vars.outputs.run-setup == 'true' && runner.os == 'Windows'
         with:
           packages: gcc-g++
       - name: Build updated bootstrap kit
@@ -152,8 +156,19 @@ jobs:
         if: needs.what-changed.outputs.run-pkgbuild == 'true'
         with:
           platform: ${{ matrix.platform.name }}
-          files: ${{ needs.what-changed.outputs.pkgbuild-files }}
-          binpkg-sites: http://${{ secrets.CI_SSH_HOST }}/packages/${{ matrix.platform.name }}
+          pkgbuild-files: ${{ needs.what-changed.outputs.pkgbuild-files }}
+          binpkg-sites: http://cipkg.dreckly.dev/packages/${{ matrix.platform.name }}
+
+  jenkins:
+    needs: what-changed
+    uses: ./.github/workflows/jenkins.yml
+    with:
+      bootstrap-hash: ${{ needs.what-changed.outputs.bootstrap-hash }}
+      github-ref: ${{ github.ref }}
+      pkgbuild-files: ${{ needs.what-changed.outputs.pkgbuild-files }}
+    secrets:
+      CI_JENKINS_TRIGGER_URL: ${{ secrets.CI_JENKINS_TRIGGER_URL }}
+      CI_JENKINS_TOKEN: ${{ secrets.CI_JENKINS_TOKEN }}
 
   #
   # Cross-platform builds that use some kind of virtual machine to run an OS on
@@ -196,65 +211,22 @@ jobs:
         # same job, so we need to do all work in one script.
         if: steps.bootstrap-kit.outputs.cache-hit != 'true' || needs.what-changed.outputs.run-pkgbuild == 'true'
         env:
-          DO_BOOTSTRAP: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' }}
-          DO_PKGBUILD: ${{ needs.what-changed.outputs.run-pkgbuild == 'true' }}
-          BINPKG_SITES: http://${{ secrets.CI_SSH_HOST }}/packages/${{ matrix.platform.name }}
-          INPUT_FILES: ${{ needs.what-changed.outputs.pkgbuild-files }}
+          RUN_BOOTSTRAP: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' }}
+          RUN_PKGBUILD: ${{ needs.what-changed.outputs.run-pkgbuild == 'true' }}
+          BINPKG_SITES: http://cipkg.dreckly.dev/packages/${{ matrix.platform.name }}
+          PKGBUILD_FILES: ${{ needs.what-changed.outputs.pkgbuild-files }}
           USE_BINPKG: 'true'
         with:
-          environment_variables: DO_BOOTSTRAP DO_PKGBUILD BINPKG_SITES INPUT_FILES USE_BINPKG
+          environment_variables: RUN_BOOTSTRAP RUN_PKGBUILD BINPKG_SITES PKGBUILD_FILES USE_BINPKG
           operating_system: ${{ matrix.platform.os }}
           architecture: ${{ matrix.platform.arch }}
           version: ${{ matrix.platform.version }}
           shell: bash
           run: |
-            if ${DO_BOOTSTRAP}; then
+            if ${RUN_BOOTSTRAP}; then
                 .github/scripts/bootstrap.sh
             fi
-            if ${DO_PKGBUILD}; then
-                .github/scripts/pkgbuild.sh
-            fi
-      - name: Archive build logs
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-logs-${{ matrix.platform.name }}
-          path: wrkdir
-
-  build-omnios:
-    needs: what-changed
-    strategy:
-      fail-fast: false
-      matrix:
-        platform:
-          - name: omnios-r151050-x86_64
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Check for cached bootstrap kit
-        id: bootstrap-kit
-        uses: actions/cache@v4
-        with:
-          key: bootstrap-kit-${{ matrix.platform.name }}-${{ needs.what-changed.outputs.bootstrap-hash }}
-          # Must live in checkout dir due to actions/cache limitations.
-          path: bootstrap.tar
-      - uses: vmactions/omnios-vm@v1
-        if: steps.bootstrap-kit.outputs.cache-hit != 'true' || needs.what-changed.outputs.run-pkgbuild == 'true'
-        env:
-          DO_BOOTSTRAP: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' }}
-          DO_PKGBUILD: ${{ needs.what-changed.outputs.run-pkgbuild == 'true' }}
-          BINPKG_SITES: http://${{ secrets.CI_SSH_HOST }}/packages/${{ matrix.platform.name }}
-          INPUT_FILES: ${{ needs.what-changed.outputs.pkgbuild-files }}
-          USE_BINPKG: 'true'
-        with:
-          envs: 'DO_BOOTSTRAP DO_PKGBUILD BINPKG_SITES INPUT_FILES USE_BINPKG'
-          prepare: |
-            pkg install gcc13
-          run: |
-            if ${DO_BOOTSTRAP}; then
-                .github/scripts/bootstrap.sh
-            fi
-            if ${DO_PKGBUILD}; then
+            if ${RUN_PKGBUILD}; then
                 .github/scripts/pkgbuild.sh
             fi
       - name: Archive build logs
