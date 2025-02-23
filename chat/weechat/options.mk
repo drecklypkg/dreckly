@@ -1,7 +1,6 @@
-# $NetBSD: options.mk,v 1.31 2024/12/12 15:45:47 ryoon Exp $
+# $NetBSD: options.mk,v 1.33 2025/01/09 09:43:45 jperkin Exp $
 
 PKG_OPTIONS_VAR=	PKG_OPTIONS.weechat
-# mk/curses will handle wide-curses
 PKG_SUPPORTED_OPTIONS=	python lua wide-curses perl ruby
 PKG_SUGGESTED_OPTIONS=	python lua wide-curses perl ruby
 
@@ -11,7 +10,7 @@ PKG_SUGGESTED_OPTIONS=	python lua wide-curses perl ruby
 PLIST_VARS+=		lua python perl ruby
 
 .if !empty(PKG_OPTIONS:Mpython)
-PYTHON_VERSIONS_INCOMPATIBLE=	27
+PYTHON_VERSIONS_INCOMPATIBLE=	27 313
 .include "../../lang/python/extension.mk"
 CMAKE_CONFIGURE_ARGS+=	-DENABLE_PYTHON=ON
 PLIST.python=	yes
@@ -41,8 +40,8 @@ CMAKE_CONFIGURE_ARGS+=	-DENABLE_PERL=OFF
 .include "../../lang/ruby/buildlink3.mk"
 CMAKE_CONFIGURE_ARGS+=	-DENABLE_RUBY=ON
 PLIST.ruby=	yes
-#BUILDLINK_INCDIRS.${RUBY_BASE}+=	${RUBY_INC}
-#BUILDLINK_INCDIRS.${RUBY_BASE}+=	${RUBY_ARCHINC}
+BUILDLINK_INCDIRS.${RUBY_BASE}+=	${RUBY_INC}
+BUILDLINK_INCDIRS.${RUBY_BASE}+=	${RUBY_ARCHINC}
 .else
 CMAKE_CONFIGURE_ARGS+=		-DENABLE_RUBY:BOOL=OFF
 .endif
