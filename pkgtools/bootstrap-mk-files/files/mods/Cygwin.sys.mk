@@ -50,7 +50,7 @@ LINK.F?=	${FC} ${FFLAGS} ${CPPFLAGS} ${LDFLAGS}
 COMPILE.r?=	${FC} ${FFLAGS} ${RFLAGS} -c
 LINK.r?=	${FC} ${FFLAGS} ${RFLAGS} ${LDFLAGS}
 
-INSTALL?=	${LOCALBASE}/bin/install-sh
+INSTALL?=	${PREFIX}/bin/bsdinstall
 
 LEX?=		lex
 LFLAGS?=

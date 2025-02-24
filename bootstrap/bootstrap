@@ -584,6 +584,8 @@ CYGWIN_*)
 	root_group=Administrators
 	opsys=`uname -o`
 	machine_arch=`uname -m`
+	need_bsd_install=yes
+	use_bsdinstall=yes
 	# only used for unprivileged builds.
 	whoamiprog='id -u'
 	groupsprog='id -g'
