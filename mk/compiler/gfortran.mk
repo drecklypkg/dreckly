@@ -77,17 +77,6 @@ GFORTRAN_PKGPATH.${_v_}:=	${GFORTRAN_PKGPATH.${_v_}:Ulang/gcc${_v_}}
 .endfor
 GFORTRAN_PKGPATH:=		${GFORTRAN_PKGPATH.${_GFORTRAN_REQD}}
 
-# If USE_LANGUAGES specifies a matching fortran then enable.
-#
-_USE_GFORTRAN=		no
-LANGUAGES.gfortran=	fortran fortran77
-.for _lang_ in ${USE_LANGUAGES}
-.  if ${LANGUAGES.gfortran:M${_lang_}}
-_USE_GFORTRAN=		yes
-.  endif
-.endfor
-
-.if ${_USE_GFORTRAN} == yes
 _GFORTRANBASE=		${TOOLBASE}/gcc${_GFORTRAN_REQD}
 _GFORTRAN_DIR=		${WRKDIR}/.gfortran
 FC=			gfortran
@@ -105,18 +94,17 @@ BUILDLINK_DEPMETHOD.gcc${_GFORTRAN_REQD}=	full
 .include "../../${GFORTRAN_PKGPATH}/buildlink3.mk"
 
 # Create symlinks for the compiler into ${WRKDIR}.
-.  if !target(${_GFORTRAN_FC})
+.if !target(${_GFORTRAN_FC})
 override-tools: ${_GFORTRAN_FC}
 ${_GFORTRAN_FC}:
 	${RUN}${MKDIR} ${.TARGET:H};					\
 	${LN} -fs ${_GFORTRANBASE}/bin/gfortran ${.TARGET}
-.    for _alias_ in ${_ALIASES.FC:S/^/${.TARGET:H}\//}
+.  for _alias_ in ${_ALIASES.FC:S/^/${.TARGET:H}\//}
 	${RUN}								\
 	if [ ! -x "${_alias_}" ]; then					\
 		${LN} -fs ${_GFORTRANBASE}/bin/gfortran ${_alias_};	\
 	fi
-.    endfor
-.  endif
+.  endfor
 .endif
 
 .endif
