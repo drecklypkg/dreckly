@@ -87,7 +87,7 @@ _DEF_VARS.gcc=	\
 	_GCC_FC _GCC_LDFLAGS _GCC_LIBDIRS _GCC_PKG \
 	_GCC_PKGBASE _GCC_PKGSRCDIR _GCC_PKG_SATISFIES_DEP \
 	_GCC_PREFIX _GCC_REQD _GCC_STRICTEST_REQD _GCC_SUBPREFIX \
-	_GCC_TEST_DEPENDS _GCC_NEEDS_A_FORTRAN _GCC_VARS _GCC_VERSION \
+	_GCC_TEST_DEPENDS _GCC_VARS _GCC_VERSION \
 	_GCC_VERSION_STRING \
 	_GCC_ADA _GCC_GMK _GCC_GLK _GCC_GBD _GCC_CHP _GCC_GLS _GCC_GNT _GCC_PRP \
 	_IGNORE_GCC \
@@ -1285,19 +1285,9 @@ ${_GCC_${_var_}}:
 .endfor
 
 # On systems without a Fortran compiler, pull one in if needed.
-PKGSRC_FORTRAN?=gfortran
+PKGSRC_FORTRAN?=	gfortran
 
-_GCC_NEEDS_A_FORTRAN=	no
 .if ${_USE_PKGSRC_GCC} != "yes" && !(defined(FCPATH) && exists(${FCPATH}))
-_GCC_NEEDS_A_FORTRAN=	yes
-.else
-.  for _pattern_ in 0.* 1.[0-4] 1.[0-4].*
-.    if !empty(MACHINE_PLATFORM:MNetBSD-${_pattern_}-*)
-_GCC_NEEDS_A_FORTRAN=	yes
-.    endif
-.  endfor
-.endif
-.if !empty(_GCC_NEEDS_A_FORTRAN:M[yY][eE][sS])
 .  include "../../mk/compiler/${PKGSRC_FORTRAN}.mk"
 .endif
 
