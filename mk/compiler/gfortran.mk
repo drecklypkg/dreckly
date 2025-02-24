@@ -1,153 +1,120 @@
-# $NetBSD: gfortran.mk,v 1.27 2023/11/12 01:15:52 gdt Exp $
 #
-# Copyright (c) 2005 The NetBSD Foundation, Inc.
-# All rights reserved.
+# Compiler definitions for GNU Fortran.
 #
-# This code is derived from software contributed to The NetBSD Foundation
-# by Johnny C. Lam.
+# User-settable variables:
 #
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions
-# are met:
-# 1. Redistributions of source code must retain the above copyright
-#    notice, this list of conditions and the following disclaimer.
-# 2. Redistributions in binary form must reproduce the above copyright
-#    notice, this list of conditions and the following disclaimer in the
-#    documentation and/or other materials provided with the distribution.
+# GFORTRAN_REQD
+# 	The major version of GNU Fortran that should be considered for use
+# 	on this platform.  This does not guarantee that the version will be
+# 	selected, as there may be additional requirements defined in this
+# 	file, e.g. to work around known bugs or missing support.
 #
-# THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
-# ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
-# TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-# PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS
-# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-# POSSIBILITY OF SUCH DAMAGE.
+# If GFORTRAN_REQD is not defined by the user, then we select an appropriate
+# version to use for the target platform.
 #
 
 .if !defined(COMPILER_GFORTRAN_MK)
-COMPILER_GFORTRAN_MK=	defined
+COMPILER_GFORTRAN_MK:=
+
+# Define a default version that should be used unless a more suitable
+# candidate is chosen.  Naturally this should have the widest possible
+# platform support.
+#
+GFORTRAN_DEFAULT=	10
 
 .include "../../mk/bsd.prefs.mk"
 
-# This file is gfortran.mk, which is defined to find, depend on, and
-# set up for a gfortran version.  Using gfortran is thus appropriate
-# even if the base compiler is clang; if flang usage is desired then
-# clang.mk or the user should set PKGSRC_FORTRAN to flang (and
-# implement as necessary).
-
-# If the pkgsrc base compiler is GCC, define POSSIBLE_GORTRAN_VERSION
-# (meaning a candidate we would like) to match.
-.if !empty(PKGSRC_COMPILER:Mgcc)
-POSSIBLE_GFORTRAN_VERSION?=	${CC_VERSION:S/gcc-//:C/.[0-9].[0-9]$//}
-.endif
-
-# On a variety of platforms various versions of gfortran are
-# problematic.
-
-# Choose gcc12 for Darwin/aarch64.  \todo Explain why.
-# gcc7 does not build on Darwin 12.6.x, so match aarch64.
-.if ${MACHINE_PLATFORM:MDarwin-*-*}
-POSSIBLE_GFORTRAN_VERSION=	12
-.endif
-
-# pkgsrc gcc9 is missing NetBSD patches for aarch64, so if 9 is
-# selected (historical current, or elevated gcc for this package on
-# NetBSD 9 or older), advance to 10.
-.if !empty(POSSIBLE_GFORTRAN_VERSION:M9) && \
-    !empty(MACHINE_PLATFORM:MNetBSD-*-aarch64*)
-POSSIBLE_GFORTRAN_VERSION=	10
-.endif
-
-# All pkgsrc gcc < 10 versions are not ok on 32-bit arm; advance to 10.
-.if !empty(POSSIBLE_GFORTRAN_VERSION:M[0-9]) && \
-    !empty(MACHINE_PLATFORM:MNetBSD-*-earm*)
-POSSIBLE_GFORTRAN_VERSION=	10
-.endif
-
-# If the POSSIBLE version exists in pkgsrc, use it.
-# Otherwise, pick gcc 10 as a mainstream default.
-.if exists(${PKGSRCDIR}/lang/gcc${POSSIBLE_GFORTRAN_VERSION}/buildlink3.mk)
-GFORTRAN_VERSION?=		${POSSIBLE_GFORTRAN_VERSION}
-.else
-GFORTRAN_VERSION?=		10
-.endif
-
-.if !empty(PKGPATH:Mlang/gcc${GFORTRAN_VERSION}) || !empty(PKGPATH:Mdevel/patch) || \
-    !empty(PKGPATH:Mdevel/libtool-base)
-IGNORE_GFORTRAN=	yes
-MAKEFLAGS+=		IGNORE_GFORTRAN=yes
-.endif
-
-.if defined(IGNORE_GFORTRAN)
-_USE_GFORTRAN=	NO
-.endif
-
-# LANGUAGES.<compiler> is the list of supported languages by the compiler.
-# _LANGUAGES.<compiler> is ${LANGUAGES.<compiler>} restricted to the ones
-# requested by the package in USE_LANGUAGES.
+# If the primary compiler is GCC then add it as the base version to match,
+# to avoid unnecessarily building other versions.
 #
-LANGUAGES.gfortran=	fortran fortran77
-_LANGUAGES.gfortran=	# empty
-.for _lang_ in ${USE_LANGUAGES}
-_LANGUAGES.gfortran+=	${LANGUAGES.gfortran:M${_lang_}}
-.endfor
-.if empty(_LANGUAGES.gfortran)
-_USE_GFORTRAN=	NO
+.if ${PKGSRC_COMPILER:Mgcc}
+GFORTRAN_REQD+=	${CC_VERSION:S/gcc-//:R:R}
 .endif
 
-.if !defined(_USE_GFORTRAN)
-_USE_GFORTRAN=	YES
+# Upstream GCC through at least 14.x does not support Darwin/aarch64.  For
+# this platform we have a custom lang/gcc14-darwin build which is handled
+# later in this file.
+#
+.if ${OPSYS} == "Darwin"
+GFORTRAN_REQD+=		14
+GFORTRAN_PKGPATH.14=	lang/gcc14-darwin
 .endif
 
-.if !empty(_USE_GFORTRAN:M[yY][eE][sS])
-_GFORTRANBASE=	${TOOLBASE}/gcc${GFORTRAN_VERSION}
-FC=		gfortran
+# Upstream GCC through at least 9.x does not support these NetBSD ports.
+#
+.if ${MACHINE_PLATFORM:MNetBSD-*-aarch64*} \
+ || ${MACHINE_PLATFORM:MNetBSD-*-earm*}
+GFORTRAN_REQD+=		10
+.endif
 
-_GFORTRAN_DIR=	${WRKDIR}/.gfortran
-_GFORTRAN_VARS=	# empty
-.  if !empty(_LANGUAGES.gfortran:Mfortran) || \
-      !empty(_LANGUAGES.gfortran:Mfortran77)
-PKG_FC?=	${FC}
-_GFORTRAN_VARS+=	FC
-_GFORTRAN_FC:=	${_GFORTRAN_DIR}/bin/${PKG_FC:T}
-_ALIASES.FC+=	f77 g77 g95 gfortran
-FCPATH=		${_GFORTRANBASE}/bin/gfortran
-PKG_FC:=	${_GFORTRAN_FC}
-.  endif
-
-# Prepend the path the to the compiler to the PATH
-.  if !empty(_LANGUAGES.gfortran)
-PREPEND_PATH+=	${_GFORTRAN_DIR}/bin
-.  endif
-
-# Add the dependency on gfortran.
-BUILDLINK_DEPMETHOD.gcc${GFORTRAN_VERSION}=	full
-.  include "../../lang/gcc${GFORTRAN_VERSION}/buildlink3.mk"
-
-.  if defined(GFORTRAN_DIR) && !empty(GFORTRAN_DIR)
-PKGSRC_MAKE_ENV+=	GFORTRAN_DIR=${GFORTRAN_DIR:Q}
-.  endif
-
-# Create symlinks for the compiler into ${WRKDIR}.
-.  for _var_ in ${_GFORTRAN_VARS}
-.    if !target(${_GFORTRAN_${_var_}})
-override-tools: ${_GFORTRAN_${_var_}}
-${_GFORTRAN_${_var_}}:
-	${RUN}${MKDIR} ${.TARGET:H}
-	${RUN}					\
-	${LN} -fs ${_GFORTRANBASE}/bin/gfortran ${.TARGET}
-.      for _alias_ in ${_ALIASES.${_var_}:S/^/${.TARGET:H}\//}
-	${RUN}					\
-	if [ ! -x "${_alias_}" ]; then					\
-		${LN} -fs ${_GFORTRANBASE}/bin/gfortran ${_alias_};		\
-	fi
-.      endfor
+# Distill GFORTRAN_REQD down to a single _GFORTRAN_REQD variable that is
+# set to the highest version required.  If at the end of the selection it
+# is still set to 0, then choose an appropriate default.
+#
+.if !defined(_GFORTRAN_REQD)
+_GFORTRAN_REQD=		0
+.  for _v_ in ${GFORTRAN_REQD}
+_REQD_IS_HIGHER!=							\
+	${PKG_ADMIN} pmatch 't>=${_GFORTRAN_REQD}' t-${_v_} 2>/dev/null	\
+		&& ${ECHO} yes || ${ECHO} no
+.    if ${_REQD_IS_HIGHER} == "yes"
+_GFORTRAN_REQD=	${_v_}
 .    endif
 .  endfor
-.endif	# _USE_GFORTRAN == "yes"
+.  if ${_GFORTRAN_REQD} == 0
+_GFORTRAN_REQD=	${GFORTRAN_DEFAULT}
+.  endif
+.endif
 
-.endif	# COMPILER_GFORTRAN_MK
+# Define paths mapping _GFORTRAN_REQD to available GCC packages.  For some
+# systems we have a separate GCC package due to missing upstream support, in
+# which case we set an override first before the default value is selected.
+#
+.for _v_ in 6 7 8 9 10 12 13 14
+GFORTRAN_PKGPATH.${_v_}:=	${GFORTRAN_PKGPATH.${_v_}:Ulang/gcc${_v_}}
+.endfor
+GFORTRAN_PKGPATH:=		${GFORTRAN_PKGPATH.${_GFORTRAN_REQD}}
+
+# If USE_LANGUAGES specifies a matching fortran then enable.
+#
+_USE_GFORTRAN=		no
+LANGUAGES.gfortran=	fortran fortran77
+.for _lang_ in ${USE_LANGUAGES}
+.  if ${LANGUAGES.gfortran:M${_lang_}}
+_USE_GFORTRAN=		yes
+.  endif
+.endfor
+
+.if ${_USE_GFORTRAN} == yes
+_GFORTRANBASE=		${TOOLBASE}/gcc${_GFORTRAN_REQD}
+_GFORTRAN_DIR=		${WRKDIR}/.gfortran
+FC=			gfortran
+PKG_FC?=		${FC}
+_GFORTRAN_FC:=		${_GFORTRAN_DIR}/bin/${PKG_FC:T}
+_ALIASES.FC+=		f77 g77 g95 gfortran
+FCPATH=			${_GFORTRANBASE}/bin/gfortran
+PKG_FC:=		${_GFORTRAN_FC}
+PREPEND_PATH+=		${_GFORTRAN_DIR}/bin
+
+# For now we add a full dependency on the GCC package.  At some point this
+# really needs to be enhanced to support the -libs packages.
+#
+BUILDLINK_DEPMETHOD.gcc${_GFORTRAN_REQD}=	full
+.include "../../${GFORTRAN_PKGPATH}/buildlink3.mk"
+
+# Create symlinks for the compiler into ${WRKDIR}.
+.  if !target(${_GFORTRAN_FC})
+override-tools: ${_GFORTRAN_FC}
+${_GFORTRAN_FC}:
+	${RUN}${MKDIR} ${.TARGET:H};					\
+	${LN} -fs ${_GFORTRANBASE}/bin/gfortran ${.TARGET}
+.    for _alias_ in ${_ALIASES.FC:S/^/${.TARGET:H}\//}
+	${RUN}								\
+	if [ ! -x "${_alias_}" ]; then					\
+		${LN} -fs ${_GFORTRANBASE}/bin/gfortran ${_alias_};	\
+	fi
+.    endfor
+.  endif
+.endif
+
+.endif
