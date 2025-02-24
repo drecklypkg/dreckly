@@ -627,8 +627,6 @@ Darwin)
 		CC=${CC:-"cc -isystem /usr/include"}
 		export CC
 	fi
-
-	unset macos_version
 	;;
 DragonFly)
 	root_group=wheel
@@ -1176,6 +1174,17 @@ echo "PKGMANDIR=		$pkgmandir" >> ${TARGET_MKCONF}
 echo "" >> ${TARGET_MKCONF}
 
 case $opsys in
+Darwin)
+	# Big Sur onwards removed system libraries from the file system which
+	# breaks many assumptions and limits our ability to use them.  Switch
+	# to defaulting to pkgsrc unless the user explicitly wants to use the
+	# native libraries for whatever reason.
+	if [ $macos_version -ge 1100 ] && \
+	   [ -z "$prefer_pkgsrc" ] && \
+	   [ "$prefer_native" != "yes" ]; then
+		prefer_pkgsrc="yes"
+	fi
+	;;
 OpenBSD)
 	# Use PREFER_PKGSRC=yes to work around libressl compatibility problem
 	if [ -z "$prefer_pkgsrc" ] && [ "$prefer_native" != "yes" ]; then
