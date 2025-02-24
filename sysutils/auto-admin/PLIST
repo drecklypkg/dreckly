@@ -1,4 +1,4 @@
-@comment $NetBSD: PLIST,v 1.18 2025/02/04 16:13:13 bacon Exp $
+@comment $NetBSD$
 bin/auto-append-line
 bin/auto-ask
 bin/auto-backup-file
@@ -41,6 +41,7 @@ bin/auto-replace-file
 bin/auto-software-manager
 bin/auto-ssh-authorize
 bin/auto-ssh-reverse-authorize
+bin/auto-update-manager
 bin/auto-update-pkgsrc
 bin/auto-using-pkgsrc
 bin/auto-wacom-map-display
