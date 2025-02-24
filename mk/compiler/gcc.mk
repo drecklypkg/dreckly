@@ -1285,10 +1285,12 @@ ${_GCC_${_var_}}:
 .endfor
 
 # On systems without a Fortran compiler, pull one in if needed.
+#
+.if ${USE_LANGUAGES:Mfortran*}
 PKGSRC_FORTRAN?=	gfortran
-
-.if ${_USE_PKGSRC_GCC} != "yes" && !(defined(FCPATH) && exists(${FCPATH}))
-.  include "../../mk/compiler/${PKGSRC_FORTRAN}.mk"
+.  if ${_USE_PKGSRC_GCC} == "no" && !(defined(FCPATH) && exists(${FCPATH}))
+.    include "../../mk/compiler/${PKGSRC_FORTRAN}.mk"
+.  endif
 .endif
 
 .if ${OPSYS} == "Interix" && !empty(_GCCBINDIR:M/opt/gcc.*)
