@@ -988,18 +988,18 @@ _USE_PKGSRC_GCC=	yes
 .endif
 
 .if defined(_IGNORE_GCC)
-_USE_PKGSRC_GCC=	NO
+_USE_PKGSRC_GCC=	no
 .endif
 
 .if !defined(_USE_PKGSRC_GCC)
-_USE_PKGSRC_GCC=	YES
+_USE_PKGSRC_GCC=	yes
 .  if !empty(_IS_BUILTIN_GCC:M[yY][eE][sS])
 _GCC_TEST_DEPENDS=	gcc>=${_GCC_REQD}
 _USE_PKGSRC_GCC!=	\
 	if ${PKG_ADMIN} pmatch '${_GCC_TEST_DEPENDS}' ${_GCC_PKG} 2>/dev/null; then \
-		${ECHO} "NO";						\
+		${ECHO} "no";						\
 	else								\
-		${ECHO} "YES";						\
+		${ECHO} "yes";						\
 	fi
 .  endif
 .endif
@@ -1017,12 +1017,12 @@ _NEED_NEWER_GCC!=	\
 	fi
 #MAKEFLAGS+=	_NEED_NEWER_GCC=${_NEED_NEWER_GCC}
 .endif
-.if !empty(_USE_PKGSRC_GCC:M[yY][eE][sS]) && \
+.if ${_USE_PKGSRC_GCC} == "yes" && \
     !empty(_NEED_NEWER_GCC:M[yY][eE][sS])
 PKG_FAIL_REASON+=	"Unable to satisfy dependency: ${_GCC_DEPENDS}"
 .endif
 
-.if !empty(_USE_PKGSRC_GCC:M[yY][eE][sS]) && !defined(_GCC_PREFIX)
+.if ${_USE_PKGSRC_GCC} == "yes" && !defined(_GCC_PREFIX)
 #
 # Ensure that the correct rpath is passed to the linker if we need to
 # link against gcc shared libs.
@@ -1073,7 +1073,7 @@ LDFLAGS+=	${_GCC_LDFLAGS}
 _GCC_DIR=	${WRKDIR}/.gcc
 _GCC_VARS=	# empty
 
-.if !empty(_USE_PKGSRC_GCC:M[yY][eE][sS])
+.if ${_USE_PKGSRC_GCC} == "yes"
 _GCCBINDIR=	${_GCC_PREFIX}bin
 .elif !empty(_IS_BUILTIN_GCC:M[yY][eE][sS])
 _GCCBINDIR=	${_CC:H}
@@ -1200,7 +1200,7 @@ _COMPILER_ABI_FLAG.32=	-m32
 _COMPILER_ABI_FLAG.64=	-m64
 .endif
 
-.if !empty(_USE_PKGSRC_GCC:M[yY][eE][sS])
+.if ${_USE_PKGSRC_GCC} == "yes"
 .  if exists(${CCPATH})
 CC_VERSION_STRING!=	${CCPATH} -v 2>&1
 CC_VERSION!=		\
@@ -1225,7 +1225,7 @@ PREPEND_PATH+=	${_GCC_DIR}/bin
 .endif
 
 # Add the dependency on GCC.
-.if !empty(_USE_PKGSRC_GCC:M[yY][eE][sS])
+.if ${_USE_PKGSRC_GCC} == "yes"
 .  for _dir_ in ${_GCC_PKGSRCDIR}
 .    include "${_dir_}/buildlink3.mk"
 .  endfor
@@ -1288,7 +1288,7 @@ ${_GCC_${_var_}}:
 PKGSRC_FORTRAN?=gfortran
 
 _GCC_NEEDS_A_FORTRAN=	no
-.if empty(_USE_PKGSRC_GCC:M[yY][eE][sS]) && !(defined(FCPATH) && exists(${FCPATH}))
+.if ${_USE_PKGSRC_GCC} != "yes" && !(defined(FCPATH) && exists(${FCPATH}))
 _GCC_NEEDS_A_FORTRAN=	yes
 .else
 .  for _pattern_ in 0.* 1.[0-4] 1.[0-4].*
