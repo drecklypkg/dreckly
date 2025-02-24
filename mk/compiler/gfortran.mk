@@ -1,5 +1,8 @@
 #
-# Compiler definitions for GNU Fortran.
+# Compiler definitions for GNU Fortran.  This file is only included if a
+# package requests fortran support, and the system compiler is unable to
+# provide it.  This file will select an appropriate GCC package and depend
+# upon it.
 #
 # User-settable variables:
 #
@@ -28,12 +31,11 @@ GFORTRAN_DEFAULT=	10
 # to avoid unnecessarily building other versions.
 #
 .if ${PKGSRC_COMPILER:Mgcc}
-GFORTRAN_REQD+=	${CC_VERSION:S/gcc-//:R:R}
+GFORTRAN_REQD+=		${CC_VERSION:S/gcc-//:R:R}
 .endif
 
 # Upstream GCC through at least 14.x does not support Darwin/aarch64.  For
-# this platform we have a custom lang/gcc14-darwin build which is handled
-# later in this file.
+# this platform we have a custom lang/gcc14-darwin package.
 #
 .if ${OPSYS} == "Darwin"
 GFORTRAN_REQD+=		14
@@ -58,11 +60,11 @@ _REQD_IS_HIGHER!=							\
 	${PKG_ADMIN} pmatch 't>=${_GFORTRAN_REQD}' t-${_v_} 2>/dev/null	\
 		&& ${ECHO} yes || ${ECHO} no
 .    if ${_REQD_IS_HIGHER} == "yes"
-_GFORTRAN_REQD=	${_v_}
+_GFORTRAN_REQD=		${_v_}
 .    endif
 .  endfor
 .  if ${_GFORTRAN_REQD} == 0
-_GFORTRAN_REQD=	${GFORTRAN_DEFAULT}
+_GFORTRAN_REQD=		${GFORTRAN_DEFAULT}
 .  endif
 .endif
 
