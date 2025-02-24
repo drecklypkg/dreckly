@@ -1,4 +1,5 @@
 # $NetBSD: Makefile,v 1.41 2018/07/17 14:58:05 joerg Exp $
+#
 
 DISTNAME=		benchfft-2.0
 PKGREVISION=		5
