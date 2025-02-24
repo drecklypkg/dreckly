@@ -1,0 +1,6 @@
+This package provides the GCC front ends for C, C++, and Fortran, and is
+specifically for use on Darwin as upstream lacks native support for the
+aarch64 port.
+
+In reality this package is only useful for the Fortran support.  The
+system clang should be used for all other C and C++ builds.
