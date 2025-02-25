@@ -18,7 +18,7 @@ CONFLICTS+=	exim-exiscan-[0-9]*
 DEPENDS+=	p5-File-FcntlLock>=0.22:../../sysutils/p5-File-FcntlLock
 
 USE_TOOLS+=	perl:run
-FORCE_C_STD=	gnu89
+FORCE_C_STD=	c99
 
 BUILD_DEFS+=	VARBASE
 
