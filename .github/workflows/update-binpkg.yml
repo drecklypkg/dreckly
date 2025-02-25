@@ -52,12 +52,8 @@ jobs:
         platform:
           - name: macos-13-x86_64
             os: macos-13
-          - name: macos-14-arm64
-            os: macos-14
           - name: macos-15-arm64
             os: macos-15
-          - name: ubuntu-22.04-x86_64
-            os: ubuntu-22.04
           - name: ubuntu-24.04-x86_64
             os: ubuntu-24.04
           - name: cygwin-2022-x86_64
@@ -121,24 +117,20 @@ jobs:
       CI_PACKAGE_DIR: ${{ secrets.CI_PACKAGE_DIR }}
       CI_SSH_HOST: ${{ secrets.CI_SSH_HOST }}
       CI_SSH_USER: ${{ secrets.CI_SSH_USER }}
-  build-bsd:
+  build-qemu:
     needs: what-changed
     strategy:
       fail-fast: false
       matrix:
         platform:
-          - name: freebsd-14.1-x86_64
+          - name: freebsd-14.2-x86_64
             os: freebsd
             arch: x86-64
-            version: '14.1'
-          - name: netbsd-10.0-x86_64
-            os: netbsd
-            arch: x86-64
-            version: '10.0'
-          - name: openbsd-7.5-x86_64
+            version: '14.2'
+          - name: openbsd-7.6-x86_64
             os: openbsd
             arch: x86-64
-            version: '7.5'
+            version: '7.6'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -157,7 +149,7 @@ jobs:
       # Note that this action can only be called once in the same job, so we
       # need to do everything in one go.
       - name: Run jobs inside VM
-        uses: cross-platform-actions/action@v0.25.0
+        uses: cross-platform-actions/action@v0.27.0
         env:
           RUN_BOOTSTRAP: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' }}
           BINPKG_SITES: http://cipkg.dreckly.dev/packages/${{ matrix.platform.name }}
@@ -168,6 +160,7 @@ jobs:
           operating_system: ${{ matrix.platform.os }}
           architecture: ${{ matrix.platform.arch }}
           version: ${{ matrix.platform.version }}
+          cpu_count: 4
           shell: bash
           run: |
             if ${RUN_BOOTSTRAP}; then
