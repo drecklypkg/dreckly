@@ -1,7 +1,6 @@
 # $NetBSD: Makefile,v 1.207 2024/11/14 22:20:35 wiz Exp $
 
-DISTNAME=	exim-4.98
-PKGREVISION=	3
+DISTNAME=	exim-4.98.1
 CATEGORIES=	mail net
 MASTER_SITES=	https://ftp.exim.org/pub/exim/exim4/
 MASTER_SITES+=	https://ftp.exim.org/pub/exim/exim4/fixes/
@@ -19,7 +18,7 @@ CONFLICTS+=	exim-exiscan-[0-9]*
 DEPENDS+=	p5-File-FcntlLock>=0.22:../../sysutils/p5-File-FcntlLock
 
 USE_TOOLS+=	perl:run
-USE_LANGUAGES=	c99
+FORCE_C_STD=	gnu99
 
 BUILD_DEFS+=	VARBASE
 
