@@ -10,7 +10,7 @@ set -eux
 PATH="${CI_PREFIX}/sbin:${CI_PREFIX}/bin:${CI_SYSTEM_PATH}"
 
 # Ensure we start with clean work areas.
-rm -rf ${CI_DISTDIR} ${CI_PACKAGES} ${CI_PREFIX} ${CI_TMPDIR} ${CI_WRKDIR}
+rm -rf ${CI_PACKAGES} ${CI_PREFIX} ${CI_TMPDIR} ${CI_WRKDIR}
 mkdir -p ${CI_TMPDIR}
 
 # USE_BINPKG is set to true or false in the environment via input variables.

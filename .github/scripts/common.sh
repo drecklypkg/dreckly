@@ -21,25 +21,29 @@
 #
 # Note that GitHub VMs do NOT have the standard GITHUB_* variables set, so
 # we key whether we're running in GitHub or Jenkins based on the Jenkins
-# WORKSPACE variable.
+# JENKINS_HOME variable.
 #
 
-if [ -n "${WORKSPACE:-}" ]; then
-	# Jenkins clients execute this script as the 'ci' user.  At present to
-	# keep things simple the builds are not chrooted and re-use the same
-	# home directory, so be careful to avoid any pollution from previous
-	# builds.
-	CI_WORKSPACE="${HOME}"
+if [ -n "${JENKINS_HOME:-}" ]; then
+	# At present to keep things simple, the Jenkins builds are not
+	# chrooted, so any remnants from previous builds will still exist
+	# and must be removed if necessary before starting a build.
+	CI_WORKSPACE="${JENKINS_HOME}"
 	CI_SRCDIR="${WORKSPACE}"
 
 	CI_BOOTSTRAP_KIT="${CI_WORKSPACE}/bootstrap/${BOOTSTRAP_HASH}/bootstrap.tar"
 	CI_WRKDIR="${CI_WORKSPACE}/wrkdir"
+
+	# Some clients do not have a large /home so only keep PREFIX there
+	# for now.  Everything else can live in the large JENKINS_HOME.
+	CI_PREFIX="${HOME}/pkg"
 else
 	# GitHub runners are executed from within the checkout.  To simplify
 	# path settings across all OS (i.e. Cygwin) calculate variables using
 	# pwd, and explicitly use -P to avoid buildlink symlink issues.
 	CI_WORKSPACE=$(cd ..; pwd -P)
 	CI_SRCDIR=$(pwd -P)
+	CI_PREFIX="${CI_WORKSPACE}/pkg"
 
 	# This has to live inside the default directory for the cache action
 	# to correctly handle it.  All of the BOOTSTRAP_HASH logic is handled
@@ -53,7 +57,6 @@ fi
 
 CI_DISTDIR="${CI_WORKSPACE}/distfiles"
 CI_PACKAGES="${CI_WORKSPACE}/packages"
-CI_PREFIX="${CI_WORKSPACE}/pkg"
 CI_TMPDIR="${CI_WORKSPACE}/tmp"
 
 CI_SYSTEM_PATH="/sbin:/bin:/usr/sbin:/usr/bin"
