@@ -67,6 +67,9 @@ case "$(uname)" in
 CYGWIN*)
 	CI_SYSTEM_PATH="/cygdrive/c/tools/cygwin/bin:/cygdrive/c/Windows/System32/OpenSSH"
 	;;
+NetBSD)
+	CI_SYSTEM_PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/pkg/bin"
+	;;
 SunOS)
 	CI_CMD_TAR=gtar
 	CI_SYSTEM_PATH="/sbin:/usr/sbin:/usr/bin:/opt/local/sbin:/opt/local/bin"
