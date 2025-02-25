@@ -1,5 +1,0 @@
-@comment $NetBSD: PLIST,v 1.1 2020/07/27 14:11:16 jdolecek Exp $
-bin/open_xdatachannel.py
-${PYSITELIB}/xmm7360/rpc.py
-${PYSITELIB}/xmm7360/rpc_call_ids.py
-${PYSITELIB}/xmm7360/rpc_unsol_table.py
