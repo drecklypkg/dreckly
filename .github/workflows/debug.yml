@@ -23,8 +23,12 @@ jobs:
             os: macos-13
           - name: macos-14-arm64
             os: macos-14
+          - name: macos-15-arm64
+            os: macos-15
           - name: ubuntu-22.04-x86_64
             os: ubuntu-22.04
+          - name: ubuntu-24.04-x86_64
+            os: ubuntu-24.04
           - name: cygwin-2022-x86_64
             os: windows-2022
     runs-on: ${{ matrix.platform.os }}
