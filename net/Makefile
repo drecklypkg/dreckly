@@ -815,6 +815,7 @@ SUBDIR+=	py-txtorcon
 SUBDIR+=	py-uModbus
 SUBDIR+=	py-unearth
 SUBDIR+=	py-xandikos
+SUBDIR+=	py-xmm7360
 SUBDIR+=	py-zeep
 SUBDIR+=	py-zeroconf
 SUBDIR+=	py-zmq
