@@ -34,15 +34,19 @@ jobs:
     outputs:
       matrix: ${{ steps.trigger.outputs.matrix }}
     runs-on: ubuntu-latest
+    env:
+      CI_JENKINS_TRIGGER_URL: ${{ secrets.CI_JENKINS_TRIGGER_URL }}
+      CI_JENKINS_TOKEN: ${{ secrets.CI_JENKINS_TOKEN }}
     steps:
       - name: Trigger Jenkins build
+        if: ${{ env.CI_JENKINS_TRIGGER_URL != '' && env.CI_JENKINS_TOKEN != '' }}
         id: trigger
         run: |
           set -eux
 
           # Trigger Jenkins build and retrieve the queue URL
           curl -s -i -o trigger.txt \
-            -X POST "${{ secrets.CI_JENKINS_TRIGGER_URL }}&token=${{ secrets.CI_JENKINS_TOKEN }}" \
+            -X POST "${{ env.CI_JENKINS_TRIGGER_URL }}&token=${{ env.CI_JENKINS_TOKEN }}" \
             --data-urlencode "BOOTSTRAP_HASH=${{ inputs.bootstrap-hash }}" \
             --data-urlencode "CI_PACKAGE_DIR=${{ secrets.CI_PACKAGE_DIR }}" \
             --data-urlencode "CI_SSH_USER=${{ secrets.CI_SSH_USER }}" \
