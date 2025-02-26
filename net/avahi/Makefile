@@ -2,7 +2,7 @@
 
 .include "Makefile.common"
 
-PKGREVISION=		6
+PKGREVISION=		7
 
 MAINTAINER=		pkgsrc-users@NetBSD.org
 COMMENT=		Facilitate service discovery on a local network
