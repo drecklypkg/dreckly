@@ -11,7 +11,7 @@ on:
         type: string
       github-ref:
         description: 'Branch to build'
-        required: false
+        required: true
         type: string
       pkgbuild-files:
         description: 'List of files to consider for building'
