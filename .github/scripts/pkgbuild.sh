@@ -13,16 +13,9 @@ PATH="${CI_PREFIX}/sbin:${CI_PREFIX}/bin:${CI_SYSTEM_PATH}"
 rm -rf ${CI_PACKAGES} ${CI_PREFIX} ${CI_TMPDIR} ${CI_WRKDIR}
 mkdir -p ${CI_TMPDIR}
 
-# USE_BINPKG is set to true or false in the environment via input variables.
-# BINPKG_SITES is set to the correct URL, all we do is ensure it's exported
-# if we're using them, otherwise ensure it's unset.
-#
-if ${USE_BINPKG}; then
-	export BINPKG_SITES
-	export DEPENDS_TARGET=bin-install
-else
-	unset BINPKG_SITES
-fi
+# BINPKG_SITES should be set to the correct URL, ensure it's exported.
+export BINPKG_SITES
+export DEPENDS_TARGET=bin-install
 
 export DISTDIR="${CI_DISTDIR}"
 export PACKAGES="${CI_PACKAGES}"

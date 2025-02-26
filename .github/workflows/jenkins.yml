@@ -9,10 +9,6 @@ on:
         description: 'Hash of input bootstrap files from what-changed'
         required: true
         type: string
-      clear-binpkg-cache:
-        description: 'Whether to remove existing binary packages'
-        type: boolean
-        default: false
       github-ref:
         description: 'Branch to build'
         required: false
@@ -25,10 +21,6 @@ on:
         description: 'Whether to upload the built binary packages'
         type: boolean
         default: false
-      use-binpkg:
-        description: 'Whether to use BINPKG_SITES'
-        type: boolean
-        default: true
     secrets:
       CI_JENKINS_TRIGGER_URL:
         required: true
@@ -55,11 +47,9 @@ jobs:
             --data-urlencode "CI_PACKAGE_DIR=${{ secrets.CI_PACKAGE_DIR }}" \
             --data-urlencode "CI_SSH_USER=${{ secrets.CI_SSH_USER }}" \
             --data-urlencode "CI_SSH_HOST=${{ secrets.CI_SSH_HOST }}" \
-            --data-urlencode "CLEAR_BINPKG_CACHE=${{ inputs.clear-binpkg-cache }}" \
             --data-urlencode "GITHUB_REF=${{ inputs.github-ref }}" \
             --data-urlencode "PKGBUILD_FILES=${{ inputs.pkgbuild-files }}" \
-            --data-urlencode "UPLOAD_PKGS=${{ inputs.upload-pkgs }}" \
-            --data-urlencode "USE_BINPKG=${{ inputs.use-binpkg }}"
+            --data-urlencode "UPLOAD_PKGS=${{ inputs.upload-pkgs }}"
           queue_url=$(awk '/^Location:/ {sub("\r", ""); print $2}' trigger.txt)
 
           # Poll Jenkins until the build has been assigned

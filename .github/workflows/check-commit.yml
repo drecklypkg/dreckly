@@ -211,9 +211,8 @@ jobs:
           RUN_PKGBUILD: ${{ needs.what-changed.outputs.run-pkgbuild == 'true' }}
           BINPKG_SITES: http://cipkg.dreckly.dev/packages/${{ matrix.platform.name }}
           PKGBUILD_FILES: ${{ needs.what-changed.outputs.pkgbuild-files }}
-          USE_BINPKG: 'true'
         with:
-          environment_variables: RUN_BOOTSTRAP RUN_PKGBUILD BINPKG_SITES PKGBUILD_FILES USE_BINPKG
+          environment_variables: RUN_BOOTSTRAP RUN_PKGBUILD BINPKG_SITES PKGBUILD_FILES
           operating_system: ${{ matrix.platform.os }}
           architecture: ${{ matrix.platform.arch }}
           version: ${{ matrix.platform.version }}

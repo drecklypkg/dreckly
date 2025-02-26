@@ -12,17 +12,12 @@ on:
       pkgpaths:
         description: 'List of package paths to build'
         required: true
-      clear-cache:
-        description: 'Delete all current binary packages'
-        type: boolean
-        default: false
 jobs:
   what-changed:
     runs-on: ubuntu-latest
     outputs:
       bootstrap-hash: ${{ steps.what-changed.outputs.bootstrap-hash }}
       pkgbuild-files: ${{ steps.vars.outputs.pkgpaths }}
-      use-binpkg: ${{ steps.vars.outputs.usecache }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -33,17 +28,12 @@ jobs:
       - name: Set variables based on push or workflow call
         id: vars
         run: |
-          usecache=true
-          if [ "${{ inputs.clear-cache }}" = "true" ]; then
-            usecache=false
-          fi
           if [ -n "${{ inputs.pkgpaths }}" ]; then
             pkgpaths="${{ inputs.pkgpaths }}"
           else
             pkgpaths="${{ steps.what-changed.outputs.pkgbuild-files }}"
           fi
           echo "pkgpaths=${pkgpaths}" >> ${GITHUB_OUTPUT}
-          echo "usecache=${usecache}" >> ${GITHUB_OUTPUT}
   build-native:
     needs: what-changed
     strategy:
@@ -91,12 +81,10 @@ jobs:
           platform: ${{ matrix.platform.name }}
           pkgbuild-files: ${{ needs.what-changed.outputs.pkgbuild-files }}
           binpkg-sites: http://cipkg.dreckly.dev/packages/${{ matrix.platform.name }}
-          use-binpkg: ${{ needs.what-changed.outputs.use-binpkg == 'true' }}
       - name: Upload packages
         if: always()
         shell: bash
         env:
-          CLEAR_BINPKG_CACHE: ${{ needs.what-changed.outputs.use-binpkg == 'false' }}
           CI_SSH_USER: ${{ secrets.CI_SSH_USER }}
           CI_SSH_HOST: ${{ secrets.CI_SSH_HOST }}
           CI_REMOTE_DIR: ${{ secrets.CI_PACKAGE_DIR }}/${{ matrix.platform.name }}/
@@ -106,11 +94,9 @@ jobs:
     uses: ./.github/workflows/jenkins.yml
     with:
       bootstrap-hash: ${{ needs.what-changed.outputs.bootstrap-hash }}
-      clear-binpkg-cache: ${{ needs.what-changed.outputs.use-binpkg == 'false' }}
       github-ref: ${{ github.ref }}
       pkgbuild-files: ${{ needs.what-changed.outputs.pkgbuild-files }}
       upload-pkgs: true
-      use-binpkg: ${{ needs.what-changed.outputs.use-binpkg == 'true' }}
     secrets:
       CI_JENKINS_TRIGGER_URL: ${{ secrets.CI_JENKINS_TRIGGER_URL }}
       CI_JENKINS_TOKEN: ${{ secrets.CI_JENKINS_TOKEN }}
@@ -154,9 +140,8 @@ jobs:
           RUN_BOOTSTRAP: ${{ steps.bootstrap-kit.outputs.cache-hit != 'true' }}
           BINPKG_SITES: http://cipkg.dreckly.dev/packages/${{ matrix.platform.name }}
           PKGBUILD_FILES: ${{ needs.what-changed.outputs.pkgbuild-files }}
-          USE_BINPKG: ${{ needs.what-changed.outputs.use-binpkg == 'true' }}
         with:
-          environment_variables: RUN_BOOTSTRAP BINPKG_SITES PKGBUILD_FILES USE_BINPKG
+          environment_variables: RUN_BOOTSTRAP BINPKG_SITES PKGBUILD_FILES
           operating_system: ${{ matrix.platform.os }}
           architecture: ${{ matrix.platform.arch }}
           version: ${{ matrix.platform.version }}
@@ -176,7 +161,6 @@ jobs:
       - name: Upload packages
         if: always()
         env:
-          CLEAR_BINPKG_CACHE: ${{ needs.what-changed.outputs.use-binpkg == 'false' }}
           CI_SSH_USER: ${{ secrets.CI_SSH_USER }}
           CI_SSH_HOST: ${{ secrets.CI_SSH_HOST }}
           CI_REMOTE_DIR: ${{ secrets.CI_PACKAGE_DIR }}/${{ matrix.platform.name }}/
