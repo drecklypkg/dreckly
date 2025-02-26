@@ -1,4 +1,4 @@
-$NetBSD: patch-ngs_ngs-java_CMakeLists.txt,v 1.2 2024/11/19 20:22:32 bacon Exp $
+$NetBSD$
 
 # Disable java
 
