@@ -2,7 +2,7 @@
 
 DISTNAME=	mesa-21.3.9
 PKGNAME=	${DISTNAME:S/mesa/MesaLib/}
-PKGREVISION=	4
+PKGREVISION=	5
 CATEGORIES=	graphics
 MASTER_SITES=	https://mesa.freedesktop.org/archive/
 EXTRACT_SUFX=	.tar.xz
@@ -132,7 +132,7 @@ CXXFLAGS+=	-march=i586
 
 MESON_ARGS+=	-Dgles1=true
 MESON_ARGS+=	-Dgles2=true
-MESON_ARGS+=	-Dosmesa=true
+MESON_ARGS+=	-Dosmesa=false
 MESON_ARGS+=	-Dshared-glapi=true
 MESON_ARGS+=	-Dgallium-xvmc=false
 
