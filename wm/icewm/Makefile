@@ -22,6 +22,7 @@ TOOL_DEPENDS+=	multimarkdown-[0-9]*:../../textproc/multimarkdown
 
 USE_LIBTOOL=	yes
 USE_TOOLS+=	pkg-config gmake perl autoreconf autoconf automake autopoint
+USE_TOOLS+=	msgfmt msgmerge xgettext
 
 REPLACE_PERL=	contrib/icewm-menu-xrandr
 
@@ -32,8 +33,6 @@ pre-configure:
 
 post-extract:
 	cp ${FILESDIR}/bsd-daemon.xpm ${WRKSRC}/lib/taskbar
-
-.include "options.mk"
 
 .include "../../converters/fribidi/buildlink3.mk"
 .include "../../graphics/imlib2/buildlink3.mk"
