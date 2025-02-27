@@ -17,6 +17,9 @@ USE_TOOLS+=	gmake pkg-config
 USE_LIBTOOL=	YES
 EXTRACT_USING=	bsdtar
 
+# Uses auto_ptr deprecated in c++11, etc.
+FORCE_CXX_STD=	gnu++98
+
 .include "../../mk/bsd.prefs.mk"
 
 CONFIGURE_ARGS+=	--enable-xinerama
