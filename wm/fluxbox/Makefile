@@ -30,6 +30,7 @@ CXXFLAGS+=		-template=no%extdef
 
 BUILDLINK_DEPMETHOD.libXt?=	build
 
+.include "../../converters/libiconv/buildlink3.mk"
 .include "../../x11/libSM/buildlink3.mk"
 .include "../../x11/libX11/buildlink3.mk"
 .include "../../x11/libXext/buildlink3.mk"
