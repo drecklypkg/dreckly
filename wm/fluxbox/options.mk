@@ -8,7 +8,9 @@ PKG_OPTIONS_LEGACY_OPTS+=	xft:xft2
 
 .include "../../mk/bsd.options.mk"
 
-.if ${OPSYS} != "MirBSD"
+# SunOS has issues:
+# gencat: "./generated-UTF-8.m", line 167: number or $ expected
+.if ${OPSYS} != "MirBSD" && ${OPSYS} != "SunOS"
 PKG_SUGGESTED_OPTIONS+=	nls
 .endif
 
