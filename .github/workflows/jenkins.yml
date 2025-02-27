@@ -52,11 +52,13 @@ jobs:
             --data-urlencode "UPLOAD_PKGS=${{ inputs.upload-pkgs }}"
           queue_url=$(awk '/^Location:/ {sub("\r", ""); print $2}' trigger.txt)
 
-          # Poll Jenkins until the build has been assigned
+          # Poll Jenkins until the build has been assigned or has failed.
           while true; do
             curl -s --fail -o queue.json "https://ci.dreckly.dev${queue_url}api/json"
             build_url=$(jq -r '.executable.url // empty' < queue.json)
             [ -n "${build_url}" ] && break
+            result=$(jq -r '.result // empty' < queue.json)
+            [ "${result}" = "FAILURE" ] && exit 1
             sleep 5
           done
 
