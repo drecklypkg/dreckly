@@ -13,6 +13,9 @@ PATH="${CI_PREFIX}/sbin:${CI_PREFIX}/bin:${CI_SYSTEM_PATH}"
 rm -rf ${CI_PACKAGES} ${CI_PREFIX} ${CI_TMPDIR} ${CI_WRKDIR}
 mkdir -p ${CI_TMPDIR}
 
+# Avoid any interactive prompts which can hang builds.
+export BATCH=1
+
 # BINPKG_SITES should be set to the correct URL, ensure it's exported.
 export BINPKG_SITES
 export DEPENDS_TARGET=bin-install
