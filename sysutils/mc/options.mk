@@ -3,8 +3,10 @@
 PKG_OPTIONS_VAR=		PKG_OPTIONS.mc
 PKG_OPTIONS_REQUIRED_GROUPS=	screen
 PKG_OPTIONS_GROUP.screen=	ncurses slang
-PKG_SUPPORTED_OPTIONS=		mc-charset x11 sftp
+PKG_SUPPORTED_OPTIONS=		mc-charset x11 libssh2
 PKG_SUGGESTED_OPTIONS=		mc-charset slang
+
+PKG_OPTIONS_LEGACY_OPTS+=	sftp:libssh2
 
 .include "../../mk/bsd.options.mk"
 
@@ -42,7 +44,7 @@ CONFIGURE_ARGS+=	--with-screen=ncurses
 CONFIGURE_ARGS+=	--with-screen=mcslang
 .endif
 
-.if !empty(PKG_OPTIONS:Msftp)
+.if !empty(PKG_OPTIONS:Mlibssh2)
 CONFIGURE_ARGS+=	--enable-vfs-sftp
 .include "../../security/libssh2/buildlink3.mk"
 .else
