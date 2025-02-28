@@ -94,7 +94,7 @@ jobs:
     uses: ./.github/workflows/jenkins.yml
     with:
       bootstrap-hash: ${{ needs.what-changed.outputs.bootstrap-hash }}
-      github-ref: ${{ github.ref }}
+      github-sha: ${{ github.sha }}
       pkgbuild-files: ${{ needs.what-changed.outputs.pkgbuild-files }}
       upload-pkgs: true
     secrets:

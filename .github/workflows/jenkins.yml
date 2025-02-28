@@ -9,8 +9,8 @@ on:
         description: 'Hash of input bootstrap files from what-changed'
         required: true
         type: string
-      github-ref:
-        description: 'Branch to build'
+      github-sha:
+        description: 'Revision to build'
         required: true
         type: string
       pkgbuild-files:
@@ -51,7 +51,7 @@ jobs:
             --data-urlencode "CI_PACKAGE_DIR=${{ secrets.CI_PACKAGE_DIR }}" \
             --data-urlencode "CI_SSH_USER=${{ secrets.CI_SSH_USER }}" \
             --data-urlencode "CI_SSH_HOST=${{ secrets.CI_SSH_HOST }}" \
-            --data-urlencode "GITHUB_REF=${{ inputs.github-ref }}" \
+            --data-urlencode "GITHUB_SHA=${{ inputs.github-sha }}" \
             --data-urlencode "PKGBUILD_FILES=${{ inputs.pkgbuild-files }}" \
             --data-urlencode "UPLOAD_PKGS=${{ inputs.upload-pkgs }}"
           queue_url=$(awk '/^Location:/ {sub("\r", ""); print $2}' trigger.txt)
@@ -77,6 +77,8 @@ jobs:
           # has spawned the expected number of configurations
           while true; do
             curl -s --fail -o build.json "${build_url}api/json"
+            result=$(jq -r '.result // empty' < build.json)
+            [ "${result}" = "FAILURE" ] && exit 1
             build_id=$(jq -r .id < build.json)
             num_urls=$(jq -r "[.runs[] | select(.number == $build_id)] | length" < build.json)
             if [ $num_configs -ne $num_urls ]; then
