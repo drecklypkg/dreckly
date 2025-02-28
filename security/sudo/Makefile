@@ -82,5 +82,6 @@ NOT_FOR_UNPRIVILEGED=	yes
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/plugins/sudoers/sudoers ${DESTDIR}${PREFIX}/${EGDIR}/sudoers
 
+.include "../../devel/gettext-lib/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
