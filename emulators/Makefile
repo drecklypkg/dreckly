@@ -187,6 +187,7 @@ SUBDIR+=	picodrive
 SUBDIR+=	py-keystone
 SUBDIR+=	py-unicorn
 SUBDIR+=	qemu
+SUBDIR+=	qemu7
 SUBDIR+=	quasi88
 SUBDIR+=	raine
 SUBDIR+=	realboy
