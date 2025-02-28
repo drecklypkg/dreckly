@@ -32,6 +32,8 @@ CONFIGURE_ENV+=		mansectsu=8
 CONFIGURE_ENV+=		mansectform=5
 TEST_TARGET=		check
 
+LDFLAGS+=		${COMPILER_RPATH_FLAG}${PREFIX}/lib/sudo
+
 # Append ${PREFIX} directories to the default secure_path
 SUDO_SECURE_PATH_DIRS=	/usr/local/sbin
 SUDO_SECURE_PATH_DIRS+=	/usr/local/bin
