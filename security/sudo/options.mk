@@ -5,12 +5,12 @@ PKG_SUPPORTED_OPTIONS=		ldap nls
 PKG_OPTIONS_OPTIONAL_GROUPS=	auth
 PKG_OPTIONS_GROUP.auth=		kerberos pam skey
 
-.if ${OPSYS} == "NetBSD" && exists(/usr/include/skey.h)
-PKG_SUGGESTED_OPTIONS=	skey
-.endif
-
-.if ${OPSYS} == "NetBSD" && exists(/usr/include/security/openpam.h)
+.if ${OPSYS} == "NetBSD"
+.  if exists(/usr/include/security/openpam.h)
 PKG_SUGGESTED_OPTIONS=	pam
+.  elif exists(/usr/include/skey.h)
+PKG_SUGGESTED_OPTIONS=	skey
+.  endif
 .endif
 
 PKG_SUGGESTED_OPTIONS.Darwin=	pam
