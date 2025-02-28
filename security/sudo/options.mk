@@ -9,7 +9,14 @@ PKG_OPTIONS_GROUP.auth=		kerberos pam skey
 PKG_SUGGESTED_OPTIONS=	skey
 .endif
 
+.if ${OPSYS} == "NetBSD" && exists(/usr/include/security/openpam.h)
+PKG_SUGGESTED_OPTIONS=	pam
+.endif
+
 PKG_SUGGESTED_OPTIONS.Darwin=	pam
+PKG_SUGGESTED_OPTIONS.FreeBSD=	pam
+PKG_SUGGESTED_OPTIONS.Linux=	pam
+PKG_SUGGESTED_OPTIONS.SunOS=	pam
 
 .include "../../mk/bsd.options.mk"
 
