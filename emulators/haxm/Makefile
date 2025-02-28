@@ -1,6 +1,6 @@
 # $NetBSD: Makefile,v 1.21 2023/06/06 12:41:20 riastradh Exp $
 
-DISTNAME=	haxm-7.7.0
+DISTNAME=	haxm-7.8.0
 CATEGORIES=	emulators
 MASTER_SITES=	${MASTER_SITE_GITHUB:=intel/}
 GITHUB_TAG=	v${PKGVERSION_NOREV}
