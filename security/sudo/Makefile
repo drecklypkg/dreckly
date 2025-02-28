@@ -65,19 +65,9 @@ OWN_DIRS+=		${VARBASE}/run
 BUILD_DEFS+=		VARBASE
 
 EGDIR=			share/examples/${PKGBASE}
-CONF_FILES_PERMS=	${EGDIR}/sudo.conf ${PKG_SYSCONFDIR}/sudo.conf \
-			${REAL_ROOT_USER} ${REAL_ROOT_GROUP} 0440
-CONF_FILES_PERMS+=	${EGDIR}/sudo_logsrvd.conf \
-			${PKG_SYSCONFDIR}/sudo_logsrvd.conf \
-			${REAL_ROOT_USER} ${REAL_ROOT_GROUP} 0440
-CONF_FILES_PERMS+=	${EGDIR}/sudoers ${PKG_SYSCONFDIR}/sudoers \
-			${REAL_ROOT_USER} ${REAL_ROOT_GROUP} 0440
 OWN_DIRS+=		${PKG_SYSCONFDIR}/sudoers.d
-SPECIAL_PERMS+=		bin/sudo ${SETUID_ROOT_PERMS}
-SPECIAL_PERMS+=		bin/sudoreplay ${REAL_ROOT_USER} ${REAL_ROOT_GROUP} 511
 
 INSTALLATION_DIRS+=	${EGDIR}
-NOT_FOR_UNPRIVILEGED=	yes
 
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/plugins/sudoers/sudoers ${DESTDIR}${PREFIX}/${EGDIR}/sudoers
