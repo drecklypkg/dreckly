@@ -95,6 +95,7 @@ SUBDIR+=	gpsp-rpi
 SUBDIR+=	gxemul
 SUBDIR+=	handy_sdl
 SUBDIR+=	hatari
+SUBDIR+=	haxm
 SUBDIR+=	hercules
 SUBDIR+=	hercules-images
 SUBDIR+=	hercules4sdl
