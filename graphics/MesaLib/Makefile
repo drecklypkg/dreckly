@@ -33,6 +33,14 @@ MESA_PLATFORMS=		#
 .include "features.mk"
 .include "options.mk"
 
+# This is actually a workaround for lld, but
+# we currently lack a way to test linker version.
+# Fixed upstream after 23.3.
+# See https://bugs.gentoo.org/914905
+.if ${OPSYS} != "SunOS" && ${PKGSRC_COMPILER:M*clang*}
+LDFLAGS+=	-Wl,--undefined-version
+.endif
+
 PLIST_SUBST+=	GLVER="1.2.0"
 PLIST_SUBST+=	MACHINE_ARCH=${MACHINE_ARCH}
 
