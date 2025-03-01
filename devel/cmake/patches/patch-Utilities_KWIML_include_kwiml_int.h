@@ -9,7 +9,7 @@ This isn't broken, but cmake thinks it is, so we need to go along.
  #endif
  
 -#if (defined(__SUNPRO_C)||defined(__SUNPRO_CC)) && defined(_CHAR_IS_UNSIGNED)
-+#if (defined(__SUNPRO_C)||defined(__SUNPRO_CC)||defined(__illumos__) && defined(_CHAR_IS_UNSIGNED)
++#if (defined(__SUNPRO_C)||defined(__SUNPRO_CC)||defined(__illumos__)) && defined(_CHAR_IS_UNSIGNED)
  # define KWIML_INT_BROKEN_INT8_T 1 /* system type defined incorrectly */
  #elif defined(__BORLANDC__) && defined(_CHAR_UNSIGNED)
  # define KWIML_INT_BROKEN_INT8_T 1 /* system type defined incorrectly */
