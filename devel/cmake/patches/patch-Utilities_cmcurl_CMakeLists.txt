@@ -1,0 +1,25 @@
+$NetBSD$
+
+Explicitly disable OpenSSL.  We do not buildlink it and we don't want random
+libraries to be picked up from the file system.
+
+--- Utilities/cmcurl/CMakeLists.txt.orig	2025-02-24 15:53:17.000000000 +0000
++++ Utilities/cmcurl/CMakeLists.txt
+@@ -15,7 +15,7 @@ set(CURL_USE_LIBUV OFF)
+ set(CURL_USE_MBEDTLS OFF)
+ set(CURL_USE_NSS OFF)
+ set(CURL_USE_OPENLDAP OFF)
+-set(CURL_USE_OPENSSL "${CMAKE_USE_OPENSSL}")
++set(CURL_USE_OPENSSL OFF)
+ set(CURL_USE_PKGCONFIG OFF)
+ set(CURL_USE_SCHANNEL OFF)
+ set(CURL_USE_SECTRANSP OFF)
+@@ -97,7 +97,7 @@ set(PICKY_COMPILER OFF)
+ set(SHARE_LIB_OBJECT OFF)
+ set(USE_ECH OFF)
+ set(USE_HTTPSRR OFF)
+-set(USE_LIBIDN2 ON)
++set(USE_LIBIDN2 OFF)
+ set(USE_LIBRTMP OFF)
+ set(USE_NGHTTP2 ON)
+ set(USE_NGTCP2 OFF)

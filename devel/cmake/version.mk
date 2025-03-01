@@ -2,5 +2,5 @@
 # used by devel/cmake/Makefile.common
 # used by devel/cmake-fedora/Makefile
 
-CMAKE_VERSION=	3.31.1
+CMAKE_VERSION=	3.31.6
 CMAKE_API=	${CMAKE_VERSION:R}
