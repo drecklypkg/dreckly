@@ -1,16 +1,15 @@
 # $NetBSD: options.mk,v 1.19 2023/02/14 00:35:56 tnn Exp $
 
 PKG_OPTIONS_VAR=	PKG_OPTIONS.qemu
-PKG_SUPPORTED_OPTIONS=	debug-info gtk3 iscsi jack sdl spice
+PKG_SUPPORTED_OPTIONS=	debug-info gtk3 iscsi jack sdl
 PKG_SUPPORTED_OPTIONS+=	jemalloc
-PKG_SUGGESTED_OPTIONS+=	spice
 
 .include "../../mk/bsd.fast.prefs.mk"
 
 .if ${OPSYS} == "Linux" || ${OPSYS} == "NetBSD" || \
     ${OPSYS} == "SunOS"
-PKG_SUPPORTED_OPTIONS+=	iscsi
-PKG_SUGGESTED_OPTIONS+=	iscsi
+PKG_SUPPORTED_OPTIONS+=	iscsi spice
+PKG_SUGGESTED_OPTIONS+=	iscsi spice
 .endif
 
 .if ${OPSYS} == "Linux"
