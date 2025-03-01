@@ -24,4 +24,5 @@ SHA1 (patch-Source_kwsys_ProcessUNIX.c) = e333da03c3ac31be6a992809062a60a9cccc62
 SHA1 (patch-Source_kwsys_SystemTools.cxx) = 7598cc029358c4d94850ce383f0d8e6aa3435499
 SHA1 (patch-Tests_CMakeLists.txt) = 555e0be38ef92530c7315a87db65dd3004d7744c
 SHA1 (patch-Utilities_KWIML_CMakeLists.txt) = e4bdf9fc58757e87bf7e3e3e195839eededbc796
+SHA1 (patch-Utilities_KWIML_include_kwiml_int.h) = 9107b1e0dc976a33e7831a8a2ab3111641477b8f
 SHA1 (patch-Utilities_cmcurl_CMakeLists.txt) = 80bbad8775257c4a168ed874629a0814c7b90357
