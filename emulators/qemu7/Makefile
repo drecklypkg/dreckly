@@ -51,9 +51,9 @@ CONFIGURE_ARGS+=	--enable-curses
 CONFIGURE_ARGS+=	--enable-docs
 CONFIGURE_ENV+=		mansuffix=/${PKGMANDIR}
 
-.if defined(PKGSRC_USE_SSP)
+.if ${PKGSRC_USE_SSP:Uno:tl} != "no"
 # do not add flags to everything
-PKGSRC_USE_SSP=		no
+SSP_SUPPORTED=		no
 CONFIGURE_ARGS+=	--enable-stack-protector
 .endif
 
