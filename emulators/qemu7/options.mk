@@ -3,9 +3,15 @@
 PKG_OPTIONS_VAR=	PKG_OPTIONS.qemu
 PKG_SUPPORTED_OPTIONS=	debug-info gtk3 iscsi jack sdl spice
 PKG_SUPPORTED_OPTIONS+=	jemalloc
-PKG_SUGGESTED_OPTIONS+=	iscsi spice
+PKG_SUGGESTED_OPTIONS+=	spice
 
 .include "../../mk/bsd.fast.prefs.mk"
+
+.if ${OPSYS} == "Linux" || ${OPSYS} == "NetBSD" || \
+    ${OPSYS} == "SunOS"
+PKG_SUPPORTED_OPTIONS+=	iscsi
+PKG_SUGGESTED_OPTIONS+=	iscsi
+.endif
 
 .if ${OPSYS} == "Linux"
 PKG_SUPPORTED_OPTIONS+=	virtfs-proxy-helper
