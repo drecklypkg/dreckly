@@ -12,6 +12,9 @@ PS?=		/bin/ps
 SU?=		/usr/bin/su
 TYPE?=		type				# Shell builtin
 
+# Native tar does not support --strip-components
+EXTRACT_USING?= bsdtar
+
 .if exists(/usr/sbin/user)
 USERADD?=	/usr/sbin/useradd
 GROUPADD?=	/usr/sbin/groupadd
