@@ -834,6 +834,7 @@ SCO_SV)
 	if [ -x "/usr/bin/bash" ]; then
 		bootstrap_sh=${SH:-/usr/bin/bash}
 		bootstrap_sh_set=set
+		shprog=$bootstrap_sh
 	else
 		need_mksh=yes
 	fi
@@ -886,6 +887,7 @@ UnixWare)
 	if [ -x "/usr/bin/bash" ]; then
 		bootstrap_sh=${SH:-/usr/bin/bash}
 		bootstrap_sh_set=set
+		shprog=$bootstrap_sh
 	else
 		need_mksh=yes
 	fi
