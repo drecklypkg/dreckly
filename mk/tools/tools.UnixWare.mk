@@ -28,7 +28,6 @@ TOOLS_PLATFORM.false?=		/usr/bin/false
 TOOLS_PLATFORM.fgrep?=		/usr/bin/grep -F
 TOOLS_PLATFORM.file?=		/usr/bin/file
 TOOLS_PLATFORM.find?=		/usr/bin/find
-TOOLS_PLATFORM.ftp?=		/usr/bin/ftp
 TOOLS_PLATFORM.grep?=		/usr/bin/grep
 TOOLS_PLATFORM.gunzip?=		/usr/bin/gunzip
 TOOLS_PLATFORM.gzcat?=		/usr/bin/gzcat
