@@ -19,7 +19,6 @@ TOOLS_PLATFORM.cp?=		/usr/bin/cp
 TOOLS_PLATFORM.csh?=		/bin/csh
 TOOLS_PLATFORM.cut?=		/usr/bin/cut
 TOOLS_PLATFORM.date?=		/usr/bin/date
-TOOLS_PLATFORM.diff?=		/usr/bin/diff
 TOOLS_PLATFORM.dirname?=	/usr/bin/dirname
 TOOLS_PLATFORM.echo?=		/usr/ucb/echo
 TOOLS_PLATFORM.egrep?=		/usr/bin/grep -E
@@ -50,7 +49,6 @@ TOOLS_PLATFORM.nroff?=		/usr/bin/nroff
 .if exists(/usr/bin/openssl)
 TOOLS_PLATFORM.openssl?=	/usr/bin/openssl
 .endif
-TOOLS_PLATFORM.patch?=		/usr/bin/patch
 TOOLS_PLATFORM.pax?=		/usr/bin/pax
 TOOLS_PLATFORM.printf?=		/usr/bin/printf
 TOOLS_PLATFORM.pwd?=		/usr/bin/pwd
