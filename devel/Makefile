@@ -1049,7 +1049,6 @@ SUBDIR+=	libuuid
 SUBDIR+=	libuv
 SUBDIR+=	libuxre
 SUBDIR+=	libvolume_id
-SUBDIR+=	libvterm01
 SUBDIR+=	libvterm03
 SUBDIR+=	libwhisker2
 SUBDIR+=	libwnck
