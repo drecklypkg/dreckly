@@ -4,7 +4,7 @@ DISTNAME=	gpgme-1.23.2
 PKGNAME=	qgpgme-1.23.2
 PKGREVISION=	6
 CATEGORIES=	security
-MASTER_SITES=	ftp://ftp.gnupg.org/gcrypt/gpgme/
+MASTER_SITES=	${MASTER_SITE_GNUPG:=gpgme/}
 EXTRACT_SUFX=	.tar.bz2
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
