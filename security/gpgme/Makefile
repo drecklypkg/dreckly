@@ -2,7 +2,7 @@
 
 DISTNAME=	gpgme-1.24.1
 CATEGORIES=	security
-MASTER_SITES=	https://www.gnupg.org/ftp/gcrypt/gpgme/
+MASTER_SITES=	${MASTER_SITE_GNUPG:=gpgme/}
 EXTRACT_SUFX=	.tar.bz2
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
