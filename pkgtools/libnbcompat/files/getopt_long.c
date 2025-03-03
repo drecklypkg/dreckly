@@ -63,10 +63,18 @@ __RCSID("$NetBSD: getopt_long.c,v 1.11 2009/04/14 17:34:41 joerg Exp $");
 #ifdef __weak_alias
 __weak_alias(getopt,_getopt)
 #endif
+#if !HAVE_DECL_OPTERR
 int	opterr = 1;		/* if error message should be printed */
+#endif
+#if !HAVE_DECL_OPTIND
 int	optind = 1;		/* index into parent argv vector */
+#endif
+#if !HAVE_DECL_OPTOPT
 int	optopt = '?';		/* character checked for validity */
+#endif
+#if !HAVE_DECL_OPTARG
 char    *optarg;		/* argument associated with option */
+#endif
 #endif
 
 #if 0
