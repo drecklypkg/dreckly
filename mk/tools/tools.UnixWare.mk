@@ -17,6 +17,9 @@ TOOLS_PLATFORM.chown?=		/usr/bin/chown
 TOOLS_PLATFORM.cmp?=		/usr/bin/cmp
 TOOLS_PLATFORM.cp?=		/usr/bin/cp
 TOOLS_PLATFORM.csh?=		/bin/csh
+.if exists(/opt/xinuos/bin/curl)
+TOOLS_PLATFORM.curl?=		/opt/xinuos/bin/curl
+.endif
 TOOLS_PLATFORM.cut?=		/usr/bin/cut
 TOOLS_PLATFORM.date?=		/usr/bin/date
 TOOLS_PLATFORM.dirname?=	/usr/bin/dirname
@@ -71,6 +74,9 @@ TOOLS_PLATFORM.tsort?=		/usr/ccs/bin/tsort
 TOOLS_PLATFORM.uniq?=		/usr/bin/uniq
 .if exists(/usr/bin/unzip)
 TOOLS_PLATFORM.unzip?=		/usr/bin/unzip
+.endif
+.if exists(/opt/xinuos/bin/wget)
+TOOLS_PLATFORM.wget?=		/opt/xinuos/bin/wget
 .endif
 TOOLS_PLATFORM.wc?=		/usr/bin/wc
 TOOLS_PLATFORM.xargs?=		/usr/bin/xargs

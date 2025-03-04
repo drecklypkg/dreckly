@@ -4,7 +4,9 @@ See https://en.wikipedia.org/wiki/UnixWare
 
 As of 2022-04, "SCO UnixWare 7 Definitive 2018" works.
 
-The default install of UnixWare 7 lacks a modern toolchain.
+The default install of UnixWare 7 lacks a modern toolchain
+and fetch tool.
+
 It helps to get some packages from Xinuos to help you bootstrap:
 
 https://download.xinuos.com/unixware7D/D2M1/patches/ptf9150d.image
@@ -17,6 +19,8 @@ https://download.xinuos.com/unixware7D/D2M1/packages/Xinuosgcc-7.3.0d-UnixWare-i
 https://download.xinuos.com/unixware7D/D2M1MP/packages/Xinuosgettext-0.22.5-UnixWare-i386.pkg.xz
 https://download.xinuos.com/unixware7D/D2M1/packages/Xinuosbinutils-2.30a-UnixWare-i386.pkg.gz
 https://download.xinuos.com/unixware7D/D2M1MP/packages/Xinuosflex-2.6.4-UnixWare-i386.pkg.xz
+https://download.xinuos.com/unixware7D/D2M1MP/packages/Xinuospcre-8.45-UnixWare-i386.pkg.xz
+https://download.xinuos.com/unixware7D/D2M1MP/packages/Xinuoswget-1.20-UnixWare-i386.pkg.gz
 
 Extract them with gunzip/unxz, then install them:
 
