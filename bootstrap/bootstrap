@@ -882,7 +882,6 @@ UnixWare)
 	root_group=sys
 	BSTRAP_ENV="INSTALL=/usr/ucb/install $BSTRAP_ENV"
 	need_mkdir=yes
-	need_sed=yes
 	if [ -x "/usr/bin/nawk" ]; then
 		bootstrap_awk="/usr/bin/nawk"
 	else
