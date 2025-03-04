@@ -13,7 +13,6 @@ LICENSE=	icu
 
 USE_TOOLS+=		lex yacc
 FORCE_C_STD=		c99
-USE_CC_FEATURES+=	c99
 USE_LIBTOOL=		yes
 
 GNU_CONFIGURE=		yes

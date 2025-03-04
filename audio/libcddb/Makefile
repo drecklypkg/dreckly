@@ -18,9 +18,6 @@ GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--without-cdio
 USE_TOOLS+=		pkg-config
 
-# "The package needs at least gcc 2.95 since it uses variadic macros"
-USE_CC_FEATURES+=	c99
-
 TEST_TARGET=		check
 
 .include "../../converters/libiconv/buildlink3.mk"

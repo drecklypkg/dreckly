@@ -22,7 +22,6 @@ PKG_SYSCONFSUBDIR=	kea
 
 USE_TOOLS+=		autoconf gmake
 USE_LANGUAGES+=		c++ c
-USE_CC_FEATURES+=	c99
 
 RCD_SCRIPTS=		kea
 

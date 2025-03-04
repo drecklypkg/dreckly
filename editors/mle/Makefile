@@ -13,8 +13,6 @@ LICENSE=	apache-2.0
 USE_TOOLS+=	pkg-config gmake
 USE_LANGUAGES=	c c++
 
-USE_CC_FEATURES+=	c99
-
 MAKE_FLAGS+=	prefix=${PREFIX}
 
 INSTALLATION_DIRS+=	bin ${PKGMANDIR}/man1

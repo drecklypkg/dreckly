@@ -18,8 +18,6 @@ GNU_CONFIGURE=	yes
 USE_TOOLS+=	bash pkg-config perl:run
 USE_LANGUAGES=	c
 
-USE_CC_FEATURES+=	c99
-
 CFLAGS.SunOS+=	-D__EXTENSIONS__
 LDFLAGS.SunOS+=	-lgen -lsocket
 

@@ -19,7 +19,6 @@ INSTALLATION_DIRS+=	${SHAREDIR}/artwork/bgfx/chains/crt-geom ${SHAREDIR}/hash
 DEPENDS+=		liberation-ttf-[0-9]*:../../fonts/liberation-ttf
 
 USE_LANGUAGES=		c c++
-USE_CC_FEATURES+=	c99
 USE_CXX_FEATURES+=	c++17
 USE_TOOLS+=		gmake pkg-config
 UNLIMIT_RESOURCES+=	cputime datasize memorysize virtualsize

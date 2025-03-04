@@ -44,7 +44,6 @@ CONFIGURE_ARGS+=	--disable-libstdcxx-pch
 UNLIMIT_RESOURCES=	datasize stacksize
 
 # error: 'for' loop initial declarations are only allowed in C99 mode
-USE_CC_FEATURES+=	c99
 FORCE_C_STD=		gnu99
 
 CHECK_PORTABILITY_SKIP+=	contrib/* # not needed during the build

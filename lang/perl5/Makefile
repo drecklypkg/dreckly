@@ -24,7 +24,6 @@ SUPERSEDES+=	p5-experimental<=0.007
 # XXX: requires that gcc use an external perl to avoid circular dependencies
 USE_GCC_RUNTIME=	yes
 USE_LANGUAGES=		c
-USE_CC_FEATURES+=	c99
 
 .include "../../mk/bsd.prefs.mk"
 
