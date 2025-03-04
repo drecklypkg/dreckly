@@ -840,10 +840,6 @@ _BLNK_LT_ARCHIVE_FILTER_SED_SCRIPT.${_pkg_}=	# empty
 # Modify the dependency_libs line by changing all full paths to other *.la
 # files into the canonical ${BUILDLINK_DIR} path.
 #
-_BLNK_LT_ARCHIVE_FILTER_SED_SCRIPT.${_pkg_}+=				\
-	-e "/^dependency_libs=/s,\([${_BLNK_SEP}]\)/usr\(/lib${LIBABISUFFIX}/[^${_BLNK_SEP}]*lib[^/${_BLNK_SEP}]*\.la[${_BLNK_SEP}]\),\\1${_BLNK_MANGLE_DIR.${BUILDLINK_DIR}}\\2,g" \
-	-e "/^dependency_libs=/s,\([${_BLNK_SEP}]\)/usr\(/lib${LIBABISUFFIX}/[^${_BLNK_SEP}]*lib[^/${_BLNK_SEP}]*\.la[${_BLNK_SEP}]\),\\1${_BLNK_MANGLE_DIR.${BUILDLINK_DIR}}\\2,g"
-
 .if ${X11_TYPE} != "modular" && ${X11BASE} != "/usr"
 _BLNK_LT_ARCHIVE_FILTER_SED_SCRIPT.${_pkg_}+=				\
 	-e "/^dependency_libs=/s,\([${_BLNK_SEP}]\)${X11BASE}\(/[^${_BLNK_SEP}]*lib[^/${_BLNK_SEP}]*\.la[${_BLNK_SEP}]\),\\1${_BLNK_MANGLE_DIR.${BUILDLINK_X11_DIR}}\\2,g" \
