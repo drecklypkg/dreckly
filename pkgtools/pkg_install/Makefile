@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.241 2024/03/12 23:22:35 snj Exp $
+# $NetBSD: Makefile,v 1.243 2025/02/18 11:26:48 wiz Exp $
 
 # Notes to package maintainers:
 #
@@ -152,6 +152,7 @@ CONFIG_SUB_OVERRIDE+=	${WRKDIR}/libarchive/build/autoconf/config.sub \
 			${WRKSRC}/config.sub
 
 CPPFLAGS.Cygwin+=	-DLIBARCHIVE_STATIC
+CPPFLAGS.UnixWare+=	-DHAVE_DIRENT_H=1
 
 # Make sure that the linker used our static library instead of the
 # (outdated) dynamic library "/usr/lib/libarchive.dylib".
