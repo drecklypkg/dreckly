@@ -587,6 +587,12 @@ PKG_FAIL_REASON+=	"missing mk/platform/${OPSYS}.mk"
 # Set default SHLIB_TYPE to the ${OPSYS}-specific shared library type.
 SHLIB_TYPE?=		${_OPSYS_SHLIB_TYPE}
 
+# Set SHLIB_EXT to the most common shared library extension for this
+# OPSYS, though sometimes ".so" will be used regardless.
+#
+SHLIB_EXT.Darwin=	dylib
+SHLIB_EXT=		${SHLIB_EXT.${OPSYS}:Uso}
+
 PKGDIRMODE?=		755
 
 # A meta-package is a package that does not have any files and whose

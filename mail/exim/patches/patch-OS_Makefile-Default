@@ -1,5 +1,7 @@
 $NetBSD: patch-OS_Makefile-Default,v 1.1 2017/03/18 07:08:23 adam Exp $
 
+Avoid hardcoding a compiler, also honour LDFLAGS from environment.
+
 --- OS/Makefile-Default.orig	2012-05-31 00:40:15.000000000 +0000
 +++ OS/Makefile-Default
 @@ -71,7 +71,7 @@ PERL_COMMAND=/usr/bin/perl

@@ -70,6 +70,21 @@ SERIAL_DEVICES?=	/dev/cuaa0
 OPSYS_HAS_KQUEUE=	# defined
 .endif
 
+# check for eventfd(2) support
+.if exists(/usr/include/sys/eventfd.h)
+OPSYS_HAS_EVENTFD=     # defined
+.endif
+
+# check for timerfd(2) support
+.if exists(/usr/include/sys/timerfd.h)
+OPSYS_HAS_TIMERFD=     # defined
+.endif
+
+# check for epoll(2) support
+.if exists(/usr/include/sys/epoll.h)
+OPSYS_HAS_EPOLL=       # defined
+.endif
+
 # check for posix_spawn(3) support, added in FreeBSD-8.0
 .if exists(/usr/include/spawn.h)
 OPSYS_HAS_POSIX_SPAWN=	# defined

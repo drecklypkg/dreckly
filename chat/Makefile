@@ -18,7 +18,6 @@ SUBDIR+=	catgirl
 SUBDIR+=	centerim
 SUBDIR+=	centerim5
 SUBDIR+=	cgiirc
-SUBDIR+=	coyim
 SUBDIR+=	ctrlproxy
 SUBDIR+=	dccserver
 SUBDIR+=	dino

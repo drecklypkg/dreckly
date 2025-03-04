@@ -43,7 +43,6 @@ INFO_FILES=		yes
 CONFIGURE_ARGS+=	--disable-libstdcxx-pch
 
 # error: 'for' loop initial declarations are only allowed in C99 mode
-USE_CC_FEATURES+=	c99
 FORCE_C_STD=		gnu99
 
 UNLIMIT_RESOURCES+=	datasize

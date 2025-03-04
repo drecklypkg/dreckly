@@ -9,13 +9,9 @@ on:
         description: 'Hash of input bootstrap files from what-changed'
         required: true
         type: string
-      clear-binpkg-cache:
-        description: 'Whether to remove existing binary packages'
-        type: boolean
-        default: false
-      github-ref:
-        description: 'Branch to build'
-        required: false
+      github-sha:
+        description: 'Revision to build'
+        required: true
         type: string
       pkgbuild-files:
         description: 'List of files to consider for building'
@@ -25,10 +21,6 @@ on:
         description: 'Whether to upload the built binary packages'
         type: boolean
         default: false
-      use-binpkg:
-        description: 'Whether to use BINPKG_SITES'
-        type: boolean
-        default: true
     secrets:
       CI_JENKINS_TRIGGER_URL:
         required: true
@@ -42,31 +34,35 @@ jobs:
     outputs:
       matrix: ${{ steps.trigger.outputs.matrix }}
     runs-on: ubuntu-latest
+    env:
+      CI_JENKINS_TRIGGER_URL: ${{ secrets.CI_JENKINS_TRIGGER_URL }}
+      CI_JENKINS_TOKEN: ${{ secrets.CI_JENKINS_TOKEN }}
     steps:
       - name: Trigger Jenkins build
+        if: ${{ env.CI_JENKINS_TRIGGER_URL != '' && env.CI_JENKINS_TOKEN != '' }}
         id: trigger
         run: |
           set -eux
 
           # Trigger Jenkins build and retrieve the queue URL
           curl -s -i -o trigger.txt \
-            -X POST "${{ secrets.CI_JENKINS_TRIGGER_URL }}&token=${{ secrets.CI_JENKINS_TOKEN }}" \
+            -X POST "${{ env.CI_JENKINS_TRIGGER_URL }}&token=${{ env.CI_JENKINS_TOKEN }}" \
             --data-urlencode "BOOTSTRAP_HASH=${{ inputs.bootstrap-hash }}" \
             --data-urlencode "CI_PACKAGE_DIR=${{ secrets.CI_PACKAGE_DIR }}" \
             --data-urlencode "CI_SSH_USER=${{ secrets.CI_SSH_USER }}" \
             --data-urlencode "CI_SSH_HOST=${{ secrets.CI_SSH_HOST }}" \
-            --data-urlencode "CLEAR_BINPKG_CACHE=${{ inputs.clear-binpkg-cache }}" \
-            --data-urlencode "GITHUB_REF=${{ inputs.github-ref }}" \
+            --data-urlencode "GITHUB_SHA=${{ inputs.github-sha }}" \
             --data-urlencode "PKGBUILD_FILES=${{ inputs.pkgbuild-files }}" \
-            --data-urlencode "UPLOAD_PKGS=${{ inputs.upload-pkgs }}" \
-            --data-urlencode "USE_BINPKG=${{ inputs.use-binpkg }}"
+            --data-urlencode "UPLOAD_PKGS=${{ inputs.upload-pkgs }}"
           queue_url=$(awk '/^Location:/ {sub("\r", ""); print $2}' trigger.txt)
 
-          # Poll Jenkins until the build has been assigned
+          # Poll Jenkins until the build has been assigned or has failed.
           while true; do
             curl -s --fail -o queue.json "https://ci.dreckly.dev${queue_url}api/json"
             build_url=$(jq -r '.executable.url // empty' < queue.json)
             [ -n "${build_url}" ] && break
+            result=$(jq -r '.result // empty' < queue.json)
+            [ "${result}" = "FAILURE" ] && exit 1
             sleep 5
           done
 
@@ -81,6 +77,8 @@ jobs:
           # has spawned the expected number of configurations
           while true; do
             curl -s --fail -o build.json "${build_url}api/json"
+            result=$(jq -r '.result // empty' < build.json)
+            [ "${result}" = "FAILURE" ] && exit 1
             build_id=$(jq -r .id < build.json)
             num_urls=$(jq -r "[.runs[] | select(.number == $build_id)] | length" < build.json)
             if [ $num_configs -ne $num_urls ]; then

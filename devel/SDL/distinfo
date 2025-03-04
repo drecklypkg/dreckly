@@ -18,4 +18,5 @@ SHA1 (patch-src_video_wscons_SDL__wsconsevents.c) = 1c874c46edb325907eda3bfa7580
 SHA1 (patch-src_video_wscons_SDL__wsconsevents__c.h) = 97206e2aca0b620005217d9d07ad1177516cac92
 SHA1 (patch-src_video_wscons_SDL__wsconsvideo.c) = 741ac9570c4e6e554a191660011b7e3bbe30ce7c
 SHA1 (patch-src_video_wscons_SDL__wsconsvideo.h) = efc75da910cfe370b7361a0b9d2b90837c6b9aa9
+SHA1 (patch-src_video_x11_SDL__x11yuv.c) = 195cc9bd2288fdae267f8545f099359790b14c12
 SHA1 (patch-src_video_x11_SDL_x11video.c) = 249d2bcc6194be739e46a7ea2288da61d0c941e4

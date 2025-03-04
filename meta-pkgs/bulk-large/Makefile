@@ -87,7 +87,6 @@ DEPENDS+=	thunderbird-[0-9]*:../../mail/thunderbird
 DEPENDS+=	thunderbird-l10n-[0-9]*:../../mail/thunderbird-l10n
 DEPENDS+=	R-[0-9]*:../../math/R
 DEPENDS+=	octave-[0-9]*:../../math/octave
-DEPENDS+=	zyGrib-[0-9]*:../../misc/zyGrib
 DEPENDS+=	mpv-[0-9]*:../../multimedia/mpv
 DEPENDS+=	qbittorrent-[0-9]*:../../net/qbittorrent
 DEPENDS+=	wireshark-[0-9]*:../../net/wireshark

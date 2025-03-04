@@ -1,6 +1,6 @@
 # $NetBSD: Makefile,v 1.59 2024/06/28 17:11:26 gutteridge Exp $
 
-DISTNAME=	icewm-3.6.0
+DISTNAME=	icewm-3.7.0
 CATEGORIES=	wm
 MASTER_SITES=	${MASTER_SITE_GITHUB:=ice-wm/}
 
@@ -22,6 +22,7 @@ TOOL_DEPENDS+=	multimarkdown-[0-9]*:../../textproc/multimarkdown
 
 USE_LIBTOOL=	yes
 USE_TOOLS+=	pkg-config gmake perl autoreconf autoconf automake autopoint
+USE_TOOLS+=	msgfmt msgmerge xgettext
 
 REPLACE_PERL=	contrib/icewm-menu-xrandr
 
@@ -32,8 +33,6 @@ pre-configure:
 
 post-extract:
 	cp ${FILESDIR}/bsd-daemon.xpm ${WRKSRC}/lib/taskbar
-
-.include "options.mk"
 
 .include "../../converters/fribidi/buildlink3.mk"
 .include "../../graphics/imlib2/buildlink3.mk"

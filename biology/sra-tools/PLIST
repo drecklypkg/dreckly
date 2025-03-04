@@ -1,4 +1,4 @@
-@comment $NetBSD: PLIST,v 1.2 2024/11/19 20:22:32 bacon Exp $
+@comment $NetBSD$
 bin/abi-dump
 bin/abi-dump.3
 bin/abi-dump.${PKGVERSION}

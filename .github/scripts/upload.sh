@@ -17,29 +17,19 @@ fi
 
 PATH="${CI_SYSTEM_PATH}"
 
-if ${CLEAR_BINPKG_CACHE}; then
-	RSYNC_DELETE="--delete"
-else
-	RSYNC_DELETE=
-fi
-
 # On Windows we can't use rsync, only the "native" SSH has access to the
 # GitHub secrets, and Cygwin rsync does not work with the native SSH.
 #
 case "$(uname)" in
 CYGWIN*)
-	ssh ${CI_SSH_USER}@${CI_SSH_HOST} "
-		if ${CLEAR_BINPKG_CACHE}; then
-			rm -rf ${CI_REMOTE_DIR}
-		fi
-		mkdir -p ${CI_REMOTE_DIR}"
 	# The native ssh/scp cannot use Cygwin paths so change to the parent
 	# directory first to avoid complications.
 	cd ${CI_PACKAGES}
+	ssh ${CI_SSH_USER}@${CI_SSH_HOST} "mkdir -p ${CI_REMOTE_DIR}"
 	scp -rp All ${CI_SSH_USER}@${CI_SSH_HOST}:${CI_REMOTE_DIR}/
 	;;
 *)
-	rsync -av ${RSYNC_DELETE} --exclude .cvsignore \
+	rsync -av --exclude .cvsignore \
 	    ${CI_PACKAGES}/ \
 	    ${CI_SSH_USER}@${CI_SSH_HOST}:${CI_REMOTE_DIR}
 	;;

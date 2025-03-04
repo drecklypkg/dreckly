@@ -8,7 +8,6 @@ PKGNAME=	${DISTNAME:S/gdal/gdal-lib/}
 COMMENT=	Translator library for raster geospatial data formats
 
 USE_LANGUAGES+=		c c++
-USE_CC_FEATURES+=	c99
 USE_CXX_FEATURES+=	c++17 charconv
 
 USE_TOOLS+=		gmake

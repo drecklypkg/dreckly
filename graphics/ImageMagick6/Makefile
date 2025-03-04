@@ -49,7 +49,6 @@ SUBST_NOOP_OK.pkgcfg=	yes
 # modified, and they don't need to since their names don't appear in any
 # "Requires:" line.
 
-USE_CC_FEATURES+=	c99
 FORCE_C_STD=		c99
 
 TEST_TARGET=		check

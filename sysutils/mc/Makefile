@@ -12,8 +12,11 @@ COMMENT=	User-friendly file manager and visual shell
 LICENSE=	gnu-gpl-v2
 
 USE_TOOLS+=		pkg-config unzip:run perl:build gmake
+USE_TOOLS+=		msgfmt msgmerge xgettext
 GNU_CONFIGURE=		yes
 USE_PKGLOCALEDIR=	yes
+
+CONFIGURE_ARGS+=	--enable-nls
 
 # don't want to pull in python
 CHECK_INTERPRETER_SKIP+=	libexec/mc/extfs.d/s3+
@@ -59,6 +62,7 @@ OWN_DIRS+=	${PKG_SYSCONFDIR}/mc
 CONF_FILES+=	${EGDIR}/${i} ${PKG_SYSCONFDIR}/mc/${i}
 .endfor
 
+.include "../../devel/gettext-lib/buildlink3.mk"
 BUILDLINK_API_DEPENDS.glib2+=	glib2>=2.32.0
 .include "../../devel/glib2/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

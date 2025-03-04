@@ -116,10 +116,10 @@ jobs:
         platform:
           - name: macos-13-x86_64
             os: macos-13
-          - name: macos-14-arm64
-            os: macos-14
-          - name: ubuntu-22.04-x86_64
-            os: ubuntu-22.04
+          - name: macos-15-arm64
+            os: macos-15
+          - name: ubuntu-24.04-x86_64
+            os: ubuntu-24.04
           - name: cygwin-2022-x86_64
             os: windows-2022
     runs-on: ${{ matrix.platform.os }}
@@ -164,7 +164,7 @@ jobs:
     uses: ./.github/workflows/jenkins.yml
     with:
       bootstrap-hash: ${{ needs.what-changed.outputs.bootstrap-hash }}
-      github-ref: ${{ github.ref }}
+      github-sha: ${{ github.sha }}
       pkgbuild-files: ${{ needs.what-changed.outputs.pkgbuild-files }}
     secrets:
       CI_JENKINS_TRIGGER_URL: ${{ secrets.CI_JENKINS_TRIGGER_URL }}
@@ -175,7 +175,7 @@ jobs:
   # Ubuntu.  Due to the way this action works we have to duplicate some bits
   # from .github/actions/* as we cannot run them inside (that I know of?)
   #
-  build-bsd:
+  build-qemu:
     needs: what-changed
     strategy:
       fail-fast: false
@@ -184,18 +184,14 @@ jobs:
           # The cross-platform action does support arm64 guests, but in reality
           # they are just far too slow (e.g. 18m vs 2m for bootstrap).  Worth
           # investigating in the future if they start supporting arm64 hosts.
-          - name: freebsd-14.1-x86_64
+          - name: freebsd-14.2-x86_64
             os: freebsd
             arch: x86-64
-            version: '14.1'
-          - name: netbsd-10.0-x86_64
-            os: netbsd
-            arch: x86-64
-            version: '10.0'
-          - name: openbsd-7.5-x86_64
+            version: '14.2'
+          - name: openbsd-7.6-x86_64
             os: openbsd
             arch: x86-64
-            version: '7.5'
+            version: '7.6'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -206,7 +202,7 @@ jobs:
           key: bootstrap-kit-${{ matrix.platform.name }}-${{ needs.what-changed.outputs.bootstrap-hash }}
           # Must live in checkout dir due to actions/cache limitations.
           path: bootstrap.tar
-      - uses: cross-platform-actions/action@v0.25.0
+      - uses: cross-platform-actions/action@v0.27.0
         # This action does not support being called multiple times inside the
         # same job, so we need to do all work in one script.
         if: steps.bootstrap-kit.outputs.cache-hit != 'true' || needs.what-changed.outputs.run-pkgbuild == 'true'
@@ -215,12 +211,12 @@ jobs:
           RUN_PKGBUILD: ${{ needs.what-changed.outputs.run-pkgbuild == 'true' }}
           BINPKG_SITES: http://cipkg.dreckly.dev/packages/${{ matrix.platform.name }}
           PKGBUILD_FILES: ${{ needs.what-changed.outputs.pkgbuild-files }}
-          USE_BINPKG: 'true'
         with:
-          environment_variables: RUN_BOOTSTRAP RUN_PKGBUILD BINPKG_SITES PKGBUILD_FILES USE_BINPKG
+          environment_variables: RUN_BOOTSTRAP RUN_PKGBUILD BINPKG_SITES PKGBUILD_FILES
           operating_system: ${{ matrix.platform.os }}
           architecture: ${{ matrix.platform.arch }}
           version: ${{ matrix.platform.version }}
+          cpu_count: 4
           shell: bash
           run: |
             if ${RUN_BOOTSTRAP}; then

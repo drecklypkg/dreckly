@@ -1,27 +1,26 @@
 # $NetBSD: options.mk,v 1.24 2023/02/20 13:36:42 taca Exp $
 
 PKG_OPTIONS_VAR=		PKG_OPTIONS.sudo
-PKG_SUPPORTED_OPTIONS=		ldap nls
+PKG_SUPPORTED_OPTIONS=		ldap
 PKG_OPTIONS_OPTIONAL_GROUPS=	auth
 PKG_OPTIONS_GROUP.auth=		kerberos pam skey
 
-.if ${OPSYS} == "NetBSD" && exists(/usr/include/skey.h)
+.if ${OPSYS} == "NetBSD"
+.  if exists(/usr/include/security/openpam.h)
+PKG_SUGGESTED_OPTIONS=	pam
+.  elif exists(/usr/include/skey.h)
 PKG_SUGGESTED_OPTIONS=	skey
+.  endif
 .endif
 
 PKG_SUGGESTED_OPTIONS.Darwin=	pam
+PKG_SUGGESTED_OPTIONS.FreeBSD=	pam
+PKG_SUGGESTED_OPTIONS.Linux=	pam
+PKG_SUGGESTED_OPTIONS.SunOS=	pam
 
 .include "../../mk/bsd.options.mk"
 
-PLIST_VARS+=		ldap nls
-
-.if ${PKG_OPTIONS:Mnls}
-.  include "../../devel/gettext-lib/buildlink3.mk"
-CONFIGURE_ARGS+=	--enable-nls
-PLIST.nls=		yes
-.else
-CONFIGURE_ARGS+=	--disable-nls
-.endif
+PLIST_VARS+=		ldap
 
 .if ${PKG_OPTIONS:Mpam}
 .  include "../../mk/pam.buildlink3.mk"

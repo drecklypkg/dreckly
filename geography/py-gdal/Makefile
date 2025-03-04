@@ -11,7 +11,6 @@ COMMENT=	Translator library for raster geospatial data formats, Python binding
 # hard-required must be present, separately from whether it is needed
 # for the python bindings.
 USE_LANGUAGES=		c c++
-USE_CC_FEATURES+=	c99
 USE_CXX_FEATURES+=	c++11
 
 .include "../../mk/bsd.prefs.mk"

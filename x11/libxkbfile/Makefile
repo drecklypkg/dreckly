@@ -11,7 +11,6 @@ COMMENT=		The xkbfile Library from modular X.org
 
 USE_TOOLS+=		pkg-config
 
-USE_CC_FEATURES+=	c99
 FORCE_C_STD=		gnu99
 
 PKGCONFIG_OVERRIDE+=		output/xkbfile.pc

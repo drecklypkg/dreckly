@@ -1,8 +1,9 @@
-# $NetBSD: Makefile,v 1.19 2023/12/24 10:07:51 nros Exp $
+# $NetBSD$
 
-DISTNAME=	auto-admin-0.8.0
+DISTNAME=	auto-admin-0.8.1.8
 CATEGORIES=	sysutils
 MASTER_SITES=	${MASTER_SITE_GITHUB:=outpaddling/}
+GITHUB_TAG=	66920001afd730a9e64caff8be5bcdebf08052bc
 
 OWNER=		bacon@NetBSD.org
 HOMEPAGE=	https://github.com/outpaddling/auto-admin
@@ -13,13 +14,13 @@ USE_LANGUAGES=	# none
 
 NO_BUILD=	yes
 
-INSTALL_ENV+=	MANDIR=${PREFIX}/${PKGMANDIR}
-
 SUBST_CLASSES+=		prefix
 SUBST_STAGE.prefix=	pre-configure
 SUBST_SED.prefix+=	-e 's|/usr/pkg|${PREFIX}|g'
 SUBST_SED.prefix+=	-e 's|/usr/pkgsrc|${PKGSRCDIR}|g'
 SUBST_FILES.prefix+=	User-scripts/auto-pkgsrc-prefix
 SUBST_FILES.prefix+=	User-scripts/auto-pkgsrc-dir
+
+MAKE_FLAGS+=	MANDIR=${PREFIX}/${PKGMANDIR}
 
 .include "../../mk/bsd.pkg.mk"

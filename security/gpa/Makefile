@@ -3,7 +3,7 @@
 DISTNAME=	gpa-0.10.0
 PKGREVISION=	14
 CATEGORIES=	x11 security
-MASTER_SITES=	ftp://ftp.gnupg.org/gcrypt/gpa/
+MASTER_SITES=	${MASTER_SITE_GNUPG:=gpa/}
 EXTRACT_SUFX=	.tar.bz2
 
 MAINTAINER=	pr@alles.prima.de
