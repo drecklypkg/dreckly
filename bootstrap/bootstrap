@@ -897,7 +897,6 @@ UnixWare)
 	fi
 	whoamiprog=/usr/ucb/whoami
 	machine_arch=`uname -m`
-	CC="gcc -DUNIXWARE"; export CC
 	;;
 *)
 	echo "This platform ($opsys) is untried - good luck, and thanks for using pkgsrc"
