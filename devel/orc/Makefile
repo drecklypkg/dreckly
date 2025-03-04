@@ -20,7 +20,6 @@ MAKE_ENV+=	DYLD_LIBRARY_PATH=${WRKSRC}/output/orc:${WRKSRC}/output/orc-test
 
 MESON_ARGS+=	-Dgtk_doc=disabled
 
-USE_CC_FEATURES+=	c99
 FORCE_C_STD=		gnu99
 
 PYTHON_FOR_BUILD_ONLY=	tool

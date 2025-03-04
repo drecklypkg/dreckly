@@ -23,7 +23,6 @@ GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--with-kde-solid=${PREFIX}/share/kde/apps/solid/actions
 PTHREAD_OPTS+=		require
 USE_LANGUAGES=		c c++
-USE_CC_FEATURES+=	c99
 PLIST_VARS+=		altivec cdrom egl oss v4l2 x86simd
 
 .include "../../mk/bsd.prefs.mk"

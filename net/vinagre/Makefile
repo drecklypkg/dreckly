@@ -17,8 +17,6 @@ USE_TOOLS+=	gmake intltool pkg-config itstool
 USE_TOOLS+=	msgfmt msgmerge xgettext
 USE_LANGUAGES=	c c++
 
-USE_CC_FEATURES+=	c99
-
 USE_PKGLOCALEDIR=	yes
 
 CFLAGS.SunOS+=	-D__EXTENSIONS__

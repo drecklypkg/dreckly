@@ -13,8 +13,6 @@ LICENSE=	gnu-gpl-v3
 USE_TOOLS+=	pkg-config
 USE_LANGUAGES=	c
 
-USE_CC_FEATURES+=	c99
-
 MESON_ARGS+=	-Dwith-docs=false
 
 PKGCONFIG_OVERRIDE+=	babl.pc.in
