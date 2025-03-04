@@ -22,6 +22,8 @@ TOOLS_PLATFORM.curl?=		/opt/xinuos/bin/curl
 .endif
 TOOLS_PLATFORM.cut?=		/usr/bin/cut
 TOOLS_PLATFORM.date?=		/usr/bin/date
+# stock uw7 diff doesn't support -u
+# you need Xinuosdiffutils
 .if exists(/opt/xinuos/bin/diff)
 TOOLS_PLATFORM.diff?=		/opt/xinuos/bin/diff
 .endif
