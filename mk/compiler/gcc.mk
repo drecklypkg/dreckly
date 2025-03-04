@@ -354,43 +354,49 @@ _GCC_VERSION=	0
 .endif
 _GCC_PKG=	gcc-${_GCC_VERSION:C/-.*$//}
 
-.if !empty(_GCC_VERSION:M[23].*) || !empty(_GCC_VERSION:M4.[01].*)
 # A lot of packages attempt to do this as a workaround for a
 # well-intentioned default in XCode 12+, but it's a common cause of
 # build failures on old versions of Darwin which use gcc and don't
 # understand this syntax.
 #
 # Note that pkgsrc also sets this flag itself for Darwin+clang.
+.if !empty(_GCC_VERSION:M[23].*) || !empty(_GCC_VERSION:M4.[01].*)
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=implicit-function-declaration
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=sign-conversion
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=incompatible-pointer-types
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=implicit-int
 .endif
 
-.if !empty(_GCC_VERSION:M[23].*) || !empty(_GCC_VERSION:M4.[01234].*)
-# Added in GCC 4.5
-BUILDLINK_TRANSFORM+=	rm:-Wno-unused-result
-.endif
-
-.if !empty(_GCC_VERSION:M[23].*) || !empty(_GCC_VERSION:M4.[012].*)
-# Added in GCC 4.3
-BUILDLINK_TRANSFORM+=	rm:-Wvla
-.endif
-
+# Added in GCC 4.1
 .if !empty(_GCC_VERSION:M[23].*) || !empty(_GCC_VERSION:M4.0.*)
-# Added in GCC 4.3
 BUILDLINK_TRANSFORM+=	rm:-Wc++-compat
 BUILDLINK_TRANSFORM+=	rm:-Wno-c++-compat
 .endif
 
-.if !empty(_GCC_VERSION:M[23456].*)
+# Added in GCC 4.3
+.if !empty(_GCC_VERSION:M[23].*) || !empty(_GCC_VERSION:M4.[012].*)
+BUILDLINK_TRANSFORM+=	rm:-Wvla
+.endif
+
+# Added in GCC 4.5
+.if !empty(_GCC_VERSION:M[23].*) || !empty(_GCC_VERSION:M4.[01234].*)
+BUILDLINK_TRANSFORM+=	rm:-Wno-unused-result
+.endif
+
 # Added in GCC 7
+.if !empty(_GCC_VERSION:M[23456].*)
 BUILDLINK_TRANSFORM+=	rm:-Wimplicit-fallthrough
 BUILDLINK_TRANSFORM+=	rm:-Wno-implicit-fallthrough
 .endif
 
-.if !empty(_GCC_VERSION:M3.*) || !empty(_GCC_VERSION:M4.[0-7].*)
+# Added in GCC 8
+.if !empty(_GCC_VERSION:M[234567].*)
+BUILDLINK_TRANSFORM+=	rm:-Wmissing-attributes
+BUILDLINK_TRANSFORM+=	rm:-Wno-missing-attributes
+.endif
+
 # Added in GCC 4.8
+.if !empty(_GCC_VERSION:M3.*) || !empty(_GCC_VERSION:M4.[0-7].*)
 BUILDLINK_TRANSFORM+=	opt:-std=c++03:-std=c++98
 BUILDLINK_TRANSFORM+=	opt:-std=gnu++03:-std=gnu++98
 .endif
