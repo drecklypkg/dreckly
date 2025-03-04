@@ -1,5 +1,0 @@
-@comment $NetBSD: PLIST,v 1.2 2022/04/21 07:14:12 nia Exp $
-include/libvterm01/vterm.h
-include/libvterm01/vterm_keycodes.h
-lib/libvterm01/libvterm.la
-lib/pkgconfig/vterm01.pc

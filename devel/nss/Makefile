@@ -21,7 +21,6 @@ CTF_SUPPORTED=		no # https://smartos.org/bugview/OS-6510
 
 USE_GCC_RUNTIME=	yes
 USE_LANGUAGES=		c
-USE_CC_FEATURES+=	c99
 USE_TOOLS+=		gmake perl pax pkg-config
 # Fails to detect jobserver on systems where /bin/make and /bin/gmake both
 # exist. This is because nss uses "gmake" explicitly rather than $MAKE to

@@ -1,7 +1,6 @@
 # $NetBSD: Makefile,v 1.204 2024/09/18 10:07:35 kim Exp $
 
-DISTNAME=	sudo-1.9.16
-PKGREVISION=	1
+DISTNAME=	sudo-1.9.16p2
 CATEGORIES=	security
 MASTER_SITES=	https://www.sudo.ws/dist/
 MASTER_SITES+=	ftp://ftp.sudo.ws/pub/sudo/
@@ -32,6 +31,8 @@ CONFIGURE_ENV+=		NROFFPROG=${CAT:Q}
 CONFIGURE_ENV+=		mansectsu=8
 CONFIGURE_ENV+=		mansectform=5
 TEST_TARGET=		check
+
+LDFLAGS+=		${COMPILER_RPATH_FLAG}${PREFIX}/lib/sudo
 
 # Append ${PREFIX} directories to the default secure_path
 SUDO_SECURE_PATH_DIRS=	/usr/local/sbin
@@ -83,5 +84,6 @@ NOT_FOR_UNPRIVILEGED=	yes
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/plugins/sudoers/sudoers ${DESTDIR}${PREFIX}/${EGDIR}/sudoers
 
+.include "../../devel/gettext-lib/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

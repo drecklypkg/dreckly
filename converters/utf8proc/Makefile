@@ -11,7 +11,6 @@ COMMENT=	C library for processing Unicode data
 LICENSE=	mit
 
 FORCE_C_STD=		c99
-USE_CC_FEATURES+=	c99
 USE_LIBTOOL=		yes
 
 INSTALLATION_DIRS=	include lib lib/pkgconfig

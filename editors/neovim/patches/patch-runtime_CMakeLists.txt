@@ -1,0 +1,15 @@
+$NetBSD$
+
+Simplify handling and just install nvim.desktop everywhere.
+
+--- runtime/CMakeLists.txt.orig	2025-03-03 15:18:30.427011825 +0000
++++ runtime/CMakeLists.txt
+@@ -95,7 +95,7 @@ install_helper(
+   FILES ${GENERATED_SYN_VIM}
+   DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/nvim/runtime/syntax/vim)
+ 
+-if(NOT APPLE)
++if(1)
+   install_helper(
+     FILES ${CMAKE_CURRENT_SOURCE_DIR}/nvim.desktop
+     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)

@@ -51,7 +51,6 @@ CONFIGURE_ARGS+=	--disable-libstdcxx-pch
 GCC_TARGET_MACHINE=	${MACHINE_GNU_PLATFORM}
 
 # error: 'for' loop initial declarations are only allowed in C99 mode
-USE_CC_FEATURES+=	c99
 FORCE_C_STD=		gnu99	
 
 UNLIMIT_RESOURCES+=	datasize

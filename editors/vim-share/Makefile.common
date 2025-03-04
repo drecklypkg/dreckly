@@ -25,7 +25,6 @@ LICENSE=		vim-license OR gnu-gpl-v2
 WRKSRC=			${WRKDIR}/${DISTNAME}/src
 GNU_CONFIGURE=		yes
 USE_LANGUAGES+=		c
-USE_CC_FEATURES+=	c99
 
 # http://www.netbsd.org/cgi-bin/query-pr-single.pl?number=38710
 CHECK_INTERPRETER_SKIP=	share/vim/${VIM_SUBDIR}/tools/vim132

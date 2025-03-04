@@ -12,7 +12,6 @@ LICENSE=		mit
 
 USE_TOOLS+=		pkg-config
 
-USE_CC_FEATURES+=	c99
 FORCE_C_STD=		gnu99
 
 PKGCONFIG_OVERRIDE+=		output/meson-private/xvmc.pc

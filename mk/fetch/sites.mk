@@ -26,6 +26,12 @@ MASTER_SITE_GITLAB+=	\
 MASTER_SITE_GNUSTEP+=   \
 	ftp://ftp.gnustep.org/pub/gnustep/
 
+MASTER_SITE_GNUPG+=	\
+	https://mirrors.dotsrc.org/gcrypt/ \
+	https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/ \
+	http://gnupg.org/ftp/gcrypt/ \
+	http://www.ring.gr.jp/pub/net/gnupg/
+
 MASTER_SITE_OSDN+=	\
 	http://jaist.dl.osdn.jp/ \
 	http://iij.dl.osdn.jp/ \

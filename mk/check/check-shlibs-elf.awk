@@ -143,7 +143,15 @@ function checkshlib(DSO, needed, rpath, found, dso_rpath, got_rpath, nrpath) {
 				found = 1
 				break
 			}
-			libfile = cross_destdir rpath[p] "/" lib
+			# If lib is fully-specified, allow it as long as the
+			# path starts with a valid rpath.
+			if (substr(lib, 1, 1) == "/") {
+				if (rpath[p] != substr(lib, 1, length(rpath[p])))
+					continue;
+				libfile = lib
+			} else {
+				libfile = cross_destdir rpath[p] "/" lib
+			}
 			if (!(libfile in libcache)) {
 				libcache[libfile] = system("test -f " shquote(libfile))
 			}

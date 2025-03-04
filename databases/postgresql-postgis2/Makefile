@@ -33,7 +33,6 @@ CONFLICTS=		postgis-[0-9]*
 
 USE_GCC_RUNTIME=		yes
 USE_LANGUAGES=			c c++
-USE_CC_FEATURES+=		c99
 USE_LIBTOOL=			yes
 USE_TOOLS+=			gsed gmake lex pax perl pkg-config
 GNU_CONFIGURE=			yes

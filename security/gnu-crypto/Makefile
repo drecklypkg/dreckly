@@ -5,7 +5,7 @@ DISTNAME=		gnu-crypto-2.0.1-bin
 PKGNAME=		${DISTNAME:S/-bin$//}
 PKGREVISION=		1
 CATEGORIES=		security
-MASTER_SITES=		ftp://ftp.gnupg.org/GnuPG/gnu-crypto/
+MASTER_SITES=		${MASTER_SITE_GNUPG:=gnu-crypto/}
 EXTRACT_SUFX=		.tar.bz2
 
 MAINTAINER=		pkgsrc-users@NetBSD.org
