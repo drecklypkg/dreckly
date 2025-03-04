@@ -22,6 +22,12 @@ TOOLS_PLATFORM.curl?=		/opt/xinuos/bin/curl
 .endif
 TOOLS_PLATFORM.cut?=		/usr/bin/cut
 TOOLS_PLATFORM.date?=		/usr/bin/date
+.if exists(/opt/xinuos/bin/diff)
+TOOLS_PLATFORM.diff?=		/opt/xinuos/bin/diff
+.endif
+.if exists(/opt/xinuos/bin/diff3)
+TOOLS_PLATFORM.diff3?=		/opt/xinuos/bin/diff3
+.endif
 TOOLS_PLATFORM.dirname?=	/usr/bin/dirname
 TOOLS_PLATFORM.echo?=		/usr/ucb/echo
 TOOLS_PLATFORM.egrep?=		/usr/bin/grep -E
