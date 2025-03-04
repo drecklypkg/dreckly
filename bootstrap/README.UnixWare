@@ -4,6 +4,10 @@ See https://en.wikipedia.org/wiki/UnixWare
 
 As of 2022-04, "SCO UnixWare 7 Definitive 2018" works.
 
+UnixWare has a limit of 1000 files per directory.  When transferring
+the tree to UnixWare, you may want to exclude packages such as
+'ruby-*' and 'py-*' to work around this.
+
 The default install of UnixWare 7 lacks a modern toolchain
 and fetch tool.
 
