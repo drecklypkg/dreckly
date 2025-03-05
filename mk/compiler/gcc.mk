@@ -82,8 +82,7 @@ _DEF_VARS.gcc=	\
 	PKGSRC_ADA PKGSRC_GMK PKGSRC_GLK PKGSRC_GBD PKGSRC_CHP PKGSRC_GNT PKGSRC_GLS PKGSRC_PRP \
 	_CC _COMPILER_RPATH_FLAG _COMPILER_STRIP_VARS \
 	_GCCBINDIR _GCC_ARCHDIR _GCC_BIN_PREFIX _GCC_CFLAGS \
-	_GCC_CC _GCC_CPP _GCC_CXX _GCC_DEPENDENCY _GCC_DEPENDS \
-	_GCC_DIST_NAME _GCC_DIST_VERSION \
+	_GCC_CC _GCC_CPP _GCC_CXX _GCC_DEPENDENCY \
 	_GCC_FC _GCC_LDFLAGS _GCC_LIBDIRS _GCC_PKG \
 	_GCC_PKGBASE _GCC_PKGSRCDIR _GCC_PKG_SATISFIES_DEP \
 	_GCC_PREFIX _GCC_REQD _GCC_STRICTEST_REQD _GCC_SUBPREFIX \
@@ -96,9 +95,8 @@ _DEF_VARS.gcc=	\
 	_LINKER_RPATH_FLAG \
 	_NEED_GCC6 _NEED_GCC7 _NEED_GCC8 _NEED_GCC9 \
 	_NEED_GCC10 _NEED_GCC12 _NEED_GCC13 _NEED_GCC14 \
-	_NEED_GCC_AUX _NEED_NEWER_GCC \
+	_NEED_GCC_AUX \
 	_NEED_GCC6_AUX _NEED_GCC10_AUX _NEED_GCC13_GNAT \
-	_PKGSRC_GCC_VERSION \
 	_USE_GCC_SHLIB _USE_PKGSRC_GCC \
 	_WRAP_EXTRA_ARGS.CC \
 	_EXTRA_CC_DIRS \
@@ -273,12 +271,6 @@ _NEED_GCC_AUX?=no
 .if !empty(USE_LANGUAGES:Mada)
 _NEED_GCC_AUX=yes
 .endif
-
-# _GCC_DIST_VERSION is the highest version of GCC installed by the pkgsrc
-# without the PKGREVISIONs.
-_GCC_DIST_NAME:=	gcc14
-.include "../../lang/${_GCC_DIST_NAME}/version.mk"
-_GCC_DIST_VERSION:=	${${_GCC_DIST_NAME:tu}_DIST_VERSION}
 
 # _GCC6_PATTERNS matches N s.t. N < 7.
 _GCC6_PATTERNS= 5 6 [0-6].*
@@ -577,7 +569,6 @@ _NEED_GCC14=	yes
 #.for _pattern_ in ${_GCC_AUX_PATTERNS}
 #.  if !empty(_GCC_REQD:M${_pattern_})
 #_NEED_GCC_AUX=	yes
-#_NEED_NEWER_GCC=NO
 #.  endif
 #.endfor
 .if !empty(_NEED_GCC6:M[nN][oO]) && !empty(_NEED_GCC7:M[nN][oO]) && \
@@ -953,7 +944,6 @@ _GCC_DEPENDENCY=	gcc13-gnat>=${_GCC_REQD}:../../lang/gcc13-gnat
 _USE_GCC_SHLIB?=	no
 .  endif
 .endif
-_GCC_DEPENDS=		${_GCC_PKGBASE}>=${_GCC_REQD}
 
 # When not using the GNU linker, gcc will always link shared libraries against
 # the shared version of libgcc, and so _USE_GCC_SHLIB needs to be enabled on
@@ -993,24 +983,6 @@ _USE_PKGSRC_GCC!=	\
 		${ECHO} "YES";						\
 	fi
 .  endif
-.endif
-
-# Check if any of the versions of GCC in pkgsrc can satisfy the _GCC_REQD
-# requirement.
-#
-.if !defined(_NEED_NEWER_GCC)
-_PKGSRC_GCC_VERSION=	${_GCC_PKGBASE}-${_GCC_DIST_VERSION}
-_NEED_NEWER_GCC!=	\
-	if ${PKG_ADMIN} pmatch '${_GCC_DEPENDS}' ${_PKGSRC_GCC_VERSION} 2>/dev/null; then \
-		${ECHO} "NO";						\
-	else								\
-		${ECHO} "YES";						\
-	fi
-#MAKEFLAGS+=	_NEED_NEWER_GCC=${_NEED_NEWER_GCC}
-.endif
-.if !empty(_USE_PKGSRC_GCC:M[yY][eE][sS]) && \
-    !empty(_NEED_NEWER_GCC:M[yY][eE][sS])
-PKG_FAIL_REASON+=	"Unable to satisfy dependency: ${_GCC_DEPENDS}"
 .endif
 
 .if !empty(_USE_PKGSRC_GCC:M[yY][eE][sS]) && !defined(_GCC_PREFIX)
