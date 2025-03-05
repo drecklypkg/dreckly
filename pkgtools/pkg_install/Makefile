@@ -152,7 +152,6 @@ CONFIG_SUB_OVERRIDE+=	${WRKDIR}/libarchive/build/autoconf/config.sub \
 			${WRKSRC}/config.sub
 
 CPPFLAGS.Cygwin+=	-DLIBARCHIVE_STATIC
-CPPFLAGS.UnixWare+=	-DHAVE_DIRENT_H=1
 
 # Make sure that the linker used our static library instead of the
 # (outdated) dynamic library "/usr/lib/libarchive.dylib".
