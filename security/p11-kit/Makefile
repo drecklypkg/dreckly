@@ -17,7 +17,6 @@ DEPENDS+=	mozilla-rootcerts>=1.0.20150804nb1:../../security/mozilla-rootcerts
 
 MESON_ARGS+=	-Dtrust_paths=${PREFIX}/share/mozilla-rootcerts/cacert.pem
 
-USE_CC_FEATURES=	c99
 USE_FEATURES+=		strndup strnlen
 USE_LANGUAGES=		c
 USE_TOOLS+=		msgfmt pkg-config readlink
@@ -46,6 +45,11 @@ CONF_FILES+=		share/examples/p11-kit/pkcs11.conf.example \
 			${PKG_SYSCONFDIR}/pkcs11.conf
 
 INSTALLATION_DIRS+=	share/examples/p11-kit
+
+PTHREAD_OPTS=		require
+PTHREAD_AUTO_VARS=	yes
+
+.include "../../mk/pthread.buildlink3.mk"
 
 post-install:
 	${MV} ${DESTDIR}${PKG_SYSCONFDIR}/pkcs11/pkcs11.conf.example \
