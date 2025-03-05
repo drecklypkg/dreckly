@@ -386,10 +386,6 @@ PKG_ADA:=		${_FAIL_WRAPPER.ADA}
 override-tools: ${_FAIL_WRAPPER.ADA}
 .endif
 
-.if !empty(DRAGONFLY_CCVER) && ${OPSYS} == "DragonFly"
-ALL_ENV+=		CCVER=${DRAGONFLY_CCVER}
-.endif
-
 .endif	# BSD_COMPILER_MK
 
 .if ${CHECK_COMPILER:Uno:tl} == yes

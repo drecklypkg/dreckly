@@ -118,7 +118,7 @@ _DEF_VARS.gcc=	\
 	_SSP_CFLAGS \
 	_CXX_STD_FLAG.c++03 _CXX_STD_FLAG.gnu++03
 _USE_VARS.gcc=	\
-	MACHINE_ARCH PATH DRAGONFLY_CCVER OPSYS TOOLBASE \
+	MACHINE_ARCH PATH OPSYS TOOLBASE \
 	USE_LIBTOOL \
 	LIBABISUFFIX \
 	COMPILER_RPATH_FLAG \
@@ -344,8 +344,6 @@ _GCC_VERSION_STRING!=	\
 	( env LC_ALL=C ${_CC} -v 2>&1 | ${GREP} 'gcc version') 2>/dev/null || ${ECHO} 0
 .  if !empty(_GCC_VERSION_STRING:Megcs*)
 _GCC_VERSION=	2.8.1		# egcs is considered to be gcc-2.8.1.
-.  elif !empty(DRAGONFLY_CCVER) && ${OPSYS} == "DragonFly"
-_GCC_VERSION!= env CCVER=${DRAGONFLY_CCVER} ${_CC} -dumpversion
 .  elif !empty(_GCC_VERSION_STRING:Mgcc*)
 _GCC_VERSION!=	${_CC} -dumpversion
 .  else
