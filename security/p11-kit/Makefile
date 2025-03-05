@@ -51,6 +51,7 @@ post-install:
 	${MV} ${DESTDIR}${PKG_SYSCONFDIR}/pkcs11/pkcs11.conf.example \
 		${DESTDIR}${PREFIX}/share/examples/p11-kit
 
+.include "options.mk"
 .include "../../devel/gettext-lib/buildlink3.mk"
 .include "../../devel/libffi/buildlink3.mk"
 .include "../../devel/meson/build.mk"
