@@ -48,10 +48,6 @@
 # CC_VERSION
 #	A string of the form "gcc-4.3.2"
 #
-# CC_VERSION_STRING
-#	The same(?) as CC_VERSION. FIXME: What's the difference between
-#	the two?
-#
 # Keywords: gcc
 #
 
@@ -68,7 +64,7 @@ _USER_VARS.gcc=	\
 _PKG_VARS.gcc=	\
 	GCC_REQD USE_GCC_RUNTIME USE_LANGUAGES
 _SYS_VARS.gcc=	\
-	CC_VERSION CC_VERSION_STRING LANGUAGES.gcc \
+	CC_VERSION LANGUAGES.gcc \
 	CCPATH CPPPATH CXXPATH F77PATH FCPATH \
 	PKG_CC PKG_CPP PKG_CXX PKG_FC FC PKGSRC_FORTRAN \
 	ADAPATH GMKPATH GLKPATH GBDPATH CHPPATH GLSPATH GNTPATH PRPPATH
@@ -1163,7 +1159,6 @@ _COMPILER_ABI_FLAG.64=	-m64
 
 .if !empty(_USE_PKGSRC_GCC:M[yY][eE][sS])
 .  if exists(${CCPATH})
-CC_VERSION_STRING!=	${CCPATH} -v 2>&1
 CC_VERSION!=		\
 	if ${CCPATH} -dumpversion > /dev/null 2>&1; then		\
 		${ECHO} "gcc-`${CCPATH} -dumpversion`";			\
@@ -1172,11 +1167,9 @@ CC_VERSION!=		\
 	fi
 
 .  else
-CC_VERSION_STRING=	${CC_VERSION}
 CC_VERSION=		gcc-${_GCC_REQD}
 .  endif
 .else
-CC_VERSION_STRING=	${CC_VERSION}
 CC_VERSION=		${_GCC_PKG}
 .endif
 

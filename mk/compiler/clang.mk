@@ -48,11 +48,6 @@ CLANG_VERSION=		0
 CC_VERSION=		clang-${CLANG_VERSION}
 .endif
 
-#
-# TODO: CC_VERSION_STRING is obsolete and should be removed at some point.
-#
-CC_VERSION_STRING=	${CC_VERSION}
-
 _COMPILER_ABI_FLAG.32=	-m32
 _COMPILER_ABI_FLAG.64=	-m64
 

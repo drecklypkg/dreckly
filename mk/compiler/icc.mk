@@ -53,11 +53,9 @@ _LINKER_RPATH_FLAG=	-Wl,-R
 _COMPILER_RPATH_FLAG=	-Wl,-R
 
 .if exists(${CCPATH})
-CC_VERSION_STRING!=	${CCPATH} -V 2>&1 | ${GREP} '^Intel'
 _CC_VERSION!=		${CCPATH} -v 2>&1 || ${TRUE}
 CC_VERSION=		Intel C++ Compiler ${_CC_VERSION}
 .else
-CC_VERSION_STRING?=	${CC_VERSION}
 CC_VERSION?=		Intel C++ Compiler
 .endif
 

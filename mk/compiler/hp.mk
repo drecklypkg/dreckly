@@ -33,11 +33,10 @@ PKG_CXX:=		${_HP_CXX}
 .endif
 _COMPILER_STRIP_VARS+=	${_HP_VARS}
 
-.if exists(${CXXPATH}) && !defined(CC_VERSION_STRING)
+.if exists(${CXXPATH}) && !defined(CC_VERSION)
 CC_VERSION_STRING!=	${CXXPATH} -V 2>&1
 CC_VERSION=		${CC_VERSION_STRING:S/ /_/Wg}
 .else
-CC_VERSION_STRING?=	${CC_VERSION}
 CC_VERSION?=		hp
 .endif
 
