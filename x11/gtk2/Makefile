@@ -2,7 +2,7 @@
 
 DISTNAME=	gtk+-2.24.33
 PKGNAME=	${DISTNAME:S/gtk/gtk2/}
-PKGREVISION=	25
+PKGREVISION=	26
 CATEGORIES=	x11 gnome
 MASTER_SITES=	${MASTER_SITE_GNOME:=sources/gtk+/2.24/}
 EXTRACT_SUFX=	.tar.xz
@@ -29,6 +29,7 @@ GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--sysconfdir=${PREFIX}/libdata
 # Work around build problems, disable unstable PAPI, PR #41608:
 CONFIGURE_ARGS+=	--disable-papi
+CONFIGURE_ARGS+=	--disable-glibtest
 # Not to unwanted pick up of db2html, PR#44908
 CONFIGURE_ENV+=		ac_cv_prog_DB2HTML=false
 MAKE_ENV+=		PKGLOCALEDIR=${PKGLOCALEDIR}
@@ -48,8 +49,6 @@ INSTALLATION_DIRS+=	lib/gtk-2.0/modules
 INSTALLATION_DIRS+=	lib/gtk-2.0/2.10.0/filesystems
 
 REQD_DIRS+=		${PREFIX}/libdata/gtk-2.0
-
-BUILD_DIRS=		. demos/gtk-demo
 
 # fix for 'only weak aliases are supported on darwin' error
 CONFIGURE_ARGS.Darwin+=	--disable-visibility
@@ -90,7 +89,7 @@ post-install:
 	${RM} -f ${DESTDIR}${GTK_IMMODULES_DB}
 
 FILES_SUBST+=		GTK_UPDATE_ICON_CACHE="${PREFIX}/bin/gtk2-update-icon-cache"
-FILES_SUBST+=		ICON_THEME_DIR="${LOCALBASE}/share/icons"
+FILES_SUBST+=		ICON_THEME_DIR="${PREFIX}/share/icons"
 INSTALL_TEMPLATES+=	../../x11/gtk2/files/icon-cache.tmpl
 
 _BUILDING_GTK2=	yes
