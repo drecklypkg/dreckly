@@ -334,9 +334,7 @@ MAKEFLAGS+=	_CC=${_CC:Q}
 #
 _GCC_VERSION_STRING!=	\
 	( env LC_ALL=C ${_CC} -v 2>&1 | ${GREP} 'gcc version') 2>/dev/null || ${ECHO} 0
-.  if !empty(_GCC_VERSION_STRING:Megcs*)
-_GCC_VERSION=	2.8.1		# egcs is considered to be gcc-2.8.1.
-.  elif !empty(_GCC_VERSION_STRING:Mgcc*)
+.  if !empty(_GCC_VERSION_STRING:Mgcc*)
 _GCC_VERSION!=	${_CC} -dumpversion
 .  else
 _GCC_VERSION=	0
