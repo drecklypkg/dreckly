@@ -1229,7 +1229,6 @@ SUBDIR+=	ocaml-hxd
 SUBDIR+=	ocaml-int_repr
 SUBDIR+=	ocaml-intrinsics
 SUBDIR+=	ocaml-jane-street-headers
-SUBDIR+=	ocaml-js-build-tools
 SUBDIR+=	ocaml-jst-config
 SUBDIR+=	ocaml-ke
 SUBDIR+=	ocaml-logs
