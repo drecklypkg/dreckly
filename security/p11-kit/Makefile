@@ -17,7 +17,6 @@ DEPENDS+=	mozilla-rootcerts>=1.0.20150804nb1:../../security/mozilla-rootcerts
 
 MESON_ARGS+=	-Dtrust_paths=${PREFIX}/share/mozilla-rootcerts/cacert.pem
 
-USE_CC_FEATURES=	c99
 USE_FEATURES+=		strndup strnlen
 USE_LANGUAGES=		c
 USE_TOOLS+=		msgfmt pkg-config readlink
@@ -27,6 +26,9 @@ CFLAGS.NetBSD+=	-D_NETBSD_SOURCE
 
 # reallocarray(3)
 CFLAGS.NetBSD+=	-D_OPENBSD_SOURCE
+
+# issetugid(2)
+CFLAGS.OpenBSD+=	-D_BSD_SOURCE
 
 CFLAGS.SunOS+=	-D_POSIX_PTHREAD_SEMANTICS -D__EXTENSIONS__
 LDFLAGS.SunOS+=	-lsocket -lnsl
@@ -44,10 +46,16 @@ CONF_FILES+=		share/examples/p11-kit/pkcs11.conf.example \
 
 INSTALLATION_DIRS+=	share/examples/p11-kit
 
+PTHREAD_OPTS=		require
+PTHREAD_AUTO_VARS=	yes
+
+.include "../../mk/pthread.buildlink3.mk"
+
 post-install:
 	${MV} ${DESTDIR}${PKG_SYSCONFDIR}/pkcs11/pkcs11.conf.example \
 		${DESTDIR}${PREFIX}/share/examples/p11-kit
 
+.include "options.mk"
 .include "../../devel/gettext-lib/buildlink3.mk"
 .include "../../devel/libffi/buildlink3.mk"
 .include "../../devel/meson/build.mk"

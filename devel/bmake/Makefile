@@ -1,6 +1,7 @@
 # $NetBSD: Makefile,v 1.82 2024/09/17 11:52:26 jperkin Exp $
 
 PKGNAME=	bmake-20240909
+PKGREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	https://www.crufty.net/ftp/pub/sjg/
 
@@ -36,7 +37,7 @@ CONFIGURE_ARGS+=	--with-defshell=${PREFIX}/bin/mksh
 .elif ${TOOLS_PLATFORM.sh:M?*/bin/pdksh}
 DEPENDS+=		pdksh-[0-9]*:../../shells/pdksh
 CONFIGURE_ARGS+=	--with-defshell=${PREFIX}/bin/pdksh
-.elif ${OPSYS} == "SunOS" && exists(/usr/bin/bash)
+.elif (${OPSYS} == "SunOS" || ${OPSYS} == "UnixWare") && exists(/usr/bin/bash)
 CONFIGURE_ARGS+=	--with-defshell=/usr/bin/bash
 .endif
 

@@ -900,6 +900,7 @@ retry_mode:
 			    (a >> 8) & 0xff, a & 0xff,
 			    (p >> 8) & 0xff, p & 0xff);
 			break;
+#ifdef INET6
 		case AF_INET6:
 			e = -1;
 			u.sin6.sin6_scope_id = 0;
@@ -929,6 +930,7 @@ retry_mode:
 				    2, port >> 8, port & 0xff);
 			}
 			break;
+#endif
 		default:
 			e = FTP_PROTOCOL_ERROR; /* XXX: error code should be prepared */
 			goto ouch;

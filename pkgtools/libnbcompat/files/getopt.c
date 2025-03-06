@@ -58,11 +58,25 @@ __weak_alias(getopt,_getopt)
 #endif
 #endif
 
-int	opterr = 1,		/* if error message should be printed */
-	optind = 1,		/* index into parent argv vector */
-	optopt,			/* character checked for validity */
-	optreset;		/* reset getopt */
+#if !HAVE_DECL_OPTERR
+int	opterr = 1;		/* if error message should be printed */
+#endif
+
+#if !HAVE_DECL_OPTIND
+int	optind = 1;		/* index into parent argv vector */
+#endif
+
+#if !HAVE_DECL_OPTOPT
+int	optopt;			/* character checked for validity */
+#endif
+
+#if !HAVE_DECL_OPTRESET
+int	optreset;		/* reset getopt */
+#endif
+
+#if !HAVE_DECL_OPTARG
 char	*optarg;		/* argument associated with option */
+#endif
 
 #define	BADCH	(int)'?'
 #define	BADARG	(int)':'
