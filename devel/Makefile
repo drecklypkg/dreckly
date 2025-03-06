@@ -633,7 +633,6 @@ SUBDIR+=	hs-hashable
 SUBDIR+=	hs-hashtables
 SUBDIR+=	hs-haskell-lexer
 SUBDIR+=	hs-haskell-src-exts
-SUBDIR+=	hs-heapsize
 SUBDIR+=	hs-hfsevents
 SUBDIR+=	hs-hie-bios
 SUBDIR+=	hs-hie-compat
