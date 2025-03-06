@@ -609,7 +609,6 @@ SUBDIR+=	hs-filtrable
 SUBDIR+=	hs-fingertree
 SUBDIR+=	hs-fmlist
 SUBDIR+=	hs-focus
-SUBDIR+=	hs-foldable1-classes-compat
 SUBDIR+=	hs-foldl
 SUBDIR+=	hs-foundation
 SUBDIR+=	hs-fsnotify
