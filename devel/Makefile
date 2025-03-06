@@ -1201,7 +1201,6 @@ SUBDIR+=	ocaml-bigarray-compat
 SUBDIR+=	ocaml-bigstringaf
 SUBDIR+=	ocaml-bin_prot
 SUBDIR+=	ocaml-biniou
-SUBDIR+=	ocaml-bos
 SUBDIR+=	ocaml-checkseum
 SUBDIR+=	ocaml-cmdliner
 SUBDIR+=	ocaml-compiler-libs
