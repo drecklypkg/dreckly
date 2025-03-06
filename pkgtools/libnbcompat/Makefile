@@ -5,7 +5,7 @@
 #	list of tested and supported platforms.
 #
 
-PKGNAME=		libnbcompat-20240805
+PKGNAME=		libnbcompat-20250303
 CATEGORIES=		pkgtools devel
 
 MAINTAINER=		pkgsrc-users@NetBSD.org

@@ -1,5 +1,7 @@
 $NetBSD: patch-aj,v 1.14 2010/11/15 18:28:45 drochner Exp $
 
+Disable building of tests, etc.
+
 --- Makefile.in.orig	2010-09-23 14:27:26.000000000 +0000
 +++ Makefile.in
 @@ -458,7 +458,7 @@ XVFB_START = \
@@ -7,7 +9,7 @@ $NetBSD: patch-aj,v 1.14 2010/11/15 18:28:45 drochner Exp $
  	&& DISPLAY=:$$XID && export DISPLAY
  
 -SRC_SUBDIRS = gdk gtk modules demos tests perf
-+SRC_SUBDIRS = gdk gtk modules demos
++SRC_SUBDIRS = gdk gtk modules
  SUBDIRS = po po-properties $(SRC_SUBDIRS) docs m4macros build
  
  # require automake 1.4

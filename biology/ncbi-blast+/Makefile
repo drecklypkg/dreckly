@@ -1,8 +1,7 @@
-# $NetBSD: Makefile,v 1.46 2024/11/14 22:18:47 wiz Exp $
+# $NetBSD: Makefile,v 1.38 2023/08/14 05:23:51 wiz Exp $
 
-DISTNAME=	ncbi-blast-2.14.1+-src
+DISTNAME=	ncbi-blast-2.16.0+-src
 PKGNAME=	${DISTNAME:S/+-src//:S/blast/blast+/}
-PKGREVISION=	7
 CATEGORIES=	biology
 MASTER_SITES=	https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ \
 		https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/${PKGVERSION_NOREV}/
@@ -26,6 +25,24 @@ SUBST_SED.configure+=	-e '/--infodir=DIR/d'
 SUBST_SED.configure+=	-e '/--mandir=DIR/d'
 SUBST_FILES.configure+=	src/build-system/configure
 
+# Build system attempts to access NCBI file server paths such as
+# /net/snowman in many places.  :-/
+# This causes NFS timeouts if autofs is enabled.
+SUBST_CLASSES+=		ncbi
+SUBST_STAGE.ncbi=	pre-configure
+SUBST_SED.ncbi=		-e 's|/net/|/nonexistent/net/|g'
+# `fgrep -rl /net/ work` minus obvious Xcode and VS files
+SUBST_FILES.ncbi+=	${WRKSRC}/include/sra/readers/ncbi_traces_path.hpp
+SUBST_FILES.ncbi+=	${WRKSRC}/scripts/common/impl/create_flat_makefile.sh
+SUBST_FILES.ncbi+=	${WRKSRC}/src/objects/genomecoll/gc_cli/Makefile.in
+SUBST_FILES.ncbi+=	${WRKSRC}/src/objtools/blast/seqdb_reader/configuration.txt
+SUBST_FILES.ncbi+=	${WRKSRC}/src/objtools/align_format/unit_test/data/large_gi.asn
+SUBST_FILES.ncbi+=	${WRKSRC}/src/build-system/project_tree_builder.ini
+SUBST_FILES.ncbi+=	${WRKSRC}/src/build-system/cmake/CMake.NCBIptb.datatool.cmake
+SUBST_FILES.ncbi+=	${WRKSRC}/src/build-system/new_module.sh.in
+SUBST_FILES.ncbi+=	${WRKSRC}/src/build-system/Makefile.meta_l
+SUBST_FILES.ncbi+=	${WRKSRC}/src/build-system/config.site.ncbi
+
 USE_TOOLS+=		bash gmake perl
 USE_LANGUAGES=		c c++
 GNU_CONFIGURE=		yes
@@ -44,6 +61,8 @@ CONFIGURE_ENV=		ncbi_cv_prog_amq_w=no
 CONFIGURE_ARGS+=	AR="ar cr" --without-boost
 # pkglint warning, but build fails on NetBSD without it
 CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib/ncbi-tools++
+# configure script and build system disagree about sse42 on AMD Phenom
+CONFIGURE_ARGS+=	--without-sse42
 WRKSRC=			${WRKDIR}/${DISTNAME}/c++
 
 .include "../../mk/bsd.prefs.mk"

@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.241 2024/03/12 23:22:35 snj Exp $
+# $NetBSD: Makefile,v 1.243 2025/02/18 11:26:48 wiz Exp $
 
 # Notes to package maintainers:
 #

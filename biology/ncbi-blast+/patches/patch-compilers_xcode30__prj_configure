@@ -1,4 +1,4 @@
-$NetBSD: patch-compilers_xcode30__prj_configure,v 1.2 2023/09/14 00:39:17 bacon Exp $
+$NetBSD$
 
 # Nonportable extension
 
