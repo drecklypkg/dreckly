@@ -1197,7 +1197,6 @@ SUBDIR+=	ocaml-base
 SUBDIR+=	ocaml-base64
 SUBDIR+=	ocaml-base_bigstring
 SUBDIR+=	ocaml-base_quickcheck
-SUBDIR+=	ocaml-batteries
 SUBDIR+=	ocaml-bigarray-compat
 SUBDIR+=	ocaml-bigstringaf
 SUBDIR+=	ocaml-bin_prot
