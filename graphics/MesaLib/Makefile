@@ -37,7 +37,7 @@ MESA_PLATFORMS=		#
 # we currently lack a way to test linker version.
 # Fixed upstream after 23.3.
 # See https://bugs.gentoo.org/914905
-.if ${OPSYS} != "SunOS" && ${PKGSRC_COMPILER:M*clang*}
+.if ${OPSYS} != "SunOS" && ${OPSYS} != "Darwin" && ${PKGSRC_COMPILER:M*clang*}
 LDFLAGS+=	-Wl,--undefined-version
 .endif
 
