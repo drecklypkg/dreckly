@@ -119,7 +119,6 @@ SUBDIR+=	go122
 SUBDIR+=	go123
 SUBDIR+=	go14
 SUBDIR+=	goplus
-SUBDIR+=	gpc
 SUBDIR+=	gprolog
 SUBDIR+=	guile18
 SUBDIR+=	guile20
