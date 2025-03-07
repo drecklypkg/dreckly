@@ -1,5 +1,7 @@
 $NetBSD: patch-src_node__postmortem__metadata.cc,v 1.1 2024/11/13 08:45:18 adam Exp $
 
+Fix build issues (XXX still required?)
+
 --- src/node_postmortem_metadata.cc.orig	2018-03-23 20:05:49.909811719 +0000
 +++ src/node_postmortem_metadata.cc
 @@ -11,6 +11,10 @@
