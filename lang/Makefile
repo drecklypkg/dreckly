@@ -84,7 +84,6 @@ SUBDIR+=	gcc13-libs
 SUBDIR+=	gcc14
 SUBDIR+=	gcc14-libjit
 SUBDIR+=	gcc14-libs
-SUBDIR+=	gcc2
 SUBDIR+=	gcc5-aux
 SUBDIR+=	gcc6
 SUBDIR+=	gcc6-aux
