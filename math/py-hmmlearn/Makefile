@@ -1,6 +1,6 @@
-# $NetBSD: Makefile,v 1.7 2024/11/11 07:28:41 wiz Exp $
+# $NetBSD: Makefile,v 1.2 2024/01/02 10:54:57 jperkin Exp $
 
-DISTNAME=	hmmlearn-0.3.2
+DISTNAME=	hmmlearn-0.3.3
 PKGNAME=	${PYPKGPREFIX}-${DISTNAME}
 CATEGORIES=	math python
 MASTER_SITES=	${MASTER_SITE_PYPI:=h/hmmlearn/}
@@ -11,6 +11,7 @@ COMMENT=	Algorithms for inference of Hidden Markov Models
 LICENSE=	modified-bsd
 
 TOOL_DEPENDS+=	${PYPKGPREFIX}-setuptools_scm-[0-9]*:../../devel/py-setuptools_scm
+TOOL_DEPENDS+=	${PYPKGPREFIX}-wheel-[0-9]*:../../devel/py-wheel
 DEPENDS+=	${PYPKGPREFIX}-scikit-learn>=0.16:../../math/py-scikit-learn
 DEPENDS+=	${PYPKGPREFIX}-matplotlib>0:../../graphics/py-matplotlib
 DEPENDS+=	${PYPKGPREFIX}-scipy>0.19:../../math/py-scipy
@@ -18,7 +19,7 @@ TEST_DEPENDS+=	${PYPKGPREFIX}-test>=5.4.1:../../devel/py-test
 
 USE_LANGUAGES=	c c++
 
-PYTHON_VERSIONS_INCOMPATIBLE=	39
+PYTHON_VERSIONS_INCOMPATIBLE=	27 39
 
 # hmmlearn-0.3.2: Some tests still fail
 do-test:
