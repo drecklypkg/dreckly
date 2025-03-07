@@ -83,7 +83,6 @@ _DEF_VARS.gcc=	\
 	_GCC_PKGBASE _GCC_PKGSRCDIR _GCC_PKG_SATISFIES_DEP \
 	_GCC_PREFIX _GCC_REQD _GCC_STRICTEST_REQD _GCC_SUBPREFIX \
 	_GCC_TEST_DEPENDS _GCC_NEEDS_A_FORTRAN _GCC_VARS _GCC_VERSION \
-	_GCC_VERSION_STRING \
 	_GCC_ADA _GCC_GMK _GCC_GLK _GCC_GBD _GCC_CHP _GCC_GLS _GCC_GNT _GCC_PRP \
 	_IGNORE_GCC \
 	_IS_BUILTIN_GCC \
@@ -322,19 +321,7 @@ MAKEFLAGS+=	_CC=${_CC:Q}
 .endif
 
 .if !defined(_GCC_VERSION)
-#
-# FIXME: Ideally we'd use PKGSRC_SETENV here, but not enough of the tools
-# infrastructure is loaded for SETENV to be defined when mk/compiler.mk is
-# included first.  LC_ALL is required here for similar reasons, as ALL_ENV
-# is not defined at this stage.
-#
-_GCC_VERSION_STRING!=	\
-	( env LC_ALL=C ${_CC} -v 2>&1 | ${GREP} 'gcc version') 2>/dev/null || ${ECHO} 0
-.  if !empty(_GCC_VERSION_STRING:Mgcc*)
-_GCC_VERSION!=	${_CC} -dumpversion
-.  else
-_GCC_VERSION=	0
-.  endif
+_GCC_VERSION!=	${_CC} -dumpversion 2>/dev/null || ${ECHO} 0
 .endif
 _GCC_PKG=	gcc-${_GCC_VERSION:C/-.*$//}
 
