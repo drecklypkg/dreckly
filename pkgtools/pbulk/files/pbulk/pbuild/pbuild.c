@@ -121,9 +121,7 @@ main(int argc, char **argv)
 		usage();
 	}
 
-#if !defined(__INTERIX)
 	sa.sa_sigaction = NULL;
-#endif
 	sa.sa_handler = SIG_IGN;
 	sa.sa_flags = 0;
 	(void)sigemptyset(&sa.sa_mask);
@@ -215,9 +213,7 @@ build_package(const char *build_info, size_t len)
 	}
 
 	/* Reset SIGPIPE handling for child */
-#if !defined(__INTERIX)
 	sa.sa_sigaction = NULL;
-#endif
 	sa.sa_handler = SIG_DFL;
 	sa.sa_flags = 0;
 	(void)sigemptyset(&sa.sa_mask);
