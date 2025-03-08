@@ -43,11 +43,7 @@ CHECK_PERMS?=		no
 CHECK_PERMS_SKIP?=	# none
 CHECK_PERMS_AUTOFIX?=	no
 
-# The checkperms command does not yet support Interix with the -c flag.
-# See PR 34968.
-.if !empty(MACHINE_PLATFORM:MInterix-*-*)
-_CHECK_PERMS_FLAGS=
-.elif !empty(CHECK_PERMS_AUTOFIX:M[Yy][Ee][Ss])
+.if !empty(CHECK_PERMS_AUTOFIX:M[Yy][Ee][Ss])
 _CHECK_PERMS_FLAGS=	-cff
 .else
 _CHECK_PERMS_FLAGS=	-c

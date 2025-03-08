@@ -8,6 +8,9 @@
 .if !defined(_RUBY_PLATFORM_MK)
 _RUBY_PLATFORM_MK=	# defined
 
+USE_TOOLS+=	gmake
+MAKE_FILE=	GNUmakefile
+
 .include "../../lang/ruby/rubyversion.mk"
 .include "../../mk/compiler.mk"
 
@@ -35,16 +38,6 @@ FILES_SUBST+=	DATE=${DATE:Q}
 
 REQD_DIRS+=	${GEM_HOME}/cache
 REQD_DIRS+=	${GEM_HOME}/doc
-
-#
-# substitute path in rubygems.
-#
-SUBST_CLASSES+=		conf
-SUBST_STAGE.conf=	pre-install
-SUBST_FILES.conf=	lib/rubygems/config_file.rb
-SUBST_VARS.conf=	PKG_SYSCONFDIR
-SUBST_MESSAGE.conf=	Fixing configuration files.
-SUBST_NOOP_OK.conf=	yes # not needed for ruby-base>=2.6
 
 #
 # Don't reference pkgsrc's INSTALL macro since Ruby expects it could
@@ -157,13 +150,6 @@ post-wrapper:
 		> "${WRAPPER_BINDIR}/dtrace"
 	${RUN}${CHMOD} +x "${WRAPPER_BINDIR}/dtrace"
 .endif
-#
-# bmake doesn't like the codesign/POSTLINK constructs for Darwin.
-#
-.if ${OPSYS} == "Cygwin" || ${OPSYS} == "Darwin"
-USE_TOOLS+=	gmake
-MAKE_FILE=	GNUmakefile
-.endif
 
 ########
 #
@@ -185,4 +171,4 @@ PLIST_VARS+=	io
 PLIST.io=	yes
 .endif
 
-.endif # _RUBY_REPLACE_MK
+.endif # _RUBY_PLATFORM_MK

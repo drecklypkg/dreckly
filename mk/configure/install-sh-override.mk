@@ -4,8 +4,7 @@
 ### install-sh-override (PRIVATE)
 ######################################################################
 ### install-sh-override replace any existing install-sh under
-### ${WRKSRC} with the version from sysutils/install-sh, which works
-### on all pkgsrc platforms, in particular Interix.
+### ${WRKSRC} with the version from sysutils/install-sh
 ###
 do-configure-pre-hook: install-sh-override
 

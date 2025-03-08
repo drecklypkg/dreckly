@@ -863,7 +863,6 @@ SUBDIR+=	usbhid-dump
 SUBDIR+=	usbutil
 SUBDIR+=	user_cygwin
 SUBDIR+=	user_darwin
-SUBDIR+=	user_interix
 SUBDIR+=	user_irix
 SUBDIR+=	vbetool
 SUBDIR+=	vcdimager

@@ -109,9 +109,7 @@ main(int argc, char **argv)
 		}
 	}
 
-#if !defined(__INTERIX)
 	sa.sa_sigaction = NULL;
-#endif
 	sa.sa_handler = SIG_IGN;
 	sa.sa_flags = 0;
 	(void)sigemptyset(&sa.sa_mask);

@@ -84,15 +84,6 @@ BUILTIN_LIBNAME.ncurses=	ncurses
 .elif ${BUILTIN_LIB_FOUND.curses:U:tl} == yes
 BUILTIN_LIBNAME.ncurses=	curses
 .endif
-#
-# On Interix, there is a libncurses.a and a libcurses.so but strangely,
-# no libncurses.so.  We want to link against the shared library, so
-# turn "-lncurses" into "-lcurses".
-#
-.if (${OPSYS} == "Interix") && \
-    ${BUILTIN_LIB_FOUND.curses:U:tl} == yes
-BUILTIN_LIBNAME.ncurses=	curses
-.endif
 
 ###
 ### The section below only applies if we are not including this file

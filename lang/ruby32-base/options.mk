@@ -4,11 +4,13 @@ PKG_OPTIONS_VAR=	PKG_OPTIONS.ruby
 PKG_SUPPORTED_OPTIONS=	ruby-build-ri-db ruby-yjit
 PKG_SUGGESTED_OPTIONS=	ruby-build-ri-db
 
-.for a in x86_64 aarch64 aarch64eb
-.  if ${a} == ${MACHINE_ARCH}
+JIT_PLATFORMS=	aarch64 aarch64eb x86_64
+
+.include "../../lang/rust/platform.mk"
+
+.if ${PLATFORM_SUPPORTS_RUST:tl} == "yes" && ${JIT_PLATFORMS:M${MACHINE_ARCH}}
 PKG_SUGGESTED_OPTIONS+=	ruby-yjit
-.  endif
-.endfor
+.endif
 
 .include "../../mk/bsd.options.mk"
 

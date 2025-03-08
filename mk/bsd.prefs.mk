@@ -217,22 +217,6 @@ NATIVE_LOWER_OPSYS?=		haiku
 NATIVE_LOWER_VENDOR?=		pc
 .  endif
 
-.elif ${NATIVE_OPSYS} == "Interix"
-NATIVE_LOWER_OPSYS?=		interix
-NATIVE_LOWER_VENDOR?=		pc
-.  if exists(/usr/lib/libc.so.5.2) || exists(/usr/lib/x86/libc.so.5.2)
-NATIVE_LOWER_OPSYS_VERSUFFIX=	${NATIVE_OS_VERSION:C/([0-9]*).*/\1/}
-.  else
-NATIVE_LOWER_OPSYS_VERSUFFIX?=	3
-.    if exists(/usr/lib/libc.so.3.5)
-NATIVE_OS_VERSION=		3.5
-.    elif exists(/usr/lib/libc.so.3.1)
-NATIVE_OS_VERSION=		3.1
-.    else
-NATIVE_OS_VERSION=		3.0
-.    endif
-.  endif
-
 .elif ${NATIVE_OPSYS} == "MirBSD"
 NATIVE_LOWER_OPSYS?=		mirbsd
 NATIVE_LOWER_OPSYS_VERSUFFIX=	${NATIVE_OS_VERSION}
