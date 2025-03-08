@@ -14,7 +14,7 @@ LICENSE=	2-clause-bsd
 # fido2 keys are the typical approach and thus far the package does
 # not support that option.
 BROKEN_EXCEPT_ON_PLATFORM+=	Darwin-*-*
-BROKEN_EXCEPT_ON_PLATFORM+=	FreeBSD-*-* MidnightBSD-*-*
+BROKEN_EXCEPT_ON_PLATFORM+=	FreeBSD-*-*
 BROKEN_EXCEPT_ON_PLATFORM+=	Linux-*-*
 BROKEN_EXCEPT_ON_PLATFORM+=	NetBSD-*-*
 BROKEN_EXCEPT_ON_PLATFORM+=	OpenBSD-*-*
