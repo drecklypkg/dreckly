@@ -1,7 +1,7 @@
-# $NetBSD: Makefile,v 1.9 2024/11/11 07:27:53 wiz Exp $
+# $NetBSD$
 
 DISTNAME=	macs-${PKGVERSION_NOREV}
-PKGNAME=	${PYPKGPREFIX}-macs3-3.0.2
+PKGNAME=	${PYPKGPREFIX}-macs3-3.0.3
 CATEGORIES=	biology
 MASTER_SITES=	${MASTER_SITE_GITHUB:=macs3-project/}
 GITHUB_PROJECT=	MACS
@@ -13,6 +13,7 @@ COMMENT=	Peak caller aimed at transcription factor binding sites
 LICENSE=	modified-bsd
 
 TOOL_DEPENDS+=	${PYPKGPREFIX}-setuptools>=0:../../devel/py-setuptools
+TOOL_DEPENDS+=	${PYPKGPREFIX}-wheel>=0:../../devel/py-wheel
 DEPENDS+=	${PYPKGPREFIX}-scipy>=1.11.1:../../math/py-scipy
 # cykhash>=2.0,<3.0
 DEPENDS+=	${PYPKGPREFIX}-cykhash>=2.0:../../devel/py-cykhash
