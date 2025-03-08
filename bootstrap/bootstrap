@@ -640,10 +640,6 @@ FreeBSD)
 	machine_arch=`uname -p`
 	check_compiler=yes
 	;;
-FreeMiNT)
-	root_group=root
-	machine_arch=m68k
-	;;
 GNUkFreeBSD)
 	root_group=root
 	need_awk=yes
