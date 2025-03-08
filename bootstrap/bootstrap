@@ -725,11 +725,6 @@ Linux)
 	ppc64le)	machine_arch=powerpc64le ;;
 	esac
 	;;
-MidnightBSD)
-	root_group=wheel
-	machine_arch=`uname -p`
-	check_compiler=yes
-	;;
 Minix)
 	root_group=wheel
 	machine_arch=`uname -p`
