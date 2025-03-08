@@ -1242,11 +1242,6 @@ _GCC_NEEDS_A_FORTRAN=	yes
 .  include "../../mk/compiler/${PKGSRC_FORTRAN}.mk"
 .endif
 
-.if ${OPSYS} == "Interix" && !empty(_GCCBINDIR:M/opt/gcc.*)
-COMPILER_INCLUDE_DIRS=	${_GCCBINDIR:H}/include ${_OPSYS_INCLUDE_DIRS}
-COMPILER_LIB_DIRS=	${_GCCBINDIR:H}/lib ${_OPSYS_LIB_DIRS}
-.endif
-
 #.READONLY: GCC_REQD
 _GCC_REQD_EFFECTIVE:=	${GCC_REQD}
 

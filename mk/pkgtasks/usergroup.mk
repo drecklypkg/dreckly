@@ -141,14 +141,6 @@ PKG_USERS+=	${GAMES_USER}:${GAMES_GROUP}
 _BUILD_DEFS+=	GAMES_GROUP GAMES_USER GAMEDATAMODE GAMEDIRMODE GAMEMODE
 .endif
 
-.if !defined(OPSYS) && !empty(OPSYS:MInterix)
-.  for _user_ in ${PKG_USERS:C/\\\\//g:C/:.*//}
-.    if !empty(PKG_GROUPS:M${_user_})
-PKG_FAIL_REASON+=	"User and group '${_user_}' cannot be the same name on Interix".
-.    endif
-.  endfor
-.endif
-
 # Trigger dependency on pkgtasks if needed.
 _PKGTASKS_DATAVARS.groups=	PKG_GROUPS
 _PKGTASKS_DATAVARS.users=	PKG_USERS

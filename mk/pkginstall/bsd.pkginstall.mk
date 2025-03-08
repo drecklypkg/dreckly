@@ -219,20 +219,6 @@ PKG_USERS+=	${GAMES_USER}:${GAMES_GROUP}
 _BUILD_DEFS+=	GAMES_GROUP GAMES_USER GAMEDATAMODE GAMEDIRMODE GAMEMODE
 .endif
 
-# Interix is very special in that users and groups cannot have the
-# same name.  Interix.mk tries to work around this by overriding
-# some specific package defaults.  If we get here and there's still a
-# conflict, add a breakage indicator to make sure the package won't
-# compile without changing something.
-#
-.if !empty(OPSYS:MInterix)
-.  for user in ${PKG_USERS:C/\\\\//g:C/:.*//}
-.    if !empty(PKG_GROUPS:M${user})
-PKG_FAIL_REASON+=	"User and group '${user}' cannot have the same name on Interix"
-.    endif
-.  endfor
-.endif
-
 .if !empty(PKG_USERS) || !empty(PKG_GROUPS)
 DEPENDS+=		${_USER_DEPENDS}
 .endif

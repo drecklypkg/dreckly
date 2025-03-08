@@ -671,34 +671,6 @@ HPUX)
 	need_sed=yes
 	machine_arch=`uname -m | sed 's/^9000.*$/hppa/'`
 	;;
-Interix)
-	is_root () {
-		if id -G | grep -q 131616; then
-			return 0
-		fi
-		return 1
-	}
-	mkdir_p () {
-		mkdir -p "$@" # allows umask to take effect
-	}
-	default_install_mode=0775
-	root_user=`id -un`
-	root_group=+Administrators
-	case `uname -r` in
-	3.* | 5.*)
-		need_bsd_install=yes
-		need_awk=yes
-		need_sed=yes
-		need_xargs=yes
-		;;
-	esac
-	# only used for unprivileged builds
-	groupsprog="id -gn"
-	# for bootstrap only; pkgsrc uses CPPFLAGS
-	CC="gcc -D_ALL_SOURCE"; export CC
-	ac_cv_header_poll_h=no; export ac_cv_header_poll_h
-	ac_cv_func_poll=no; export ac_cv_func_poll
-	;;
 IRIX*)
 	if [ -d "/usr/freeware/bin" ]; then
 		overpath="/usr/freeware/bin:$overpath"
