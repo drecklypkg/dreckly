@@ -1,8 +1,10 @@
-$NetBSD: patch-mozilla_js_src_threading_posix_Thread.cpp,v 1.2 2021/02/08 12:26:20 ryoon Exp $
+$NetBSD$
 
---- js/src/threading/posix/Thread.cpp.orig	2020-02-17 23:37:55.000000000 +0000
+Solaris does not have pthread_setname_np.
+
+--- js/src/threading/posix/Thread.cpp.orig	2025-03-07 15:44:29.108090407 +0000
 +++ js/src/threading/posix/Thread.cpp
-@@ -161,6 +161,8 @@ js::ThisThread::SetName(const char* name
+@@ -194,6 +194,8 @@ js::ThisThread::SetName(const char* name
    rv = 0;
  #elif defined(__NetBSD__)
    rv = pthread_setname_np(pthread_self(), "%s", (void*)name);
