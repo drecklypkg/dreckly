@@ -201,5 +201,5 @@ FILES_SUBST+=	UNAME=${UNAME:Q}
 # Variables for addgroup/adduser programs used by pkgtasks.
 FILES_SUBST+=	GROUPADD=${GROUPADD:Q}
 FILES_SUBST+=	PW=${PW:Q}		# DragonFly, FreeBSD
-FILES_SUBST+=	PWD_MKDB=${PWD_MKDB:Q}	# MirBSD
+FILES_SUBST+=	PWD_MKDB=${PWD_MKDB:Q}
 FILES_SUBST+=	USERADD=${USERADD:Q}
