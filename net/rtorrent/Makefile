@@ -1,14 +1,13 @@
 # $NetBSD: Makefile,v 1.99 2024/11/14 22:21:16 wiz Exp $
 
-DISTNAME=	rtorrent-0.10.0
-PKGREVISION=	3
+DISTNAME=	rtorrent-0.15.1
 CATEGORIES=	net
 MASTER_SITES=	${MASTER_SITE_GITHUB:=rakshasa/}
 GITHUB_RELEASE=	v${PKGVERSION_NOREV}
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	https://github.com/rakshasa/rtorrent
-COMMENT=	Ncurses based torrent client with support for sessions
+COMMENT=	Console-based BitTorrent client
 LICENSE=	gnu-gpl-v2
 
 USE_LANGUAGES=		c c++
@@ -17,17 +16,9 @@ USE_LIBTOOL=		yes
 USE_TOOLS+=		gmake pkg-config
 GNU_CONFIGURE=		yes
 
-.include "../../mk/pthread.buildlink3.mk"
-LDFLAGS+=	${PTHREAD_LDFLAGS}
-
 .include "options.mk"
 
-# See http://libtorrent.rakshasa.no/ticket/77
 .include "../../mk/compiler.mk"
-.if ${CC_VERSION:Mgcc-4.0.*}
-CXXFLAGS+=	-fpermissive -fno-strength-reduce -fno-thread-jumps \
-		-fno-inline -fforce-addr
-.endif
 
 .if ${CC_VERSION:Mgcc-*} && !empty(MACHINE_ARCH:Mi?86)
 CXXFLAGS+=	-march=i486
@@ -49,4 +40,5 @@ post-install:
 .include "../../devel/ncurses/buildlink3.mk"
 .include "../../net/libtorrent/buildlink3.mk"
 .include "../../www/curl/buildlink3.mk"
+.include "../../mk/pthread.buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
