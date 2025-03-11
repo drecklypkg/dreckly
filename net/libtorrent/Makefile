@@ -11,11 +11,11 @@ COMMENT=	BitTorrent library written in C++
 LICENSE=	gnu-gpl-v2
 
 USE_LANGUAGES=		c c++
+USE_CXX_FEATURES+=	c++14
 USE_LIBTOOL=		yes
 USE_TOOLS+=		autoconf automake autoreconf gmake pkg-config
-USE_CXX_FEATURES+=	c++11
-GNU_CONFIGURE=		yes
 
+GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--disable-debug
 
 pre-configure:
