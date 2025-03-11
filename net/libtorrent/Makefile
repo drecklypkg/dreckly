@@ -18,6 +18,8 @@ USE_TOOLS+=		autoconf automake autoreconf gmake pkg-config
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--disable-debug
 
+CONFIGURE_ARGS.OpenBSD+=	--disable-mincore
+
 pre-configure:
 	${RUN} cd ${WRKSRC} && autoreconf -fiv
 
