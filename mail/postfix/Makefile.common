@@ -52,6 +52,14 @@ AUXLIBS+=	${BDB_LIBS}
 CCARGS+=	-DNO_NIS
 .endif
 
+.if ${OPSYS} == "OpenBSD"
+PLIST_SUBST+=		SO_EXT="so.1.0"
+PRINT_PLIST_AWK+=	{ gsub(/\.so.1.0/, ".$${SOEXT}"); }
+.else
+PLIST_SUBST+=		SO_EXT="so"
+PRINT_PLIST_AWK+=	{ gsub(/\.so/, ".$${SOEXT}"); }
+.endif
+
 # Disable modules by default
 .for module in cdb ldap lmdb mysql pcre pgsql sqlite
 CCARGS+=	-DNO_${module:tu}
