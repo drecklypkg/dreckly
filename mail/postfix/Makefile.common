@@ -47,6 +47,11 @@ CCARGS+=	-DUSE_SASL_AUTH
 CCARGS+=	-DHAS_DB
 AUXLIBS+=	${BDB_LIBS}
 
+# Support for NIS is unavailable on some recent Linux distributions.
+.if ${OPSYS} == "Linux"
+CCARGS+=	-DNO_NIS
+.endif
+
 # Disable modules by default
 .for module in cdb ldap lmdb mysql pcre pgsql sqlite
 CCARGS+=	-DNO_${module:tu}
