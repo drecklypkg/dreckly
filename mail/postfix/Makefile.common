@@ -2,9 +2,12 @@
 # used by mail/postfix/Makefile
 # used by mail/postfix/Makefile.module
 
-DISTNAME=	postfix-3.9.2
+DISTNAME=	postfix-3.9.3
 CATEGORIES=	mail
-MASTER_SITES=	ftp://ftp.porcupine.org/mirrors/postfix-release/official/
+MASTER_SITES=	https://ftp.fu-berlin.de/unix/mail/postfix/official/
+MASTER_SITES+=	https://ghostarchive.org/postfix/postfix-release/official/
+MASTER_SITES+=	https://linorg.usp.br/postfix/release/official/
+MASTER_SITES+=	ftp://ftp.porcupine.org/mirrors/postfix-release/official/
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	http://www.postfix.org/
