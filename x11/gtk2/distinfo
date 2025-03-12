@@ -6,6 +6,7 @@ Size (gtk+-2.24.33.tar.xz) = 12661828 bytes
 SHA1 (patch-ab) = 9c82cc60f3825d377a197c876fcc6faa379cbde3
 SHA1 (patch-af) = d59414e24a7da7f8694dbefbd2f0c2c2b60ec5ad
 SHA1 (patch-aj) = 0151a80e76df86b04bc137917fe12102065c92bd
+SHA1 (patch-gtk_Makefile.in) = 06cb006a5f8e1d6f7edbfa63e32588b8b5e25a40
 SHA1 (patch-gtk_gtkfilechooserdefault.c) = f690f3a8c3066e49e8184fb096f5dd74e5a93f33
 SHA1 (patch-gtk_gtkfilesystemmodel.c) = 5a70efa956be67b8d9b4a5b79147003988c4befd
 SHA1 (patch-gtk_gtkpathbar.c) = 7e5c4186bd9533cb096f5331e3eb7193222b47b3
