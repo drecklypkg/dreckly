@@ -30,7 +30,6 @@ PYTHON_VERSIONS_INCOMPATIBLE=	27
 
 # enormous programs
 DEPENDS+=	thunderbird-[0-9]*:../../mail/thunderbird
-DEPENDS+=	firefox-[0-9]*:../../www/firefox
 DEPENDS+=	firefox-esr-[0-9]*:../../www/firefox-esr
 
 # moderate programs
