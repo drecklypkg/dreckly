@@ -1,6 +1,10 @@
-$NetBSD: patch-dom_webtransport_api_WebTransportDatagramDuplexStream.cpp,v 1.1 2024/08/18 15:02:20 leot Exp $
+$NetBSD$
 
---- dom/webtransport/api/WebTransportDatagramDuplexStream.cpp.orig	2023-04-23 21:17:18.000000000 +0000
+Found on NetBSD 10:
+
+error: 'isnan' was not declared in this scope; did you mean 'std::isnan'?
+
+--- dom/webtransport/api/WebTransportDatagramDuplexStream.cpp.orig	2025-03-12 08:31:18.019466872 +0000
 +++ dom/webtransport/api/WebTransportDatagramDuplexStream.cpp
 @@ -62,7 +62,7 @@ void WebTransportDatagramDuplexStream::S
                                                           ErrorResult& aRv) {

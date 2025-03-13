@@ -1,127 +1,191 @@
-# $NetBSD: Makefile,v 1.11 2024/11/26 18:41:49 bsiegert Exp $
+# $NetBSD: Makefile,v 1.276 2024/11/17 07:16:50 wiz Exp $
 
-FIREFOX_VER=		${MOZ_BRANCH}${MOZ_BRANCH_MINOR}
-MOZ_BRANCH=		128.5
-MOZ_BRANCH_MINOR=	.0esr
-
-DISTNAME=	firefox-${FIREFOX_VER}.source
-PKGNAME=	${DISTNAME:S/.source//:S/b/beta/:S/esr//:S/firefox-/firefox128-/}
+DISTNAME=	firefox-128.8.0esr.source
+PKGNAME=	${DISTNAME:S/esr.source$//}
 CATEGORIES=	www
-MASTER_SITES+=	${MASTER_SITE_MOZILLA:=firefox/releases/${FIREFOX_VER}/source/}
-MASTER_SITES+=	${MASTER_SITE_MOZILLA_ALL:=firefox/releases/${FIREFOX_VER}/source/}
+MASTER_SITES=	${MASTER_SITE_MOZILLA:=firefox/releases/${PKGVERSION_NOREV}esr/source/}
+MASTER_SITES+=	${MASTER_SITE_MOZILLA_ALL:=firefox/releases/${PKGVERSION_NOREV}esr/source/}
 EXTRACT_SUFX=	.tar.xz
 
 NODEJSKIT=		nodejs-output-128.0.tgz
 DISTFILES=		${DEFAULT_DISTFILES} ${NODEJSKIT}
 SITES.${NODEJSKIT}=	${MASTER_SITE_LOCAL}
 
-MAINTAINER=	ryoon@NetBSD.org
-HOMEPAGE=	https://www.mozilla.org/en-US/firefox/
-COMMENT=	Web browser with support for extensions (version ${FIREFOX_VER:tu:C/\\.[[:digit:]\.]*//})
-LICENSE=	mpl-1.1
+MAINTAINER=	pkgsrc-users@NetBSD.org
+HOMEPAGE=	https://www.mozilla.org/en-US/firefox/enterprise/
+COMMENT=	Web browser with support for extensions
+LICENSE=	mpl-2.0
 
-# -------- BEFORE UPDATING THIS PACKAGE PLEASE READ & UNDERSTAND: -------
-#
-# This package works around a (stupid) build time dependency on nodejs
-# (which is not available for all architectures and unnecessary for the
-# real build). To do this, it places some additional burden on the
-# maintainer.
-#
-# While working on the package, please make sure you have
-#
-#	FIREFOX_MAINTAINER=yes
-#
-# set in your build environment.
-# When the package is ready for commit (but before commit), do:
-#
-#	make maintainer-files
-#
-# This will do another round (depending on state of your work dir at this
-# moment) of one or two builds and generate a cache of all output that
-# nodejs generates during a build.
-#
-# When this is done, just commit the results (they will be in the files/
-# directory).
-#
-# -----------------------------------------------------------------------
+TOOL_DEPENDS+=	nasm>=2.13:../../devel/nasm
+
+# trademark considerations
+APP_NAME=	Iceweasel
 
 WRKSRC=		${WRKDIR}/firefox-${PKGVERSION_NOREV}
+PLIST_SRC+=	${PLIST_SRC_DFLT}
+USE_LANGUAGES+=	c c++
+USE_TOOLS+=	unzip pax tar zip
+USE_TOOLS+=	pkg-config perl gmake
 
-MOZILLA_DIR=	# empty
+OBJDIR=		../build
 
-# Note: In --enable-chrome-format=flat case,
-#       when updating remember to conditionalise about-background.png in PLIST
+GCC_REQD+=	8
+
+.include "../../mk/bsd.prefs.mk"
+
+CONFIGURE_ENV+=		CPP=${CPP:Q}
+ALL_ENV+=		SHELL=${CONFIG_SHELL:Q}
+
+CONFIGURE_DIRS=		${OBJDIR}
+CONFIGURE_SCRIPT=	${WRKSRC}/configure
+
+HAS_CONFIGURE=		yes
+CONFIGURE_ARGS+=	--prefix=${PREFIX}
 CONFIGURE_ARGS+=	--enable-application=browser
+CONFIGURE_ARGS+=	--enable-default-toolkit=cairo-gtk3
+CONFIGURE_ARGS+=	--enable-release
+CONFIGURE_ARGS+=	--enable-optimize=-O2
+CONFIGURE_ARGS+=	--disable-jemalloc
+CONFIGURE_ARGS+=	--disable-tests
+CONFIGURE_ARGS+=	--with-system-libvpx
+CONFIGURE_ARGS+=	--with-system-nspr
+CONFIGURE_ARGS+=	--with-system-nss
+CONFIGURE_ARGS+=	--with-system-webp
+CONFIGURE_ARGS+=	--with-system-zlib
+CONFIGURE_ARGS+=	--with-libclang-path=${PREFIX}/lib
+CONFIGURE_ARGS+=	--disable-crashreporter
+CONFIGURE_ARGS+=	--disable-debug
+CONFIGURE_ARGS+=	--disable-icf
+CONFIGURE_ARGS+=	--disable-rust-simd
+CONFIGURE_ARGS+=	--disable-updater
+CONFIGURE_ARGS+=	--enable-chrome-format=omni
+CONFIGURE_ARGS+=	--enable-update-channel=esr
+CONFIGURE_ARGS+=	--enable-system-ffi
 
-#CFLAGS+=	-I${PREFIX}/include/nspr
-# for lang/gcc6
-CFLAGS+=	-D_GLIBCXX_INCLUDE_NEXT_C_HEADERS
-CFLAGS.SunOS+=	-D_POSIX_PTHREAD_SEMANTICS
+UNLIMIT_RESOURCES+=	datasize virtualsize
+
+ALL_ENV+=		MOZILLA_PKG_NAME=${PKGBASE}
+
+LDFLAGS+=		${COMPILER_RPATH_FLAG}${PREFIX}/lib/${PKGBASE}
+
+.include "../../mk/compiler.mk"
+
+.if empty(PKGSRC_COMPILER:Mclang)
+# Set path to "clang for cbindgen" when target compiler is not clang.
+CONFIGURE_ARGS+=	--with-clang-path=${PREFIX}/bin/clang
+.endif
+
+# ERROR: Unsupported linker bfd
+CONFIGURE_ARGS.Darwin+=	--enable-linker=ld64
+
+PYTHON_VERSIONS_ACCEPTED=	310 39
+PYTHON_FOR_BUILD_ONLY=		tool
+
+.include "../../lang/python/batteries-included.mk"
+.include "../../lang/python/tool.mk"
+
+TOOL_DEPENDS+=		cbindgen>=0.24.3:../../devel/cbindgen
+
+.if ${MACHINE_ARCH} == "i386" || ${MACHINE_ARCH} == "x86_64"
+TOOL_DEPENDS+=		yasm>=1.1:../../devel/yasm
+.endif
+
+# This is to work around build failures where an upstream configuration script
+# is confused by having more than one approximate match to MACHINE_GNU_PLATFORM
+# "i486" when attempting to select the Rust compiler target.
+.if ${MACHINE_PLATFORM:MNetBSD-*-i386}
+CONFIGURE_ARGS+=	--target=i586-unknown-netbsd
+CONFIGURE_ARGS+=	--host=i586-unknown-netbsd
+.else
+CONFIGURE_ARGS+=	--target=${MACHINE_GNU_PLATFORM}
+CONFIGURE_ARGS+=	--host=${MACHINE_GNU_PLATFORM}
+.endif
+
 # Do not use uselocale() in third_party/pipewire.
 CFLAGS.NetBSD+=	-D__LOCALE_C_ONLY
 
-LDFLAGS+=		${COMPILER_RPATH_FLAG}${PREFIX}/lib/${PKGBASE}
-LDFLAGS+=		${COMPILER_RPATH_FLAG}${PREFIX}/lib
-LDFLAGS.DragonFly+=	-lplc4 -lnspr4
-LDFLAGS.FreeBSD+=	-lplc4 -lnspr4
-LDFLAGS.Linux+=		-lnspr4
-LDFLAGS.SunOS+=		-lm
-
-# Should revisit to complete mprotect support.
-NOT_PAX_MPROTECT_SAFE+=	lib/${PKGBASE}/${MOZILLA}
-NOT_PAX_MPROTECT_SAFE+=	lib/${PKGBASE}/${MOZILLA}-bin
-
-# Avoid ld "invalid section index" errors.
-BUILDLINK_TRANSFORM.SunOS+=	rm:-fdata-sections
-BUILDLINK_TRANSFORM.SunOS+=	rm:-ffunction-sections
-BUILDLINK_TRANSFORM.SunOS+=	rm:-pie
-
-BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,-rpath-link,${WRKDIR}/build/dist/bin
-BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,-rpath-link,${PREFIX}/lib
-
-# Workaround for https://bugs.llvm.org/show_bug.cgi?id=46366
-BUILDLINK_TRANSFORM.NetBSD+=	rm:-fexperimental-new-pass-manager
-
-SUBST_CLASSES+=			dfly_malloc_h
-SUBST_STAGE.dfly_malloc_h=	pre-configure
-SUBST_MESSAGE.dfly_malloc_h=	Dont include malloc.h on dragonflybsd
-SUBST_SED.dfly_malloc_h=	-e 's,HAVE_MALLOC_H,HAVE_MALLOC_H \&\& !defined(__DragonFly__),g'
-SUBST_FILES.dfly_malloc_h+=	media/ffvpx/libavutil/mem.c
-
-SUBST_CLASSES+=			paths
-SUBST_STAGE.paths=		pre-configure
-SUBST_FILES.paths=		../firefox.sh
-SUBST_VARS.paths=		PREFIX MOZILLA
-
-.include "mozilla-common.mk"
-.include "options.mk"
-
-CHECK_INTERPRETER_SKIP+=	lib/firefox-sdk/sdk/bin/header.py
-CHECK_INTERPRETER_SKIP+=	lib/firefox-sdk/sdk/bin/typelib.py
-CHECK_INTERPRETER_SKIP+=	lib/firefox-sdk/sdk/bin/xpidl.py
-CHECK_INTERPRETER_SKIP+=	lib/firefox-sdk/sdk/bin/xpt.py
-
-CHECK_WRKREF_SKIP+=	lib/${MOZILLA}/omni.ja
-
-MOZILLA=	${PKGBASE}
-
-.if !empty(PKG_OPTIONS:Mofficial-mozilla-branding)
-MOZILLA_NAME=		Firefox
-MOZILLA_BRANDING=	official
-.else
-MOZILLA_NAME=		Browser
-MOZILLA_BRANDING=	unofficial
+.if ${MACHINE_ARCH} == "i386"
+# This is required for SSE2 code under i386.
+CFLAGS+=		-mstackrealign
 .endif
 
-pre-configure:
-# As of 106.0, .in template files are not patched.
-#	cd ${WRKSRC} && autoconf
-#	cd ${WRKSRC}/js/src && autoconf
-	cd ${WRKSRC} && mkdir ${OBJDIR}
-	cd ${WRKSRC}/${OBJDIR} && touch old-configure.vars
-#	Do not fetch Rust Cargo file via network during build
-.if !defined(FIREFOX_MAINTAINER)
-	mv ${WRKDIR}/dist ${WRKSRC}/${OBJDIR}
+PLIST_VARS+=		v4l2_decode
+# see toolkit/moz.configure
+.if ${MACHINE_ARCH} == "aarch64" || \
+    ${MACHINE_ARCH:M*arm*} || \
+    ${MACHINE_ARCH} == riscv64
+PLIST.v4l2_decode=	yes
+.endif
+
+PLIST_VARS+=		ffvpx
+# see media/ffvpx/ffvpxcommon.mozbuild
+.if ${MACHINE_ARCH} == "aarch64" || \
+    ${MACHINE_ARCH:M*arm*} || \
+    ${MACHINE_ARCH} == "i386" || \
+    ${MACHINE_ARCH} == "x86_64"
+PLIST.ffvpx=		yes
+.endif
+
+# See ${WRKSRC}/security/sandbox/mac/Sandbox.mm: On Darwin, sandboxing
+# support is only available when the toolkit is cairo-cocoa.
+CONFIGURE_ARGS.Darwin+=	--disable-sandbox
+CONFIGURE_ARGS.NetBSD+=	--disable-sandbox
+
+# The configure test for __thread succeeds, but later we end up with:
+# dist/bin/libxul.so: undefined reference to `__tls_get_addr'
+CONFIGURE_ENV.NetBSD+=	ac_cv_thread_keyword=no
+
+# RLBox WASM sandbox
+.if ${MACHINE_ARCH} == "x86_64" || ${MACHINE_ARCH} == "i386"
+# For wasm-ld command
+TOOL_DEPENDS+=		lld-[0-9]*:../../devel/lld
+.include "../../lang/wasi-libc/buildlink3.mk"
+.include "../../lang/wasi-libcxx/buildlink3.mk"
+.include "../../lang/wasi-compiler-rt/buildlink3.mk"
+CONFIGURE_ARGS+=	--with-wasi-sysroot=${PREFIX}/wasi
+CONFIGURE_ENV+=		WASM_CC=${PREFIX}/bin/clang
+CONFIGURE_ENV+=		WASM_CXX=${PREFIX}/bin/clang++
+.else
+CONFIGURE_ARGS+=	--without-wasm-sandboxed-libraries
+.endif
+
+SUBST_CLASSES+=		brand
+SUBST_STAGE.brand=	pre-configure
+SUBST_FILES.brand+=	browser/branding/unofficial/configure.sh
+SUBST_FILES.brand+=	browser/branding/unofficial/locales/en-US/brand.properties
+SUBST_FILES.brand+=	browser/branding/unofficial/locales/en-US/brand.ftl
+SUBST_SED.brand=	-e "s,Nightly,${APP_NAME},g"
+
+INSTALLATION_DIRS+=	share/applications
+
+CHECK_PORTABILITY_SKIP+=	browser/components/loop/run-all-loop-tests.sh
+CHECK_PORTABILITY_SKIP+=	browser/extensions/loop/run-all-loop-tests.sh
+CHECK_PORTABILITY_SKIP+=	js/src/tests/update-test262.sh
+CHECK_PORTABILITY_SKIP+=	modules/pdfium/update.sh
+CHECK_PORTABILITY_SKIP+=	security/nss/tests/libpkix/libpkix.sh
+CHECK_PORTABILITY_SKIP+=	security/nss/tests/multinit/multinit.sh
+
+CONFIG_GUESS_OVERRIDE+=		build/autoconf/config.guess
+CONFIG_GUESS_OVERRIDE+=		js/ctypes/libffi/config.guess
+CONFIG_GUESS_OVERRIDE+=		js/src/build/autoconf/config.guess
+CONFIG_GUESS_OVERRIDE+=		nsprpub/build/autoconf/config.guess
+CONFIG_GUESS_OVERRIDE+=		ldap/sdks/c-sdk/config/autoconf/config.guess
+CONFIG_SUB_OVERRIDE+=		build/autoconf/config.sub
+CONFIG_SUB_OVERRIDE+=		js/ctypes/libffi/config.sub
+CONFIG_SUB_OVERRIDE+=		js/src/build/autoconf/config.sub
+CONFIG_SUB_OVERRIDE+=		nsprpub/build/autoconf/config.sub
+CONFIG_SUB_OVERRIDE+=		ldap/sdks/c-sdk/config/autoconf/config.sub
+
+CHECK_WRKREF_SKIP+=	lib/firefox/omni.ja
+
+# Should revisit to complete mprotect support.
+NOT_PAX_MPROTECT_SAFE+=	lib/${PKGBASE}/firefox
+
+.if defined(FIREFOX_MAINTAINER) && !defined(MAINTAINER_INTERNAL)
+TOOL_DEPENDS+=		nodejs-[0-9]*:../../lang/nodejs
+USE_TOOLS+=		diff
+.else
+CONFIGURE_ENV+=		NODEJS="${FILESDIR}/node-wrapper.sh"
 .endif
 
 .if defined(FIREFOX_MAINTAINER)
@@ -162,35 +226,67 @@ pre-patch:
 		${AWK} -f ${FILESDIR}/replace-moz.build.awk $$f > $$f.new; mv $$f.new $$f ; \
 	done
 
-post-build:
-	${SED} -e 's|@MOZILLA@|${MOZILLA}|g'				\
-	  -e 's|@MOZILLA_NAME@|${MOZILLA_NAME}|g'			\
-	  -e 's|@FIREFOX_ICON@|${MOZILLA}|g'				\
-	  < ${FILESDIR}/desktop.in					\
-	  > ${WRKDIR}/desktop
-
-INSTALLATION_DIRS+=	share/applications
-
-post-extract:
-	${CP} ${FILESDIR}/firefox.sh ${WRKDIR}/firefox.sh
+pre-configure:
+	cd ${WRKSRC} && mkdir ${OBJDIR}
+	${SED}	-e "s/@MOZ_APP_DISPLAYNAME@/${APP_NAME}/g" \
+		-e 's/@MOZ_APP_NAME@/firefox/g' \
+		-e 's/@StartupWMClass@/firefox/g' \
+		${WRKSRC}/toolkit/mozapps/installer/linux/rpm/mozilla.desktop > \
+		${WRKDIR}/firefox.desktop
+.if !defined(FIREFOX_MAINTAINER)
+	mv ${WRKDIR}/dist ${WRKSRC}/${OBJDIR}
+.endif
 
 post-install:
-.if ${OPSYS} == "NetBSD" && ${X11_TYPE} == "native"
-	${INSTALL_SCRIPT} ${WRKDIR}/firefox.sh ${DESTDIR}${PREFIX}/bin/${MOZILLA}
-.else
-	${ECHO} '#! /bin/sh' > ${DESTDIR}${PREFIX}/bin/${MOZILLA}
-	${ECHO} '${PREFIX}/lib/${MOZILLA}/${MOZILLA} "$$@"' >> \
-		${DESTDIR}${PREFIX}/bin/${MOZILLA}
-	${CHMOD} 755 ${DESTDIR}${PREFIX}/bin/${MOZILLA}
-.endif
-	${INSTALL_DATA} ${WRKDIR}/desktop				\
-	  ${DESTDIR}${PREFIX}/share/applications/${MOZILLA}.desktop
-.for i in 16 22 24 32 48 64 128 256
-	${INSTALL_DATA_DIR} ${DESTDIR}${PREFIX}/share/icons/hicolor/${i}x${i}/apps
-	${INSTALL_DATA} ${WRKSRC}/browser/branding/${MOZILLA_BRANDING}/default${i}.png \
-	  ${DESTDIR}${PREFIX}/share/icons/hicolor/${i}x${i}/apps/${MOZILLA}.png
+	${RM} -f ${DESTDIR}${PREFIX}/bin/firefox
+	${ECHO} '#! /bin/sh' > ${DESTDIR}${PREFIX}/bin/firefox
+	${ECHO} '${PREFIX}/lib/firefox/firefox "$$@"' >> \
+		${DESTDIR}${PREFIX}/bin/firefox
+	${CHMOD} 755 ${DESTDIR}${PREFIX}/bin/firefox
+	${INSTALL_DATA} ${WRKDIR}/firefox.desktop \
+		${DESTDIR}${PREFIX}/share/applications/firefox.desktop
+.for s in 16 22 24 32 48 64 128 256
+	${INSTALL_DATA_DIR} ${DESTDIR}${PREFIX}/share/icons/hicolor/${s}x${s}/apps
+	${INSTALL_DATA} ${WRKSRC}/browser/branding/unofficial/default${s}.png \
+		${DESTDIR}${PREFIX}/share/icons/hicolor/${s}x${s}/apps/firefox.png
 .endfor
 
+# Makefiles sometimes call "rm -f" without more arguments. Kludge around ...
+.PHONY: create-rm-wrapper
+pre-configure: create-rm-wrapper
+create-rm-wrapper:
+	printf '#!/bin/sh\n[ "$$*" = "-f" ] && exit 0\nexec /bin/rm $$@\n' > \
+	  ${WRAPPER_DIR}/bin/rm
+	chmod +x ${WRAPPER_DIR}/bin/rm
+
+do-test:
+	cd ${WRKSRC}/${OBJDIR}/dist/bin &&	\
+	     ./run-mozilla.sh ${WRKSRC}/mach check-spidermonkey
+
+.include "options.mk"
+.include "../../mk/atomic64.mk"
+.include "../../devel/libffi/buildlink3.mk"
+.include "../../devel/nspr/buildlink3.mk"
+BUILDLINK_API_DEPENDS.nspr+=	nspr>=4.18
+.include "../../devel/nss/buildlink3.mk"
+.include "../../devel/zlib/buildlink3.mk"
 .include "../../graphics/hicolor-icon-theme/buildlink3.mk"
+.include "../../graphics/libwebp/buildlink3.mk"
+BUILDLINK_DEPMETHOD.clang=	build
+.include "../../lang/clang/buildlink3.mk"
+RUST_REQ=	1.23.0
+.include "../../lang/rust/rust.mk"
+.include "../../net/libIDL/buildlink3.mk"
+.include "../../multimedia/ffmpeg7/buildlink3.mk"
+.include "../../multimedia/libvpx/buildlink3.mk"
 .include "../../sysutils/desktop-file-utils/desktopdb.mk"
+.if ${OPSYS} != "Darwin"
+.  include "../../graphics/MesaLib/buildlink3.mk"
+.endif
+.include "../../x11/gtk3/buildlink3.mk"
+PLIST_VARS+=		wayland
+.if ${PKG_BUILD_OPTIONS.gtk3:Mwayland}
+PLIST.wayland=		yes
+.endif
+.include "../../x11/libXt/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

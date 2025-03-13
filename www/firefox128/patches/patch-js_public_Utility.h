@@ -1,5 +1,8 @@
 $NetBSD: patch-js_public_Utility.h,v 1.1 2024/08/18 15:02:21 leot Exp $
 
+- kludge to build on NetBSD/i386 10.0
+  https://mail-index.netbsd.org/pkgsrc-users/2024/07/16/msg039900.html
+
 --- js/public/Utility.h.orig	2024-07-04 17:04:15.000000000 +0000
 +++ js/public/Utility.h
 @@ -482,9 +482,6 @@ static inline void js_free(void* p) {

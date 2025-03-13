@@ -1,0 +1,17 @@
+$NetBSD$
+
+We would like to use pkg-config on all operating systems.
+
+This avoids a lot of problems on Darwin.
+
+--- build/moz.configure/pkg.configure.orig	2025-03-14 13:08:35.597977304 +0000
++++ build/moz.configure/pkg.configure
+@@ -12,7 +12,7 @@ def pkg_config(prefixes):
+ 
+ @depends(compile_environment, target)
+ def use_pkg_config(compile_environment, target):
+-    return compile_environment and target.os not in ("WINNT", "OSX", "Android")
++    return compile_environment
+ 
+ 
+ pkg_config = check_prog(
