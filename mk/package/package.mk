@@ -121,8 +121,3 @@ _package-warnings: .PHONY
 	@${WARNING_MSG} ${NO_BIN_ON_FTP:Q}
 .  endif
 .endif
-.if defined(ABI_DEPENDS) && !empty(USE_ABI_DEPENDS:M[Nn][Oo])
-	@${WARNING_MSG} "ABI dependency recommendations are being ignored!"
-	@${WARNING_MSG} "${PKGNAME} should not be uploaded nor"
-	@${WARNING_MSG} "otherwise be used as a binary package!"
-.endif

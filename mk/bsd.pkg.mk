@@ -464,12 +464,8 @@ ${FAKEHOMEDIR}:
 .endif
 
 .if defined(ABI_DEPENDS) || defined(BUILD_ABI_DEPENDS)
-.  if !empty(USE_ABI_DEPENDS:M[yY][eE][sS])
 DEPENDS+=		${ABI_DEPENDS}
 BUILD_DEPENDS+=		${BUILD_ABI_DEPENDS}
-.  else
-_BUILD_DEFS+=		USE_ABI_DEPENDS
-.  endif
 .endif
 
 .if !defined(_PATH_ORIG)
