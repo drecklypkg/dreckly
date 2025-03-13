@@ -213,7 +213,7 @@ COMPILER_TYPE=	${_compiler_}
 .  endfor
 .endif
 
-.if !defined(_COMPILER)
+.if !defined(COMPILER_TYPE)
 PKG_FAIL_REASON+=	"No acceptable compiler found for ${PKGNAME}."
 .endif
 
