@@ -83,6 +83,7 @@ _DEF_VARS.gcc=	\
 	_GCC_PKGBASE _GCC_PKGSRCDIR _GCC_PKG_SATISFIES_DEP \
 	_GCC_PREFIX _GCC_REQD _GCC_STRICTEST_REQD _GCC_SUBPREFIX \
 	_GCC_TEST_DEPENDS _GCC_NEEDS_A_FORTRAN _GCC_VARS _GCC_VERSION \
+	_CC_MAJOR _CC_MINOR _CC_PATCH _FMT _COMPILER_VERSION \
 	_GCC_ADA _GCC_GMK _GCC_GLK _GCC_GBD _GCC_CHP _GCC_GLS _GCC_GNT _GCC_PRP \
 	_IGNORE_GCC \
 	_IS_BUILTIN_GCC \
@@ -364,52 +365,45 @@ _GCC_PKG=	gcc-${_GCC_VERSION:C/-.*$//}
 # understand this syntax.
 #
 # Note that pkgsrc also sets this flag itself for Darwin+clang.
-.if !empty(_GCC_VERSION:M[23].*) || !empty(_GCC_VERSION:M4.[01].*)
+.if ${_COMPILER_VERSION} < 040200
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=implicit-function-declaration
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=sign-conversion
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=incompatible-pointer-types
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=implicit-int
 .endif
 
-# Added in GCC 4.1
-.if !empty(_GCC_VERSION:M[23].*) || !empty(_GCC_VERSION:M4.0.*)
+.if ${_COMPILER_VERSION} < 040100
 BUILDLINK_TRANSFORM+=	rm:-Wc++-compat
 BUILDLINK_TRANSFORM+=	rm:-Wno-c++-compat
 .endif
 
-# Added in GCC 4.3
-.if !empty(_GCC_VERSION:M[23].*) || !empty(_GCC_VERSION:M4.[012].*)
+.if ${_COMPILER_VERSION} < 040300
 BUILDLINK_TRANSFORM+=	rm:-Wvla
 .endif
 
-# Added in GCC 4.5
-.if !empty(_GCC_VERSION:M[23].*) || !empty(_GCC_VERSION:M4.[01234].*)
+.if ${_COMPILER_VERSION} < 040500
 BUILDLINK_TRANSFORM+=	rm:-Wno-unused-result
 .endif
 
-# Added in GCC 7
-.if !empty(_GCC_VERSION:M[23456].*)
+.if ${_COMPILER_VERSION} < 070000
 BUILDLINK_TRANSFORM+=	rm:-Wimplicit-fallthrough
 BUILDLINK_TRANSFORM+=	rm:-Wno-implicit-fallthrough
 .endif
 
-# Added in GCC 8
-.if !empty(_GCC_VERSION:M[234567].*)
+.if ${_COMPILER_VERSION} < 080000
 BUILDLINK_TRANSFORM+=	rm:-Wmissing-attributes
 BUILDLINK_TRANSFORM+=	rm:-Wno-missing-attributes
 .endif
 
-# Added in GCC 4.8
-.if !empty(_GCC_VERSION:M3.*) || !empty(_GCC_VERSION:M4.[0-7].*)
+.if ${_COMPILER_VERSION} < 040800
 BUILDLINK_TRANSFORM+=	opt:-std=c++03:-std=c++98
 BUILDLINK_TRANSFORM+=	opt:-std=gnu++03:-std=gnu++98
 .endif
 
-.if !empty(_GCC_VERSION:M[23].*) || !empty(_GCC_VERSION:M4.[0-8].*)
+.if ${_COMPILER_VERSION} < 040900
 COMPILER_HAS_C11?=	no
-.else
-COMPILER_HAS_C11?=	yes
 .endif
+COMPILER_HAS_C11?=	yes
 
 .for _version_ in ${_C_STD_VERSIONS}
 _C_STD_FLAG.${_version_}?=	-std=${_version_}
