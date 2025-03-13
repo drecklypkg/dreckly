@@ -11,10 +11,6 @@
 .if !defined(COMPILER_CLANG_MK)
 COMPILER_CLANG_MK=	defined
 
-# Add the dependency on clang
-# TODO: may be installed already, check for this
-#TOOL_DEPENDS+= clang-[0-9]*:../../lang/clang
-
 .include "../../mk/bsd.prefs.mk"
 
 CLANGBASE?=		${TOOLBASE}
@@ -100,7 +96,7 @@ _LANGUAGES.clang=	# empty
 _LANGUAGES.clang+=	${LANGUAGES.clang:M${_lang_}}
 .endfor
 
-PKGSRC_FORTRAN?=gfortran
+PKGSRC_FORTRAN?=	gfortran
 
 .if !empty(PKGSRC_FORTRAN) && (!empty(USE_LANGUAGES:Mfortran) || !empty(USE_LANGUAGES:Mfortran77))
 .  include "../../mk/compiler/${PKGSRC_FORTRAN}.mk"
