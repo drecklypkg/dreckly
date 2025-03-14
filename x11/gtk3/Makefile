@@ -1,8 +1,8 @@
-# $NetBSD: Makefile,v 1.207 2024/11/17 07:16:55 wiz Exp $
+# $NetBSD: Makefile,v 1.211 2025/01/25 10:15:24 riastradh Exp $
 
 DISTNAME=	gtk+-3.24.43
 PKGNAME=	${DISTNAME:S/gtk/gtk3/}
-PKGREVISION=	5
+PKGREVISION=	6
 CATEGORIES=	x11 gnome
 MASTER_SITES=	${MASTER_SITE_GNOME:=sources/gtk+/${PKGVERSION_NOREV:R}/}
 EXTRACT_SUFX=	.tar.xz
@@ -24,8 +24,10 @@ PTHREAD_AUTO_VARS=	yes
 # tests need M_PI, ISO C unacceptable on illumos
 FORCE_C_STD=	gnu99
 
-MESON_ARGS+=	-Dgtk_doc=true
 MESON_ARGS+=	-Dman=true
+MESON_ARGS+=	-Ddemos=false
+MESON_ARGS+=	-Dexamples=false
+MESON_ARGS+=	-Dtests=false
 MESON_ARGS+=	--localedir=${PREFIX}/${PKGLOCALEDIR}/locale
 MESON_ARGS+=	--sysconfdir=${PREFIX}/libdata
 
@@ -59,6 +61,14 @@ post-install:
 FILES_SUBST+=		GTK_UPDATE_ICON_CACHE="${PREFIX}/bin/gtk-update-icon-cache"
 FILES_SUBST+=		ICON_THEME_DIR="${PREFIX}/share/icons"
 INSTALL_TEMPLATES+=	../../x11/gtk2/files/icon-cache.tmpl
+
+PRINT_PLIST_AWK+=	/quartz/ || /themes\/Mac\// \
+					{ $$0 = "$${PLIST.quartz}"$$0 }
+PRINT_PLIST_AWK+=	/wayland/	{ $$0 = "$${PLIST.wayland}"$$0 }
+PRINT_PLIST_AWK+=	/gdkx/ || /x11/ || /GdkX/ || /im-xim/ \
+					{ $$0 = "$${PLIST.x11}"$$0 }
+
+PRINT_PLIST_AWK+=	/cups/		{ $$0 = "$${PLIST.cups}"$$0 }
 
 _BUILDING_GTK3=	yes
 .include "modules.mk"
