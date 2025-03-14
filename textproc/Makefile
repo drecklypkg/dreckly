@@ -357,7 +357,6 @@ SUBDIR+=	hs-regex-pcre
 SUBDIR+=	hs-regex-posix
 SUBDIR+=	hs-regex-tdfa
 SUBDIR+=	hs-rfc5051
-SUBDIR+=	hs-rope-utf16-splay
 SUBDIR+=	hs-shakespeare
 SUBDIR+=	hs-skylighting
 SUBDIR+=	hs-skylighting-core
