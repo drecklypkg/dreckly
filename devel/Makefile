@@ -581,7 +581,6 @@ SUBDIR+=	hs-control-monad-free
 SUBDIR+=	hs-cpphs
 SUBDIR+=	hs-data-default
 SUBDIR+=	hs-data-default-class
-SUBDIR+=	hs-data-default-instances-base
 SUBDIR+=	hs-data-default-instances-containers
 SUBDIR+=	hs-data-default-instances-dlist
 SUBDIR+=	hs-data-default-instances-old-locale
