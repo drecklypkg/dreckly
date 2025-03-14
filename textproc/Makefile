@@ -382,7 +382,6 @@ SUBDIR+=	hs-unicode-collation
 SUBDIR+=	hs-unicode-data
 SUBDIR+=	hs-unicode-show
 SUBDIR+=	hs-unicode-transforms
-SUBDIR+=	hs-wcwidth
 SUBDIR+=	hs-xml
 SUBDIR+=	hs-xml-conduit
 SUBDIR+=	hs-xml-hamlet
