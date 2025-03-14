@@ -1,8 +1,0 @@
-@comment $NetBSD: PLIST,v 1.3 2016/06/25 14:32:27 jaapb Exp $
-${OCAML_SITELIB}/curl/META
-${PLIST.ocaml-opt}${OCAML_SITELIB}/curl/curl.a
-${OCAML_SITELIB}/curl/curl.cma
-${OCAML_SITELIB}/curl/curl.cmi
-${PLIST.ocaml-opt}${OCAML_SITELIB}/curl/curl.cmxa
-${OCAML_SITELIB}/curl/curl.mli
-${PLIST.ocaml-opt}${OCAML_SITELIB}/curl/libcurl-helper.a

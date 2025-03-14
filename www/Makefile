@@ -278,7 +278,6 @@ SUBDIR+=	ns-remote
 SUBDIR+=	nsm
 SUBDIR+=	nspluginwrapper
 SUBDIR+=	ocaml-cohttp
-SUBDIR+=	ocaml-curl
 SUBDIR+=	ocaml-uri
 SUBDIR+=	ocsigen
 SUBDIR+=	ocsigen-i18n
