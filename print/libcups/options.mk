@@ -2,13 +2,15 @@
 
 PKG_OPTIONS_VAR=	PKG_OPTIONS.libcups
 PKG_SUPPORTED_OPTIONS=	acl dnssd kerberos tcpwrappers
-PKG_SUGGESTED_OPTIONS=	dnssd kerberos
+PKG_SUGGESTED_OPTIONS=	kerberos
 
 .if defined(PKG_OPTIONS.cups)
 PKG_LEGACY_OPTIONS+=		${PKG_OPTIONS.cups}
 PKG_OPTIONS_DEPRECATED_WARNINGS+= \
 	"Deprecated variable PKG_OPTIONS.cups used, use ${PKG_OPTIONS_VAR} instead."
 .endif
+
+PKG_SUGGESTED_OPTIONS.NetBSD+=	dnssd
 
 .if ${OPSYS} != "Darwin"
 # CUPS on Darwin does not support DBus and libusb
