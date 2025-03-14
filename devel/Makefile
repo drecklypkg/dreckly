@@ -1232,7 +1232,6 @@ SUBDIR+=	ocaml-ke
 SUBDIR+=	ocaml-logs
 SUBDIR+=	ocaml-lru
 SUBDIR+=	ocaml-lwt
-SUBDIR+=	ocaml-lwt_glib
 SUBDIR+=	ocaml-lwt_log
 SUBDIR+=	ocaml-lwt_ppx
 SUBDIR+=	ocaml-lwt_react
