@@ -691,7 +691,6 @@ SUBDIR+=	nxml-mode
 SUBDIR+=	o3read
 SUBDIR+=	ocaml-csv
 SUBDIR+=	ocaml-easy-format
-SUBDIR+=	ocaml-expat
 SUBDIR+=	ocaml-jsonm
 SUBDIR+=	ocaml-markup
 SUBDIR+=	ocaml-text
