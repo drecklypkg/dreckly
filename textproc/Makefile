@@ -306,7 +306,6 @@ SUBDIR+=	hs-ansi-wl-pprint
 SUBDIR+=	hs-appar
 SUBDIR+=	hs-attoparsec
 SUBDIR+=	hs-attoparsec-aeson
-SUBDIR+=	hs-attoparsec-iso8601
 SUBDIR+=	hs-blaze-html
 SUBDIR+=	hs-blaze-markup
 SUBDIR+=	hs-boxes
