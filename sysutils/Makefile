@@ -356,7 +356,6 @@ SUBDIR+=	hs-filemanip
 SUBDIR+=	hs-filepath-bytestring
 SUBDIR+=	hs-filepattern
 SUBDIR+=	hs-hostname
-SUBDIR+=	hs-hslogger
 SUBDIR+=	hs-hslua-module-path
 SUBDIR+=	hs-mountpoints
 SUBDIR+=	hs-opentelemetry
