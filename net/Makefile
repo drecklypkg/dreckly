@@ -490,7 +490,6 @@ SUBDIR+=	obfs4proxy
 SUBDIR+=	ocaml-conduit
 SUBDIR+=	ocaml-domain-name
 SUBDIR+=	ocaml-ipaddr
-SUBDIR+=	ocaml-mimic
 SUBDIR+=	ocaml-protocol_version_header
 SUBDIR+=	ocamlnet
 SUBDIR+=	ocsinventory-agent
