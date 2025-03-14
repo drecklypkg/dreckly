@@ -588,7 +588,6 @@ SUBDIR+=	hs-data-default-instances-old-locale
 SUBDIR+=	hs-data-fix
 SUBDIR+=	hs-data-ordlist
 SUBDIR+=	hs-dec
-SUBDIR+=	hs-deepseq-generics
 SUBDIR+=	hs-deferred-folds
 SUBDIR+=	hs-dependent-map
 SUBDIR+=	hs-dependent-sum
