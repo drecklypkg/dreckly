@@ -598,7 +598,6 @@ SUBDIR+=	hs-echo
 SUBDIR+=	hs-either
 SUBDIR+=	hs-enclosed-exceptions
 SUBDIR+=	hs-enummapset
-SUBDIR+=	hs-errors
 SUBDIR+=	hs-extensible-exceptions
 SUBDIR+=	hs-extensions
 SUBDIR+=	hs-fail
