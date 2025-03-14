@@ -180,7 +180,6 @@ SUBDIR+=	hs-wai-app-static
 SUBDIR+=	hs-wai-cors
 SUBDIR+=	hs-wai-extra
 SUBDIR+=	hs-wai-logger
-SUBDIR+=	hs-wai-websockets
 SUBDIR+=	hs-warp
 SUBDIR+=	hs-warp-tls
 SUBDIR+=	hs-websockets
