@@ -579,7 +579,6 @@ SUBDIR+=	hs-constraints
 SUBDIR+=	hs-constraints-extras
 SUBDIR+=	hs-control-monad-free
 SUBDIR+=	hs-cpphs
-SUBDIR+=	hs-data-array-byte
 SUBDIR+=	hs-data-default
 SUBDIR+=	hs-data-default-class
 SUBDIR+=	hs-data-default-instances-base
