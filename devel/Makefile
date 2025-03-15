@@ -1232,7 +1232,6 @@ SUBDIR+=	ocaml-lwt_ppx
 SUBDIR+=	ocaml-lwt_react
 SUBDIR+=	ocaml-lwt_ssl
 SUBDIR+=	ocaml-migrate-parsetree
-SUBDIR+=	ocaml-mirage-flow
 SUBDIR+=	ocaml-oasis
 SUBDIR+=	ocaml-ocplib-endian
 SUBDIR+=	ocaml-optint
