@@ -1183,7 +1183,6 @@ SUBDIR+=	objfw
 SUBDIR+=	ocaml-angstrom
 SUBDIR+=	ocaml-astring
 SUBDIR+=	ocaml-async
-SUBDIR+=	ocaml-async_extra
 SUBDIR+=	ocaml-async_kernel
 SUBDIR+=	ocaml-async_rpc_kernel
 SUBDIR+=	ocaml-async_unix
