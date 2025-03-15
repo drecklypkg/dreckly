@@ -43,11 +43,7 @@ EXPORT_SYMBOLS_LDFLAGS?=	# Don't add symbols to the dynamic symbol table
 MOTIF_TYPE_DEFAULT?=	motif	# default 2.0 compatible libs type
 PKG_TOOLS_BIN?=		${LOCALBASE}/sbin
 ROOT_CMD?=		${SU} - root -c
-.if exists(/etc/ssdlinux_version)
-ROOT_GROUP?=		wheel
-.else
 ROOT_GROUP?=		root
-.endif
 ROOT_USER?=		root
 SERIAL_DEVICES?=	/dev/null
 ULIMIT_CMD_datasize?=	ulimit -d `ulimit -H -d`
