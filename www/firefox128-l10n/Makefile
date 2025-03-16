@@ -12,7 +12,7 @@ HOMEPAGE=	https://www.mozilla.com/en-US/firefox/
 COMMENT=	Language packs for www/firefox128
 LICENSE=	mpl-2.0 # as of 128.1.0esr
 
-DEPENDS+=	firefox128>=${PKGVERSION_NOREV}:../../www/firefox128
+DEPENDS+=	firefox>=${PKGVERSION_NOREV}:../../www/firefox128
 
 DIST_SUBDIR=	${PKGNAME_NOREV}
 DISTFILES=	${FIREFOX_LOCALES:=.xpi}
