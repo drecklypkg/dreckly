@@ -696,18 +696,9 @@ Linux)
 	else
 		root_group=root
 	fi
-	# Debian/Ubuntu's awk is mawk, and mawk does not understand
-	# some regexps used in pkgsrc/mk.
-	if [ -f /etc/debian_version ]; then
-		need_awk=yes
-	# Arch uses gawk 5 that breaks some regexps. It doesn't provide pax
-	# anymore.
-	elif [ -f /etc/arch-release ]; then
-		need_awk=yes
-		need_pax=yes
 	# ChromeOS provides a version of mawk that is permanently in restricted
 	# mode. Notably, this means it cannot run pipes, which pkgsrc requires.
-	elif grep -sq '^CHROMEOS_RELEASE_NAME' /etc/lsb-release; then
+	if grep -sq '^CHROMEOS_RELEASE_NAME' /etc/lsb-release; then
 		need_awk=yes
 		need_sed=yes
 	fi
