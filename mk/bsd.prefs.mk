@@ -236,8 +236,6 @@ NATIVE_LOWER_VENDOR?=		mandrake
 NATIVE_LOWER_VENDOR?=		redhat
 .  elif exists(/etc/slackware-version)
 NATIVE_LOWER_VENDOR?=		slackware
-.  elif exists(/etc/ssdlinux_version)
-NATIVE_LOWER_VENDOR?=		ssd
 .  elif !empty(CHROMEOS_RELEASE_NAME)
 NATIVE_LOWER_VENDOR?=		chromeos
 .  elif ${MACHINE_ARCH} == "i386"	# pre-NATIVE_MACHINE_ARCH switcheroo

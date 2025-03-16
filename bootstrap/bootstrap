@@ -688,14 +688,7 @@ IRIX*)
 	fi
 	;;
 Linux)
-	# XXX This was added in 2010 to handle Linux distros that use "wheel"
-	# for root's group. It's a hack, since it only supports (apparently
-	# now defunct) SSD Linux.
-	if [ -f /etc/ssdlinux_version ]; then
-		root_group=wheel
-	else
-		root_group=root
-	fi
+	root_group=root
 	# ChromeOS provides a version of mawk that is permanently in restricted
 	# mode. Notably, this means it cannot run pipes, which pkgsrc requires.
 	if grep -sq '^CHROMEOS_RELEASE_NAME' /etc/lsb-release; then
