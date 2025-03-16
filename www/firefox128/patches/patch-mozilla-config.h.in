@@ -1,0 +1,22 @@
+$NetBSD$
+
+clang error undeclared identifier '__builtin_isnanf(l)' when building with gcc
+https://bugzilla.mozilla.org/show_bug.cgi?id=1611224
+
+--- mozilla-config.h.in.orig	2025-02-24 16:54:57.000000000 +0000
++++ mozilla-config.h.in
+@@ -7,6 +7,14 @@
+ #define MOZILLA_CONFIG_H
+ 
+ #if defined(__clang__)
++
++#ifndef _builtin_isnanf
++#define __builtin_isnanf __builtin_isnan
++#endif
++#ifndef _builtin_isnanl
++#define __builtin_isnanl __builtin_isnan
++#endif
++
+ #pragma clang diagnostic push
+ #if __has_warning("-Wreserved-id-macro")
+ #pragma clang diagnostic ignored "-Wreserved-id-macro"

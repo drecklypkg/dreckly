@@ -53,7 +53,6 @@ SUBDIR+=	php81-extensions
 SUBDIR+=	php82-extensions
 SUBDIR+=	php83-extensions
 SUBDIR+=	pkg_developer
-SUBDIR+=	pkgsrc-guide-tools
 SUBDIR+=	py-tryton-platform
 SUBDIR+=	qmail-server
 SUBDIR+=	qt6

@@ -1,5 +1,0 @@
-$NetBSD: distinfo,v 1.4 2022/05/02 13:33:00 jaapb Exp $
-
-BLAKE2s (ocaml-mmap-1.2.0.tar.gz) = 89c10c2d44b5ab1db59c18d820ef0feda95fcabbcc598e2e9ff37f44ed6d637b
-SHA512 (ocaml-mmap-1.2.0.tar.gz) = cef6c37953d62f2f7472147a03707d60401d92aaf4ddb2dbaa697ee4eee252f70d8068e8fe5c6a36e005d4cc738f61d2c5bea12d844f1e3a696fef2f6546d59c
-Size (ocaml-mmap-1.2.0.tar.gz) = 15328 bytes

@@ -1,4 +1,0 @@
-@comment $NetBSD: PLIST,v 1.2 2023/10/25 16:51:09 pho Exp $
-lib/data-array-byte-${PKGVERSION}/${HS_VERSION}/package-description
-lib/data-array-byte-${PKGVERSION}/${HS_VERSION}/package-id
-share/doc/${HS_PLATFORM}/data-array-byte-${PKGVERSION}/LICENSE

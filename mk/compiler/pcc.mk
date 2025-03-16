@@ -59,10 +59,8 @@ _LINKER_RPATH_FLAG=	-R
 _COMPILER_RPATH_FLAG=	-Wl,-R
 
 .if exists(${CCPATH})
-CC_VERSION_STRING!=	${CCPATH} -v 2>&1 || ${TRUE}
 CC_VERSION!=		${CCPATH} -v 2>&1 | ${GREP} -E '^(pcc|Portable C Compiler)'
 .else
-CC_VERSION_STRING?=	${CC_VERSION}
 CC_VERSION?=		pcc
 .endif
 

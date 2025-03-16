@@ -155,7 +155,7 @@ TOOL_DEPENDS+=	ccache-[0-9]*:../../devel/ccache3
 # Override the compiler-specific hash with the version string for the
 # compiler.
 #
-PKGSRC_MAKE_ENV+=	CCACHE_COMPILERCHECK=echo\ ${CC_VERSION_STRING:Q}
+PKGSRC_MAKE_ENV+=	CCACHE_COMPILERCHECK=echo\ ${CC_VERSION:Q}
 PKGSRC_MAKE_ENV+=	CCACHE_DIR=${CCACHE_DIR:Q}
 PKGSRC_MAKE_ENV+=	CCACHE_PATH=${CCPATH:H}:${CXXPATH:H}:${CPPPATH:H}
 .ifdef CCACHE_LOGFILE

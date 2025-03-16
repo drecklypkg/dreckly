@@ -1,0 +1,114 @@
+$NetBSD$
+
+- Support NetBSD, Solaris.
+
+https://bugzilla.mozilla.org/show_bug.cgi?id=1908317
+
+- Don't lock up the browser with WebGL on NetBSD.
+- Honour the user's X11 cursor theme.
+
+--- modules/libpref/init/StaticPrefList.yaml.orig	2025-02-24 16:54:57.000000000 +0000
++++ modules/libpref/init/StaticPrefList.yaml
+@@ -8070,6 +8070,8 @@
+   type: bool
+ #if defined(XP_OPENBSD)
+   value: true
++#elif defined(XP_NETBSD)
++  value: true
+ #else
+   value: false
+ #endif
+@@ -10137,6 +10139,8 @@
+   value: true
+ #elif defined(XP_FREEBSD)
+   value: true
++#elif defined(XP_NETBSD)
++  value: true
+ #elif defined(XP_OPENBSD)
+   value: true
+ #elif defined(XP_SOLARIS)
+@@ -10181,6 +10185,8 @@
+   value: true
+ #elif defined(XP_FREEBSD)
+   value: true
++#elif defined(XP_NETBSD)
++  value: true
+ #elif defined(XP_OPENBSD)
+   value: true
+ #elif defined(XP_SOLARIS)
+@@ -10214,8 +10220,12 @@
+   value: true
+ #elif defined(XP_FREEBSD)
+   value: true
++#elif defined(XP_NETBSD)
++  value: true
+ #elif defined(XP_OPENBSD)
+   value: true
++#elif defined(XP_SOLARIS)
++  value: true
+ #else
+   value: false
+ #endif
+@@ -10231,6 +10241,8 @@
+   value: true
+ #elif defined(XP_FREEBSD)
+   value: true
++#elif defined(XP_NETBSD)
++  value: true
+ #elif defined(XP_OPENBSD)
+   value: true
+ #elif defined(XP_SOLARIS)
+@@ -10250,6 +10262,8 @@
+   value: true
+ #elif defined(XP_FREEBSD)
+   value: true
++#elif defined(XP_NETBSD)
++  value: true
+ #elif defined(XP_OPENBSD)
+   value: true
+ #elif defined(XP_SOLARIS)
+@@ -10269,6 +10283,8 @@
+   value: true
+ #elif defined(XP_FREEBSD)
+   value: true
++#elif defined(XP_NETBSD)
++  value: true
+ #elif defined(XP_OPENBSD)
+   value: true
+ #elif defined(XP_SOLARIS)
+@@ -10288,6 +10304,8 @@
+   value: true
+ #elif defined(XP_FREEBSD)
+   value: true
++#elif defined(XP_NETBSD)
++  value: true
+ #elif defined(XP_OPENBSD)
+   value: true
+ #elif defined(XP_SOLARIS)
+@@ -10319,6 +10337,8 @@
+   value: true
+ #elif defined(XP_FREEBSD)
+   value: true
++#elif defined(XP_NETBSD)
++  value: true
+ #elif defined(XP_OPENBSD)
+   value: true
+ #elif defined(XP_SOLARIS)
+@@ -16304,7 +16324,7 @@
+ 
+ - name: webgl.out-of-process
+   type: RelaxedAtomicBool
+-  value: true
++  value: false
+   mirror: always
+ 
+ - name: webgl.out-of-process.worker
+@@ -16675,7 +16695,7 @@
+ # Whether to use gtk legacy cursor API.
+ - name: widget.gtk.legacy-cursors.enabled
+   type: bool
+-  value: false
++  value: true
+   mirror: always
+ 
+ # Whether to use gtk high contrast themes to disable content styling like on

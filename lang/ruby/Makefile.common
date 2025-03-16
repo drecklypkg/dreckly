@@ -66,15 +66,8 @@ do-patch:
 
 .include "replace.mk"
 
-.if !empty(RUBY_USE_PTHREAD:M[nN][oO])
-CONFIGURE_ARGS+=	--disable-pthread
-.else
-CONFIGURE_ARGS+=	--enable-pthread
-GNU_CONFIGURE_STRICT=	no # at least ruby25-base doesn't know --enable-pthread
-
 PTHREAD_OPTS+=		native
 PTHREAD_AUTO_VARS=	yes
 
 .include "../../mk/pthread.buildlink3.mk"
-.endif
 .include "../../mk/dlopen.buildlink3.mk"

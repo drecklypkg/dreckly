@@ -118,6 +118,7 @@
 # package Makefiles:
 #
 # CC_VERSION
+#
 #	The compiler and version being used, e.g.,
 #
 #	.include "../../mk/compiler.mk"
@@ -125,6 +126,22 @@
 #	.if !empty(CC_VERSION:Mgcc-3*)
 #	...
 #	.endif
+#
+#	This variable should be considered legacy, with the following two
+#	variables providing a much cleaner interface.
+#
+# COMPILER_TYPE
+#
+# 	The compiler being used, e.g. "gcc" or "clang".  Note that this is
+# 	different to PKGSRC_COMPILER and is guaranteed to be a single word,
+# 	whereas PKGSRC_COMPILER may for example be set to "ccache gcc", so
+# 	that direct string comparisons may not be used.
+#
+# COMPILER_VERSION
+#
+# 	A numeric value of the version, e.g. gcc 13.3.0 will be 130300,
+# 	allowing for more natural tests compared to CC_VERSION.  Note that
+# 	not all compilers currently support this variable.
 #
 # Keywords: compiler
 
@@ -134,7 +151,7 @@ BSD_COMPILER_MK=	defined
 _VARGROUPS+=		compiler
 _USER_VARS.compiler=	PKGSRC_COMPILER USE_PKGSRC_GCC ABI COMPILER_USE_SYMLINKS
 _PKG_VARS.compiler=	USE_LANGUAGES GCC_REQD NOT_FOR_COMPILER ONLY_FOR_COMPILER
-_SYS_VARS.compiler=	CC_VERSION
+_SYS_VARS.compiler=	CC_VERSION COMPILER_TYPE COMPILER_VERSION
 
 .include "bsd.fast.prefs.mk"
 
@@ -189,14 +206,14 @@ PKGSRC_COMPILER=	gcc
 .if defined(_ACCEPTABLE_COMPILERS)
 .  for _acceptable_ in ${_ACCEPTABLE_COMPILERS}
 .    for _compiler_ in ${PKGSRC_COMPILER}
-.      if !empty(_ACCEPTABLE_COMPILERS:M${_compiler_}) && !defined(_COMPILER)
-_COMPILER=	${_compiler_}
+.      if !empty(_ACCEPTABLE_COMPILERS:M${_compiler_}) && !defined(COMPILER_TYPE)
+COMPILER_TYPE=	${_compiler_}
 .      endif
 .    endfor
 .  endfor
 .endif
 
-.if !defined(_COMPILER)
+.if !defined(COMPILER_TYPE)
 PKG_FAIL_REASON+=	"No acceptable compiler found for ${PKGNAME}."
 .endif
 
@@ -205,7 +222,7 @@ PKG_FAIL_REASON+=	"No acceptable compiler found for ${PKGNAME}."
 _PKGSRC_COMPILER:=	${_compiler_} ${_PKGSRC_COMPILER}
 .  endif
 .endfor
-_PKGSRC_COMPILER:=	${_COMPILER} ${_PKGSRC_COMPILER}
+_PKGSRC_COMPILER:=	${COMPILER_TYPE} ${_PKGSRC_COMPILER}
 
 _COMPILER_STRIP_VARS=	# empty
 
@@ -213,6 +230,11 @@ _COMPILER_STRIP_VARS=	# empty
 .  include "compiler/${_compiler_}.mk"
 .endfor
 .undef _compiler_
+
+# Set COMPILER_VERSION.  Not all compiler backends provide a _COMPILER_VERSION
+# so provide a default version.
+#
+COMPILER_VERSION=	${_COMPILER_VERSION:U000000}
 
 .if !defined(PKG_CPP)
 PKG_CPP:=${CPP}
@@ -384,10 +406,6 @@ override-tools: ${_FAIL_WRAPPER.FC}
 .if empty(USE_LANGUAGES:Mada)
 PKG_ADA:=		${_FAIL_WRAPPER.ADA}
 override-tools: ${_FAIL_WRAPPER.ADA}
-.endif
-
-.if !empty(DRAGONFLY_CCVER) && ${OPSYS} == "DragonFly"
-ALL_ENV+=		CCVER=${DRAGONFLY_CCVER}
 .endif
 
 .endif	# BSD_COMPILER_MK

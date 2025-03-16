@@ -1,0 +1,17 @@
+$NetBSD$
+
+SPARC requires aligned allocations.
+https://bugzilla.mozilla.org/show_bug.cgi?id=1844117
+
+--- extensions/spellcheck/hunspell/src/hashmgr.cxx.orig	2025-02-24 16:54:51.000000000 +0000
++++ extensions/spellcheck/hunspell/src/hashmgr.cxx
+@@ -1396,6 +1396,9 @@ const std::vector<replentry>& HashMgr::g
+ }
+ 
+ void* HashMgr::arena_alloc(int num_bytes) {
++#ifdef __sparc__
++  num_bytes = (((num_bytes + 7) >> 3) << 3);
++#endif
+   static const int MIN_CHUNK_SIZE = 4096;
+   if (arena.empty() || (current_chunk_size - current_chunk_offset < num_bytes)) {
+     current_chunk_size = std::max(MIN_CHUNK_SIZE, num_bytes);

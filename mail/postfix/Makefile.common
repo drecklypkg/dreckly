@@ -2,9 +2,12 @@
 # used by mail/postfix/Makefile
 # used by mail/postfix/Makefile.module
 
-DISTNAME=	postfix-3.9.2
+DISTNAME=	postfix-3.9.3
 CATEGORIES=	mail
-MASTER_SITES=	ftp://ftp.porcupine.org/mirrors/postfix-release/official/
+MASTER_SITES=	https://ftp.fu-berlin.de/unix/mail/postfix/official/
+MASTER_SITES+=	https://ghostarchive.org/postfix/postfix-release/official/
+MASTER_SITES+=	https://linorg.usp.br/postfix/release/official/
+MASTER_SITES+=	ftp://ftp.porcupine.org/mirrors/postfix-release/official/
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	http://www.postfix.org/
@@ -43,6 +46,19 @@ CCARGS+=	-DUSE_SASL_AUTH
 # Enable Berkeley DB map type. BDB_LIBS is defined in mk/bdb.buildlink3.mk.
 CCARGS+=	-DHAS_DB
 AUXLIBS+=	${BDB_LIBS}
+
+# Support for NIS is unavailable on some recent Linux distributions.
+.if ${OPSYS} == "Linux"
+CCARGS+=	-DNO_NIS
+.endif
+
+.if ${OPSYS} == "OpenBSD"
+PLIST_SUBST+=		SO_EXT="so.1.0"
+PRINT_PLIST_AWK+=	{ gsub(/\.so.1.0/, ".$${SOEXT}"); }
+.else
+PLIST_SUBST+=		SO_EXT="so"
+PRINT_PLIST_AWK+=	{ gsub(/\.so/, ".$${SOEXT}"); }
+.endif
 
 # Disable modules by default
 .for module in cdb ldap lmdb mysql pcre pgsql sqlite

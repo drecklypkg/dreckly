@@ -48,10 +48,6 @@
 # CC_VERSION
 #	A string of the form "gcc-4.3.2"
 #
-# CC_VERSION_STRING
-#	The same(?) as CC_VERSION. FIXME: What's the difference between
-#	the two?
-#
 # Keywords: gcc
 #
 
@@ -68,7 +64,7 @@ _USER_VARS.gcc=	\
 _PKG_VARS.gcc=	\
 	GCC_REQD USE_GCC_RUNTIME USE_LANGUAGES
 _SYS_VARS.gcc=	\
-	CC_VERSION CC_VERSION_STRING LANGUAGES.gcc \
+	CC_VERSION LANGUAGES.gcc \
 	CCPATH CPPPATH CXXPATH F77PATH FCPATH \
 	PKG_CC PKG_CPP PKG_CXX PKG_FC FC PKGSRC_FORTRAN \
 	ADAPATH GMKPATH GLKPATH GBDPATH CHPPATH GLSPATH GNTPATH PRPPATH
@@ -82,13 +78,12 @@ _DEF_VARS.gcc=	\
 	PKGSRC_ADA PKGSRC_GMK PKGSRC_GLK PKGSRC_GBD PKGSRC_CHP PKGSRC_GNT PKGSRC_GLS PKGSRC_PRP \
 	_CC _COMPILER_RPATH_FLAG _COMPILER_STRIP_VARS \
 	_GCCBINDIR _GCC_ARCHDIR _GCC_BIN_PREFIX _GCC_CFLAGS \
-	_GCC_CC _GCC_CPP _GCC_CXX _GCC_DEPENDENCY _GCC_DEPENDS \
-	_GCC_DIST_NAME _GCC_DIST_VERSION \
+	_GCC_CC _GCC_CPP _GCC_CXX _GCC_DEPENDENCY \
 	_GCC_FC _GCC_LDFLAGS _GCC_LIBDIRS _GCC_PKG \
 	_GCC_PKGBASE _GCC_PKGSRCDIR _GCC_PKG_SATISFIES_DEP \
 	_GCC_PREFIX _GCC_REQD _GCC_STRICTEST_REQD _GCC_SUBPREFIX \
 	_GCC_TEST_DEPENDS _GCC_NEEDS_A_FORTRAN _GCC_VARS _GCC_VERSION \
-	_GCC_VERSION_STRING \
+	_CC_MAJOR _CC_MINOR _CC_PATCH _FMT _COMPILER_VERSION \
 	_GCC_ADA _GCC_GMK _GCC_GLK _GCC_GBD _GCC_CHP _GCC_GLS _GCC_GNT _GCC_PRP \
 	_IGNORE_GCC \
 	_IS_BUILTIN_GCC \
@@ -96,9 +91,8 @@ _DEF_VARS.gcc=	\
 	_LINKER_RPATH_FLAG \
 	_NEED_GCC6 _NEED_GCC7 _NEED_GCC8 _NEED_GCC9 \
 	_NEED_GCC10 _NEED_GCC12 _NEED_GCC13 _NEED_GCC14 \
-	_NEED_GCC_AUX _NEED_NEWER_GCC \
+	_NEED_GCC_AUX \
 	_NEED_GCC6_AUX _NEED_GCC10_AUX _NEED_GCC13_GNAT \
-	_PKGSRC_GCC_VERSION \
 	_USE_GCC_SHLIB _USE_PKGSRC_GCC \
 	_WRAP_EXTRA_ARGS.CC \
 	_EXTRA_CC_DIRS \
@@ -118,7 +112,7 @@ _DEF_VARS.gcc=	\
 	_SSP_CFLAGS \
 	_CXX_STD_FLAG.c++03 _CXX_STD_FLAG.gnu++03
 _USE_VARS.gcc=	\
-	MACHINE_ARCH PATH DRAGONFLY_CCVER OPSYS TOOLBASE \
+	MACHINE_ARCH PATH OPSYS TOOLBASE \
 	USE_LIBTOOL \
 	LIBABISUFFIX \
 	COMPILER_RPATH_FLAG \
@@ -274,12 +268,6 @@ _NEED_GCC_AUX?=no
 _NEED_GCC_AUX=yes
 .endif
 
-# _GCC_DIST_VERSION is the highest version of GCC installed by the pkgsrc
-# without the PKGREVISIONs.
-_GCC_DIST_NAME:=	gcc14
-.include "../../lang/${_GCC_DIST_NAME}/version.mk"
-_GCC_DIST_VERSION:=	${${_GCC_DIST_NAME:tu}_DIST_VERSION}
-
 # _GCC6_PATTERNS matches N s.t. N < 7.
 _GCC6_PATTERNS= 5 6 [0-6].*
 
@@ -333,25 +321,42 @@ MAKEFLAGS+=	_CC=${_CC:Q}
 .  endif
 .endif
 
+# Calculate _COMPILER_VERSION.  Abuse bmake's localtime support to convert to
+# %02d without having to fork.  This is limited to a maximum of 59, but that
+# should be more than enough to last for a while at the current GCC release
+# cadence.
+#
+# This gets turned into COMPILER_VERSION by compiler.mk.
+#
 .if !defined(_GCC_VERSION)
-#
-# FIXME: Ideally we'd use PKGSRC_SETENV here, but not enough of the tools
-# infrastructure is loaded for SETENV to be defined when mk/compiler.mk is
-# included first.  LC_ALL is required here for similar reasons, as ALL_ENV
-# is not defined at this stage.
-#
-_GCC_VERSION_STRING!=	\
-	( env LC_ALL=C ${_CC} -v 2>&1 | ${GREP} 'gcc version') 2>/dev/null || ${ECHO} 0
-.  if !empty(_GCC_VERSION_STRING:Megcs*)
-_GCC_VERSION=	2.8.1		# egcs is considered to be gcc-2.8.1.
-.  elif !empty(DRAGONFLY_CCVER) && ${OPSYS} == "DragonFly"
-_GCC_VERSION!= env CCVER=${DRAGONFLY_CCVER} ${_CC} -dumpversion
-.  elif !empty(_GCC_VERSION_STRING:Mgcc*)
-_GCC_VERSION!=	${_CC} -dumpversion
-.  else
-_GCC_VERSION=	0
-.  endif
+_GCC_VERSION!=	${_CC} -dumpversion 2>/dev/null || ${ECHO} 0
 .endif
+
+.if ${_GCC_VERSION:M*.*.*.*}
+_CC_MAJOR=	${_GCC_VERSION:R:R:R}
+_CC_MINOR=	${_GCC_VERSION:R:R:E}
+_CC_PATCH=	${_GCC_VERSION:R:E}
+.elif ${_GCC_VERSION:M*.*.*}
+_CC_MAJOR=	${_GCC_VERSION:R:R}
+_CC_MINOR=	${_GCC_VERSION:R:E}
+_CC_PATCH=	${_GCC_VERSION:E}
+.elif ${_GCC_VERSION:M*.*}
+_CC_MAJOR=	${_GCC_VERSION:R}
+_CC_MINOR=	${_GCC_VERSION:E}
+_CC_PATCH=	0
+.else
+_CC_MAJOR=	${_GCC_VERSION}
+_CC_MINOR=	0
+_CC_PATCH=	0
+.endif
+
+_FMT=		%S
+_CC_MAJOR:=	${${_CC_MAJOR} == "0":?00:${_FMT:localtime=${_CC_MAJOR}}}
+_CC_MINOR:=	${${_CC_MINOR} == "0":?00:${_FMT:localtime=${_CC_MINOR}}}
+_CC_PATCH:=	${${_CC_PATCH} == "0":?00:${_FMT:localtime=${_CC_PATCH}}}
+
+_COMPILER_VERSION:=	${_CC_MAJOR}${_CC_MINOR}${_CC_PATCH}
+
 _GCC_PKG=	gcc-${_GCC_VERSION:C/-.*$//}
 
 # A lot of packages attempt to do this as a workaround for a
@@ -360,52 +365,45 @@ _GCC_PKG=	gcc-${_GCC_VERSION:C/-.*$//}
 # understand this syntax.
 #
 # Note that pkgsrc also sets this flag itself for Darwin+clang.
-.if !empty(_GCC_VERSION:M[23].*) || !empty(_GCC_VERSION:M4.[01].*)
+.if ${_COMPILER_VERSION} < 040200
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=implicit-function-declaration
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=sign-conversion
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=incompatible-pointer-types
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=implicit-int
 .endif
 
-# Added in GCC 4.1
-.if !empty(_GCC_VERSION:M[23].*) || !empty(_GCC_VERSION:M4.0.*)
+.if ${_COMPILER_VERSION} < 040100
 BUILDLINK_TRANSFORM+=	rm:-Wc++-compat
 BUILDLINK_TRANSFORM+=	rm:-Wno-c++-compat
 .endif
 
-# Added in GCC 4.3
-.if !empty(_GCC_VERSION:M[23].*) || !empty(_GCC_VERSION:M4.[012].*)
+.if ${_COMPILER_VERSION} < 040300
 BUILDLINK_TRANSFORM+=	rm:-Wvla
 .endif
 
-# Added in GCC 4.5
-.if !empty(_GCC_VERSION:M[23].*) || !empty(_GCC_VERSION:M4.[01234].*)
+.if ${_COMPILER_VERSION} < 040500
 BUILDLINK_TRANSFORM+=	rm:-Wno-unused-result
 .endif
 
-# Added in GCC 7
-.if !empty(_GCC_VERSION:M[23456].*)
+.if ${_COMPILER_VERSION} < 070000
 BUILDLINK_TRANSFORM+=	rm:-Wimplicit-fallthrough
 BUILDLINK_TRANSFORM+=	rm:-Wno-implicit-fallthrough
 .endif
 
-# Added in GCC 8
-.if !empty(_GCC_VERSION:M[234567].*)
+.if ${_COMPILER_VERSION} < 080000
 BUILDLINK_TRANSFORM+=	rm:-Wmissing-attributes
 BUILDLINK_TRANSFORM+=	rm:-Wno-missing-attributes
 .endif
 
-# Added in GCC 4.8
-.if !empty(_GCC_VERSION:M3.*) || !empty(_GCC_VERSION:M4.[0-7].*)
+.if ${_COMPILER_VERSION} < 040800
 BUILDLINK_TRANSFORM+=	opt:-std=c++03:-std=c++98
 BUILDLINK_TRANSFORM+=	opt:-std=gnu++03:-std=gnu++98
 .endif
 
-.if !empty(_GCC_VERSION:M[23].*) || !empty(_GCC_VERSION:M4.[0-8].*)
+.if ${_COMPILER_VERSION} < 040900
 COMPILER_HAS_C11?=	no
-.else
-COMPILER_HAS_C11?=	yes
 .endif
+COMPILER_HAS_C11?=	yes
 
 .for _version_ in ${_C_STD_VERSIONS}
 _C_STD_FLAG.${_version_}?=	-std=${_version_}
@@ -579,7 +577,6 @@ _NEED_GCC14=	yes
 #.for _pattern_ in ${_GCC_AUX_PATTERNS}
 #.  if !empty(_GCC_REQD:M${_pattern_})
 #_NEED_GCC_AUX=	yes
-#_NEED_NEWER_GCC=NO
 #.  endif
 #.endfor
 .if !empty(_NEED_GCC6:M[nN][oO]) && !empty(_NEED_GCC7:M[nN][oO]) && \
@@ -955,7 +952,6 @@ _GCC_DEPENDENCY=	gcc13-gnat>=${_GCC_REQD}:../../lang/gcc13-gnat
 _USE_GCC_SHLIB?=	no
 .  endif
 .endif
-_GCC_DEPENDS=		${_GCC_PKGBASE}>=${_GCC_REQD}
 
 # When not using the GNU linker, gcc will always link shared libraries against
 # the shared version of libgcc, and so _USE_GCC_SHLIB needs to be enabled on
@@ -995,24 +991,6 @@ _USE_PKGSRC_GCC!=	\
 		${ECHO} "YES";						\
 	fi
 .  endif
-.endif
-
-# Check if any of the versions of GCC in pkgsrc can satisfy the _GCC_REQD
-# requirement.
-#
-.if !defined(_NEED_NEWER_GCC)
-_PKGSRC_GCC_VERSION=	${_GCC_PKGBASE}-${_GCC_DIST_VERSION}
-_NEED_NEWER_GCC!=	\
-	if ${PKG_ADMIN} pmatch '${_GCC_DEPENDS}' ${_PKGSRC_GCC_VERSION} 2>/dev/null; then \
-		${ECHO} "NO";						\
-	else								\
-		${ECHO} "YES";						\
-	fi
-#MAKEFLAGS+=	_NEED_NEWER_GCC=${_NEED_NEWER_GCC}
-.endif
-.if !empty(_USE_PKGSRC_GCC:M[yY][eE][sS]) && \
-    !empty(_NEED_NEWER_GCC:M[yY][eE][sS])
-PKG_FAIL_REASON+=	"Unable to satisfy dependency: ${_GCC_DEPENDS}"
 .endif
 
 .if !empty(_USE_PKGSRC_GCC:M[yY][eE][sS]) && !defined(_GCC_PREFIX)
@@ -1195,7 +1173,6 @@ _COMPILER_ABI_FLAG.64=	-m64
 
 .if !empty(_USE_PKGSRC_GCC:M[yY][eE][sS])
 .  if exists(${CCPATH})
-CC_VERSION_STRING!=	${CCPATH} -v 2>&1
 CC_VERSION!=		\
 	if ${CCPATH} -dumpversion > /dev/null 2>&1; then		\
 		${ECHO} "gcc-`${CCPATH} -dumpversion`";			\
@@ -1204,11 +1181,9 @@ CC_VERSION!=		\
 	fi
 
 .  else
-CC_VERSION_STRING=	${CC_VERSION}
 CC_VERSION=		gcc-${_GCC_REQD}
 .  endif
 .else
-CC_VERSION_STRING=	${CC_VERSION}
 CC_VERSION=		${_GCC_PKG}
 .endif
 
@@ -1292,11 +1267,6 @@ _GCC_NEEDS_A_FORTRAN=	yes
 .endif
 .if !empty(_GCC_NEEDS_A_FORTRAN:M[yY][eE][sS])
 .  include "../../mk/compiler/${PKGSRC_FORTRAN}.mk"
-.endif
-
-.if ${OPSYS} == "Interix" && !empty(_GCCBINDIR:M/opt/gcc.*)
-COMPILER_INCLUDE_DIRS=	${_GCCBINDIR:H}/include ${_OPSYS_INCLUDE_DIRS}
-COMPILER_LIB_DIRS=	${_GCCBINDIR:H}/lib ${_OPSYS_LIB_DIRS}
 .endif
 
 #.READONLY: GCC_REQD

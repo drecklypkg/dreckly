@@ -1,5 +1,0 @@
-$NetBSD: distinfo,v 1.4 2022/06/03 08:00:09 wiz Exp $
-
-BLAKE2s (bos-0.2.1.tbz) = 6b274022c4ec048cadea6f0276f171ceab4d10c61b8f1173ea3592a5e15b466f
-SHA512 (bos-0.2.1.tbz) = 8daeb8a4c2dd1f2460f6274ada19f4f1b6ebe875ff83a938c93418ce0e6bdb74b8afc5c9a7d410c1c9df2dad030e4fa276b6ed2da580639484e8b5bc92610b1d
-Size (bos-0.2.1.tbz) = 42330 bytes

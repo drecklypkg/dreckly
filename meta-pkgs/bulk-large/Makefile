@@ -148,7 +148,6 @@ DEPENDS+=	netbsd-doc-[0-9]*:../../meta-pkgs/netbsd-doc
 DEPENDS+=	netbsd-doc-print-[0-9]*:../../meta-pkgs/netbsd-doc-print
 DEPENDS+=	netbsd-www-[0-9]*:../../meta-pkgs/netbsd-www
 DEPENDS+=	pkg_developer-[0-9]*:../../meta-pkgs/pkg_developer
-DEPENDS+=	pkgsrc-guide-tools-[0-9]*:../../meta-pkgs/pkgsrc-guide-tools
 
 #
 # 7. Complete X.org

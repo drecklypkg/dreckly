@@ -1,0 +1,19 @@
+$NetBSD$
+
+- Sun Audio support.
+
+--- media/libcubeb/src/moz.build.orig	2025-03-07 15:39:30.406566780 +0000
++++ media/libcubeb/src/moz.build
+@@ -44,6 +44,12 @@ if CONFIG['MOZ_JACK']:
+     ]
+     DEFINES['USE_JACK'] = True
+ 
++if CONFIG['MOZ_SUN']:
++    SOURCES += [
++        'cubeb_sun.c',
++    ]
++    DEFINES['USE_SUN'] = True
++
+ if CONFIG['OS_ARCH'] == 'OpenBSD':
+     SOURCES += [
+         'cubeb_sndio.c',

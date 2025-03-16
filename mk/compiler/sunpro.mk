@@ -81,10 +81,8 @@ _COMPILER_RPATH_FLAG=	-Wl,-R
 # XXX: What about the versions of the other compilers? Fortran and C++?
 # XXX: should be moved to compiler.mk.
 .if exists(${CCPATH})
-CC_VERSION_STRING!=	${CCPATH} -V 2>&1 || ${TRUE}
 CC_VERSION!=		${CCPATH} -V 2>&1 | ${GREP} '^cc'
 .else
-CC_VERSION_STRING?=	${CC_VERSION}
 CC_VERSION?=		cc: Sun C
 .endif
 

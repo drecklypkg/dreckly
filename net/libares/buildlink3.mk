@@ -11,12 +11,6 @@ BUILDLINK_API_DEPENDS.libares+=	libares>=1.1.1
 BUILDLINK_PKGSRCDIR.libares?=	../../net/libares
 BUILDLINK_DEPMETHOD.libares?=	build
 
-.if ${OPSYS} == "Interix"
-BUILDLINK_PASSTHRU_DIRS+=	/usr/local/include/bind /usr/local/lib/bind
-BUILDLINK_CPPFLAGS.libares+=	-I/usr/local/include/bind
-BUILDLINK_LDFLAGS.libares+=	-L/usr/local/lib/bind
-BUILDLINK_LIBS.libares+=	-lbind -ldb
-.endif
 .endif # LIBARES_BUILDLINK3_MK
 
 BUILDLINK_TREE+=	-libares

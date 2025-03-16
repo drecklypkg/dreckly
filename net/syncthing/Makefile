@@ -1,9 +1,8 @@
-# $NetBSD: Makefile,v 1.191 2024/09/06 18:48:52 bsiegert Exp $
+# $NetBSD: Makefile,v 1.192 2025/03/07 20:54:25 bsiegert Exp $
 
 # Protocol breaks require tech-pkg@ discussion and MAINTAINER approval.
-DISTNAME=	syncthing-source-v1.26.1
+DISTNAME=	syncthing-source-v1.29.2
 PKGNAME=	${DISTNAME:S,source-v,,}
-PKGREVISION=	8
 CATEGORIES=	net
 MASTER_SITES=	${MASTER_SITE_GITHUB:=syncthing/}
 GITHUB_RELEASE=	v${PKGVERSION_NOREV}
@@ -40,7 +39,7 @@ SUBST_SED.version+=	-e 's|"go"|"${GO}"|'
 SUBST_CLASSES+=		go
 SUBST_STAGE.go=		pre-build
 SUBST_MESSAGE.go=	Fixing go executable reference
-SUBST_FILES.go=		lib/api/auto/doc.go cmd/strelaypoolsrv/auto/doc.go
+SUBST_FILES.go=		lib/api/auto/doc.go cmd/infra/strelaypoolsrv/auto/doc.go
 SUBST_SED.go+=		-e 's|go run|"${GO}" run|'
 
 SUBST_CLASSES+=		bin

@@ -11,10 +11,6 @@
 .if !defined(COMPILER_CLANG_MK)
 COMPILER_CLANG_MK=	defined
 
-# Add the dependency on clang
-# TODO: may be installed already, check for this
-#TOOL_DEPENDS+= clang-[0-9]*:../../lang/clang
-
 .include "../../mk/bsd.prefs.mk"
 
 CLANGBASE?=		${TOOLBASE}
@@ -48,10 +44,42 @@ CLANG_VERSION=		0
 CC_VERSION=		clang-${CLANG_VERSION}
 .endif
 
+# As a user may have preset CC_VERSION we cannot rely on CLANG_VERSION being
+# set, so we dig it back out of CC_VERSION.
 #
-# TODO: CC_VERSION_STRING is obsolete and should be removed at some point.
+_CLANG_VERSION:=	${CC_VERSION:S/clang-//}
+
+# Calculate _COMPILER_VERSION.  Abuse bmake's localtime support to convert to
+# %02d without having to fork.  This is limited to a maximum of 59, but that
+# should be more than enough to last for a while at the current clang release
+# cadence.
 #
-CC_VERSION_STRING=	${CC_VERSION}
+# This gets turned into COMPILER_VERSION by compiler.mk.
+#
+.if ${_CLANG_VERSION:M*.*.*.*}
+_CC_MAJOR=	${_CLANG_VERSION:R:R:R}
+_CC_MINOR=	${_CLANG_VERSION:R:R:E}
+_CC_PATCH=	${_CLANG_VERSION:R:E}
+.elif ${_CLANG_VERSION:M*.*.*}
+_CC_MAJOR=	${_CLANG_VERSION:R:R}
+_CC_MINOR=	${_CLANG_VERSION:R:E}
+_CC_PATCH=	${_CLANG_VERSION:E}
+.elif ${_CLANG_VERSION:M*.*}
+_CC_MAJOR=	${_CLANG_VERSION:R}
+_CC_MINOR=	${_CLANG_VERSION:E}
+_CC_PATCH=	0
+.else
+_CC_MAJOR=	${_CLANG_VERSION}
+_CC_MINOR=	0
+_CC_PATCH=	0
+.endif
+
+_FMT=		%S
+_CC_MAJOR:=	${${_CC_MAJOR} == "0":?00:${_FMT:localtime=${_CC_MAJOR}}}
+_CC_MINOR:=	${${_CC_MINOR} == "0":?00:${_FMT:localtime=${_CC_MINOR}}}
+_CC_PATCH:=	${${_CC_PATCH} == "0":?00:${_FMT:localtime=${_CC_PATCH}}}
+
+_COMPILER_VERSION:=	${_CC_MAJOR}${_CC_MINOR}${_CC_PATCH}
 
 _COMPILER_ABI_FLAG.32=	-m32
 _COMPILER_ABI_FLAG.64=	-m64
@@ -68,7 +96,7 @@ _LANGUAGES.clang=	# empty
 _LANGUAGES.clang+=	${LANGUAGES.clang:M${_lang_}}
 .endfor
 
-PKGSRC_FORTRAN?=gfortran
+PKGSRC_FORTRAN?=	gfortran
 
 .if !empty(PKGSRC_FORTRAN) && (!empty(USE_LANGUAGES:Mfortran) || !empty(USE_LANGUAGES:Mfortran77))
 .  include "../../mk/compiler/${PKGSRC_FORTRAN}.mk"

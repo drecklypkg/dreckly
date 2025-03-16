@@ -321,14 +321,7 @@ _WRAP_SKIP_TRANSFORM.IMAKE=	yes
 # XXX
 # XXX This section is ${OPSYS}-specific and shouldn't be here.
 # XXX
-.if ${OPSYS} == "Interix"
-_WRAP_EXTRA_ARGS.CC+=	-D_ALL_SOURCE
-_WRAP_EXTRA_ARGS.CXX+=	-D_ALL_SOURCE
-_WRAP_EXTRA_ARGS.CPP+=	-D_ALL_SOURCE
-_WRAP_CMD_SINK.CC=	${WRAPPER_TMPDIR}/cmd-sink-interix-gcc
-_WRAP_CMD_SINK.CXX=	${_WRAP_CMD_SINK.CC}
-_WRAP_CMD_SINK.LD=	${WRAPPER_TMPDIR}/cmd-sink-interix-ld
-.elif ${OPSYS} == "Darwin"
+.if ${OPSYS} == "Darwin"
 _WRAP_ARG_PP.CC=	${WRAPPER_TMPDIR}/arg-pp-darwin-gcc
 _WRAP_ARG_PP.CXX=	${_WRAP_ARG_PP.CC}
 _WRAP_ARG_PP.LD=	${_WRAP_ARG_PP.CC}
@@ -514,7 +507,6 @@ generate-wrappers: ${_target_}
 	cmd-sink-icc81-cc \
 	cmd-sink-irix-cc \
 	cmd-sink-irix-ld \
-	cmd-sink-interix-gcc \
 	cmd-sink-ld \
 	cmd-sink-mkpie-gcc \
 	cmd-sink-mkpie-ld \

@@ -21,6 +21,9 @@ _LINUX_BINPATHS?=	/bin /usr/bin /sbin /usr/sbin
 .  if exists(${_path}/autopoint)
 TOOLS_PLATFORM.autopoint?=	${_path}/autopoint
 .  endif
+.  if exists(${_path}/awk)
+TOOLS_PLATFORM.awk?=		${_path}/awk
+.  endif
 .  if exists(${_path}/basename)
 TOOLS_PLATFORM.basename?=	${_path}/basename
 .  endif

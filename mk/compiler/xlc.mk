@@ -99,10 +99,8 @@ _COMPILER_RPATH_FLAG=	-Wl,-R
 _LINKER_RPATH_FLAG=	-R
 
 .if exists(${CCPATH})
-CC_VERSION_STRING!=	${CCPATH} -qversion 2>&1 | ${GREP} 'IBM XL C.*for' | ${SED} -e 's/^ *//' || ${TRUE}
-CC_VERSION=		${CC_VERSION_STRING}
+CC_VERSION!=		${CCPATH} -qversion 2>&1 | ${GREP} 'IBM XL C.*for' | ${SED} -e 's/^ *//' || ${TRUE}
 .else
-CC_VERSION_STRING?=	${CC_VERSION}
 CC_VERSION?=		IBM XL C
 .endif
 

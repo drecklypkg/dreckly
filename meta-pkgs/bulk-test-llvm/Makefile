@@ -25,7 +25,6 @@ NO_BIN_ON_FTP=		${RESTRICTED}
 DEPENDS+=	clang-[0-9]*:../../lang/clang
 DEPENDS+=	creduce-[0-9]*:../../devel/creduce
 DEPENDS+=	cvise-[0-9]*:../../devel/cvise
-DEPENDS+=	firefox-[0-9]*:../../www/firefox
 DEPENDS+=	firefox-esr-[0-9]*:../../www/firefox-esr
 DEPENDS+=	include-what-you-use-[0-9]*:../../devel/include-what-you-use
 DEPENDS+=	polly-[0-9]*:../../devel/polly

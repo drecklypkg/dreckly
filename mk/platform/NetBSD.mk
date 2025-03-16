@@ -243,3 +243,7 @@ _OPSYS_LDEMUL.i386=		elf_i386
 _WRAP_EXTRA_ARGS.LD+=	-m ${_OPSYS_LDEMUL.${MACHINE_ARCH}}
 CWRAPPERS_APPEND.ld+=	-m ${_OPSYS_LDEMUL.${MACHINE_ARCH}}
 .endif
+
+# iconv is in libc.  Most things will assume that NetBSD uses citrus iconv,
+# rather than the GNU version.
+_OPSYS_PREFER.iconv?=	native

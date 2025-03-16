@@ -185,14 +185,6 @@ MISSING_FEATURES+=	${_feature_}
 .  endif
 .endfor
 
-.for _feature_ in utimes
-.  if !empty(USE_FEATURES:M${_feature_})
-.    if ${OPSYS} == "Interix"
-MISSING_FEATURES+=	${_feature_}
-.    endif
-.  endif
-.endfor
-
 .if !empty(USE_FEATURES:Mnbcompat)
 MISSING_FEATURES+=	nbcompat
 .endif

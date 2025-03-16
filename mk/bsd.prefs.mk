@@ -221,27 +221,6 @@ NATIVE_LOWER_OPSYS?=		haiku
 NATIVE_LOWER_VENDOR?=		pc
 .  endif
 
-.elif ${NATIVE_OPSYS} == "Interix"
-NATIVE_LOWER_OPSYS?=		interix
-NATIVE_LOWER_VENDOR?=		pc
-.  if exists(/usr/lib/libc.so.5.2) || exists(/usr/lib/x86/libc.so.5.2)
-NATIVE_LOWER_OPSYS_VERSUFFIX=	${NATIVE_OS_VERSION:C/([0-9]*).*/\1/}
-.  else
-NATIVE_LOWER_OPSYS_VERSUFFIX?=	3
-.    if exists(/usr/lib/libc.so.3.5)
-NATIVE_OS_VERSION=		3.5
-.    elif exists(/usr/lib/libc.so.3.1)
-NATIVE_OS_VERSION=		3.1
-.    else
-NATIVE_OS_VERSION=		3.0
-.    endif
-.  endif
-
-.elif ${NATIVE_OPSYS} == "MirBSD"
-NATIVE_LOWER_OPSYS?=		mirbsd
-NATIVE_LOWER_OPSYS_VERSUFFIX=	${NATIVE_OS_VERSION}
-NATIVE_LOWER_VENDOR?=		unknown
-
 .elif !empty(NATIVE_OPSYS:MIRIX*)
 NATIVE_LOWER_OPSYS?=		irix
 NATIVE_LOWER_OPSYS_VERSUFFIX?=	${NATIVE_OS_VERSION}
@@ -261,8 +240,6 @@ NATIVE_LOWER_VENDOR?=		mandrake
 NATIVE_LOWER_VENDOR?=		redhat
 .  elif exists(/etc/slackware-version)
 NATIVE_LOWER_VENDOR?=		slackware
-.  elif exists(/etc/ssdlinux_version)
-NATIVE_LOWER_VENDOR?=		ssd
 .  elif !empty(CHROMEOS_RELEASE_NAME)
 NATIVE_LOWER_VENDOR?=		chromeos
 .  elif ${MACHINE_ARCH} == "i386"	# pre-NATIVE_MACHINE_ARCH switcheroo
@@ -526,9 +503,6 @@ OBJECT_FMT?=	ELF
 OBJECT_FMT=	ELF
 .elif ${OPSYS} == "Minix"
 OBJECT_FMT=	ELF
-.elif ${OPSYS} == "MirBSD"
-OBJECT_FMT=	ELF
-MKPROFILE=	no
 .elif ${OPSYS} == "Linux"
 OBJECT_FMT=	ELF
 .elif ${OPSYS} == "AIX"
