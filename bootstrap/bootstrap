@@ -1466,9 +1466,6 @@ esac
 case "$need_extras" in
 yes)	build_package "pkgtools/bootstrap-extras";;
 esac
-case "$need_pax" in
-yes)    build_package "archivers/pax"
-esac
 build_package "pkgtools/pkg_install"
 
 etc_mk_conf="$sysconfdir/mk.conf"
