@@ -321,12 +321,8 @@ MAKEFLAGS+=	_CC=${_CC:Q}
 .  endif
 .endif
 
-# Calculate _COMPILER_VERSION.  Abuse bmake's localtime support to convert to
-# %02d without having to fork.  This is limited to a maximum of 59, but that
-# should be more than enough to last for a while at the current GCC release
-# cadence.
-#
-# This gets turned into COMPILER_VERSION by compiler.mk.
+# Calculate _COMPILER_VERSION.  This gets turned into COMPILER_VERSION
+# by compiler.mk.
 #
 .if !defined(_GCC_VERSION)
 _GCC_VERSION!=	${_CC} -dumpversion 2>/dev/null || ${ECHO} 0
@@ -350,10 +346,10 @@ _CC_MINOR=	0
 _CC_PATCH=	0
 .endif
 
-_FMT=		%S
-_CC_MAJOR:=	${${_CC_MAJOR} == "0":?00:${_FMT:localtime=${_CC_MAJOR}}}
-_CC_MINOR:=	${${_CC_MINOR} == "0":?00:${_FMT:localtime=${_CC_MINOR}}}
-_CC_PATCH:=	${${_CC_PATCH} == "0":?00:${_FMT:localtime=${_CC_PATCH}}}
+# Convert 0-9 to 00-09 to ensure MMmmpp format.
+_CC_MAJOR:=	${${_CC_MAJOR} < 9:?0${_CC_MAJOR}:${_CC_MAJOR}}
+_CC_MINOR:=	${${_CC_MINOR} < 9:?0${_CC_MINOR}:${_CC_MINOR}}
+_CC_PATCH:=	${${_CC_PATCH} < 9:?0${_CC_PATCH}:${_CC_PATCH}}
 
 _COMPILER_VERSION:=	${_CC_MAJOR}${_CC_MINOR}${_CC_PATCH}
 
