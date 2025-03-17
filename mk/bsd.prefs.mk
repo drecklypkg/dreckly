@@ -96,7 +96,7 @@ MAKEFLAGS+=		OPSYS=${OPSYS:Q} # defined in crossvars
 # OS_VARIANT is used to differentiate operating systems which have a common
 # basis but offer contrasting environments, for example Linux distributions
 # or illumos forks.
-NATIVE_OS_VARIANT?=	# empty
+OS_VARIANT?=		# empty
 
 # The _CMD indirection allows code below to modify these values
 # without executing the commands at all.  Later, recursed make
@@ -188,7 +188,7 @@ NATIVE_LOWER_OPSYS?=	cygwin
 NATIVE_LOWER_VENDOR?=	pc
 _NATIVE_OS_VERSION!=	${UNAME} -r
 NATIVE_OS_VERSION=	${_NATIVE_OS_VERSION:C/\(.*\)//:C/-.*//}
-NATIVE_OS_VARIANT!=	${UNAME} -s
+OS_VARIANT!=		${UNAME} -s
 
 .elif ${NATIVE_OPSYS} == "Darwin"
 NATIVE_LOWER_OPSYS?=		darwin
@@ -242,10 +242,10 @@ NATIVE_LOWER_VENDOR?=		chromeos
 NATIVE_LOWER_VENDOR?=          pc
 .  endif
 NATIVE_LOWER_VENDOR?=          unknown
-NATIVE_OS_VARIANT!=		${UNAME} -r
-NATIVE_OS_VARIANT:=		${NATIVE_OS_VARIANT:C/^.*-//}
-.  if ${NATIVE_OS_VARIANT} != "Microsoft"
-NATIVE_OS_VARIANT=		${NATIVE_LOWER_VENDOR}
+OS_VARIANT!=			${UNAME} -r
+OS_VARIANT:=			${OS_VARIANT:C/^.*-//}
+.  if ${OS_VARIANT} != "Microsoft"
+OS_VARIANT=			${NATIVE_LOWER_VENDOR}
 .  endif
 # Ensure HOST_MACHINE_ARCH is set for native-but-compat builds, such as
 # building i386 packages on an amd64 system with compat32 libraries.
@@ -279,16 +279,16 @@ _UNAME_V!=		${UNAME} -v
 MAKEFLAGS+=		_UNAME_V=${_UNAME_V:Q}
 .  endif
 .  if !empty(_UNAME_V:Mjoyent_*)
-NATIVE_OS_VARIANT=		SmartOS
+OS_VARIANT=			SmartOS
 NATIVE_LOWER_VARIANT_VERSION=	${_UNAME_V:C/joyent_//}
 .  elif !empty(_UNAME_V:Momnios-*)
-NATIVE_OS_VARIANT=		OmniOS
+OS_VARIANT=			OmniOS
 NATIVE_LOWER_VARIANT_VERSION!=	/usr/bin/awk '{ print $$3; exit 0; }' /etc/release
 .  elif !empty(_UNAME_V:Mtribblix-*)
-NATIVE_OS_VARIANT=		Tribblix
+OS_VARIANT=			Tribblix
 NATIVE_LOWER_VARIANT_VERSION!=	/usr/bin/awk '{ print $$2; exit 0; }' /etc/release
 .  else
-NATIVE_OS_VARIANT=		Solaris
+OS_VARIANT=			Solaris
 NATIVE_LOWER_VARIANT_VERSION=	${_UNAME_V}
 .  endif
 
@@ -300,9 +300,9 @@ NATIVE_LOWER_OPSYS?=		sco
 NATIVE_LOWER_OPSYS_VERSUFFIX=	${SCO_RELEASE}v${SCO_VERSION}
 _UNAME_V!=			${UNAME} -v
 .  if !empty(_UNAME_V:M5.0*)
-NATIVE_OS_VARIANT=		SCOOSR5
+OS_VARIANT=			SCOOSR5
 .  elif !empty(_UNAME_V:M6.0*)
-NATIVE_OS_VARIANT=		SCOOSR6
+OS_VARIANT=			SCOOSR6
 .  endif
 
 .elif ${NATIVE_OPSYS} == "UnixWare"
@@ -366,9 +366,6 @@ LOWER_VARIANT_VERSION=	\
 CROSSVARS+=	LOWER_VENDOR
 LOWER_VENDOR=		\
 	${"${USE_CROSS_COMPILE:U:tl}" == "yes":?${CROSS_LOWER_VENDOR}:${NATIVE_LOWER_VENDOR}}
-CROSSVARS+=	LOWER_OS_VARIANT
-OS_VARIANT=		\
-	${"${USE_CROSS_COMPILE:U:tl}" == "yes":?${CROSS_OS_VARIANT}:${NATIVE_OS_VARIANT}}
 
 # Remember the MACHINE_ARCH that make was built with before we override
 # it with CROSS_MACHINE_ARCH if USE_CROSS_COMPILE is enabled.
