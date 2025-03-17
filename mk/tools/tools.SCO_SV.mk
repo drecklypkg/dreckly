@@ -95,7 +95,6 @@ TOOLS_PLATFORM.pwd?=		/bin/pwd
 .if exists(/usr/xdev/bin/readelf)
 TOOLS_PLATFORM.readelf?=	/usr/xdev/bin/readelf
 .endif
-# SCO OpenServer 5.0.7/3.2's rm cannot accept "rm -f".
 TOOLS_PLATFORM.rm?=		/bin/rm
 TOOLS_PLATFORM.rmdir?=		/bin/rmdir
 TOOLS_PLATFORM.sdiff?=		/usr/bin/sdiff
