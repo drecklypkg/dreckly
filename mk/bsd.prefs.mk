@@ -296,29 +296,9 @@ LOWER_OPSYS:=		${OPSYS:tl}
 OS_VERSION:=		${OS_VERSION}
 
 MAKEFLAGS+=		LOWER_OPSYS=${LOWER_OPSYS:Q}
-
 LOWER_VENDOR?=		# empty ("arch--opsys")
-
-# List of variables that must be set to determine a cross-compilation
-# target.
-CROSSVARS?=	# empty
-
-# Cross-compilation target settings.
-#
-# We set these to have conditional expansions so that when <bsd.own.mk>
-# includes mk.conf, and mk.conf sets USE_CROSS_COMPILE, the _rest_ of
-# <bsd.own.mk> gets the right cross vs native versions of the
-# variables.
-#
-# As soon as <bsd.own.mk> is done we can commit the switcheroo without
-# the conditional expansions -- but there's no hook to do that inside
-# <bsd.own.mk> between inclusion of mk.conf and the rest of
-# <bsdf.own.mk>.  And there's no way to know, before we include
-# mk.conf, whether the user _might_ be doing cross-builds.  So we have
-# to use this massive kludge.
-#
-MACHINE_PLATFORM?=		${OPSYS}-${OS_VERSION}-${MACHINE_ARCH}
-MACHINE_GNU_PLATFORM?=		${MACHINE_GNU_ARCH}-${LOWER_VENDOR}-${LOWER_OPSYS:C/[0-9]//g}${APPEND_ELF}${LOWER_OPSYS_VERSUFFIX}${APPEND_ABI}
+MACHINE_PLATFORM?=	${OPSYS}-${OS_VERSION}-${MACHINE_ARCH}
+MACHINE_GNU_PLATFORM?=	${MACHINE_GNU_ARCH}-${LOWER_VENDOR}-${LOWER_OPSYS:C/[0-9]//g}${APPEND_ELF}${LOWER_OPSYS_VERSUFFIX}${APPEND_ABI}
 
 # Set this before <bsd.own.mk> does, since it doesn't know about Darwin
 # or Cygwin (XXX or HP-UX or AIX or OSF/1 or ...).
@@ -349,35 +329,6 @@ PKGPATH?=		${.CURDIR:C|.*/([^/]*/[^/]*)$|\1|}
 
 # Load the settings from MAKECONF, which is /etc/mk.conf by default.
 .include <bsd.own.mk>
-
-# When cross-compilation support is requested, the following options
-# must be specified as well or guessable:
-# - Variables like MACHINE_ARCH are set to CROSS_MACHINE_ARCH.
-# - CROSS_DESTDIR is guessed from MAKEOBJDIR and MACHINE_ARCH.
-# - PKG_DBDIR is expanded and prefixed with CROSS_DESTDIR
-# - DESTDIR support is required
-#
-# _CROSS_DESTDIR is set for internal use to avoid conditionalising
-# the use.
-
-.if ${USE_CROSS_COMPILE:U:tl} == "yes" # defaults/mk.conf not yet loaded, so :U
-.  for _v_ in ${CROSSVARS}
-.    ifndef CROSS_${_v_}
-MISSING_CROSSVARS=	yes
-.      warning Missing CROSS_${_v_} setting
-.    endif
-${_v_}:=	${CROSS_${_v_}}
-.  endfor
-.  ifdef MISSING_CROSSVARS
-.    error USE_CROSS_COMPILE=yes but missing cross variable settings
-.  endif
-CROSS_DESTDIR?=	${MAKEOBJDIR}/destdir.${MACHINE_ARCH}
-.  if !exists(${CROSS_DESTDIR}/usr/include/stddef.h)
-PKG_FAIL_REASON+=	"The cross-compiling root ${CROSS_DESTDIR:Q} is incomplete"
-.  else
-_CROSS_DESTDIR=	${CROSS_DESTDIR}
-.  endif
-.endif
 
 .if ${OPSYS} == "OpenBSD"
 .  if defined(ELF_TOOLCHAIN) && ${ELF_TOOLCHAIN} == "yes"

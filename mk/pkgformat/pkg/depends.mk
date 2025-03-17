@@ -88,8 +88,6 @@ _RESOLVE_DEPENDS_CMD=	\
 		_DEPENDS_FILE=${_DEPENDS_FILE:Q} \
 		${SH} ${PKGSRCDIR}/mk/pkgformat/pkg/resolve-dependencies
 
-CROSSTARGETSETTINGS=	${CROSSVARS:@_v_@TARGET_${_v_}=${${_v_}}@}
-
 # _DEPENDS_INSTALL_CMD checks whether the package $pattern is installed,
 #	and installs it if necessary.
 #
@@ -111,7 +109,7 @@ _DEPENDS_INSTALL_CMD=							\
 	bootstrap|tool)							\
 		case "${USE_CROSS_COMPILE:Uno:tl}" in			\
 		yes)	extradep="";					\
-			crosstargetsettings=${CROSSTARGETSETTINGS:Q};	\
+			crosstargetsettings=;				\
 			;;						\
 		*)	extradep=" ${PKGNAME}";				\
 			crosstargetsettings=;				\
@@ -136,7 +134,6 @@ _DEPENDS_INSTALL_CMD=							\
 		cd $$dir;						\
 		unset _PKGSRC_BARRIER || true;				\
 		unset MAKEFLAGS || true;				\
-		unset ${CROSSVARS:@_v_@TARGET_${_v_}@} || true;		\
 		${PKGSRC_SETENV} ${PKGSRC_MAKE_ENV} PATH=${_PATH_ORIG:Q}\
 			_PKGSRC_DEPS="$$extradep${_PKGSRC_DEPS}"	\
 			PKGNAME_REQD="$$pattern"			\
@@ -229,7 +226,6 @@ pkg_install-depends:
 	esac; \
 	unset _PKGSRC_BARRIER || true; \
 	unset MAKEFLAGS || true; \
-	unset ${CROSSVARS:@_v_@TARGET_${_v_}@} || true; \
 	cd ../../pkgtools/pkg_install && \
 	${PKGSRC_SETENV} ${PKGSRC_MAKE_ENV} PATH=${_PATH_ORIG:Q} \
 	    _PKGSRC_DEPS="$$extradep${_PKGSRC_DEPS}" \
