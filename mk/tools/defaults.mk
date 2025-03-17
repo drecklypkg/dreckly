@@ -33,10 +33,6 @@ TOOLS_DEFAULTS_MK=	defined
 
 # These are the platform-specific lists of system-supplied tools.
 #
-.if ${TOOLS_USE_CROSS_COMPILE:tl} == "yes" && \
-    exists(${_PKGSRC_TOPDIR}/mk/tools/cross.${OPSYS}.mk)
-.  include "${_PKGSRC_TOPDIR}/mk/tools/cross.${OPSYS}.mk"
-.endif
 .if exists(${_PKGSRC_TOPDIR}/mk/tools/tools.${OPSYS}.mk)
 .  include "${_PKGSRC_TOPDIR}/mk/tools/tools.${OPSYS}.mk"
 .endif
