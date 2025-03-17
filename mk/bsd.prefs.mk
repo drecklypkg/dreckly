@@ -151,7 +151,7 @@ GNU_ARCH.mips?=		mipsel
 GNU_ARCH.sh3eb?=	sh
 GNU_ARCH.sh3el?=	shle
 GNU_ARCH.mips64eb?=	mips64
-NATIVE_MACHINE_GNU_ARCH?=	${GNU_ARCH.${NATIVE_MACHINE_ARCH}:U${NATIVE_MACHINE_ARCH}}
+NATIVE_MACHINE_GNU_ARCH?=	${GNU_ARCH.${MACHINE_ARCH}:U${MACHINE_ARCH}}
 MACHINE_GNU_ARCH?=		${GNU_ARCH.${MACHINE_ARCH}:U${MACHINE_ARCH}}
 
 ## If changes are made to how OS_VERSION is set below please keep
@@ -201,14 +201,14 @@ NATIVE_LOWER_VENDOR?=	pc
 OS_VERSION:=			${OS_VERSION:C/-.*$//}
 NATIVE_LOWER_OPSYS?=		freebsd
 NATIVE_LOWER_OPSYS_VERSUFFIX=	${OS_VERSION:C/([0-9]*).*/\1/}
-.  if ${MACHINE_ARCH} == "i386"		# pre-NATIVE_MACHINE_ARCH switcheroo
+.  if ${MACHINE_ARCH} == "i386"
 NATIVE_LOWER_VENDOR?=		pc
 .  endif
 NATIVE_LOWER_VENDOR?=		unknown
 
 .elif ${OPSYS} == "Haiku"
 NATIVE_LOWER_OPSYS?=		haiku
-.  if ${MACHINE_ARCH} == "i386"		# pre-NATIVE_MACHINE_ARCH switcheroo
+.  if ${MACHINE_ARCH} == "i386"
 NATIVE_LOWER_VENDOR?=		pc
 .  endif
 
@@ -233,7 +233,7 @@ NATIVE_LOWER_VENDOR?=		redhat
 NATIVE_LOWER_VENDOR?=		slackware
 .  elif !empty(CHROMEOS_RELEASE_NAME)
 NATIVE_LOWER_VENDOR?=		chromeos
-.  elif ${MACHINE_ARCH} == "i386"	# pre-NATIVE_MACHINE_ARCH switcheroo
+.  elif ${MACHINE_ARCH} == "i386"
 NATIVE_LOWER_VENDOR?=          pc
 .  endif
 NATIVE_LOWER_VENDOR?=          unknown
@@ -356,12 +356,7 @@ CROSSVARS+=	LOWER_VENDOR
 LOWER_VENDOR=		\
 	${"${USE_CROSS_COMPILE:U:tl}" == "yes":?${CROSS_LOWER_VENDOR}:${NATIVE_LOWER_VENDOR}}
 
-# Remember the MACHINE_ARCH that make was built with before we override
-# it with CROSS_MACHINE_ARCH if USE_CROSS_COMPILE is enabled.
-CROSSVARS+=	MACHINE_ARCH
-NATIVE_MACHINE_ARCH:=		${MACHINE_ARCH}
-
-NATIVE_MACHINE_PLATFORM?=	${OPSYS}-${OS_VERSION}-${NATIVE_MACHINE_ARCH}
+NATIVE_MACHINE_PLATFORM?=	${OPSYS}-${OS_VERSION}-${MACHINE_ARCH}
 MACHINE_PLATFORM?=		${OPSYS}-${OS_VERSION}-${MACHINE_ARCH}
 NATIVE_MACHINE_GNU_PLATFORM?=	${NATIVE_MACHINE_GNU_ARCH}-${NATIVE_LOWER_VENDOR}-${NATIVE_LOWER_OPSYS:C/[0-9]//g}${NATIVE_APPEND_ELF}${NATIVE_LOWER_OPSYS_VERSUFFIX}${NATIVE_APPEND_ABI}
 MACHINE_GNU_PLATFORM?=		${MACHINE_GNU_ARCH}-${LOWER_VENDOR}-${LOWER_OPSYS:C/[0-9]//g}${APPEND_ELF}${LOWER_OPSYS_VERSUFFIX}${APPEND_ABI}
@@ -600,15 +595,15 @@ TOOLS_CROSS_DESTDIR=		# empty
 TARGET_OBJECT_FMT?=	${OBJECT_FMT} # XXX
 .  endif
 .  if ${NATIVE_OBJECT_FMT} == "ELF" && \
-   (!empty(NATIVE_MACHINE_ARCH:Mearm*) || \
+   (!empty(MACHINE_ARCH:Mearm*) || \
     ${NATIVE_MACHINE_GNU_ARCH} == "arm" || \
-    ${NATIVE_MACHINE_ARCH} == "i386" || \
-    ${NATIVE_MACHINE_ARCH} == "m68k" || \
-    ${NATIVE_MACHINE_ARCH} == "m68000" || \
+    ${MACHINE_ARCH} == "i386" || \
+    ${MACHINE_ARCH} == "m68k" || \
+    ${MACHINE_ARCH} == "m68000" || \
     ${NATIVE_MACHINE_GNU_ARCH} == "sh" || \
     ${NATIVE_MACHINE_GNU_ARCH} == "shle" || \
-    ${NATIVE_MACHINE_ARCH} == "sparc" || \
-    ${NATIVE_MACHINE_ARCH} == "vax")
+    ${MACHINE_ARCH} == "sparc" || \
+    ${MACHINE_ARCH} == "vax")
 NATIVE_APPEND_ELF=	elf
 .  endif
 .  if ${OBJECT_FMT} == "ELF" && \
@@ -636,8 +631,8 @@ APPEND_ELF=		elf
     ${TARGET_MACHINE_ARCH} == "vax")
 TARGET_APPEND_ELF=	elf
 .  endif
-.  if !empty(NATIVE_MACHINE_ARCH:Mearm*)
-NATIVE_APPEND_ABI=	-${NATIVE_MACHINE_ARCH:C/eb//:C/v[4-7]//:S/earm/eabi/}
+.  if !empty(MACHINE_ARCH:Mearm*)
+NATIVE_APPEND_ABI=	-${MACHINE_ARCH:C/eb//:C/v[4-7]//:S/earm/eabi/}
 .  endif
 .  if !empty(MACHINE_ARCH:Mearm*)
 APPEND_ABI=		-${MACHINE_ARCH:C/eb//:C/v[4-7]//:S/earm/eabi/}
