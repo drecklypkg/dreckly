@@ -22,7 +22,6 @@ SUBDIR+=	bfd-mdsetimage
 SUBDIR+=	binutils-mips-current
 SUBDIR+=	cc65
 SUBDIR+=	cross-binutils
-#SUBDIR+=	cross-libtool-base	# added here to keep pkglint happy
 SUBDIR+=	dasm
 SUBDIR+=	dfu-programmer
 SUBDIR+=	freemint-binutils

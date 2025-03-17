@@ -78,35 +78,22 @@ BUILD_DEFS+=		KERBEROS
 #
 .if defined(USE_LANGUAGES) && !empty(USE_LANGUAGES:Mfortran) || \
     defined(USE_LANGUAGES) && !empty(USE_LANGUAGES:Mfortran77)
-.  if !empty(USE_CROSS_COMPILE:M[yY][eE][sS]) # XXX
-PKG_FAIL_REASON+=	"Cross-compiling Fortran with libtool NYI."
-.  endif
 
 PKG_LIBTOOL?=		${TOOLBASE}/bin/libtool-fortran
 PKG_SHLIBTOOL?=		${TOOLBASE}/bin/shlibtool-fortran
 
 .  if defined(USE_LIBTOOL)
-# XXX This really needs cross-libtool-fortran like cross-libtool-base.
 TOOL_DEPENDS+=		libtool-fortran>=${_OPSYS_LIBTOOL_REQD:U${LIBTOOL_REQD}}:../../devel/libtool-fortran
 .  endif
 .else
-.  if !empty(USE_CROSS_COMPILE:M[yY][eE][sS])
-PKG_LIBTOOL?=		${TOOLBASE}/cross-${TARGET_MACHINE_PLATFORM:U${MACHINE_PLATFORM}}/bin/libtool
-PKG_SHLIBTOOL?=		${TOOLBASE}/cross-${TARGET_MACHINE_PLATFORM:U${MACHINE_PLATFORM}}/bin/shlibtool
-.  else
 PKG_LIBTOOL?=		${TOOLBASE}/bin/libtool
 PKG_SHLIBTOOL?=		${TOOLBASE}/bin/shlibtool
-.  endif
 .endif
 LIBTOOL?=		${WRAPPER_BINDIR}/libtool
 SHLIBTOOL?=		${WRAPPER_BINDIR}/shlibtool
 .if defined(USE_LIBTOOL)
 LIBTOOL_REQD?=		2.4.2nb9
-.if !empty(USE_CROSS_COMPILE:M[yY][eE][sS])
-TOOL_DEPENDS+=		cross-libtool-base-${MACHINE_PLATFORM}>=${_OPSYS_LIBTOOL_REQD:U${LIBTOOL_REQD}}:../../cross/cross-libtool-base
-.else
 TOOL_DEPENDS+=		libtool-base>=${_OPSYS_LIBTOOL_REQD:U${LIBTOOL_REQD}}:../../devel/libtool-base
-.endif
 CONFIGURE_ENV+=		LIBTOOL="${LIBTOOL} ${LIBTOOL_FLAGS}"
 MAKE_ENV+=		LIBTOOL="${LIBTOOL} ${LIBTOOL_FLAGS}"
 .endif

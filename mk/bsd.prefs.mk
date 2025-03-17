@@ -395,38 +395,7 @@ NATIVE_OBJECT_FMT?=	Mach-O
 OBJECT_FMT?=		Mach-O
 .endif
 
-#
-# cross-libtool is special -- it is built as a native package, but it
-# needs tools set up as if for a cross-compiled package because it
-# remembers the paths for use to later assist in cross-compiling other
-# packages.
-#
-# So normally TOOLS_USE_CROSS_COMPILE is the same as USE_CROSS_COMPILE,
-# but for cross-libtool, we set TOOLS_USE_CROSS_COMPILE=yes while doing
-# the rest of the native package build with USE_CROSS_COMPILE=no.
-#
-# This can't live inside the cross-libtool makefile because the
-# TARGET_MACHINE_ARCH / MACHINE_ARCH / NATIVE_MACHINE_ARCH switcheroo
-# has to happen in the middle of this file -- after NATIVE_MACHINE_ARCH
-# is determined, before MACHINE_ARCH is used for anything else.
-#
-.if ${LIBTOOL_CROSS_COMPILE:U:tl} == "yes"
-.  if !defined(TARGET_MACHINE_ARCH)
-PKG_FAIL_REASON+=	"Must set TARGET_MACHINE_ARCH for cross-libtool."
-.  endif
-.  for _v_ in ${CROSSVARS}
-${_v_}=				${TARGET_${_v_}}
-.  endfor
-# XXX Other CROSSVARS for _BUILD_DEFS?
-_BUILD_DEFS.MACHINE_ARCH=	${NATIVE_MACHINE_ARCH}
-_BUILD_DEFS.MACHINE_GNU_ARCH=	${NATIVE_MACHINE_GNU_ARCH}
-_BUILD_DEFS.OBJECT_FMT=		${NATIVE_OBJECT_FMT}
-_BUILD_DEFS.OPSYS=		${NATIVE_OPSYS}
-_BUILD_DEFS.OS_VERSION=		${NATIVE_OS_VERSION}
-TOOLS_USE_CROSS_COMPILE=	yes
-.else
 TOOLS_USE_CROSS_COMPILE=	${USE_CROSS_COMPILE:Uno}
-.endif
 
 # Needed to prevent an "install:" target from being created in bsd.own.mk.
 NEED_OWN_INSTALL_TARGET=no
