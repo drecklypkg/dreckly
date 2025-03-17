@@ -22,6 +22,8 @@ LDFLAGS+=	${BUILDLINK_LDADD.curses} -lcompat -lreadline
 LDFLAGS+=	${BUILDLINK_LDADD.curses} -lreadline
 .endif
 
+CFLAGS.SCO_SV+=	-DSVR4
+
 MAKE_FLAGS+=	LDFLAGS=${LDFLAGS:Q}
 
 INSTALLATION_DIRS+=	bin
