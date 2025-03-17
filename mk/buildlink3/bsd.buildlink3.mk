@@ -235,8 +235,8 @@ _SYS_VARS.bl3+=		${v}.${p}
 #
 # Note that this can currently produce false-positives due to buildlink3.mk
 # inclusion guards preventing BUILDLINK_TREE from having a complete view of
-# the full buildlink tree.  Thus for now, BUILDLINK_DEFAULT_DEPMETHOD is only
-# used when USE_INDIRECT_DEPENDS is enabled.
+# the full buildlink tree.  However, the alternative is potentially shipping
+# broken packages.
 #
 _stack_:=	bottom
 .for _pkg_ in ${BUILDLINK_TREE}
@@ -265,41 +265,21 @@ _stack_:=	${_stack_:[2..-1]}
 .  error "The above loop through BUILDLINK_TREE failed to balance"
 .endif
 
-# _BLNK_DEPENDS contains all of the elements of _BLNK_PACKAGES for which
-# we must add a dependency.
-#
-# In the USE_INDIRECT_DEPENDS=yes case, _BLNK_DEPENDS contains direct
-# dependencies and _BLNK_INDIRECT_DEPENDS contains indirect dependencies,
-# using the information calculated by BUILDLINK_DEFAULT_DEPMETHOD above.
-#
-# Otherwise (the historical behaviour and the current default), _BLNK_DEPENDS
-# contains direct dependencies from _BUILDLINK_DEPENDS, as well as packages
-# that are declared as "build" dependencies, even though that information may
-# well be incorrect due to the BUILDLINK_DEPMETHOD default of "full",
-# regardless of whether a parent package was declared as "build" or "full".
+# _BLNK_DEPENDS contains direct dependencies and _BLNK_INDIRECT_DEPENDS
+# contains indirect dependencies of _BLNK_PACKAGES, using the information
+# calculated by BUILDLINK_DEFAULT_DEPMETHOD above.
 #
 _BLNK_DEPENDS=			# empty
-_BLNK_INDIRECT_DEPENDS=		# empty, only used with USE_INDIRECT_DEPENDS
+_BLNK_INDIRECT_DEPENDS=		# empty
 
 .for _pkg_ in ${_BLNK_PACKAGES}
 USE_BUILTIN.${_pkg_}?=		no
-.  if ${USE_INDIRECT_DEPENDS:tl} == yes
 BUILDLINK_DEPMETHOD.${_pkg_}?=	${BUILDLINK_DEFAULT_DEPMETHOD.${_pkg_}:Ufull}
-.  else
-BUILDLINK_DEPMETHOD.${_pkg_}?=	full
-.  endif
 .  if !defined(IGNORE_PKG.${_pkg_}) && ${USE_BUILTIN.${_pkg_}} == no
-.    if ${USE_INDIRECT_DEPENDS:tl} == yes
-.      if !empty(_BUILDLINK_DEPENDS:M${_pkg_})
+.    if !empty(_BUILDLINK_DEPENDS:M${_pkg_})
 _BLNK_DEPENDS+=			${_pkg_}
-.      else
-_BLNK_INDIRECT_DEPENDS+=	${_pkg_}
-.      endif
 .    else
-.      if !empty(_BUILDLINK_DEPENDS:M${_pkg_}) || \
-	  !empty(BUILDLINK_DEPMETHOD.${_pkg_}:Mbuild)
-_BLNK_DEPENDS+=			${_pkg_}
-.      endif
+_BLNK_INDIRECT_DEPENDS+=	${_pkg_}
 .    endif
 .  endif
 .endfor
