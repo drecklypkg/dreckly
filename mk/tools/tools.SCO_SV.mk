@@ -3,6 +3,11 @@
 # System-supplied tools for the OpenServer 5.0.7/3.2 and 6.0.0/5.
 
 TOOLS_PLATFORM.[?=		[			# shell builtin
+.if exists(/usr/xdev/bin/autopoint)
+TOOLS_PLATFORM.autopoint?=	/usr/xdev/bin/autopoint
+.elif exists(/usr/gnu/bin/autopoint)
+TOOLS_PLATFORM.autopoint?=	/usr/gnu/bin/autopoint
+.endif
 TOOLS_PLATFORM.awk?=		/usr/bin/nawk
 TOOLS_PLATFORM.basename?=	/bin/basename
 TOOLS_PLATFORM.bash?=		/usr/bin/bash
@@ -83,7 +88,21 @@ TOOLS_PLATFORM.mail?=		/bin/mail
 TOOLS_PLATFORM.makeinfo?=	/usr/gnu/bin/makeinfo
 .endif
 TOOLS_PLATFORM.mkdir?=		/bin/mkdir -p
+.if exists(/usr/xdev/bin/msgconv)
+TOOLS_PLATFORM.msgconv?=	/usr/xdev/bin/msgconv
+.elif exists(/usr/gnu/bin/msgfmt)
+TOOLS_PLATFORM.msgconv?=	/usr/gnu/bin/msgconv
+.endif
+.if exists(/usr/xdev/bin/msgfmt)
+TOOLS_PLATFORM.msgfmt?=		/usr/xdev/bin/msgfmt
+.elif exists(/usr/gnu/bin/msgfmt)
 TOOLS_PLATFORM.msgfmt?=		/usr/gnu/bin/msgfmt
+.endif
+.if exists(/usr/xdev/bin/msgmerge)
+TOOLS_PLATFORM.msgmerge?=	/usr/xdev/bin/msgmerge
+.elif exists(/usr/gnu/bin/msgmerge)
+TOOLS_PLATFORM.msgmerge?=	/usr/gnu/bin/msgmerge
+.endif
 TOOLS_PLATFORM.mv?=		/bin/mv
 TOOLS_PLATFORM.nice?=		/bin/nice
 .if exists(/usr/gnu/bin/nroff)
@@ -138,7 +157,11 @@ TOOLS_PLATFORM.wget?=		/opt/xinuos/bin/wget
 .endif
 TOOLS_PLATFORM.wc?=		/bin/wc
 TOOLS_PLATFORM.xargs?=		/usr/bin/xargs
+.if exists(/usr/xdev/bin/xgettext)
+TOOLS_PLATFORM.xgettext?=	/usr/xdev/bin/xgettext
+.elif exists(/usr/gnu/bin/xgettext)
 TOOLS_PLATFORM.xgettext?=	/usr/gnu/bin/xgettext
+.endif
 .if exists(/usr/xdev/bin/xz)
 TOOLS_PLATFORM.xz?=		/usr/xdev/bin/xz
 .endif
