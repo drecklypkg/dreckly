@@ -31,7 +31,7 @@ INSTALLATION_DIRS+=	share/examples/drac
 RPCGENFLAGS=	-I -C
 .elif ${OPSYS} == "FreeBSD" || ${OPSYS} == "DragonFly" || ${OPSYS} == "OpenBSD"
 RPCGENFLAGS=	-C
-.elif ${OPSYS} == "SunOS" || ${OPSYS} == "BSDOS" || ${OPSYS} == "AIX"
+.elif ${OPSYS} == "SunOS" || ${OPSYS} == "AIX"
 RPCGENFLAGS=	# empty
 .else
 RPCGENFLAGS=	# empty
