@@ -169,11 +169,11 @@ _OS_VERSION!=		echo `${UNAME} -v`.`${UNAME} -r`
 OS_VERSION=		${_OS_VERSION:C/([0-9]*\.[0-9]*).*/\1/}
 LOWER_OPSYS_VERSUFFIX=	${_OS_VERSION}
 LOWER_OPSYS?=		aix
-NATIVE_LOWER_VENDOR?=	ibm
+LOWER_VENDOR?=		ibm
 
 .elif ${OPSYS} == "Cygwin"
 LOWER_OPSYS?=		cygwin
-NATIVE_LOWER_VENDOR?=	pc
+LOWER_VENDOR?=		pc
 _OS_VERSION!=		${UNAME} -r
 OS_VERSION=		${_OS_VERSION:C/\(.*\)//:C/-.*//}
 OS_VARIANT!=		${UNAME} -s
@@ -181,34 +181,34 @@ OS_VARIANT!=		${UNAME} -s
 .elif ${OPSYS} == "Darwin"
 LOWER_OPSYS?=		darwin
 LOWER_OPSYS_VERSUFFIX=	${OS_VERSION:C/([0-9]*).*/\1/}
-NATIVE_LOWER_VENDOR?=	apple
+LOWER_VENDOR?=		apple
 _OPSYS_VERSION_CMD=	sw_vers -productVersion | \
 			    awk -F. '{major=int($$1); minor=int($$2); if (minor>=100) minor=99; patch=int($$3); if (patch>=100) patch=99; printf "%02d%02d%02d", major, minor, patch}'
 
 .elif ${OPSYS} == "DragonFly"
 OS_VERSION:=		${OS_VERSION:C/-.*$//}
 LOWER_OPSYS?=		dragonfly
-NATIVE_LOWER_VENDOR?=	pc
+LOWER_VENDOR?=		pc
 
 .elif ${OPSYS} == "FreeBSD"
 OS_VERSION:=		${OS_VERSION:C/-.*$//}
 LOWER_OPSYS?=		freebsd
 LOWER_OPSYS_VERSUFFIX=	${OS_VERSION:C/([0-9]*).*/\1/}
 .  if ${MACHINE_ARCH} == "i386"
-NATIVE_LOWER_VENDOR?=	pc
+LOWER_VENDOR?=		pc
 .  endif
-NATIVE_LOWER_VENDOR?=	unknown
+LOWER_VENDOR?=		unknown
 
 .elif ${OPSYS} == "Haiku"
 LOWER_OPSYS?=		haiku
 .  if ${MACHINE_ARCH} == "i386"
-NATIVE_LOWER_VENDOR?=	pc
+LOWER_VENDOR?=		pc
 .  endif
 
 .elif !empty(OPSYS:MIRIX*)
 LOWER_OPSYS?=		irix
 LOWER_OPSYS_VERSUFFIX?=	${OS_VERSION}
-NATIVE_LOWER_VENDOR?=	sgi
+LOWER_VENDOR?=		sgi
 
 .elif ${OPSYS} == "Linux"
 OS_VERSION:=		${OS_VERSION:C/-.*$//}
@@ -217,23 +217,23 @@ LOWER_OPSYS?=		linux
 CHROMEOS_RELEASE_NAME!=	awk -F = '$$1 == "CHROMEOS_RELEASE_NAME" { print $$2 }' /etc/lsb-release
 .  endif
 .  if exists(/etc/debian_version)
-NATIVE_LOWER_VENDOR?=	debian
+LOWER_VENDOR?=		debian
 .  elif exists(/etc/mandrake-release)
-NATIVE_LOWER_VENDOR?=	mandrake
+LOWER_VENDOR?=		mandrake
 .  elif exists(/etc/redhat-version) || exists(/etc/redhat-release)
-NATIVE_LOWER_VENDOR?=	redhat
+LOWER_VENDOR?=		redhat
 .  elif exists(/etc/slackware-version)
-NATIVE_LOWER_VENDOR?=	slackware
+LOWER_VENDOR?=		slackware
 .  elif !empty(CHROMEOS_RELEASE_NAME)
-NATIVE_LOWER_VENDOR?=	chromeos
+LOWER_VENDOR?=		chromeos
 .  elif ${MACHINE_ARCH} == "i386"
-NATIVE_LOWER_VENDOR?=	pc
+LOWER_VENDOR?=		pc
 .  endif
-NATIVE_LOWER_VENDOR?=	unknown
+LOWER_VENDOR?=	unknown
 OS_VARIANT!=		${UNAME} -r
 OS_VARIANT:=		${OS_VARIANT:C/^.*-//}
 .  if ${OS_VARIANT} != "Microsoft"
-OS_VARIANT=		${NATIVE_LOWER_VENDOR}
+OS_VARIANT=		${LOWER_VENDOR}
 .  endif
 # Ensure HOST_MACHINE_ARCH is set for native-but-compat builds, such as
 # building i386 packages on an amd64 system with compat32 libraries.
@@ -250,16 +250,16 @@ LOWER_OPSYS?= 		openbsd
 OS_VERSION:=		${OS_VERSION:C/^V//}
 LOWER_OPSYS?=		osf1
 LOWER_OPSYS_VERSUFFIX?=	${OS_VERSION}
-NATIVE_LOWER_VENDOR?=	dec
+LOWER_VENDOR?=		dec
 
 .elif ${OPSYS} == "HPUX"
 OS_VERSION:=		${OS_VERSION:C/^B.//}
 LOWER_OPSYS?=		hpux
 LOWER_OPSYS_VERSUFFIX?=	${OS_VERSION}
-NATIVE_LOWER_VENDOR?=	hp
+LOWER_VENDOR?=		hp
 
 .elif ${OPSYS} == "SunOS"
-NATIVE_LOWER_VENDOR?=	sun
+LOWER_VENDOR?=		sun
 LOWER_OPSYS?=		solaris
 LOWER_OPSYS_VERSUFFIX=	2.${OS_VERSION:C/5.//}
 .  if !defined(_UNAME_V)
@@ -283,7 +283,7 @@ NATIVE_LOWER_VARIANT_VERSION=	${_UNAME_V}
 .elif ${OPSYS} == "SCO_SV"
 SCO_RELEASE!=		${UNAME} -r
 SCO_VERSION!=		${UNAME} -v
-NATIVE_LOWER_VENDOR?=	pc
+LOWER_VENDOR?=		pc
 LOWER_OPSYS?=		sco
 LOWER_OPSYS_VERSUFFIX=	${SCO_RELEASE}v${SCO_VERSION}
 _UNAME_V!=		${UNAME} -v
@@ -296,11 +296,11 @@ OS_VARIANT=		SCOOSR6
 .elif ${OPSYS} == "UnixWare"
 SCO_RELEASE?=		sysv5${OPSYS}
 SCO_VERSION!=		${UNAME} -v
-NATIVE_LOWER_VENDOR?=	unknown
+LOWER_VENDOR?=		unknown
 LOWER_OPSYS_VERSUFFIX=	${SCO_RELEASE}${SCO_VERSION}
 
 .elif ${OPSYS} == "Minix"
-NATIVE_LOWER_VENDOR?=	unknown
+LOWER_VENDOR?=		unknown
 LOWER_OPSYS:=		${OPSYS:tl}
 
 .elif !defined(LOWER_OPSYS)
@@ -312,7 +312,7 @@ OS_VERSION:=		${OS_VERSION}
 
 MAKEFLAGS+=		LOWER_OPSYS=${LOWER_OPSYS:Q}
 
-NATIVE_LOWER_VENDOR?=	# empty ("arch--opsys")
+LOWER_VENDOR?=		# empty ("arch--opsys")
 
 # List of variables that must be set to determine a cross-compilation
 # target.
@@ -335,12 +335,9 @@ CROSSVARS?=	# empty
 CROSSVARS+=	LOWER_VARIANT_VERSION
 LOWER_VARIANT_VERSION=	\
 	${"${USE_CROSS_COMPILE:U:tl}" == "yes":?${CROSS_LOWER_VARIANT_VERSION}:${NATIVE_LOWER_VARIANT_VERSION}}
-CROSSVARS+=	LOWER_VENDOR
-LOWER_VENDOR=		\
-	${"${USE_CROSS_COMPILE:U:tl}" == "yes":?${CROSS_LOWER_VENDOR}:${NATIVE_LOWER_VENDOR}}
 
 MACHINE_PLATFORM?=		${OPSYS}-${OS_VERSION}-${MACHINE_ARCH}
-NATIVE_MACHINE_GNU_PLATFORM?=	${MACHINE_GNU_ARCH}-${NATIVE_LOWER_VENDOR}-${LOWER_OPSYS:C/[0-9]//g}${NATIVE_APPEND_ELF}${LOWER_OPSYS_VERSUFFIX}${NATIVE_APPEND_ABI}
+NATIVE_MACHINE_GNU_PLATFORM?=	${MACHINE_GNU_ARCH}-${LOWER_VENDOR}-${LOWER_OPSYS:C/[0-9]//g}${NATIVE_APPEND_ELF}${LOWER_OPSYS_VERSUFFIX}${NATIVE_APPEND_ABI}
 MACHINE_GNU_PLATFORM?=		${MACHINE_GNU_ARCH}-${LOWER_VENDOR}-${LOWER_OPSYS:C/[0-9]//g}${APPEND_ELF}${LOWER_OPSYS_VERSUFFIX}${APPEND_ABI}
 
 .ifdef TARGET_MACHINE_ARCH
