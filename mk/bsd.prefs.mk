@@ -17,11 +17,6 @@
 #	The platform for which the packages are built. It has the form
 #	${OPSYS}-${OS_VERSION}-${MACHINE_ARCH}.
 #
-# NATIVE_MACHINE_PLATFORM
-#	The platform on which the packages are built. This is usually
-#	the same as ${MACHINE_PLATFORM}, but can be different when
-#	cross-building packages.
-#
 # PKGPATH
 #	The path of the package, relative to the pkgsrc top-level
 #	directory. Typical values look like editors/emacs or
@@ -355,7 +350,6 @@ CROSSVARS+=	LOWER_VENDOR
 LOWER_VENDOR=		\
 	${"${USE_CROSS_COMPILE:U:tl}" == "yes":?${CROSS_LOWER_VENDOR}:${NATIVE_LOWER_VENDOR}}
 
-NATIVE_MACHINE_PLATFORM?=	${OPSYS}-${OS_VERSION}-${MACHINE_ARCH}
 MACHINE_PLATFORM?=		${OPSYS}-${OS_VERSION}-${MACHINE_ARCH}
 NATIVE_MACHINE_GNU_PLATFORM?=	${MACHINE_GNU_ARCH}-${NATIVE_LOWER_VENDOR}-${NATIVE_LOWER_OPSYS:C/[0-9]//g}${NATIVE_APPEND_ELF}${NATIVE_LOWER_OPSYS_VERSUFFIX}${NATIVE_APPEND_ABI}
 MACHINE_GNU_PLATFORM?=		${MACHINE_GNU_ARCH}-${LOWER_VENDOR}-${LOWER_OPSYS:C/[0-9]//g}${APPEND_ELF}${LOWER_OPSYS_VERSUFFIX}${APPEND_ABI}
