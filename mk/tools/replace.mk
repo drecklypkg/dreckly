@@ -140,9 +140,6 @@ _TOOLS_DEPMETHOD.${_t_:C/:.*//}=	BOOTSTRAP_DEPENDS
 _TOOLS_DEPMETHOD.${_t_:C/:.*//}=	TOOL_DEPENDS
 .endfor
 .for _t_ in ${USE_TOOLS:M*\:run}
-.  if ${USE_CROSS_COMPILE:tl} == "yes" && ${OPSYS} != ${NATIVE_OPSYS}
-PKG_FAIL_REASON+=	"USE_TOOLS+=${_t_} not supported in cross-compilation"
-.  endif
 _TOOLS_DEPMETHOD.${_t_:C/:.*//}=	DEPENDS
 .endfor
 .for _t_ in ${USE_TOOLS:M*\:test}

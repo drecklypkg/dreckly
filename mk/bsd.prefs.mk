@@ -87,10 +87,9 @@ UNAME=/run/current-system/sw/bin/uname
 UNAME=echo Unknown
 .endif
 
-.if !defined(NATIVE_OPSYS)
-NATIVE_OPSYS:=		${:!${UNAME} -s!:S/-//g:S/\///g:C/^CYGWIN_.*$/Cygwin/}
-MAKEFLAGS+=		NATIVE_OPSYS=${NATIVE_OPSYS:Q}
-MAKEFLAGS+=		OPSYS=${OPSYS:Q} # defined in crossvars
+.if !defined(OPSYS)
+OPSYS:=		${:!${UNAME} -s!:S/-//g:S/\///g:C/^CYGWIN_.*$/Cygwin/}
+MAKEFLAGS+=	OPSYS=${OPSYS:Q}
 .endif
 
 # OS_VARIANT is used to differentiate operating systems which have a common
@@ -158,7 +157,7 @@ MACHINE_GNU_ARCH?=		${GNU_ARCH.${MACHINE_ARCH}:U${MACHINE_ARCH}}
 
 ## If changes are made to how OS_VERSION is set below please keep
 ## "pkgsrc/pkgtools/osabi/INSTALL" in-sync.
-.if ${NATIVE_OPSYS} == "NetBSD"
+.if ${OPSYS} == "NetBSD"
 NATIVE_LOWER_OPSYS?=	netbsd
 
 # Ensure HOST_MACHINE_ARCH is set for native-but-compat builds, such as
@@ -169,7 +168,7 @@ HOST_MACHINE_ARCH!=	${UNAME} -m
 MAKEFLAGS+=		HOST_MACHINE_ARCH=${HOST_MACHINE_ARCH:Q}
 .  endif
 
-.elif ${NATIVE_OPSYS} == "AIX"
+.elif ${OPSYS} == "AIX"
 .  if exists(/usr/bin/oslevel)
 _NATIVE_OS_VERSION!=	/usr/bin/oslevel
 .  else
@@ -180,26 +179,26 @@ NATIVE_LOWER_OPSYS_VERSUFFIX=	${_NATIVE_OS_VERSION}
 NATIVE_LOWER_OPSYS?=		aix
 NATIVE_LOWER_VENDOR?=		ibm
 
-.elif ${NATIVE_OPSYS} == "Cygwin"
+.elif ${OPSYS} == "Cygwin"
 NATIVE_LOWER_OPSYS?=	cygwin
 NATIVE_LOWER_VENDOR?=	pc
 _NATIVE_OS_VERSION!=	${UNAME} -r
 NATIVE_OS_VERSION=	${_NATIVE_OS_VERSION:C/\(.*\)//:C/-.*//}
 OS_VARIANT!=		${UNAME} -s
 
-.elif ${NATIVE_OPSYS} == "Darwin"
+.elif ${OPSYS} == "Darwin"
 NATIVE_LOWER_OPSYS?=		darwin
 NATIVE_LOWER_OPSYS_VERSUFFIX=	${NATIVE_OS_VERSION:C/([0-9]*).*/\1/}
 NATIVE_LOWER_VENDOR?=		apple
 _NATIVE_OPSYS_VERSION_CMD=	sw_vers -productVersion | \
 			awk -F. '{major=int($$1); minor=int($$2); if (minor>=100) minor=99; patch=int($$3); if (patch>=100) patch=99; printf "%02d%02d%02d", major, minor, patch}'
 
-.elif ${NATIVE_OPSYS} == "DragonFly"
+.elif ${OPSYS} == "DragonFly"
 NATIVE_OS_VERSION:=	${NATIVE_OS_VERSION:C/-.*$//}
 NATIVE_LOWER_OPSYS?=	dragonfly
 NATIVE_LOWER_VENDOR?=	pc
 
-.elif ${NATIVE_OPSYS} == "FreeBSD"
+.elif ${OPSYS} == "FreeBSD"
 NATIVE_OS_VERSION:=		${NATIVE_OS_VERSION:C/-.*$//}
 NATIVE_LOWER_OPSYS?=		freebsd
 NATIVE_LOWER_OPSYS_VERSUFFIX=	${NATIVE_OS_VERSION:C/([0-9]*).*/\1/}
@@ -208,18 +207,18 @@ NATIVE_LOWER_VENDOR?=		pc
 .  endif
 NATIVE_LOWER_VENDOR?=		unknown
 
-.elif ${NATIVE_OPSYS} == "Haiku"
+.elif ${OPSYS} == "Haiku"
 NATIVE_LOWER_OPSYS?=		haiku
 .  if ${MACHINE_ARCH} == "i386"		# pre-NATIVE_MACHINE_ARCH switcheroo
 NATIVE_LOWER_VENDOR?=		pc
 .  endif
 
-.elif !empty(NATIVE_OPSYS:MIRIX*)
+.elif !empty(OPSYS:MIRIX*)
 NATIVE_LOWER_OPSYS?=		irix
 NATIVE_LOWER_OPSYS_VERSUFFIX?=	${NATIVE_OS_VERSION}
 NATIVE_LOWER_VENDOR?=		sgi
 
-.elif ${NATIVE_OPSYS} == "Linux"
+.elif ${OPSYS} == "Linux"
 NATIVE_OS_VERSION:=		${NATIVE_OS_VERSION:C/-.*$//}
 NATIVE_LOWER_OPSYS?=		linux
 .  if exists(/etc/lsb-release)
@@ -252,22 +251,22 @@ HOST_MACHINE_ARCH!=	${UNAME} -m
 MAKEFLAGS+=		HOST_MACHINE_ARCH=${HOST_MACHINE_ARCH:Q}
 .  endif
 
-.elif ${NATIVE_OPSYS} == "OpenBSD"
+.elif ${OPSYS} == "OpenBSD"
 NATIVE_LOWER_OPSYS?= 		openbsd
 
-.elif ${NATIVE_OPSYS} == "OSF1"
+.elif ${OPSYS} == "OSF1"
 NATIVE_OS_VERSION:=		${NATIVE_OS_VERSION:C/^V//}
 NATIVE_LOWER_OPSYS?=		osf1
 NATIVE_LOWER_OPSYS_VERSUFFIX?=	${NATIVE_OS_VERSION}
 NATIVE_LOWER_VENDOR?=		dec
 
-.elif ${NATIVE_OPSYS} == "HPUX"
+.elif ${OPSYS} == "HPUX"
 NATIVE_OS_VERSION:=		${NATIVE_OS_VERSION:C/^B.//}
 NATIVE_LOWER_OPSYS?=		hpux
 NATIVE_LOWER_OPSYS_VERSUFFIX?=	${NATIVE_OS_VERSION}
 NATIVE_LOWER_VENDOR?=		hp
 
-.elif ${NATIVE_OPSYS} == "SunOS"
+.elif ${OPSYS} == "SunOS"
 NATIVE_LOWER_VENDOR?=		sun
 NATIVE_LOWER_OPSYS?=		solaris
 NATIVE_LOWER_OPSYS_VERSUFFIX=	2.${NATIVE_OS_VERSION:C/5.//}
@@ -289,7 +288,7 @@ OS_VARIANT=			Solaris
 NATIVE_LOWER_VARIANT_VERSION=	${_UNAME_V}
 .  endif
 
-.elif ${NATIVE_OPSYS} == "SCO_SV"
+.elif ${OPSYS} == "SCO_SV"
 SCO_RELEASE!=			${UNAME} -r
 SCO_VERSION!=			${UNAME} -v
 NATIVE_LOWER_VENDOR?=		pc
@@ -302,18 +301,18 @@ OS_VARIANT=			SCOOSR5
 OS_VARIANT=			SCOOSR6
 .  endif
 
-.elif ${NATIVE_OPSYS} == "UnixWare"
-SCO_RELEASE?=			sysv5${NATIVE_OPSYS}
+.elif ${OPSYS} == "UnixWare"
+SCO_RELEASE?=			sysv5${OPSYS}
 SCO_VERSION!=			${UNAME} -v
 NATIVE_LOWER_VENDOR?=		unknown
 NATIVE_LOWER_OPSYS_VERSUFFIX=	${SCO_RELEASE}${SCO_VERSION}
 
-.elif ${NATIVE_OPSYS} == "Minix"
+.elif ${OPSYS} == "Minix"
 NATIVE_LOWER_VENDOR?=		unknown
-NATIVE_LOWER_OPSYS:=		${NATIVE_OPSYS:tl}
+NATIVE_LOWER_OPSYS:=		${OPSYS:tl}
 
 .elif !defined(NATIVE_LOWER_OPSYS)
-NATIVE_LOWER_OPSYS:=		${NATIVE_OPSYS:tl}
+NATIVE_LOWER_OPSYS:=		${OPSYS:tl}
 .endif
 
 # Now commit the version values computed above, eliding the :sh
@@ -342,9 +341,6 @@ CROSSVARS?=	# empty
 # mk.conf, whether the user _might_ be doing cross-builds.  So we have
 # to use this massive kludge.
 #
-CROSSVARS+=	OPSYS
-OPSYS=			\
-	${"${USE_CROSS_COMPILE:U:tl}" == "yes":?${CROSS_OPSYS}:${NATIVE_OPSYS}}
 CROSSVARS+=	OS_VERSION
 OS_VERSION=		\
 	${"${USE_CROSS_COMPILE:U:tl}" == "yes":?${CROSS_OS_VERSION}:${NATIVE_OS_VERSION}}
@@ -369,7 +365,7 @@ LOWER_VENDOR=		\
 CROSSVARS+=	MACHINE_ARCH
 NATIVE_MACHINE_ARCH:=		${MACHINE_ARCH}
 
-NATIVE_MACHINE_PLATFORM?=	${NATIVE_OPSYS}-${NATIVE_OS_VERSION}-${NATIVE_MACHINE_ARCH}
+NATIVE_MACHINE_PLATFORM?=	${OPSYS}-${NATIVE_OS_VERSION}-${NATIVE_MACHINE_ARCH}
 MACHINE_PLATFORM?=		${OPSYS}-${OS_VERSION}-${MACHINE_ARCH}
 NATIVE_MACHINE_GNU_PLATFORM?=	${NATIVE_MACHINE_GNU_ARCH}-${NATIVE_LOWER_VENDOR}-${NATIVE_LOWER_OPSYS:C/[0-9]//g}${NATIVE_APPEND_ELF}${NATIVE_LOWER_OPSYS_VERSUFFIX}${NATIVE_APPEND_ABI}
 MACHINE_GNU_PLATFORM?=		${MACHINE_GNU_ARCH}-${LOWER_VENDOR}-${LOWER_OPSYS:C/[0-9]//g}${APPEND_ELF}${LOWER_OPSYS_VERSUFFIX}${APPEND_ABI}
@@ -384,13 +380,13 @@ TARGET_MACHINE_PLATFORM=	${TARGET_OPSYS}-${TARGET_OS_VERSION}-${TARGET_MACHINE_A
 # or Cygwin (XXX or HP-UX or AIX or OSF/1 or ...).
 #
 # We will later set OBJECT_FMT to be conditional on USE_CROSS_COMPILE.
-.if ${NATIVE_OPSYS} == "AIX"
+.if ${OPSYS} == "AIX"
 NATIVE_OBJECT_FMT?=	XCOFF
 OBJECT_FMT?=		XCOFF
-.elif ${NATIVE_OPSYS} == "Cygwin"
+.elif ${OPSYS} == "Cygwin"
 NATIVE_OBJECT_FMT?=	PE
 OBJECT_FMT?=		PE
-.elif ${NATIVE_OPSYS} == "Darwin"
+.elif ${OPSYS} == "Darwin"
 NATIVE_OBJECT_FMT?=	Mach-O
 OBJECT_FMT?=		Mach-O
 .endif
