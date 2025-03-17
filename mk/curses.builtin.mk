@@ -36,8 +36,7 @@ BUILTIN_FIND_GREP.H_CURSES_${defn}=		${defn}
 ###
 .if !defined(IS_BUILTIN.curses)
 IS_BUILTIN.curses=	no
-.  if empty(H_CURSES:M${LOCALBASE}/*) && \
-      exists(${TOOLS_CROSS_DESTDIR}${H_CURSES})
+.  if empty(H_CURSES:M${LOCALBASE}/*) && exists(${H_CURSES})
 IS_BUILTIN.curses=	yes
 .  endif
 .endif
@@ -126,7 +125,7 @@ CHECK_BUILTIN.curses?=	no
 .if ${CHECK_BUILTIN.curses:tl} == no
 
 .  if ${USE_BUILTIN.curses:tl} == yes
-.    if exists(${TOOLS_CROSS_DESTDIR}${H_CURSES})
+.    if exists(${H_CURSES})
 BUILDLINK_INCDIRS.curses?=	${H_CURSES:H}
 .    endif
 BUILDLINK_LIBNAME.curses=	${BUILTIN_LIBNAME.curses}

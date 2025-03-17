@@ -19,7 +19,7 @@ BUILTIN_FIND_GREP.H_DB=	^\#define.*HASHVERSION.*2$$
 ###
 .if !defined(IS_BUILTIN.db1)
 IS_BUILTIN.db1=	no
-.  if empty(H_DB:M${LOCALBASE}/*) && exists(${TOOLS_CROSS_DESTDIR}${H_DB})
+.  if empty(H_DB:M${LOCALBASE}/*) && exists(${H_DB})
 IS_BUILTIN.db1=	yes
 .  endif
 .endif
@@ -65,7 +65,7 @@ CHECK_BUILTIN.db1?=	no
 
 .  if !empty(USE_BUILTIN.db1:M[yY][eE][sS])
 BUILDLINK_PREFIX.db1=	/usr
-.    if exists(${TOOLS_CROSS_DESTDIR}${H_DB})
+.    if exists(${H_DB})
 BUILDLINK_INCDIRS.db1?=	${H_DB:H:S/^${BUILDLINK_PREFIX.db1}\///}
 .    endif
 .    if !empty(BUILTIN_LIB_FOUND.db1:M[yY][eE][sS])

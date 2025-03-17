@@ -471,8 +471,6 @@ _MAKE_INSTALL_AS_ROOT?=	yes
 _MAKE_PACKAGE_AS_ROOT?=	yes
 # Whether to run the package target as root.
 
-TOOLS_CROSS_DESTDIR=		# empty
-
 # Depends on MACHINE_ARCH override above
 .if ${OPSYS} == "NetBSD"
 .  if ${OBJECT_FMT} == "ELF" && \

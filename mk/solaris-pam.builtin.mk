@@ -14,8 +14,7 @@ BUILTIN_FIND_GREP.H_SOLARIS_PAM=	Copyright.*Sun Microsystems
 ###
 .if !defined(IS_BUILTIN.solaris-pam)
 IS_BUILTIN.solaris-pam=	no
-.  if empty(H_SOLARIS_PAM:M${LOCALBASE}/*) && \
-      exists(${TOOLS_CROSS_DESTDIR}${H_SOLARIS_PAM})
+.  if empty(H_SOLARIS_PAM:M${LOCALBASE}/*) && exists(${H_SOLARIS_PAM})
 IS_BUILTIN.solaris-pam=	yes
 .  endif
 .endif
