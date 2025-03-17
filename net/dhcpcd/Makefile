@@ -51,11 +51,6 @@ CONFIGURE_ARGS+=	--with-hooks=ntp
 CONFIGURE_ARGS+=	--datadir=${PREFIX}/share/examples
 CONFIGURE_ARGS+=	--privsepuser=${DHCPCD_USER}
 
-.if ${USE_CROSS_COMPILE:tl} == "yes"
-CONFIGURE_ARGS+=	--host=${MACHINE_GNU_PLATFORM:Q}
-CONFIGURE_ARGS+=	--build=${NATIVE_MACHINE_GNU_PLATFORM:Q}
-.endif
-
 EGDIR=			${PREFIX}/share/examples/dhcpcd
 INSTALL_MAKE_FLAGS+=	SYSCONFDIR=${EGDIR}
 CONF_FILES+=		${EGDIR}/dhcpcd.conf ${PKG_SYSCONFDIR}/dhcpcd.conf
