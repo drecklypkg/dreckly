@@ -36,8 +36,6 @@ BUILD_TARGET=		Solaris
 BUILD_TARGET=		macosx
 .elif (${OPSYS} == "IRIX")
 BUILD_TARGET=		${OPSYS}${ABI:M64}
-.elif (${OPSYS} == "BSDOS")
-BUILD_TARGET=		bsdi
 .elif (${OPSYS} == "AIX")
 BUILD_TARGET=		${OPSYS}
 .else
