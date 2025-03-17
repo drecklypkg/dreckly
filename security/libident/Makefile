@@ -13,6 +13,8 @@ COMMENT=	Small library to interface to the ident protocol server (rfc1413)
 USE_LIBTOOL=	yes
 GNU_CONFIGURE=	yes
 
+CFLAGS.SCO_SV+=	-DFNDELAY=O_NONBLOCK
+
 # Need to specify shlib version for continuousness since old 0.2x version
 SUBST_CLASSES+=		libver
 SUBST_STAGE.libver=	pre-configure
