@@ -107,12 +107,11 @@ MAKEFLAGS+=		OS_VERSION=${OS_VERSION:Q}
 # default command is likely correct for most OS, those that need to can set
 # it to a custom command in the later OPSYS-specific section.
 #
-.if !defined(NATIVE_OPSYS_VERSION)
-_NATIVE_OPSYS_VERSION_CMD=	${UNAME} -r | \
+.if !defined(OPSYS_VERSION)
+_OPSYS_VERSION_CMD=	${UNAME} -r | \
 			awk -F. '{major=int($$1); minor=int($$2); if (minor>=100) minor=99; patch=int($$3); if (patch>=100) patch=99; printf "%02d%02d%02d", major, minor, patch}'
-NATIVE_OPSYS_VERSION=	${_NATIVE_OPSYS_VERSION_CMD:sh}
-MAKEFLAGS+=		NATIVE_OPSYS_VERSION=${NATIVE_OPSYS_VERSION:Q}
-MAKEFLAGS+=		OPSYS_VERSION=${OPSYS_VERSION:Q} # defined in crossvars
+OPSYS_VERSION=		${_OPSYS_VERSION_CMD:sh}
+MAKEFLAGS+=		OPSYS_VERSION=${OPSYS_VERSION:Q}
 .endif
 
 # Preload these for architectures not in all variations of bsd.own.mk,
@@ -183,7 +182,7 @@ OS_VARIANT!=		${UNAME} -s
 NATIVE_LOWER_OPSYS?=		darwin
 NATIVE_LOWER_OPSYS_VERSUFFIX=	${OS_VERSION:C/([0-9]*).*/\1/}
 NATIVE_LOWER_VENDOR?=		apple
-_NATIVE_OPSYS_VERSION_CMD=	sw_vers -productVersion | \
+_OPSYS_VERSION_CMD=	sw_vers -productVersion | \
 			awk -F. '{major=int($$1); minor=int($$2); if (minor>=100) minor=99; patch=int($$3); if (patch>=100) patch=99; printf "%02d%02d%02d", major, minor, patch}'
 
 .elif ${OPSYS} == "DragonFly"
@@ -334,9 +333,6 @@ CROSSVARS?=	# empty
 # mk.conf, whether the user _might_ be doing cross-builds.  So we have
 # to use this massive kludge.
 #
-CROSSVARS+=	OPSYS_VERSION
-OPSYS_VERSION=		\
-	${"${USE_CROSS_COMPILE:U:tl}" == "yes":?${CROSS_OPSYS_VERSION}:${NATIVE_OPSYS_VERSION}}
 CROSSVARS+=	LOWER_OPSYS
 LOWER_OPSYS=		\
 	${"${USE_CROSS_COMPILE:U:tl}" == "yes":?${CROSS_LOWER_OPSYS}:${NATIVE_LOWER_OPSYS}}
