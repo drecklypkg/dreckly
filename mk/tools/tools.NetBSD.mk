@@ -143,11 +143,3 @@ TOOLS_PLATFORM.xz?=		/usr/bin/xz
 TOOLS_PLATFORM.xzcat?=		/usr/bin/xzcat
 .endif
 TOOLS_PLATFORM.yacc?=		/usr/bin/yacc
-
-.if ${TOOLS_USE_CROSS_COMPILE:U:tl} == yes
-NATIVE_CC:=	/usr/bin/cc -B /usr/libexec -B /usr/bin
-NATIVE_CXX:=	/usr/bin/c++ -B /usr/libexec -B /usr/bin
-NATIVE_LD:=	/usr/bin/ld
-NATIVE_AR:=	/usr/bin/ar
-NATIVE_RANLIB:=	/usr/bin/ranlib
-.endif

@@ -356,12 +356,6 @@ _WRAP_CMD_SINK.CXX=	${_WRAP_CMD_SINK.CC}
 _WRAP_CMD_SINK.LD=	${WRAPPER_TMPDIR}/cmd-sink-irix-ld
 .endif
 
-.if !empty(TOOLS_USE_CROSS_COMPILE:M[yY][eE][sS])
-_WRAP_CMD_SINK.CC=	${WRAPPER_TMPDIR}/cmd-sink-cross-gcc
-_WRAP_CMD_SINK.CPP=	${WRAPPER_TMPDIR}/cmd-sink-cross-cpp
-_WRAP_CMD_SINK.CXX=	${WRAPPER_TMPDIR}/cmd-sink-cross-gxx
-.endif
-
 .if ${OPSYS} == "SunOS" && !empty(PKGSRC_COMPILER:Mgcc)
 _WRAP_CMD_SINK.IMAKE=	${WRAPPER_TMPDIR}/cmd-sink-solaris-imake
 _WRAP_CACHE_BODY.IMAKE=	${WRAPPER_TMPDIR}/cache-body-solaris-imake
@@ -531,26 +525,6 @@ ${WRAPPER_TMPDIR}/${w}: ${WRAPPER_SRCDIR}/${w}
 	${RUN} ${MKDIR} ${.TARGET:H}
 	${RUN} ${CAT} ${.ALLSRC} | ${_WRAP_SH_CRUNCH_FILTER} > ${.TARGET}
 .endfor
-
-.if !empty(TOOLS_USE_CROSS_COMPILE:M[yY][eE][sS])
-_WRAP_CROSS_GCC_FILTER+= ${SED}						\
-	-e "s|@CROSS_DESTDIR@|${TOOLS_CROSS_DESTDIR:Q}|g"		\
-	-e "s|@PREFIX@|${PREFIX:Q}|g"
-${WRAPPER_TMPDIR}/cmd-sink-cross-gcc: ${WRAPPER_SRCDIR}/cmd-sink-cross-gcc
-	${RUN} ${MKDIR} ${.TARGET:H}
-	${RUN} ${CAT} ${.ALLSRC} | ${_WRAP_CROSS_GCC_FILTER} |		\
-	${_WRAP_SH_CRUNCH_FILTER} > ${.TARGET}
-
-${WRAPPER_TMPDIR}/cmd-sink-cross-cpp: ${WRAPPER_SRCDIR}/cmd-sink-cross-cpp
-	${RUN} ${MKDIR} ${.TARGET:H}
-	${RUN} ${CAT} ${.ALLSRC} | ${_WRAP_CROSS_GCC_FILTER} |		\
-	${_WRAP_SH_CRUNCH_FILTER} > ${.TARGET}
-
-${WRAPPER_TMPDIR}/cmd-sink-cross-gxx: ${WRAPPER_SRCDIR}/cmd-sink-cross-gxx
-	${RUN} ${MKDIR} ${.TARGET:H}
-	${RUN} ${CAT} ${.ALLSRC} | ${_WRAP_CROSS_GCC_FILTER} |		\
-	${_WRAP_SH_CRUNCH_FILTER} > ${.TARGET}
-.endif
 
 .if !target(${_WRAP_GEN_REORDER})
 ${_WRAP_GEN_REORDER}: 							\

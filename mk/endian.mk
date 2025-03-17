@@ -28,9 +28,6 @@ _ENDIAN_H=	/dev/null
 .  endif
 
 _MACHINE_ENDIAN_CPP=	${CCPATH:U${CC}} -E -
-.if ${TOOLS_USE_CROSS_COMPILE:tl} == "yes"
-_MACHINE_ENDIAN_CPP+=	--sysroot=${TOOLS_CROSS_DESTDIR:Q}
-.endif
 
 MACHINE_ENDIAN!=							\
 	{ ${ECHO} "\#if defined(__sgi)";				\

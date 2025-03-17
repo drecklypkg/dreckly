@@ -312,8 +312,6 @@ OBJECT_FMT?=		PE
 OBJECT_FMT?=		Mach-O
 .endif
 
-TOOLS_USE_CROSS_COMPILE=	${USE_CROSS_COMPILE:Uno}
-
 # Needed to prevent an "install:" target from being created in bsd.own.mk.
 NEED_OWN_INSTALL_TARGET=no
 
@@ -473,14 +471,7 @@ _MAKE_INSTALL_AS_ROOT?=	yes
 _MAKE_PACKAGE_AS_ROOT?=	yes
 # Whether to run the package target as root.
 
-# TOOLS_CROSS_DESTDIR is used for the libtool build to make a wrapper
-# that points at the cross-destdir as sysroot, without setting
-# _CROSS_DESTDIR because we're actually building a native package.
-.if ${TOOLS_USE_CROSS_COMPILE:tl} == "yes"
-TOOLS_CROSS_DESTDIR=		${CROSS_DESTDIR}
-.else
 TOOLS_CROSS_DESTDIR=		# empty
-.endif
 
 # Depends on MACHINE_ARCH override above
 .if ${OPSYS} == "NetBSD"
@@ -514,13 +505,6 @@ TOOLBASE:=		${LOCALBASE}
 LOCALBASE=		${CROSS_LOCALBASE:U/usr/pkg}
 VARBASE=		${CROSS_VARBASE:U/var}
 SYSCONFBASE=		${CROSS_SYSCONFBASE:U/etc}
-.endif
-.if ${TOOLS_USE_CROSS_COMPILE:tl} == "yes"
-.  if defined(CROSS_ABI)
-ABI=			${CROSS_ABI}
-.  else
-.    undef ABI
-.  endif
 .endif
 X11_TYPE?=		modular
 .if !empty(X11_TYPE:Mnative)
@@ -645,10 +629,6 @@ _PKGSRCDIR!=		cd ${_PKGSRC_TOPDIR} && ${PWD_CMD}
 MAKEFLAGS+=		_PKGSRCDIR=${_PKGSRCDIR:Q}
 .endif
 PKGSRCDIR=		${_PKGSRCDIR}
-
-.if ${TOOLS_USE_CROSS_COMPILE:tl} == "yes"
-_CROSSDIR_SUFFIX=	.${MACHINE_PLATFORM}
-.endif
 
 TEMPLATES?=		${PKGSRCDIR}/templates
 
