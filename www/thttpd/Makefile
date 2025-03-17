@@ -38,6 +38,8 @@ SUBST_STAGE.paths=	pre-configure
 
 MAKE_JOBS_SAFE=	no
 
+CFLAGS.SCO_SV+=	-DMAXPATHLEN=255 -DS_IFSOCK=0
+
 post-extract:
 	${CP} ${FILESDIR}/thttpd.conf ${WRKSRC}
 
