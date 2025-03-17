@@ -55,11 +55,7 @@ bin-install: \
 	do-bin-install \
 	do-bin-install-from-source
 
-.if !empty(USE_CROSS_COMPILE:M[yY][eE][sS])
-do-bin-install: su-do-bin-install
-.else
 do-bin-install: su-target
-.endif
 	@${PHASE_MSG} "Binary install for "${PKGNAME_REQD:Q}
 
 su-do-bin-install: \
@@ -91,16 +87,6 @@ _BIN_INSTALL_PREPARE_CMD= \
 	done;
 
 locked-su-do-bin-install:
-.if !empty(USE_CROSS_COMPILE:M[yY][eE][sS])
-	${RUN} ${_BIN_INSTALL_PREPARE_CMD}				\
-	${STEP_MSG} "Installing ${PKGNAME} from $$pkg_path";		\
-	if ${PKGSRC_SETENV} PKG_PATH="$$pkg_path" ${PKGTOOLS_ENV} ${PKG_ADD} -m ${OPSYS:Q}/${MACHINE_ARCH:Q}\ ${OS_VERSION:Q} -I -p ${PREFIX} ${_BIN_INSTALL_FLAGS} ${PKGNAME_REQD:Q}${PKG_SUFX}; then \
-		${ECHO} "Fixing recorded cwd...";			\
-		${SED} -e 's|@cwd |@cwd |' ${_PKG_DBDIR}/${PKGNAME:Q}/+CONTENTS > ${_PKG_DBDIR}/${PKGNAME:Q}/+CONTENTS.tmp; \
-		${MV} ${_PKG_DBDIR}/${PKGNAME:Q}/+CONTENTS.tmp ${_PKG_DBDIR}/${PKGNAME:Q}/+CONTENTS; \
-		${ECHO} "`${PKG_INFO} -e ${PKGNAME_REQD:Q}` successfully installed."; \
-	fi
-.else
 	${RUN} ${_BIN_INSTALL_PREPARE_CMD}				\
 	pkgpattern=${PKGNAME_REQD:Q};					\
 	${STEP_MSG} "Installing $$pkgpattern from $$pkg_path";		\
@@ -108,7 +94,6 @@ locked-su-do-bin-install:
 		installed=`${PKG_INFO} -e "$$pkgpattern"`;		\
 		${ECHO} "$$installed successfully installed.";		\
 	fi
-.endif
 
 do-bin-install-from-source:
 	${RUN} pkgpattern=${PKGNAME_REQD:Q};				\

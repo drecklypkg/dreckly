@@ -35,11 +35,7 @@ NOLOGIN?=		/sbin/nologin
 # This must be lazy and using :? evaluation doesn't work due to a make bugs.
 NATIVE_PKG_TOOLS_BIN_cmd=	if [ -x ${TOOLBASE}/sbin/pkg_info ]; then echo ${TOOLBASE}/sbin; else echo /usr/sbin; fi
 NATIVE_PKG_TOOLS_BIN?=		${NATIVE_PKG_TOOLS_BIN_cmd:sh}
-.if ${USE_CROSS_COMPILE:tl} == "yes"
-PKG_TOOLS_BIN=			${CROSS_PKG_TOOLS_BIN:U/usr/sbin}
-.else
 PKG_TOOLS_BIN?=			${NATIVE_PKG_TOOLS_BIN}
-.endif
 ROOT_CMD?=		${SU} - root -c
 ROOT_USER?=		root
 ROOT_GROUP?=	wheel

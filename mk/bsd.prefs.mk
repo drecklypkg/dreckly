@@ -300,16 +300,17 @@ LOWER_VENDOR?=		# empty ("arch--opsys")
 MACHINE_PLATFORM?=	${OPSYS}-${OS_VERSION}-${MACHINE_ARCH}
 MACHINE_GNU_PLATFORM?=	${MACHINE_GNU_ARCH}-${LOWER_VENDOR}-${LOWER_OPSYS:C/[0-9]//g}${APPEND_ELF}${LOWER_OPSYS_VERSUFFIX}${APPEND_ABI}
 
-# Set this before <bsd.own.mk> does, since it doesn't know about Darwin
-# or Cygwin (XXX or HP-UX or AIX or OSF/1 or ...).
+# Explicitly set OBJECT_FMT before <bsd.own.mk> does, as bootstrap-mk-files
+# does not correctly handle a bunch of these operating systems, and we are
+# better off having the logic here anyway as it doesn't require a package
+# bump.
 #
-# We will later set OBJECT_FMT to be conditional on USE_CROSS_COMPILE.
 .if ${OPSYS} == "AIX"
-OBJECT_FMT?=		XCOFF
+OBJECT_FMT?=	XCOFF
 .elif ${OPSYS} == "Cygwin"
-OBJECT_FMT?=		PE
+OBJECT_FMT?=	PE
 .elif ${OPSYS} == "Darwin"
-OBJECT_FMT?=		Mach-O
+OBJECT_FMT?=	Mach-O
 .endif
 
 # Needed to prevent an "install:" target from being created in bsd.own.mk.
@@ -499,11 +500,6 @@ IPV6_READY=		NO
 
 LOCALBASE?=		/usr/pkg
 TOOLBASE:=		${LOCALBASE}
-.if !empty(USE_CROSS_COMPILE:M[yY][eE][sS])
-LOCALBASE=		${CROSS_LOCALBASE:U/usr/pkg}
-VARBASE=		${CROSS_VARBASE:U/var}
-SYSCONFBASE=		${CROSS_SYSCONFBASE:U/etc}
-.endif
 X11_TYPE?=		modular
 .if !empty(X11_TYPE:Mnative)
 .  if ${OPSYS} == "SunOS"

@@ -195,15 +195,7 @@ replace-clean: .PHONY
 # process or by pkg_rolling-replace.
 replace-destdir: .PHONY
 	@${PHASE_MSG} "Updating using binary package of "${PKGNAME:Q}
-.if !empty(USE_CROSS_COMPILE:M[yY][eE][sS])
-	@${MKDIR} ${PREFIX}
-	${SETENV} ${PKGTOOLS_ENV} ${PKG_ADD} -U -D -m ${OPSYS:Q}/${MACHINE_ARCH:Q}\ ${OS_VERSION:Q} -I -p ${PREFIX} ${STAGE_PKGFILE}
-	@${ECHO} "Fixing recorded cwd..."
-	@${SED} -e 's|@cwd |@cwd |' ${_PKG_DBDIR}/${PKGNAME:Q}/+CONTENTS > ${_PKG_DBDIR}/${PKGNAME:Q}/+CONTENTS.tmp
-	@${MV} ${_PKG_DBDIR}/${PKGNAME:Q}/+CONTENTS.tmp ${_PKG_DBDIR}/${PKGNAME:Q}/+CONTENTS
-.else
 	${SETENV} ${PKGTOOLS_ENV} ${PKG_ADD} -U -D ${STAGE_PKGFILE}
-.endif
 	${RUN}${_REPLACE_OLDNAME_CMD}; \
 	${PKG_INFO} -qR ${PKGNAME:Q} | while read pkg; do \
 		[ -n "$$pkg" ] || continue; \

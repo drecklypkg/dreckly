@@ -52,9 +52,7 @@ NATIVE_PKG_DELETE_CMD?=		${NATIVE_PKG_TOOLS_BIN}/pkg_delete
 NATIVE_PKG_INFO_CMD?=		${NATIVE_PKG_TOOLS_BIN}/pkg_info
 
 # Latest versions of tools required for correct pkgsrc operation.
-.if ${USE_CROSS_COMPILE:tl} == "yes"
-PKGTOOLS_REQD=		20240126
-.elif !empty(USE_PKG_ADMIN_DIGEST:M[Yy][Ee][Ss])
+.if ${USE_PKG_ADMIN_DIGEST:U:tl} == "yes"
 PKGTOOLS_REQD=		20191008
 .else
 PKGTOOLS_REQD=		20100914
