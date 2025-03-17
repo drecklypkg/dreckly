@@ -529,7 +529,6 @@ X11BASE?=	/usr
 X11BASE?=	/usr/X11R6
 .  endif
 .endif
-CROSSBASE?=	${TOOLBASE}/cross
 
 .if defined(FIX_SYSTEM_HEADERS) && ${FIX_SYSTEM_HEADERS} == "yes" && \
     !defined(BOOTSTRAP_PKG) && \

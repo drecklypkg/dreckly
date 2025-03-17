@@ -128,7 +128,6 @@ PKG_ADMIN="@PKG_ADMIN@"
 PKG_INFO="@PKG_INFO@"
 
 # Variables for installation prefix references.
-CROSSBASE="@CROSSBASE@"
 LOCALBASE="@LOCALBASE@"
 X11BASE="@X11BASE@"
 PREFIX="${PKG_PREFIX}"
