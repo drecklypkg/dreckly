@@ -347,13 +347,10 @@ TARGET_MACHINE_PLATFORM=	${TARGET_OPSYS}-${TARGET_OS_VERSION}-${TARGET_MACHINE_A
 #
 # We will later set OBJECT_FMT to be conditional on USE_CROSS_COMPILE.
 .if ${OPSYS} == "AIX"
-NATIVE_OBJECT_FMT?=	XCOFF
 OBJECT_FMT?=		XCOFF
 .elif ${OPSYS} == "Cygwin"
-NATIVE_OBJECT_FMT?=	PE
 OBJECT_FMT?=		PE
 .elif ${OPSYS} == "Darwin"
-NATIVE_OBJECT_FMT?=	Mach-O
 OBJECT_FMT?=		Mach-O
 .endif
 
@@ -374,14 +371,6 @@ PKGPATH?=		${.CURDIR:C|.*/([^/]*/[^/]*)$|\1|}
 
 # Load the settings from MAKECONF, which is /etc/mk.conf by default.
 .include <bsd.own.mk>
-
-# Save the OBJECT_FMT determined by bsd.own.mk, and turn OBJECT_FMT
-# into a cross-compilation variable so it can be overridden by
-# CROSS_OBJECT_FMT.
-NATIVE_OBJECT_FMT:=	${OBJECT_FMT}
-CROSSVARS+=		OBJECT_FMT
-OBJECT_FMT=		\
-	${"${USE_CROSS_COMPILE:U:tl}" == "yes":?${CROSS_OBJECT_FMT}:${NATIVE_OBJECT_FMT}}
 
 # When cross-compilation support is requested, the following options
 # must be specified as well or guessable:
@@ -569,7 +558,7 @@ TOOLS_CROSS_DESTDIR=		# empty
 .  ifdef TARGET_MACHINE_ARCH
 TARGET_OBJECT_FMT?=	${OBJECT_FMT} # XXX
 .  endif
-.  if ${NATIVE_OBJECT_FMT} == "ELF" && \
+.  if ${OBJECT_FMT} == "ELF" && \
    (!empty(MACHINE_ARCH:Mearm*) || \
     ${MACHINE_GNU_ARCH} == "arm" || \
     ${MACHINE_ARCH} == "i386" || \

@@ -161,7 +161,7 @@ _DEPENDS_INSTALL_CMD=							\
 		case $$type in						\
 		bootstrap|tool)						\
 			objfmt=`${HOST_PKG_INFO} -Q OBJECT_FMT "$$pkg"`; \
-			needobjfmt=${NATIVE_OBJECT_FMT:Q};;		\
+			needobjfmt=${OBJECT_FMT:Q};;			\
 		build|full|indirect-build|indirect-full|test)		\
 			objfmt=`${PKG_INFO} -Q OBJECT_FMT "$$pkg"`;	\
 			needobjfmt=${OBJECT_FMT:Q};;			\
