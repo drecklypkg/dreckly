@@ -232,18 +232,6 @@ _OPSYS_CAN_CHECK_SSP=		no  # only supports libssp at this time
 # to avoid a test required by the libtool script that takes forever.
 _OPSYS_MAX_CMDLEN_CMD=	/sbin/sysctl -n kern.argmax
 
-# ABI selection.  (XXX Can we do this in terms of ${ABI} instead of
-# ${MACHINE_ARCH} vs ${HOST_MACHINE_ARCH} (uname -m)?  Complication is
-# I don't know how to get the value of ${ABI} that ld is configured for
-# by default.)
-_OPSYS_LDEMUL.i386=		elf_i386
-
-.if ${MACHINE_ARCH} != ${HOST_MACHINE_ARCH} && \
-    defined(_OPSYS_LDEMUL.${MACHINE_ARCH})
-_WRAP_EXTRA_ARGS.LD+=	-m ${_OPSYS_LDEMUL.${MACHINE_ARCH}}
-CWRAPPERS_APPEND.ld+=	-m ${_OPSYS_LDEMUL.${MACHINE_ARCH}}
-.endif
-
 # iconv is in libc.  Most things will assume that NetBSD uses citrus iconv,
 # rather than the GNU version.
 _OPSYS_PREFER.iconv?=	native

@@ -152,14 +152,6 @@ MACHINE_GNU_ARCH?=	${GNU_ARCH.${MACHINE_ARCH}:U${MACHINE_ARCH}}
 .if ${OPSYS} == "NetBSD"
 LOWER_OPSYS?=	netbsd
 
-# Ensure HOST_MACHINE_ARCH is set for native-but-compat builds, such as
-# building i386 packages on an amd64 system with compat32 libraries.
-# This is not quite a cross-build, so not NATIVE_ or CROSS_ here.
-.  if !defined(HOST_MACHINE_ARCH)
-HOST_MACHINE_ARCH!=	${UNAME} -m
-MAKEFLAGS+=		HOST_MACHINE_ARCH=${HOST_MACHINE_ARCH:Q}
-.  endif
-
 .elif ${OPSYS} == "AIX"
 .  if exists(/usr/bin/oslevel)
 _OS_VERSION!=		/usr/bin/oslevel
@@ -234,13 +226,6 @@ OS_VARIANT!=		${UNAME} -r
 OS_VARIANT:=		${OS_VARIANT:C/^.*-//}
 .  if ${OS_VARIANT} != "Microsoft"
 OS_VARIANT=		${LOWER_VENDOR}
-.  endif
-# Ensure HOST_MACHINE_ARCH is set for native-but-compat builds, such as
-# building i386 packages on an amd64 system with compat32 libraries.
-# This is not quite a cross-build, so not NATIVE_ or CROSS_ here.
-.  if !defined(HOST_MACHINE_ARCH)
-HOST_MACHINE_ARCH!=	${UNAME} -m
-MAKEFLAGS+=		HOST_MACHINE_ARCH=${HOST_MACHINE_ARCH:Q}
 .  endif
 
 .elif ${OPSYS} == "OpenBSD"
