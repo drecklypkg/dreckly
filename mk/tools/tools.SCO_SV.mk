@@ -54,9 +54,9 @@ TOOLS_PLATFORM.grep?=		/bin/grep
 TOOLS_PLATFORM.groff?=		/usr/gnu/bin/groff
 .endif
 .if exists(/usr/xdev/bin/m4)
-TOOLS_PLATFORM.gm4?=		/usr/xdev/bin/gm4
+TOOLS_PLATFORM.gm4?=		/usr/xdev/bin/m4
 .elif exists(/usr/gnu/bin/m4)
-TOOLS_PLATFORM.gm4?=		/usr/gnu/bin/gm4
+TOOLS_PLATFORM.gm4?=		/usr/gnu/bin/m4
 .endif
 .if exists(/usr/xdev/bin/make)
 TOOLS_PLATFORM.gmake?=		/usr/xdev/bin/make
