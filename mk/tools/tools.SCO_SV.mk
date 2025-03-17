@@ -139,6 +139,9 @@ TOOLS_PLATFORM.wget?=		/opt/xinuos/bin/wget
 TOOLS_PLATFORM.wc?=		/bin/wc
 TOOLS_PLATFORM.xargs?=		/usr/bin/xargs
 TOOLS_PLATFORM.xgettext?=	/usr/gnu/bin/xgettext
+.if exists(/usr/xdev/bin/xz)
+TOOLS_PLATFORM.xz?=		/usr/xdev/bin/xz
+.endif
 .if exists(/usr/xdev/bin/xzcat)
 TOOLS_PLATFORM.xzcat?=		/usr/xdev/bin/xzcat
 .endif
