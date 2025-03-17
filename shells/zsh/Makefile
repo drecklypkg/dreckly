@@ -47,7 +47,7 @@ INSTALLATION_DIRS+=	share/doc/zsh
 
 PLIST_VARS+=		xattr
 .if exists(/usr/include/sys/xattr.h) || \
-    exists(/usr/include/${NATIVE_MACHINE_GNU_ARCH}-${LOWER_OPSYS}-gnu/sys/xattr.h) || \
+    exists(/usr/include/${MACHINE_GNU_ARCH}-${LOWER_OPSYS}-gnu/sys/xattr.h) || \
     defined(OSX_SDK_PATH) && exists(${OSX_SDK_PATH}/usr/include/sys/xattr.h)
 PLIST.xattr=		yes
 .endif
