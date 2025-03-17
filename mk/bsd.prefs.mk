@@ -268,16 +268,16 @@ MAKEFLAGS+=		_UNAME_V=${_UNAME_V:Q}
 .  endif
 .  if !empty(_UNAME_V:Mjoyent_*)
 OS_VARIANT=		SmartOS
-NATIVE_LOWER_VARIANT_VERSION=	${_UNAME_V:C/joyent_//}
+LOWER_VARIANT_VERSION=	${_UNAME_V:C/joyent_//}
 .  elif !empty(_UNAME_V:Momnios-*)
 OS_VARIANT=		OmniOS
-NATIVE_LOWER_VARIANT_VERSION!=	/usr/bin/awk '{ print $$3; exit 0; }' /etc/release
+LOWER_VARIANT_VERSION!=	/usr/bin/awk '{ print $$3; exit 0; }' /etc/release
 .  elif !empty(_UNAME_V:Mtribblix-*)
 OS_VARIANT=		Tribblix
-NATIVE_LOWER_VARIANT_VERSION!=	/usr/bin/awk '{ print $$2; exit 0; }' /etc/release
+LOWER_VARIANT_VERSION!=	/usr/bin/awk '{ print $$2; exit 0; }' /etc/release
 .  else
 OS_VARIANT=		Solaris
-NATIVE_LOWER_VARIANT_VERSION=	${_UNAME_V}
+LOWER_VARIANT_VERSION=	${_UNAME_V}
 .  endif
 
 .elif ${OPSYS} == "SCO_SV"
@@ -332,10 +332,6 @@ CROSSVARS?=	# empty
 # mk.conf, whether the user _might_ be doing cross-builds.  So we have
 # to use this massive kludge.
 #
-CROSSVARS+=	LOWER_VARIANT_VERSION
-LOWER_VARIANT_VERSION=	\
-	${"${USE_CROSS_COMPILE:U:tl}" == "yes":?${CROSS_LOWER_VARIANT_VERSION}:${NATIVE_LOWER_VARIANT_VERSION}}
-
 MACHINE_PLATFORM?=		${OPSYS}-${OS_VERSION}-${MACHINE_ARCH}
 NATIVE_MACHINE_GNU_PLATFORM?=	${MACHINE_GNU_ARCH}-${LOWER_VENDOR}-${LOWER_OPSYS:C/[0-9]//g}${NATIVE_APPEND_ELF}${LOWER_OPSYS_VERSUFFIX}${NATIVE_APPEND_ABI}
 MACHINE_GNU_PLATFORM?=		${MACHINE_GNU_ARCH}-${LOWER_VENDOR}-${LOWER_OPSYS:C/[0-9]//g}${APPEND_ELF}${LOWER_OPSYS_VERSUFFIX}${APPEND_ABI}
