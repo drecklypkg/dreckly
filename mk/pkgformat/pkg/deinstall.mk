@@ -26,7 +26,7 @@ MAKEFLAGS.su-deinstall+=	_UPDATE_RUNNING=YES
 .endif
 
 .if !empty(USE_CROSS_COMPILE:M[yY][eE][sS])
-_PKG_ARGS_DEINSTALL+=	-p ${_CROSS_DESTDIR}${PREFIX}
+_PKG_ARGS_DEINSTALL+=	-p ${PREFIX}
 .endif
 
 # _pkgformat-deinstall:

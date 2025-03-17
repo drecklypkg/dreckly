@@ -41,35 +41,35 @@ PG_LIB_EXT=so
 
 # check what is installed
 .if ${OPSYS} == "Darwin"
-.  if exists(${_CROSS_DESTDIR:U}${LOCALBASE}/lib/libecpg.6.17.dylib)
+.  if exists(${LOCALBASE}/lib/libecpg.6.17.dylib)
 _PGSQL_VERSION_17_INSTALLED=	yes
 .  endif
-.  if exists(${_CROSS_DESTDIR:U}${LOCALBASE}/lib/libecpg.6.16.dylib)
+.  if exists(${LOCALBASE}/lib/libecpg.6.16.dylib)
 _PGSQL_VERSION_16_INSTALLED=	yes
 .  endif
-.  if exists(${_CROSS_DESTDIR:U}${LOCALBASE}/lib/libecpg.6.15.dylib)
+.  if exists(${LOCALBASE}/lib/libecpg.6.15.dylib)
 _PGSQL_VERSION_15_INSTALLED=	yes
 .  endif
-.  if exists(${_CROSS_DESTDIR:U}${LOCALBASE}/lib/libecpg.6.14.dylib)
+.  if exists(${LOCALBASE}/lib/libecpg.6.14.dylib)
 _PGSQL_VERSION_14_INSTALLED=	yes
 .  endif
-.  if exists(${_CROSS_DESTDIR:U}${LOCALBASE}/lib/libecpg.6.13.dylib)
+.  if exists(${LOCALBASE}/lib/libecpg.6.13.dylib)
 _PGSQL_VERSION_13_INSTALLED=	yes
 .  endif
 .else
-.  if exists(${_CROSS_DESTDIR:U}${LOCALBASE}/lib/libecpg.so.6.17)
+.  if exists(${LOCALBASE}/lib/libecpg.so.6.17)
 _PGSQL_VERSION_17_INSTALLED=	yes
 .  endif
-.  if exists(${_CROSS_DESTDIR:U}${LOCALBASE}/lib/libecpg.so.6.16)
+.  if exists(${LOCALBASE}/lib/libecpg.so.6.16)
 _PGSQL_VERSION_16_INSTALLED=	yes
 .  endif
-.  if exists(${_CROSS_DESTDIR:U}${LOCALBASE}/lib/libecpg.so.6.15)
+.  if exists(${LOCALBASE}/lib/libecpg.so.6.15)
 _PGSQL_VERSION_15_INSTALLED=	yes
 .  endif
-.  if exists(${_CROSS_DESTDIR:U}${LOCALBASE}/lib/libecpg.so.6.14)
+.  if exists(${LOCALBASE}/lib/libecpg.so.6.14)
 _PGSQL_VERSION_14_INSTALLED=	yes
 .  endif
-.  if exists(${_CROSS_DESTDIR:U}${LOCALBASE}/lib/libecpg.so.6.13)
+.  if exists(${LOCALBASE}/lib/libecpg.so.6.13)
 _PGSQL_VERSION_13_INSTALLED=	yes
 .  endif
 .endif

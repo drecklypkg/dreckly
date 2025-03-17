@@ -74,7 +74,7 @@ _OPSYS_SYSTEM_RPATH?=		/usr/lib
 _OPSYS_LIB_DIRS?=		/usr/lib
 _OPSYS_INCLUDE_DIRS?=		/usr/include
 
-.if exists(${_CROSS_DESTDIR:U}/usr/include/netinet6)
+.if exists(/usr/include/netinet6)
 _OPSYS_HAS_INET6=	yes	# IPv6 is standard
 .else
 _OPSYS_HAS_INET6=	no	# IPv6 is not standard
@@ -130,27 +130,27 @@ FFLAGS+=	-mieee
 .endif
 
 # check for posix_spawn(3) support, added in NetBSD-6.0
-.if exists(${_CROSS_DESTDIR:U}/usr/include/spawn.h)
+.if exists(/usr/include/spawn.h)
 OPSYS_HAS_POSIX_SPAWN=	# defined
 .endif
 
 # check for kqueue(2) support, added in NetBSD-1.6J
-.if exists(${_CROSS_DESTDIR:U}/usr/include/sys/event.h)
+.if exists(/usr/include/sys/event.h)
 OPSYS_HAS_KQUEUE=	# defined
 .endif
 
 # check for eventfd(2) support, added in NetBSD-9.99.x
-.if exists(${_CROSS_DESTDIR:U}/usr/include/sys/eventfd.h)
+.if exists(/usr/include/sys/eventfd.h)
 OPSYS_HAS_EVENTFD=	# defined
 .endif
 
 # check for timerfd(2) support, added in NetBSD-9.99.x
-.if exists(${_CROSS_DESTDIR:U}/usr/include/sys/timerfd.h)
+.if exists(/usr/include/sys/timerfd.h)
 OPSYS_HAS_TIMERFD=	# defined
 .endif
 
 # check for epoll(2) support, added in NetBSD-10.99.x
-.if exists(${_CROSS_DESTDIR:U}/usr/include/sys/epoll.h)
+.if exists(/usr/include/sys/epoll.h)
 OPSYS_HAS_EPOLL=	# defined
 .endif
 

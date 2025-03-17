@@ -35,7 +35,7 @@ PKG_DBDIR=		${CROSS_PKG_DBDIR:U${LOCALBASE}/pkgdb}
 # _PKG_DBDIR is the actual packages database directory where we register
 # packages.
 #
-_PKG_DBDIR=		${_CROSS_DESTDIR}${PKG_DBDIR}
+_PKG_DBDIR=		${PKG_DBDIR}
 _HOST_PKG_DBDIR=	${HOST_PKG_DBDIR:U${PKG_DBDIR}}
 
 PKG_ADD_CMD?=		${PKG_TOOLS_BIN}/pkg_add
