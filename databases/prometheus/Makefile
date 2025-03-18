@@ -12,6 +12,8 @@ HOMEPAGE=	https://prometheus.io/
 COMMENT=	The Prometheus monitoring system and time series database
 LICENSE=	apache-2.0
 
+USE_TOOLS+=	gtar pax
+
 # How to rebuild UI after bumping version:
 # 1. install lang/nodejs (for the npm binary)
 # 2. comment out the DISTFILES=... line
@@ -25,10 +27,10 @@ update-ui:
 	npm run build &&							\
 	${CHMOD} -x static/react/favicon.ico static/react/manifest.json &&	\
 	cd ../../.. &&								\
-	${TOOLS_PLATFORM.tar} -czf ${REACT_UI_DIST} ${DISTNAME}/web/ui/static/react &&		\
+	${GTAR} --format=ustar -zcf ${REACT_UI_DIST} ${DISTNAME}/web/ui/static/react &&	\
 	${CP} ${REACT_UI_DIST} ${DISTDIR}/${REACT_UI_DIST} &&			\
 	${ECHO} "UI built. Run this command:" &&				\
-	${ECHO} "# scp ${DISTDIR}/${REACT_UI_DIST} ftp.netbsd.org:/pub/pkgsrc/distfiles/LOCAL_PORTS/."
+	${ECHO} "# scp ${DISTDIR}/${REACT_UI_DIST} ftp.netbsd.org:/pub/pkgsrc/distfiles/LOCAL_PORTS/"
 
 REACT_UI_DIST=		${DISTNAME}-react-ui.tar.gz
 SITES.${REACT_UI_DIST}=	${MASTER_SITE_LOCAL}
@@ -54,7 +56,6 @@ GO_LDFLAGS+=	${GO_XFLAG_PREFIX}.Version=${PKGVERSION_NOREV}
 
 PKG_SYSCONFSUBDIR=	prometheus
 
-USE_TOOLS+=	pax
 BUILD_DEFS+=	VARBASE PKG_SYSCONFDIR
 
 SUBST_CLASSES+=		paths
