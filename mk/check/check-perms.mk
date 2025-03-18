@@ -32,7 +32,7 @@ _USER_VARS.check-perms=	CHECK_PERMS
 _PKG_VARS.check-perms=	CHECK_PERMS_SKIP CHECK_PERMS_AUTOFIX
 _DEF_VARS.check-perms=	TOOL_DEPENDS
 _USE_VARS.check-perms=	PKG_DEVELOPER MACHINE_PLATFORM DESTDIR PREFIX
-_IGN_VARS.check-perms=	_* TOOLBASE PKGNAME HOST_PKG_INFO
+_IGN_VARS.check-perms=	_* TOOLBASE PKGNAME PKG_INFO
 
 .if ${PKG_DEVELOPER:Uno} != "no"
 CHECK_PERMS?=		yes
@@ -71,7 +71,7 @@ _CHECK_PERMS_GETDIRS_AWK=						\
 _check-perms: .PHONY
 	${RUN}								\
 	${STEP_MSG} "Checking file permissions in ${PKGNAME}";		\
-	${HOST_PKG_INFO} -qe "checkperms>=1.1"				\
+	${PKG_INFO} -qe "checkperms>=1.1"				\
 	|| {								\
 		${WARNING_MSG} "[check-perms.mk] Skipping file permissions check."; \
 		${WARNING_MSG} "[check-perms.mk] Install sysutils/checkperms to enable this check."; \

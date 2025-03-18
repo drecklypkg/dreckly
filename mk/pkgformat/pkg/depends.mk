@@ -46,7 +46,6 @@ _HOST_REDUCE_DEPENDS_CMD=						\
 
 _REDUCE_RESOLVED_DEPENDS_CMD=${PKGSRC_SETENV} CAT=${CAT:Q}		\
 				PKG_INFO=${PKG_INFO:Q}			\
-				HOST_PKG_INFO=${HOST_PKG_INFO:Q}	\
 			${AWK} -f ${PKGSRCDIR}/mk/pkgformat/pkg/reduce-resolved-depends.awk \
 				< ${_RDEPENDS_FILE}
 
@@ -84,7 +83,6 @@ _LIST_DEPENDS_CMD.test=	\
 
 _RESOLVE_DEPENDS_CMD=	\
 	${PKGSRC_SETENV} _PKG_DBDIR=${_PKG_DBDIR:Q} PKG_INFO=${PKG_INFO:Q} \
-		HOST_PKG_INFO=${HOST_PKG_INFO:Q} \
 		_DEPENDS_FILE=${_DEPENDS_FILE:Q} \
 		${SH} ${PKGSRCDIR}/mk/pkgformat/pkg/resolve-dependencies
 
@@ -116,7 +114,7 @@ _DEPENDS_INSTALL_CMD=							\
 			;;						\
 		esac;							\
 		cross=no;						\
-		pkg=`${_HOST_PKG_BEST_EXISTS} "$$pattern" || ${TRUE}`;	\
+		pkg=`${_PKG_BEST_EXISTS} "$$pattern" || ${TRUE}`;	\
 		;;							\
 	build|full|indirect-build|indirect-full|test)			\
 		extradep=" ${PKGNAME}";					\
@@ -140,12 +138,7 @@ _DEPENDS_INSTALL_CMD=							\
 			USE_CROSS_COMPILE=$$cross			\
 			$$crosstargetsettings				\
 		    ${MAKE} ${MAKEFLAGS} _AUTOMATIC=yes $$target;	\
-		case $$type in						\
-		bootstrap|tool)						\
-			pkg=`${_HOST_PKG_BEST_EXISTS} "$$pattern" || ${TRUE}`;; \
-		build|full|indirect-build|indirect-full|test)		\
-			pkg=`${_PKG_BEST_EXISTS} "$$pattern" || ${TRUE}`;; \
-		esac;							\
+		pkg=`${_PKG_BEST_EXISTS} "$$pattern" || ${TRUE}`;	\
 		case "$$pkg" in						\
 		"")	${ERROR_MSG} "[depends.mk] A package matching \`\`$$pattern'' should"; \
 			${ERROR_MSG} "    be installed, but one cannot be found.  Perhaps there is a"; \
@@ -157,7 +150,7 @@ _DEPENDS_INSTALL_CMD=							\
 	*)								\
 		case $$type in						\
 		bootstrap|tool)						\
-			objfmt=`${HOST_PKG_INFO} -Q OBJECT_FMT "$$pkg"`; \
+			objfmt=`${PKG_INFO} -Q OBJECT_FMT "$$pkg"`;	\
 			needobjfmt=${OBJECT_FMT:Q};;			\
 		build|full|indirect-build|indirect-full|test)		\
 			objfmt=`${PKG_INFO} -Q OBJECT_FMT "$$pkg"`;	\

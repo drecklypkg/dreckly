@@ -99,7 +99,6 @@ HOST_PKG_ADD?=		${NATIVE_PKG_ADD_CMD} ${HOST_PKGTOOLS_ARGS}
 HOST_PKG_ADMIN?=	${NATIVE_PKG_ADMIN_CMD} ${HOST_PKGTOOLS_ARGS}
 HOST_PKG_CREATE?=	${NATIVE_PKG_CREATE_CMD} ${HOST_PKGTOOLS_ARGS}
 HOST_PKG_DELETE?=	${NATIVE_PKG_DELETE_CMD} ${HOST_PKGTOOLS_ARGS}
-HOST_PKG_INFO?=		${NATIVE_PKG_INFO_CMD} ${HOST_PKGTOOLS_ARGS}
 
 # "${_PKG_BEST_EXISTS} pkgpattern" prints out the name of the installed
 # package that best matches pkgpattern.  Use this instead of
@@ -107,7 +106,6 @@ HOST_PKG_INFO?=		${NATIVE_PKG_INFO_CMD} ${HOST_PKGTOOLS_ARGS}
 # package name.
 #
 _PKG_BEST_EXISTS?=	${PKG_INFO} -E
-_HOST_PKG_BEST_EXISTS?=	${HOST_PKG_INFO} -E
 
 # XXX Leave this here until all uses of this have been purged from the
 # XXX public parts of pkgsrc.
