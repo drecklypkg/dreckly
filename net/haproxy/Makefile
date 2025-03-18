@@ -1,22 +1,24 @@
-# $NetBSD: Makefile,v 1.129 2024/11/28 18:11:42 adam Exp $
+# $NetBSD$
 
-DISTNAME=	haproxy-3.1.0
+DISTNAME=	haproxy-3.0.8
 CATEGORIES=	net www
 MASTER_SITES=	https://www.haproxy.org/download/${PKGVERSION_NOREV:R}/src/
 
-MAINTAINER=	adam@NetBSD.org
+MAINTAINER=	jperkin@pkgsrc.org
 HOMEPAGE=	https://www.haproxy.org/
 COMMENT=	Reliable, high performance TCP/HTTP load balancer
 LICENSE=	gnu-gpl-v2
 
 USE_LANGUAGES=		c
 USE_TOOLS+=		gmake
+
 BUILD_MAKE_FLAGS+=	ADDLIB=${COMPILER_RPATH_FLAG}${PREFIX}/lib
 BUILD_MAKE_FLAGS+=	CC=${CC:Q}
 BUILD_MAKE_FLAGS+=	CPU_CFLAGS=${CFLAGS:Q}
 BUILD_MAKE_FLAGS+=	LDFLAGS=${LDFLAGS:Q}
 BUILD_MAKE_FLAGS+=	TARGET=${TARGET}
-BUILD_MAKE_FLAGS+=	USE_REGPARM=1
+BUILD_MAKE_FLAGS+=	USE_PROMEX=1
+BUILD_MAKE_FLAGS+=	USE_OPENSSL=1
 BUILD_MAKE_FLAGS+=	USE_ZLIB=1
 
 INSTALL_MAKE_FLAGS+=	DOCDIR=${PREFIX}/share/doc/${PKGBASE}
@@ -25,6 +27,8 @@ INSTALL_MAKE_FLAGS+=	MANDIR=${PREFIX}/${PKGMANDIR}
 INSTALL_MAKE_FLAGS+=	TARGET=${TARGET}
 # skip install-doc
 INSTALL_TARGET=		install-bin install-man
+
+BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,--export-dynamic
 
 .include "options.mk"
 
@@ -53,8 +57,8 @@ post-install:
 
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../mk/atomic64.mk"
-.if ${MACHINE_PLATFORM:MNetBSD-*-aarch64} && \
-    !empty(PKGSRC_COMPILER:M*gcc*)
+.if ${MACHINE_PLATFORM:MNetBSD-*-aarch64} && !empty(PKGSRC_COMPILER:M*gcc*)
 .include "../../devel/libatomic/buildlink3.mk"
 .endif
+.include "../../security/openssl/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
