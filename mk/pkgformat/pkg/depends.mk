@@ -97,26 +97,8 @@ _DEPENDS_INSTALL_CMD=							\
 	test)			Type=Test;;				\
 	full|indirect-full)	Type=Full;;				\
 	esac;								\
-	case $$type in							\
-	bootstrap|tool)							\
-		case "${USE_CROSS_COMPILE:Uno:tl}" in			\
-		yes)	extradep="";					\
-			crosstargetsettings=;				\
-			;;						\
-		*)	extradep=" ${PKGNAME}";				\
-			crosstargetsettings=;				\
-			;;						\
-		esac;							\
-		cross=no;						\
-		pkg=`${PKG_INFO} -E "$$pattern" || ${TRUE}`;		\
-		;;							\
-	build|full|indirect-build|indirect-full|test)			\
-		extradep=" ${PKGNAME}";					\
-		crosstargetsettings=;					\
-		cross=${USE_CROSS_COMPILE:Uno};				\
-		pkg=`${PKG_INFO} -E "$$pattern" || ${TRUE}`;		\
-		;;							\
-	esac;								\
+	extradep=" ${PKGNAME}";						\
+	pkg=`${PKG_INFO} -E "$$pattern" || ${TRUE}`;			\
 	case "$$pkg" in							\
 	"")								\
 		${STEP_MSG} "$$Type dependency $$pattern: NOT found";	\
@@ -129,8 +111,6 @@ _DEPENDS_INSTALL_CMD=							\
 		${PKGSRC_SETENV} ${PKGSRC_MAKE_ENV} PATH=${_PATH_ORIG:Q}\
 			_PKGSRC_DEPS="$$extradep${_PKGSRC_DEPS}"	\
 			PKGNAME_REQD="$$pattern"			\
-			USE_CROSS_COMPILE=$$cross			\
-			$$crosstargetsettings				\
 		    ${MAKE} ${MAKEFLAGS} _AUTOMATIC=yes $$target;	\
 		pkg=`${PKG_INFO} -E "$$pattern" || ${TRUE}`;		\
 		case "$$pkg" in						\
@@ -207,21 +187,16 @@ _pkgformat-post-install-dependencies: .PHONY ${_RDEPENDS_FILE} ${_RRDEPENDS_FILE
 pkg_install-depends:
 	${RUN}if [ `${PKG_INFO_CMD} -V 2>/dev/null || echo 20010302` -lt ${PKGTOOLS_REQD} ]; then \
 	${PHASE_MSG} "Trying to handle out-dated pkg_install..."; \
-	case "${USE_CROSS_COMPILE:Unu:tl}" in \
-	yes)	extradep="";; \
-	*)	extradep=" ${PKGNAME}";; \
-	esac; \
+	extradep=" ${PKGNAME}";; \
 	unset _PKGSRC_BARRIER || true; \
 	unset MAKEFLAGS || true; \
 	cd ../../pkgtools/pkg_install && \
 	${PKGSRC_SETENV} ${PKGSRC_MAKE_ENV} PATH=${_PATH_ORIG:Q} \
 	    _PKGSRC_DEPS="$$extradep${_PKGSRC_DEPS}" \
-	    USE_CROSS_COMPILE=no \
 	    ${MAKE} ${MAKEFLAGS} _AUTOMATIC=yes clean && \
 	cd ../../pkgtools/pkg_install && \
 	${PKGSRC_SETENV} ${PKGSRC_MAKE_ENV} PATH=${_PATH_ORIG:Q} \
 	    _PKGSRC_DEPS="$$extradep${_PKGSRC_DEPS}" \
-	    USE_CROSS_COMPILE=no \
 	    ${MAKE} ${MAKEFLAGS} _AUTOMATIC=yes ${DEPENDS_TARGET:Q}; \
 	fi
 
