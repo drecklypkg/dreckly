@@ -17,12 +17,15 @@ This gives you the GCC compiler, among other important tools.
 
 Ensure XDEV is in the PATH:
 
-# PATH=/usr/xdev/bin:$PATH
+# PATH=$PATH:/usr/xdev/bin
 # export PATH
 
-Remove /usr/lib/libz.la and other libtool archives
-from the system (or better yet move them out of the way
-while using pkgsrc), so that libtool does not get
-confused.
+Currently there are issues with the elderly GNU and XDEV versions
+of pwd (they do not support -P), so they must be last in the
+$PATH to ensure that /bin/pwd is used.
+
+Remove /usr/lib/libz.la and other libtool archives from the system
+(or better yet move them out of the way while using pkgsrc),
+so that libtool does not get confused.
 
 Bootstrap with --compiler gcc.
