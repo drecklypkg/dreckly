@@ -113,7 +113,7 @@ tarup: package-remove tarup-pkg
 ###
 tarup-pkg:
 	${RUN} [ -x ${_PKG_TARUP_CMD} ] || exit 1;			\
-	${PKGSRC_SETENV} PKG_DBDIR=${_PKG_DBDIR} PKG_SUFX=${PKG_SUFX}	\
+	${PKGSRC_SETENV} PKG_DBDIR=${PKG_DBDIR} PKG_SUFX=${PKG_SUFX}	\
 		PKGREPOSITORY=${PKGREPOSITORY}				\
 		${_PKG_TARUP_CMD} -f ${FILEBASE} ${PKGNAME}
 

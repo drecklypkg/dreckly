@@ -75,9 +75,9 @@ _LIST_DEPENDS_CMD.test=	\
 		${SH} ${PKGSRCDIR}/mk/pkgformat/pkg/list-dependencies \
 			" " " "${TEST_DEPENDS:Q} " " " " " " " " " "
 
-_RESOLVE_DEPENDS_CMD=	\
-	${PKGSRC_SETENV} _PKG_DBDIR=${_PKG_DBDIR:Q} PKG_INFO=${PKG_INFO:Q} \
-		_DEPENDS_FILE=${_DEPENDS_FILE:Q} \
+_RESOLVE_DEPENDS_CMD=							\
+	${PKGSRC_SETENV} PKG_INFO=${PKG_INFO:Q}				\
+		_DEPENDS_FILE=${_DEPENDS_FILE:Q}			\
 		${SH} ${PKGSRCDIR}/mk/pkgformat/pkg/resolve-dependencies
 
 # _DEPENDS_INSTALL_CMD checks whether the package $pattern is installed,

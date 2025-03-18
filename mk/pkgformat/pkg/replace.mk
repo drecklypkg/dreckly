@@ -77,7 +77,7 @@ replace-tarup: .PHONY
 	${RUN} [ -x ${_PKG_TARUP_CMD:Q} ] \
 	|| ${FAIL_MSG} ${_PKG_TARUP_CMD:Q}" was not found.";		\
 	${_REPLACE_OLDNAME_CMD};					\
-	${PKGSRC_SETENV} PKG_DBDIR=${_PKG_DBDIR} PKG_SUFX=${PKG_SUFX}	\
+	${PKGSRC_SETENV} PKG_DBDIR=${PKG_DBDIR} PKG_SUFX=${PKG_SUFX}	\
 		PKGREPOSITORY=${WRKDIR}					\
 		${_PKG_TARUP_CMD} $${oldname} ||			\
 	${FAIL_MSG} "Could not pkg_tarup $${oldname}".
@@ -115,7 +115,7 @@ replace-names: .PHONY
 replace-preserve-installed-info: .PHONY
 	@${STEP_MSG} "Preserving existing +INSTALLED_INFO file."
 	${RUN} ${_REPLACE_OLDNAME_CMD};					\
-	installed_info="${_PKG_DBDIR}/$$oldname/+INSTALLED_INFO";	\
+	installed_info="${PKG_DBDIR}/$$oldname/+INSTALLED_INFO";	\
 	${TEST} ! -f "$$installed_info" ||				\
 	${MV} $$installed_info ${_INSTALLED_INFO_FILE}
 
@@ -124,7 +124,7 @@ replace-preserve-installed-info: .PHONY
 replace-preserve-required-by: .PHONY
 	@${STEP_MSG} "Preserving existing +REQUIRED_BY file."
 	${RUN} ${_REPLACE_OLDNAME_CMD};					\
-	required_by="${_PKG_DBDIR}/$$oldname/+REQUIRED_BY";		\
+	required_by="${PKG_DBDIR}/$$oldname/+REQUIRED_BY";		\
 	${TEST} ! -f "$$required_by" ||					\
 	${MV} $$required_by ${_REQUIRED_BY_FILE}
 
@@ -146,7 +146,7 @@ replace-fixup-required-by: .PHONY
 		case $$pkg in						\
 		"")	continue ;;					\
 		/*)	pkgdir="$$pkg" ;;				\
-		*)	pkgdir="${_PKG_DBDIR}/$$pkg" ;;			\
+		*)	pkgdir="${PKG_DBDIR}/$$pkg" ;;			\
 		esac;							\
 		contents="$$pkgdir/+CONTENTS";				\
 		newcontents="$$contents.$$$$";				\
@@ -161,16 +161,18 @@ replace-fixup-required-by: .PHONY
 			${PKG_ADMIN} set unsafe_depends=YES $$pkg;	\
 		fi;							\
 	done;								\
-	${MV} ${_REQUIRED_BY_FILE} ${_PKG_DBDIR}/$$newname/+REQUIRED_BY
+	${MV} ${_REQUIRED_BY_FILE} ${PKG_DBDIR}/$$newname/+REQUIRED_BY
 
 # Removes unsafe_depends*, rebuild and mismatch tags from this package.
 #
 replace-fixup-installed-info: .PHONY
 	@${STEP_MSG} "Removing unsafe_depends and rebuild tags."
 	${RUN} ${_REPLACE_NEWNAME_CMD};					\
-	[ ! -f ${_INSTALLED_INFO_FILE} ] ||			\
-	${MV} ${_INSTALLED_INFO_FILE} ${_PKG_DBDIR}/$$newname/+INSTALLED_INFO; \
-	for var in unsafe_depends unsafe_depends_strict rebuild mismatch; do  \
+	[ ! -f ${_INSTALLED_INFO_FILE} ] ||				\
+		${MV} ${_INSTALLED_INFO_FILE}				\
+		    ${PKG_DBDIR}/$$newname/+INSTALLED_INFO;		\
+	for var in unsafe_depends unsafe_depends_strict rebuild		\
+		   mismatch; do						\
 		${PKG_ADMIN} unset $$var $$newname;			\
 	done
 

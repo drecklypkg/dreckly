@@ -432,7 +432,7 @@ _BLNK_PKG_DBDIR.${_pkg_}!=	\
 	pkg=`${PKG_INFO} -E "${_depend_}" || ${TRUE}`;			\
 	case "$$pkg" in							\
 	"")	dir="_BLNK_PKG_DBDIR.${_pkg_}_not_found" ;;		\
-	*)	dir="${_PKG_DBDIR}/$$pkg";				\
+	*)	dir="${PKG_DBDIR}/$$pkg";				\
 	esac;								\
 	${ECHO} $$dir
 .      endif
@@ -445,7 +445,7 @@ MAKEVARS+=	_BLNK_PKG_DBDIR.${_pkg_}
 .  if empty(_BLNK_PKG_DBDIR.${_pkg_}:M*not_found)
 _BLNK_PKG_INFO.${_pkg_}?=	${NATIVE_PKG_INFO_CMD} -K ${_BLNK_PKG_DBDIR.${_pkg_}:H}
 .  else
-_BLNK_PKG_INFO.${_pkg_}?=	${NATIVE_PKG_INFO_CMD} -K ${_PKG_DBDIR}
+_BLNK_PKG_INFO.${_pkg_}?=	${NATIVE_PKG_INFO_CMD} -K ${PKG_DBDIR}
 .  endif
 
 BUILDLINK_PKGNAME.${_pkg_}?=	${_BLNK_PKG_DBDIR.${_pkg_}:T}

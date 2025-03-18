@@ -15,13 +15,10 @@ USE_TOOLS+=	mail
 USE_TOOLS+=	date
 .endif
 
-# This is the package database directory for the default view.
-PKG_DBDIR?=		${LOCALBASE}/pkgdb
-
-# _PKG_DBDIR is the actual packages database directory where we register
-# packages.
+# PKG_DBDIR is the packages database directory where we register package
+# metadata.
 #
-_PKG_DBDIR=		${PKG_DBDIR}
+PKG_DBDIR?=		${LOCALBASE}/pkgdb
 
 PKG_ADD_CMD?=		${PKG_TOOLS_BIN}/pkg_add
 PKG_ADMIN_CMD?=		${PKG_TOOLS_BIN}/pkg_admin
@@ -71,7 +68,7 @@ _AUDIT_CONFIG_OPTION=	IGNORE_URL
 # The binary pkg_install tools all need to consistently to refer to the
 # correct package database directory.
 #
-PKGTOOLS_ARGS?=		-K ${_PKG_DBDIR}
+PKGTOOLS_ARGS?=		-K ${PKG_DBDIR}
 
 PKG_ADD?=	${NATIVE_PKG_ADD_CMD} ${PKGTOOLS_ARGS}
 PKG_ADMIN?=	${NATIVE_PKG_ADMIN_CMD} ${PKGTOOLS_ARGS}
