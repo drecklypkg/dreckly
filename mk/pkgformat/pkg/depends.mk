@@ -38,12 +38,6 @@ _REDUCE_DEPENDS_CMD=	${PKGSRC_SETENV} CAT=${CAT:Q}				\
 				PWD_CMD=${PWD_CMD:Q} TEST=${TEST:Q}	\
 			${AWK} -f ${PKGSRCDIR}/mk/pkgformat/pkg/reduce-depends.awk
 
-_HOST_REDUCE_DEPENDS_CMD=						\
-			${PKGSRC_SETENV} CAT=${CAT:Q}			\
-				PKG_ADMIN=${HOST_PKG_ADMIN:Q}		\
-				PWD_CMD=${PWD_CMD:Q} TEST=${TEST:Q}	\
-			${AWK} -f ${PKGSRCDIR}/mk/pkgformat/pkg/reduce-depends.awk
-
 _REDUCE_RESOLVED_DEPENDS_CMD=${PKGSRC_SETENV} CAT=${CAT:Q}		\
 				PKG_INFO=${PKG_INFO:Q}			\
 			${AWK} -f ${PKGSRCDIR}/mk/pkgformat/pkg/reduce-resolved-depends.awk \
@@ -52,8 +46,8 @@ _REDUCE_RESOLVED_DEPENDS_CMD=${PKGSRC_SETENV} CAT=${CAT:Q}		\
 _pkgformat-show-depends: .PHONY
 	@case ${VARNAME:Q}"" in						\
 	BUILD_DEPENDS)	${_REDUCE_DEPENDS_CMD} ${BUILD_DEPENDS:Q} ;;	\
-	TEST_DEPENDS)	${_HOST_REDUCE_DEPENDS_CMD} ${TEST_DEPENDS:Q} ;;\
-	TOOL_DEPENDS)	${_HOST_REDUCE_DEPENDS_CMD} ${TOOL_DEPENDS:Q} ;;\
+	TEST_DEPENDS)	${_REDUCE_DEPENDS_CMD} ${TEST_DEPENDS:Q} ;;	\
+	TOOL_DEPENDS)	${_REDUCE_DEPENDS_CMD} ${TOOL_DEPENDS:Q} ;;	\
 	DEPENDS|*)	${_REDUCE_DEPENDS_CMD} ${DEPENDS:Q} ;;		\
 	esac
 
