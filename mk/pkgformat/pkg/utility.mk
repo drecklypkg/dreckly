@@ -30,7 +30,7 @@ show-downlevel: .PHONY
 	${RUN}${DO_NADA}
 .else
 	${RUN}								\
-	found="`${_PKG_BEST_EXISTS} \"${PKGWILDCARD}\" || ${TRUE}`";	\
+	found="`${PKG_INFO} -E \"${PKGWILDCARD}\" || ${TRUE}`";		\
 	if [ "X$$found" != "X" -a "X$$found" != "X${PKGNAME}" ]; then	\
 		${ECHO} "${PKGBASE} package: $$found installed, pkgsrc version ${PKGNAME}"; \
 		if [ "X$$STOP_DOWNLEVEL_AFTER_FIRST" != "X" ]; then	\
@@ -45,7 +45,7 @@ show-installed-depends: # will not be removed
 .if !empty(DEPENDS)
 	${RUN}								\
 	for i in ${DEPENDS:C/:.*$//:Q:S/\ / /g} ; do			\
-		echo "$$i =>" `${_PKG_BEST_EXISTS} "$$i"`;		\
+		echo "$$i =>" `${PKG_INFO} -E "$$i"`;			\
 	done
 .endif
 
@@ -57,7 +57,7 @@ show-needs-update: _about-to-be-removed
 	while read i; do						\
 		cd ${PKGSRCDIR}/$$i;					\
 		eval `${RECURSIVE_MAKE} ${MAKEFLAGS} show-vars-eval VARS='PKGNAME:want PKGWILDCARD:wild'`; \
-		have=`${_PKG_BEST_EXISTS} "$$wild" || ${TRUE}`;		\
+		have=`${PKG_INFO} -E "$$wild" || ${TRUE}`;		\
 		if [ -z "$$have" ]; then				\
 			${ECHO} "$$i => (none) => needs install of $$want"; \
 		elif [ "$$have" != "$$want" ]; then			\
@@ -72,7 +72,7 @@ show-pkgsrc-dir: _about-to-be-removed
 	${RUN}${DO_NADA}
 .else
 	${RUN}								\
-	found="`${_PKG_BEST_EXISTS} \"${PKGWILDCARD}\" || ${TRUE}`";	\
+	found="`${PKG_INFO} -E \"${PKGWILDCARD}\" || ${TRUE}`";		\
 	if [ "X$$found" != "X" ]; then					\
 		${ECHO} ${PKGPATH};					\
 	fi

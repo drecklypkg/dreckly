@@ -114,13 +114,13 @@ _DEPENDS_INSTALL_CMD=							\
 			;;						\
 		esac;							\
 		cross=no;						\
-		pkg=`${_PKG_BEST_EXISTS} "$$pattern" || ${TRUE}`;	\
+		pkg=`${PKG_INFO} -E "$$pattern" || ${TRUE}`;		\
 		;;							\
 	build|full|indirect-build|indirect-full|test)			\
 		extradep=" ${PKGNAME}";					\
 		crosstargetsettings=;					\
 		cross=${USE_CROSS_COMPILE:Uno};				\
-		pkg=`${_PKG_BEST_EXISTS} "$$pattern" || ${TRUE}`;	\
+		pkg=`${PKG_INFO} -E "$$pattern" || ${TRUE}`;		\
 		;;							\
 	esac;								\
 	case "$$pkg" in							\
@@ -138,7 +138,7 @@ _DEPENDS_INSTALL_CMD=							\
 			USE_CROSS_COMPILE=$$cross			\
 			$$crosstargetsettings				\
 		    ${MAKE} ${MAKEFLAGS} _AUTOMATIC=yes $$target;	\
-		pkg=`${_PKG_BEST_EXISTS} "$$pattern" || ${TRUE}`;	\
+		pkg=`${PKG_INFO} -E "$$pattern" || ${TRUE}`;		\
 		case "$$pkg" in						\
 		"")	${ERROR_MSG} "[depends.mk] A package matching \`\`$$pattern'' should"; \
 			${ERROR_MSG} "    be installed, but one cannot be found.  Perhaps there is a"; \

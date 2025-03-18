@@ -106,7 +106,7 @@ replace-names: .PHONY
 	else								\
 		wildcard="${OLDNAME}-[0-9]*";				\
 	fi;								\
-	${_PKG_BEST_EXISTS} "$${wildcard}" > ${_REPLACE_OLDNAME_FILE}
+	${PKG_INFO} -E "$${wildcard}" > ${_REPLACE_OLDNAME_FILE}
 	${RUN} ${ECHO} ${PKGNAME} > ${_REPLACE_NEWNAME_FILE}
 	${RUN} ${CP} -f ${_REPLACE_NEWNAME_FILE} ${_COOKIE.replace}
 
