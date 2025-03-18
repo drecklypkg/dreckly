@@ -16,11 +16,7 @@ USE_TOOLS+=	date
 .endif
 
 # This is the package database directory for the default view.
-.if ${USE_CROSS_COMPILE:tl} != "yes"
 PKG_DBDIR?=		${LOCALBASE}/pkgdb
-.else
-PKG_DBDIR=		${CROSS_PKG_DBDIR:U${LOCALBASE}/pkgdb}
-.endif
 
 # _PKG_DBDIR is the actual packages database directory where we register
 # packages.
