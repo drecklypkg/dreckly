@@ -11,7 +11,7 @@
       <service_fmri value="svc:/system/filesystem/local"/>
     </dependency>
     <method_context>
-      <method_credential user="nobody" group="nobody" privileges="basic,net_privaddr"/>
+      <method_credential user="@PROMETHEUS_USER@" group="@PROMETHEUS_GROUP@" privileges="basic,net_privaddr"/>
     </method_context>
     <exec_method type="method" name="start" exec="@PREFIX@/bin/prometheus --storage.tsdb.path=@VARBASE@/lib/prometheus/data --config.file=@PKG_SYSCONFDIR@/prometheus.yml &amp;" timeout_seconds="30">
     </exec_method>
