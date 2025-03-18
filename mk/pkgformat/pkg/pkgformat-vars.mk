@@ -19,16 +19,6 @@ USE_TOOLS+=	date
 .if ${USE_CROSS_COMPILE:tl} != "yes"
 PKG_DBDIR?=		${LOCALBASE}/pkgdb
 .else
-.  ifndef HOST_PKG_DBDIR
-# XXX This isn't quite right: if PKG_DBDIR is defined in terms of
-# LOCALBASE, we really want to resolve it (`HOST_PKG_DBDIR:=') in
-# bsd.prefs.mk before we switch LOCALBASE to CROSS_LOCALBASE.  But
-# there's no place there to put pkgformat-vars business.  Fortunately,
-# bootstrap just writes out the full path so this is only an issue if
-# you explicitly write out `PKG_DBDIR= ...${LOCALBASE}...' in your
-# mk.conf.
-HOST_PKG_DBDIR:=	${PKG_DBDIR:U${TOOLBASE}/pkgdb}
-.  endif
 PKG_DBDIR=		${CROSS_PKG_DBDIR:U${LOCALBASE}/pkgdb}
 .endif
 
@@ -36,7 +26,6 @@ PKG_DBDIR=		${CROSS_PKG_DBDIR:U${LOCALBASE}/pkgdb}
 # packages.
 #
 _PKG_DBDIR=		${PKG_DBDIR}
-_HOST_PKG_DBDIR=	${HOST_PKG_DBDIR:U${PKG_DBDIR}}
 
 PKG_ADD_CMD?=		${PKG_TOOLS_BIN}/pkg_add
 PKG_ADMIN_CMD?=		${PKG_TOOLS_BIN}/pkg_admin
@@ -87,14 +76,9 @@ _AUDIT_CONFIG_OPTION=	IGNORE_URL
 # correct package database directory.
 #
 PKGTOOLS_ARGS?=		-K ${_PKG_DBDIR}
-HOST_PKGTOOLS_ARGS?=	-K ${_HOST_PKG_DBDIR}
 
 PKG_ADD?=	${NATIVE_PKG_ADD_CMD} ${PKGTOOLS_ARGS}
 PKG_ADMIN?=	${NATIVE_PKG_ADMIN_CMD} ${PKGTOOLS_ARGS}
 PKG_CREATE?=	${NATIVE_PKG_CREATE_CMD} ${PKGTOOLS_ARGS}
 PKG_DELETE?=	${NATIVE_PKG_DELETE_CMD} ${PKGTOOLS_ARGS}
 PKG_INFO?=	${NATIVE_PKG_INFO_CMD} ${PKGTOOLS_ARGS}
-
-HOST_PKG_ADD?=		${NATIVE_PKG_ADD_CMD} ${HOST_PKGTOOLS_ARGS}
-HOST_PKG_CREATE?=	${NATIVE_PKG_CREATE_CMD} ${HOST_PKGTOOLS_ARGS}
-HOST_PKG_DELETE?=	${NATIVE_PKG_DELETE_CMD} ${HOST_PKGTOOLS_ARGS}
