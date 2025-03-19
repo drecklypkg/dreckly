@@ -51,7 +51,7 @@ POSSIBLE_GFORTRAN_VERSION?=	${CC_VERSION:S/gcc-//:C/.[0-9].[0-9]$//}
 # Choose gcc12 for Darwin/aarch64.  \todo Explain why.
 # gcc7 does not build on Darwin 12.6.x, so match aarch64.
 .if ${MACHINE_PLATFORM:MDarwin-*-*}
-POSSIBLE_GFORTRAN_VERSION=	12
+POSSIBLE_GFORTRAN_VERSION=	14
 .endif
 
 # pkgsrc gcc9 is missing NetBSD patches for aarch64, so if 9 is
@@ -126,7 +126,7 @@ PREPEND_PATH+=	${_GFORTRAN_DIR}/bin
 
 # Add the dependency on gfortran.
 BUILDLINK_DEPMETHOD.gcc${GFORTRAN_VERSION}=	full
-.  include "../../lang/gcc${GFORTRAN_VERSION}/buildlink3.mk"
+.  include "../../lang/gcc${GFORTRAN_VERSION}-libs/buildlink3.mk"
 
 .  if defined(GFORTRAN_DIR) && !empty(GFORTRAN_DIR)
 PKGSRC_MAKE_ENV+=	GFORTRAN_DIR=${GFORTRAN_DIR:Q}
