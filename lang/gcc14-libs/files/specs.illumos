@@ -1,0 +1,50 @@
+#
+# Any comments here will be stripped out of the final specs file by sed.
+#
+# The GCC build for SmartOS zones will by default look inside PREFIX (i.e.
+# /opt/local) for libraries, so that users compiling software themselves do
+# not have to specify additional search paths - everything should Just Work
+# out of the box.
+#
+# This however causes problems when building pkgsrc packages themselves, as
+# it subverts buildlink which tries hard to ensure that random installed
+# libraries are NOT used, and only those which are correctly buildlinked are
+# available.
+#
+# As a result, packages can end up linking against installed libraries which
+# are not correctly registered as dependencies, causing problems when trying
+# to install the package on a system that does not have them installed.
+#
+# To resolve this, we install this custom specs file when building inside of
+# the pkgsrc environment which strips out PREFIX from the link arguments, so
+# that only system libraries and those explicitly provided by buildlink are
+# available.
+#
+*link_arch32:
+%{YP,*} %{R*} %{!YP,*:%{p|pg:-Y P,%R/usr/lib/libp%R/lib:%R/usr/lib} %{!p:%{!pg:-Y P,%R/lib:%R/usr/lib}}}
+
+*link_arch64:
+%{YP,*} %{R*} %{!YP,*:%{p|pg:-Y P,%R/usr/lib/libp/amd64:%R/lib/amd64:%R/usr/lib/amd64} %{!p:%{!pg:-Y P,%R/lib/amd64:%R/usr/lib/amd64}}}
+
+*link_arch_default:
+%(@LINK_ARCH_DEFAULT@)
+
+#
+# We also take the opportunity while here to clean up the link_libgcc spec, as
+# the default %M handling can end up with "./" in paths which can currently
+# confuse some of the pkgsrc tools that check for resolved paths.
+#
+# Instead we use similar handling to the above to select the correct argument
+# based either on m32/m64 or whatever the default target is.
+#
+*link_libgcc_arch32:
+%D -R@LIBGCC_PREFIX@/lib
+
+*link_libgcc_arch64:
+%D -R@LIBGCC_PREFIX@/lib/amd64
+
+*link_libgcc_default:
+%(@LINK_LIBGCC_DEFAULT@)
+
+*link_libgcc:
+%{m32:%(link_libgcc_arch32)} %{m64:%(link_libgcc_arch64)} %{!m32:%{!m64:%(link_libgcc_default)}}

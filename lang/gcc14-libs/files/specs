@@ -1,0 +1,8 @@
+#
+# Any comments here will be stripped out of the final specs file by sed.
+#
+# For the general purpose specs override we simply ensure that only the
+# libraries from this package will be linked against.
+#
+*link_libgcc:
+%D @LINKER_RPATH_FLAG@@LIBGCC_PREFIX@/lib
