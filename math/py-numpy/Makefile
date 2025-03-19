@@ -1,4 +1,5 @@
 # $NetBSD: Makefile,v 1.129 2024/11/04 17:39:17 wiz Exp $
+#
 
 DISTNAME=	numpy-2.1.3
 PKGNAME=	${PYPKGPREFIX}-${DISTNAME}
