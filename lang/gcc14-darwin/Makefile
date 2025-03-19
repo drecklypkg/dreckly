@@ -64,9 +64,6 @@ UNLIMIT_RESOURCES+=	stacksize
 
 FILES_SUBST+=		MACHINE_GNU_PLATFORM=${MACHINE_GNU_PLATFORM}
 
-PRINT_PLIST_AWK+=	{ gsub(/${MACHINE_GNU_PLATFORM}/, "$${MACHINE_GNU_PLATFORM}"); }
-PRINT_PLIST_AWK+=	{ gsub(/${PKGBASE}/, "$${PKGBASE}"); }
-
 CHECK_PORTABILITY_SKIP+=	contrib/*
 CHECK_SSP_SUPPORTED=		no		# Clean CFLAGS removes -fstack*
 CTF_FILES_SKIP+=		*/gengtype	# Causes ctfconvert to hang
@@ -75,6 +72,13 @@ INFO_FILES=		yes
 
 pre-configure:
 	${RUN} cd ${WRKSRC} && ${MKDIR} ${OBJDIR}
+
+# There is no reasonable possibility of static PLISTs as the contents differ
+# hugely between OS versions (e.g. include-fixed).
+#
+GENERATE_PLIST+= \
+	cd ${DESTDIR}${PREFIX} && \
+	    ${FIND} ${PKGBASE} \( -type f -o -type l \) -print | ${SORT};
 
 TEST_TARGET=	-j ${MAKE_JOBS} -k check
 TEST_DEPENDS+=	dejagnu-[0-9]*:../../devel/dejagnu
