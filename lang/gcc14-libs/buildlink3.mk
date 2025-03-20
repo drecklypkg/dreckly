@@ -28,7 +28,7 @@ LIBGCC_PREFIX=	${BUILDLINK_PREFIX.gcc14-libs}/gcc14/${MACHINE_GNU_PLATFORM}
 
 SPECS_SED=	-e '/^\#/d'
 SPECS_SED+=	-e 's,@LINKER_RPATH_FLAG@,${LINKER_RPATH_FLAG},g'
-SPECS_SED+=	-e 's,@LIBGCC_PREFIX@,${LIBGCC_PREFIX},g'
+SPECS_SED+=	-e 's,@LIBGCC_PREFIX@,${PREFIX}${LIBGCC_PREFIX},g'
 
 .include "../../mk/bsd.fast.prefs.mk"
 
