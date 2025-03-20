@@ -28,7 +28,7 @@ KRB5_BUILDLINK3_MK:=	${KRB5_BUILDLINK3_MK}+
 .include "../../mk/bsd.prefs.mk"
 
 .if !empty(KRB5_BUILDLINK3_MK:M+)
-KRB5_DEFAULT?=	heimdal
+KRB5_DEFAULT?=	mit-krb5
 KRB5_ACCEPTED?=	${_KRB5_PKGS}
 
 # This is an exhaustive list of all of the Kerberos 5 implementations
