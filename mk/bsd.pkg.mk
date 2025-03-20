@@ -152,19 +152,6 @@ PKG_FAIL_REASON+=	'PKGNAME and/or DISTNAME are mandatory.'
 PKG_FAIL_REASON+=	'Please unset PKG_PATH before doing pkgsrc work!'
 .endif
 
-# Allow variables to be set on a per-OS basis
-OPSYSVARS+=	CFLAGS CXXFLAGS CPPFLAGS LDFLAGS LIBS
-OPSYSVARS+=	CMAKE_CONFIGURE_ARGS CONFIGURE_ARGS CONFIGURE_ENV
-OPSYSVARS+=	BUILDLINK_TRANSFORM SUBST_CLASSES TEST_ENV
-OPSYSVARS+=	BUILD_TARGET MAKE_ENV MAKE_FLAGS USE_TOOLS
-.for _var_ in ${OPSYSVARS:O}
-.  if defined(${_var_}.${OPSYS})
-${_var_}+=	${${_var_}.${OPSYS}}
-.  elif defined(${_var_}.*)
-${_var_}+=	${${_var_}.*}
-.  endif
-.endfor
-
 CPPFLAGS+=	${CPP_PRECOMP_FLAGS}
 
 # To sanitize the environment, set PKGSRC_SETENV=${SETENV} -i.
@@ -886,3 +873,18 @@ ${_MAKEVARS_MK.${_phase_}}: ${WRKDIR}
 .include "misc/warnings.mk"
 .include "misc/can-be-built-here.mk"
 .include "misc/cpe.mk"
+
+# Allow variables to be set on a per-OS basis.  Do this as late as possible so
+# that included files can set up their own OPSYSVARS for evaluation.
+#
+OPSYSVARS+=	CFLAGS CXXFLAGS CPPFLAGS LDFLAGS LIBS
+OPSYSVARS+=	CMAKE_CONFIGURE_ARGS CONFIGURE_ARGS CONFIGURE_ENV
+OPSYSVARS+=	BUILDLINK_TRANSFORM SUBST_CLASSES TEST_ENV
+OPSYSVARS+=	BUILD_TARGET MAKE_ENV MAKE_FLAGS USE_TOOLS
+.for _var_ in ${OPSYSVARS:O}
+.  if defined(${_var_}.${OPSYS})
+${_var_}+=	${${_var_}.${OPSYS}}
+.  elif defined(${_var_}.*)
+${_var_}+=	${${_var_}.*}
+.  endif
+.endfor
