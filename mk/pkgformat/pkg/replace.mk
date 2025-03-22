@@ -77,7 +77,7 @@ replace-tarup: .PHONY
 	${RUN} [ -x ${_PKG_TARUP_CMD:Q} ] \
 	|| ${FAIL_MSG} ${_PKG_TARUP_CMD:Q}" was not found.";		\
 	${_REPLACE_OLDNAME_CMD};					\
-	${PKGSRC_SETENV} PKG_DBDIR=${_PKG_DBDIR} PKG_SUFX=${PKG_SUFX}	\
+	${PKGSRC_SETENV} PKG_DBDIR=${PKG_DBDIR} PKG_SUFX=${PKG_SUFX}	\
 		PKGREPOSITORY=${WRKDIR}					\
 		${_PKG_TARUP_CMD} $${oldname} ||			\
 	${FAIL_MSG} "Could not pkg_tarup $${oldname}".
@@ -106,7 +106,7 @@ replace-names: .PHONY
 	else								\
 		wildcard="${OLDNAME}-[0-9]*";				\
 	fi;								\
-	${_PKG_BEST_EXISTS} "$${wildcard}" > ${_REPLACE_OLDNAME_FILE}
+	${PKG_INFO} -E "$${wildcard}" > ${_REPLACE_OLDNAME_FILE}
 	${RUN} ${ECHO} ${PKGNAME} > ${_REPLACE_NEWNAME_FILE}
 	${RUN} ${CP} -f ${_REPLACE_NEWNAME_FILE} ${_COOKIE.replace}
 
@@ -115,7 +115,7 @@ replace-names: .PHONY
 replace-preserve-installed-info: .PHONY
 	@${STEP_MSG} "Preserving existing +INSTALLED_INFO file."
 	${RUN} ${_REPLACE_OLDNAME_CMD};					\
-	installed_info="${_PKG_DBDIR}/$$oldname/+INSTALLED_INFO";	\
+	installed_info="${PKG_DBDIR}/$$oldname/+INSTALLED_INFO";	\
 	${TEST} ! -f "$$installed_info" ||				\
 	${MV} $$installed_info ${_INSTALLED_INFO_FILE}
 
@@ -124,7 +124,7 @@ replace-preserve-installed-info: .PHONY
 replace-preserve-required-by: .PHONY
 	@${STEP_MSG} "Preserving existing +REQUIRED_BY file."
 	${RUN} ${_REPLACE_OLDNAME_CMD};					\
-	required_by="${_PKG_DBDIR}/$$oldname/+REQUIRED_BY";		\
+	required_by="${PKG_DBDIR}/$$oldname/+REQUIRED_BY";		\
 	${TEST} ! -f "$$required_by" ||					\
 	${MV} $$required_by ${_REQUIRED_BY_FILE}
 
@@ -146,7 +146,7 @@ replace-fixup-required-by: .PHONY
 		case $$pkg in						\
 		"")	continue ;;					\
 		/*)	pkgdir="$$pkg" ;;				\
-		*)	pkgdir="${_PKG_DBDIR}/$$pkg" ;;			\
+		*)	pkgdir="${PKG_DBDIR}/$$pkg" ;;			\
 		esac;							\
 		contents="$$pkgdir/+CONTENTS";				\
 		newcontents="$$contents.$$$$";				\
@@ -161,16 +161,18 @@ replace-fixup-required-by: .PHONY
 			${PKG_ADMIN} set unsafe_depends=YES $$pkg;	\
 		fi;							\
 	done;								\
-	${MV} ${_REQUIRED_BY_FILE} ${_PKG_DBDIR}/$$newname/+REQUIRED_BY
+	${MV} ${_REQUIRED_BY_FILE} ${PKG_DBDIR}/$$newname/+REQUIRED_BY
 
 # Removes unsafe_depends*, rebuild and mismatch tags from this package.
 #
 replace-fixup-installed-info: .PHONY
 	@${STEP_MSG} "Removing unsafe_depends and rebuild tags."
 	${RUN} ${_REPLACE_NEWNAME_CMD};					\
-	[ ! -f ${_INSTALLED_INFO_FILE} ] ||			\
-	${MV} ${_INSTALLED_INFO_FILE} ${_PKG_DBDIR}/$$newname/+INSTALLED_INFO; \
-	for var in unsafe_depends unsafe_depends_strict rebuild mismatch; do  \
+	[ ! -f ${_INSTALLED_INFO_FILE} ] ||				\
+		${MV} ${_INSTALLED_INFO_FILE}				\
+		    ${PKG_DBDIR}/$$newname/+INSTALLED_INFO;		\
+	for var in unsafe_depends unsafe_depends_strict rebuild		\
+		   mismatch; do						\
 		${PKG_ADMIN} unset $$var $$newname;			\
 	done
 
@@ -195,15 +197,7 @@ replace-clean: .PHONY
 # process or by pkg_rolling-replace.
 replace-destdir: .PHONY
 	@${PHASE_MSG} "Updating using binary package of "${PKGNAME:Q}
-.if !empty(USE_CROSS_COMPILE:M[yY][eE][sS])
-	@${MKDIR} ${_CROSS_DESTDIR}${PREFIX}
-	${SETENV} ${PKGTOOLS_ENV} ${PKG_ADD} -U -D -m ${OPSYS:Q}/${MACHINE_ARCH:Q}\ ${OS_VERSION:Q} -I -p ${_CROSS_DESTDIR}${PREFIX} ${STAGE_PKGFILE}
-	@${ECHO} "Fixing recorded cwd..."
-	@${SED} -e 's|@cwd ${_CROSS_DESTDIR}|@cwd |' ${_PKG_DBDIR}/${PKGNAME:Q}/+CONTENTS > ${_PKG_DBDIR}/${PKGNAME:Q}/+CONTENTS.tmp
-	@${MV} ${_PKG_DBDIR}/${PKGNAME:Q}/+CONTENTS.tmp ${_PKG_DBDIR}/${PKGNAME:Q}/+CONTENTS
-.else
 	${SETENV} ${PKGTOOLS_ENV} ${PKG_ADD} -U -D ${STAGE_PKGFILE}
-.endif
 	${RUN}${_REPLACE_OLDNAME_CMD}; \
 	${PKG_INFO} -qR ${PKGNAME:Q} | while read pkg; do \
 		[ -n "$$pkg" ] || continue; \

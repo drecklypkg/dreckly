@@ -62,12 +62,3 @@ MAKEVARS+=	_TOOLS_USE_PKGSRC.gmake
 TOOLS_PLATFORM.gmake=	${TOOLBASE}/bin/gmake
 .  endif
 .endif
-
-# XXX Kludge to prevent pkgsrc's internal variable TARGET_ARCH for
-# cross-compilation from leaking into gmake's environment, where it
-# will break the default rules.  Remove either when we start using
-# `env -i' for the build phase or when we replace TARGET_ARCH by
-# TARGET_MACHINE_PLATFORM.
-.if defined(TARGET_ARCH)
-MAKE_ENV+=	TARGET_ARCH=
-.endif

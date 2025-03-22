@@ -25,18 +25,9 @@ error_msg() {
 	${ECHO} "ERROR:" "$*" 1>&2
 }
 
-find_best() {
-	case $1 in
-	bootstrap|tool)
-		${HOST_PKG_INFO} -E "$2" || ${TRUE};;
-	build|full|indirect-build|indirect-full)
-		${PKG_INFO} -E "$2" || ${TRUE};;
-	esac
-}
-
 while read type pattern dir; do
-	[ "$type" != test ] || continue
-	pkg=`find_best "$type" "$pattern"`
+	[ "$type" = test ] && continue
+	pkg=`${PKG_INFO} -E "$pattern" || ${TRUE}`
 	case "$pkg" in
 	"")
 		error_msg "[resolve-dependencies] A package matching \`\`$pattern'' should"

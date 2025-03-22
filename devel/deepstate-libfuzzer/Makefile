@@ -27,7 +27,6 @@ pre-configure:
 do-install:
 	${INSTALL_LIB} ${WRKSRC}/build/libdeepstate_LF.a ${DESTDIR}${PREFIX}/lib
 
-.include "../../mk/compiler/clang.mk"
 .include "../../lang/compiler-rt/buildlink3.mk"
 .include "../../devel/deepstate/Makefile.common"
 .include "../../lang/python/pyversion.mk"

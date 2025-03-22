@@ -33,18 +33,8 @@ TOOLS_DEFAULTS_MK=	defined
 
 # These are the platform-specific lists of system-supplied tools.
 #
-# XXX These should eventually just migrate over to the appropriate
-# XXX pkgsrc/mk/platform/${NATIVE_OPSYS}.mk file.
-#
-# XXX Use ${OPSYS} for :run tools, but ${NATIVE_OPSYS} for :build and
-# XXX :bootstrap tools.
-#
-.if ${TOOLS_USE_CROSS_COMPILE:tl} == "yes" && \
-    exists(${_PKGSRC_TOPDIR}/mk/tools/cross.${OPSYS}.mk)
-.  include "${_PKGSRC_TOPDIR}/mk/tools/cross.${OPSYS}.mk"
-.endif
-.if exists(${_PKGSRC_TOPDIR}/mk/tools/tools.${NATIVE_OPSYS}.mk)
-.  include "${_PKGSRC_TOPDIR}/mk/tools/tools.${NATIVE_OPSYS}.mk"
+.if exists(${_PKGSRC_TOPDIR}/mk/tools/tools.${OPSYS}.mk)
+.  include "${_PKGSRC_TOPDIR}/mk/tools/tools.${OPSYS}.mk"
 .endif
 
 ######################################################################

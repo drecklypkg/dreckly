@@ -35,11 +35,7 @@ NOLOGIN?=		/sbin/nologin
 # This must be lazy and using :? evaluation doesn't work due to a make bugs.
 NATIVE_PKG_TOOLS_BIN_cmd=	if [ -x ${TOOLBASE}/sbin/pkg_info ]; then echo ${TOOLBASE}/sbin; else echo /usr/sbin; fi
 NATIVE_PKG_TOOLS_BIN?=		${NATIVE_PKG_TOOLS_BIN_cmd:sh}
-.if ${USE_CROSS_COMPILE:tl} == "yes"
-PKG_TOOLS_BIN=			${CROSS_PKG_TOOLS_BIN:U/usr/sbin}
-.else
 PKG_TOOLS_BIN?=			${NATIVE_PKG_TOOLS_BIN}
-.endif
 ROOT_CMD?=		${SU} - root -c
 ROOT_USER?=		root
 ROOT_GROUP?=	wheel
@@ -74,7 +70,7 @@ _OPSYS_SYSTEM_RPATH?=		/usr/lib
 _OPSYS_LIB_DIRS?=		/usr/lib
 _OPSYS_INCLUDE_DIRS?=		/usr/include
 
-.if exists(${_CROSS_DESTDIR:U}/usr/include/netinet6)
+.if exists(/usr/include/netinet6)
 _OPSYS_HAS_INET6=	yes	# IPv6 is standard
 .else
 _OPSYS_HAS_INET6=	no	# IPv6 is not standard
@@ -130,27 +126,27 @@ FFLAGS+=	-mieee
 .endif
 
 # check for posix_spawn(3) support, added in NetBSD-6.0
-.if exists(${_CROSS_DESTDIR:U}/usr/include/spawn.h)
+.if exists(/usr/include/spawn.h)
 OPSYS_HAS_POSIX_SPAWN=	# defined
 .endif
 
 # check for kqueue(2) support, added in NetBSD-1.6J
-.if exists(${_CROSS_DESTDIR:U}/usr/include/sys/event.h)
+.if exists(/usr/include/sys/event.h)
 OPSYS_HAS_KQUEUE=	# defined
 .endif
 
 # check for eventfd(2) support, added in NetBSD-9.99.x
-.if exists(${_CROSS_DESTDIR:U}/usr/include/sys/eventfd.h)
+.if exists(/usr/include/sys/eventfd.h)
 OPSYS_HAS_EVENTFD=	# defined
 .endif
 
 # check for timerfd(2) support, added in NetBSD-9.99.x
-.if exists(${_CROSS_DESTDIR:U}/usr/include/sys/timerfd.h)
+.if exists(/usr/include/sys/timerfd.h)
 OPSYS_HAS_TIMERFD=	# defined
 .endif
 
 # check for epoll(2) support, added in NetBSD-10.99.x
-.if exists(${_CROSS_DESTDIR:U}/usr/include/sys/epoll.h)
+.if exists(/usr/include/sys/epoll.h)
 OPSYS_HAS_EPOLL=	# defined
 .endif
 
@@ -232,17 +228,8 @@ _OPSYS_CAN_CHECK_SSP=		no  # only supports libssp at this time
 # to avoid a test required by the libtool script that takes forever.
 _OPSYS_MAX_CMDLEN_CMD=	/sbin/sysctl -n kern.argmax
 
-# ABI selection.  (XXX Can we do this in terms of ${ABI} instead of
-# ${MACHINE_ARCH} vs ${HOST_MACHINE_ARCH} (uname -m)?  Complication is
-# I don't know how to get the value of ${ABI} that ld is configured for
-# by default.)
-_OPSYS_LDEMUL.i386=		elf_i386
-
-.if ${MACHINE_ARCH} != ${HOST_MACHINE_ARCH} && \
-    defined(_OPSYS_LDEMUL.${MACHINE_ARCH})
-_WRAP_EXTRA_ARGS.LD+=	-m ${_OPSYS_LDEMUL.${MACHINE_ARCH}}
-CWRAPPERS_APPEND.ld+=	-m ${_OPSYS_LDEMUL.${MACHINE_ARCH}}
-.endif
+# Comes with a native heimdal implementation
+KRB5_DEFAULT?=		heimdal
 
 # iconv is in libc.  Most things will assume that NetBSD uses citrus iconv,
 # rather than the GNU version.

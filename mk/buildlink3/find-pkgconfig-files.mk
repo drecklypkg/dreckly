@@ -76,7 +76,7 @@ ${_var_}= __nonexistent__
 .    for _file_ in ${BUILTIN_FIND_PKGCONFIG_FILES.${_var_}}
 .      for _dir_ in ${BUILTIN_PKGCONFIG_DIRS}
 .        if !empty(${_var_}:M__nonexistent__) && \
-            exists(${TOOLS_CROSS_DESTDIR}${_dir_}/${_file_})
+            exists(${_dir_}/${_file_})
 ${_var_}= ${_dir_}/${_file_}
 .        endif
 .      endfor

@@ -10,7 +10,7 @@ HOMEPAGE=	http://isync.sourceforge.net/
 COMMENT=	Synchronize a maildir with an imap server
 LICENSE=	gnu-gpl-v2
 
-USE_LANGUAGES=		c99
+USE_CC_FEATURES=	c11
 USE_TOOLS+=		perl
 BDB_ACCEPTED=		db4 db5
 GNU_CONFIGURE=		yes

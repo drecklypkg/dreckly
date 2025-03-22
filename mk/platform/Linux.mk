@@ -43,11 +43,7 @@ EXPORT_SYMBOLS_LDFLAGS?=	# Don't add symbols to the dynamic symbol table
 MOTIF_TYPE_DEFAULT?=	motif	# default 2.0 compatible libs type
 PKG_TOOLS_BIN?=		${LOCALBASE}/sbin
 ROOT_CMD?=		${SU} - root -c
-.if exists(/etc/ssdlinux_version)
-ROOT_GROUP?=		wheel
-.else
 ROOT_GROUP?=		root
-.endif
 ROOT_USER?=		root
 SERIAL_DEVICES?=	/dev/null
 ULIMIT_CMD_datasize?=	ulimit -d `ulimit -H -d`
@@ -175,14 +171,6 @@ LIBABISUFFIX?=	64
 # No toolchain multilib support yet?
 # ABI?=		64
 LIBABISUFFIX?=	64
-.endif
-
-# When building 32-bit packages on x86_64 GNU ld isn't smart enough to
-# figure out the target architecture based on the objects so we need to
-# explicitly set it.
-.if ${HOST_MACHINE_ARCH} == "x86_64" && ${MACHINE_ARCH} == "i386"
-_WRAP_EXTRA_ARGS.LD+=	-m elf_i386
-CWRAPPERS_APPEND.ld+=	-m elf_i386
 .endif
 
 .for _glibc_path in ${_OPSYS_LIB_DIRS}

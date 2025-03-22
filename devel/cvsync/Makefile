@@ -28,7 +28,7 @@ CONF_FILES+=	${EGDIR}/cvsync.conf ${PKG_SYSCONFDIR}/cvsync.conf
 
 PKG_OPTIONS_VAR=	PKG_OPTIONS.cvsync
 PKG_SUPPORTED_OPTIONS=	libgcrypt mhash openssl
-.if ${OPSYS} == "AIX" || ${OPSYS} == "BSDOS" || ${OPSYS} == "Darwin" || \
+.if ${OPSYS} == "AIX" || ${OPSYS} == "Darwin" || \
 	${OPSYS} == "Linux" || ${OPSYS} == "SunOS"
 PKG_SUGGESTED_OPTIONS=	openssl
 .else

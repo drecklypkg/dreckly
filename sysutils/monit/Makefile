@@ -11,7 +11,7 @@ COMMENT=		Monitors processes, files, directories and devices
 LICENSE=		gnu-agpl-v3
 
 # no platform specific code yet
-BROKEN_ON_PLATFORM+=	BSDOS-*-* DragonFly-*-* Interix-*-* IRIX-*-* OSF1-*-*
+BROKEN_ON_PLATFORM+=	DragonFly-*-* Interix-*-* IRIX-*-* OSF1-*-*
 
 USE_TOOLS+=		gmake gzcat flex yacc
 USE_PKGLOCALEDIR=	yes

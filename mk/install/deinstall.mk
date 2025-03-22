@@ -16,16 +16,9 @@ DEINSTALLDEPENDS?=	no
 ### It will acquire elevated privileges just-in-time.
 ###
 .PHONY: deinstall su-deinstall
-.if !empty(USE_CROSS_COMPILE:M[yY][eE][sS])
-.  if !target(deinstall)
-deinstall: su-deinstall
-	@${PHASE_MSG} "Deinstalling for ${PKGNAME}"
-.  endif
-.else
-.  if !target(deinstall)
+.if !target(deinstall)
 deinstall: su-target
 	@${PHASE_MSG} "Deinstalling for ${PKGNAME}"
-.  endif
 .endif
 
 _SU_DEINSTALL_TARGETS=	acquire-deinstall-lock

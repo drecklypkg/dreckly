@@ -54,5 +54,4 @@ PLIST.objcxx=	yes
 .include "../../mk/pthread.buildlink3.mk"
 .include "../../devel/robin-map/buildlink3.mk"
 .include "../../lang/libunwind/buildlink3.mk"
-.include "../../mk/compiler/clang.mk"
 .include "../../mk/bsd.pkg.mk"

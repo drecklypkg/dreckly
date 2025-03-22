@@ -164,9 +164,6 @@ _PATCH_CAN_BACKUP=	yes	# native patch(1) can make backups
 _PATCH_BACKUP_ARG?=	-V simple -b -z	# switch to patch(1) for backup suffix
 _USE_RPATH=		no	# don't add rpath to LDFLAGS
 
-# Comes with a native mit-krb5 implementation
-KRB5_DEFAULT?=		mit-krb5
-
 #
 # Builtin overrides.
 #

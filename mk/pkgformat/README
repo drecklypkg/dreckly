@@ -38,8 +38,6 @@ ones are useful. Document them.)
 * PKG_CREATE
 * PKG_DELETE
 * PKG_INFO
-* LINKFARM
-* PKG_BEST_EXISTS
 
 The following variables must be defined so that they can be used in
 shell commands. They may contain references to all other variables.

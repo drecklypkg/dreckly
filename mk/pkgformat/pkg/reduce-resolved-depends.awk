@@ -46,14 +46,12 @@
 # ENVIRONMENT
 #	CAT
 #	PKG_INFO
-#	HOST_PKG_INFO (for cross-compilation)
 #
 ######################################################################
 
 BEGIN {
 	CAT = ENVIRON["CAT"] ? ENVIRON["CAT"] : "cat"
 	PKG_INFO = ENVIRON["PKG_INFO"] ? ENVIRON["PKG_INFO"] : "pkg_info"
-	HOST_PKG_INFO = ENVIRON["HOST_PKG_INFO"] ? ENVIRON["HOST_PKG_INFO"] : "pkg_info"
 
 	PROGNAME = "reduce-resolved-depends.awk"
 	ERRCAT = CAT " 1>&2"
@@ -96,14 +94,12 @@ BEGIN {
 		if (type[i] == "bootstrap" && checked_bootstrap[pkg[i]] != 1) {
 			checked_bootstrap[pkg[i]] = 1
 			found = 0
-			if (PKG_INFO == HOST_PKG_INFO) {
-				cmd = PKG_INFO " -qr " pkg[i]
-				while (cmd | getline dpkg) {
-					if (checked_full[dpkg] == 1)
-						found = 1
-				}
-				close(cmd)
+			cmd = PKG_INFO " -qr " pkg[i]
+			while (cmd | getline dpkg) {
+				if (checked_full[dpkg] == 1)
+					found = 1
 			}
+			close(cmd)
 			if (found == 0)
 				print_line[i] = 1
 		}
@@ -115,14 +111,12 @@ BEGIN {
 			if (checked_bootstrap[pkg[i]] == 1)
 				continue
 			found = 0
-			if (PKG_INFO == HOST_PKG_INFO) {
-				cmd = PKG_INFO " -qr " pkg[i]
-				while (cmd | getline dpkg) {
-					if (checked_full[dpkg] == 1)
-						found = 1
-				}
-				close(cmd)
+			cmd = PKG_INFO " -qr " pkg[i]
+			while (cmd | getline dpkg) {
+				if (checked_full[dpkg] == 1)
+					found = 1
 			}
+			close(cmd)
 			if (found == 0)
 				print_line[i] = 1
 		}
@@ -131,9 +125,8 @@ BEGIN {
 	for (i = 0; i < lines; ++i) {
 		if (type[i] == "build" && checked_build[pkg[i]] != 1) {
 			checked_build[pkg[i]] = 1
-			if (PKG_INFO == HOST_PKG_INFO)
-				if (checked_bootstrap[pkg[i]] == 1)
-					continue
+			if (checked_bootstrap[pkg[i]] == 1)
+				continue
 			found = 0
 			cmd = PKG_INFO " -qr " pkg[i]
 			while (cmd | getline dpkg) {

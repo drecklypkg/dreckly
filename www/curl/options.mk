@@ -1,10 +1,18 @@
 # $NetBSD: options.mk,v 1.22 2024/12/11 12:00:53 ryoon Exp $
 
 PKG_OPTIONS_VAR=		PKG_OPTIONS.curl
-PKG_SUPPORTED_OPTIONS=		inet6 libssh2 gssapi ldap rtmp idn http2 brotli
+PKG_SUPPORTED_OPTIONS=		inet6 libssh2 gssapi ldap rtmp idn brotli
 PKG_SUPPORTED_OPTIONS+=		zstd
-PKG_SUGGESTED_OPTIONS=		http2 inet6 idn
 PKG_OPTIONS_LEGACY_OPTS=	libidn:idn
+
+.include "../../mk/bsd.fast.prefs.mk"
+
+.if ${OPSYS} != "Cygwin"
+PKG_SUPPORTED_OPTIONS+=		http2
+PKG_SUGGESTED_OPTIONS=		http2 inet6 idn
+.else
+PKG_SUGGESTED_OPTIONS=		inet6 idn
+.endif
 
 .include "../../mk/bsd.options.mk"
 

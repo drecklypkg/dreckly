@@ -38,23 +38,16 @@ _REDUCE_DEPENDS_CMD=	${PKGSRC_SETENV} CAT=${CAT:Q}				\
 				PWD_CMD=${PWD_CMD:Q} TEST=${TEST:Q}	\
 			${AWK} -f ${PKGSRCDIR}/mk/pkgformat/pkg/reduce-depends.awk
 
-_HOST_REDUCE_DEPENDS_CMD=						\
-			${PKGSRC_SETENV} CAT=${CAT:Q}			\
-				PKG_ADMIN=${HOST_PKG_ADMIN:Q}		\
-				PWD_CMD=${PWD_CMD:Q} TEST=${TEST:Q}	\
-			${AWK} -f ${PKGSRCDIR}/mk/pkgformat/pkg/reduce-depends.awk
-
 _REDUCE_RESOLVED_DEPENDS_CMD=${PKGSRC_SETENV} CAT=${CAT:Q}		\
 				PKG_INFO=${PKG_INFO:Q}			\
-				HOST_PKG_INFO=${HOST_PKG_INFO:Q}	\
 			${AWK} -f ${PKGSRCDIR}/mk/pkgformat/pkg/reduce-resolved-depends.awk \
 				< ${_RDEPENDS_FILE}
 
 _pkgformat-show-depends: .PHONY
 	@case ${VARNAME:Q}"" in						\
 	BUILD_DEPENDS)	${_REDUCE_DEPENDS_CMD} ${BUILD_DEPENDS:Q} ;;	\
-	TEST_DEPENDS)	${_HOST_REDUCE_DEPENDS_CMD} ${TEST_DEPENDS:Q} ;;\
-	TOOL_DEPENDS)	${_HOST_REDUCE_DEPENDS_CMD} ${TOOL_DEPENDS:Q} ;;\
+	TEST_DEPENDS)	${_REDUCE_DEPENDS_CMD} ${TEST_DEPENDS:Q} ;;	\
+	TOOL_DEPENDS)	${_REDUCE_DEPENDS_CMD} ${TOOL_DEPENDS:Q} ;;	\
 	DEPENDS|*)	${_REDUCE_DEPENDS_CMD} ${DEPENDS:Q} ;;		\
 	esac
 
@@ -82,13 +75,10 @@ _LIST_DEPENDS_CMD.test=	\
 		${SH} ${PKGSRCDIR}/mk/pkgformat/pkg/list-dependencies \
 			" " " "${TEST_DEPENDS:Q} " " " " " " " " " "
 
-_RESOLVE_DEPENDS_CMD=	\
-	${PKGSRC_SETENV} _PKG_DBDIR=${_PKG_DBDIR:Q} PKG_INFO=${PKG_INFO:Q} \
-		HOST_PKG_INFO=${HOST_PKG_INFO:Q} \
-		_DEPENDS_FILE=${_DEPENDS_FILE:Q} \
+_RESOLVE_DEPENDS_CMD=							\
+	${PKGSRC_SETENV} PKG_INFO=${PKG_INFO:Q}				\
+		_DEPENDS_FILE=${_DEPENDS_FILE:Q}			\
 		${SH} ${PKGSRCDIR}/mk/pkgformat/pkg/resolve-dependencies
-
-CROSSTARGETSETTINGS=	${CROSSVARS:@_v_@TARGET_${_v_}=${${_v_}}@}
 
 # _DEPENDS_INSTALL_CMD checks whether the package $pattern is installed,
 #	and installs it if necessary.
@@ -107,26 +97,7 @@ _DEPENDS_INSTALL_CMD=							\
 	test)			Type=Test;;				\
 	full|indirect-full)	Type=Full;;				\
 	esac;								\
-	case $$type in							\
-	bootstrap|tool)							\
-		case "${USE_CROSS_COMPILE:Uno:tl}" in			\
-		yes)	extradep="";					\
-			crosstargetsettings=${CROSSTARGETSETTINGS:Q};	\
-			;;						\
-		*)	extradep=" ${PKGNAME}";				\
-			crosstargetsettings=;				\
-			;;						\
-		esac;							\
-		cross=no;						\
-		pkg=`${_HOST_PKG_BEST_EXISTS} "$$pattern" || ${TRUE}`;	\
-		;;							\
-	build|full|indirect-build|indirect-full|test)			\
-		extradep=" ${PKGNAME}";					\
-		crosstargetsettings=;					\
-		cross=${USE_CROSS_COMPILE:Uno};				\
-		pkg=`${_PKG_BEST_EXISTS} "$$pattern" || ${TRUE}`;	\
-		;;							\
-	esac;								\
+	pkg=`${PKG_INFO} -E "$$pattern" || ${TRUE}`;			\
 	case "$$pkg" in							\
 	"")								\
 		${STEP_MSG} "$$Type dependency $$pattern: NOT found";	\
@@ -136,19 +107,11 @@ _DEPENDS_INSTALL_CMD=							\
 		cd $$dir;						\
 		unset _PKGSRC_BARRIER || true;				\
 		unset MAKEFLAGS || true;				\
-		unset ${CROSSVARS:@_v_@TARGET_${_v_}@} || true;		\
 		${PKGSRC_SETENV} ${PKGSRC_MAKE_ENV} PATH=${_PATH_ORIG:Q}\
-			_PKGSRC_DEPS="$$extradep${_PKGSRC_DEPS}"	\
+			_PKGSRC_DEPS=" ${PKGNAME}${_PKGSRC_DEPS}"	\
 			PKGNAME_REQD="$$pattern"			\
-			USE_CROSS_COMPILE=$$cross			\
-			$$crosstargetsettings				\
 		    ${MAKE} ${MAKEFLAGS} _AUTOMATIC=yes $$target;	\
-		case $$type in						\
-		bootstrap|tool)						\
-			pkg=`${_HOST_PKG_BEST_EXISTS} "$$pattern" || ${TRUE}`;; \
-		build|full|indirect-build|indirect-full|test)		\
-			pkg=`${_PKG_BEST_EXISTS} "$$pattern" || ${TRUE}`;; \
-		esac;							\
+		pkg=`${PKG_INFO} -E "$$pattern" || ${TRUE}`;		\
 		case "$$pkg" in						\
 		"")	${ERROR_MSG} "[depends.mk] A package matching \`\`$$pattern'' should"; \
 			${ERROR_MSG} "    be installed, but one cannot be found.  Perhaps there is a"; \
@@ -160,8 +123,8 @@ _DEPENDS_INSTALL_CMD=							\
 	*)								\
 		case $$type in						\
 		bootstrap|tool)						\
-			objfmt=`${HOST_PKG_INFO} -Q OBJECT_FMT "$$pkg"`; \
-			needobjfmt=${NATIVE_OBJECT_FMT:Q};;		\
+			objfmt=`${PKG_INFO} -Q OBJECT_FMT "$$pkg"`;	\
+			needobjfmt=${OBJECT_FMT:Q};;			\
 		build|full|indirect-build|indirect-full|test)		\
 			objfmt=`${PKG_INFO} -Q OBJECT_FMT "$$pkg"`;	\
 			needobjfmt=${OBJECT_FMT:Q};;			\
@@ -223,22 +186,15 @@ _pkgformat-post-install-dependencies: .PHONY ${_RDEPENDS_FILE} ${_RRDEPENDS_FILE
 pkg_install-depends:
 	${RUN}if [ `${PKG_INFO_CMD} -V 2>/dev/null || echo 20010302` -lt ${PKGTOOLS_REQD} ]; then \
 	${PHASE_MSG} "Trying to handle out-dated pkg_install..."; \
-	case "${USE_CROSS_COMPILE:Unu:tl}" in \
-	yes)	extradep="";; \
-	*)	extradep=" ${PKGNAME}";; \
-	esac; \
 	unset _PKGSRC_BARRIER || true; \
 	unset MAKEFLAGS || true; \
-	unset ${CROSSVARS:@_v_@TARGET_${_v_}@} || true; \
 	cd ../../pkgtools/pkg_install && \
 	${PKGSRC_SETENV} ${PKGSRC_MAKE_ENV} PATH=${_PATH_ORIG:Q} \
-	    _PKGSRC_DEPS="$$extradep${_PKGSRC_DEPS}" \
-	    USE_CROSS_COMPILE=no \
+	    _PKGSRC_DEPS=" ${PKGNAME}${_PKGSRC_DEPS}" \
 	    ${MAKE} ${MAKEFLAGS} _AUTOMATIC=yes clean && \
 	cd ../../pkgtools/pkg_install && \
 	${PKGSRC_SETENV} ${PKGSRC_MAKE_ENV} PATH=${_PATH_ORIG:Q} \
-	    _PKGSRC_DEPS="$$extradep${_PKGSRC_DEPS}" \
-	    USE_CROSS_COMPILE=no \
+	    _PKGSRC_DEPS=" ${PKGNAME}${_PKGSRC_DEPS}" \
 	    ${MAKE} ${MAKEFLAGS} _AUTOMATIC=yes ${DEPENDS_TARGET:Q}; \
 	fi
 

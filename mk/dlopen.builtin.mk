@@ -14,7 +14,7 @@ BUILTIN_FIND_HEADERS.H_DL=	dlfcn.h
 ###
 .if !defined(IS_BUILTIN.dl)
 IS_BUILTIN.dl=	no
-.  if empty(H_DL:M${LOCALBASE}/*) && exists(${TOOLS_CROSS_DESTDIR}${H_DL})
+.  if empty(H_DL:M${LOCALBASE}/*) && exists(${H_DL})
 IS_BUILTIN.dl=	yes
 .  endif
 .endif

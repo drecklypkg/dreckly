@@ -688,26 +688,10 @@ IRIX*)
 	fi
 	;;
 Linux)
-	# XXX This was added in 2010 to handle Linux distros that use "wheel"
-	# for root's group. It's a hack, since it only supports (apparently
-	# now defunct) SSD Linux.
-	if [ -f /etc/ssdlinux_version ]; then
-		root_group=wheel
-	else
-		root_group=root
-	fi
-	# Debian/Ubuntu's awk is mawk, and mawk does not understand
-	# some regexps used in pkgsrc/mk.
-	if [ -f /etc/debian_version ]; then
-		need_awk=yes
-	# Arch uses gawk 5 that breaks some regexps. It doesn't provide pax
-	# anymore.
-	elif [ -f /etc/arch-release ]; then
-		need_awk=yes
-		need_pax=yes
+	root_group=root
 	# ChromeOS provides a version of mawk that is permanently in restricted
 	# mode. Notably, this means it cannot run pipes, which pkgsrc requires.
-	elif grep -sq '^CHROMEOS_RELEASE_NAME' /etc/lsb-release; then
+	if grep -sq '^CHROMEOS_RELEASE_NAME' /etc/lsb-release; then
 		need_awk=yes
 		need_sed=yes
 	fi
@@ -1474,9 +1458,6 @@ yes)	build_package "textproc/nbsed";;
 esac
 case "$need_extras" in
 yes)	build_package "pkgtools/bootstrap-extras";;
-esac
-case "$need_pax" in
-yes)    build_package "archivers/pax"
 esac
 build_package "pkgtools/pkg_install"
 

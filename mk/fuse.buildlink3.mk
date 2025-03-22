@@ -56,7 +56,7 @@ PKG_FAIL_REASON+=	"Couldn't find fuse headers, please install libfuse."
 .  elif ${OPSYS} == "NetBSD" || ${OPSYS} == "Minix" || \
         !empty(MACHINE_PLATFORM:MDragonFly-[3-9]*-*)
 H_FUSE=			/usr/include/fuse.h
-.      if !exists(${TOOLS_CROSS_DESTDIR}${H_FUSE})
+.      if !exists(${H_FUSE})
 PKG_FAIL_REASON+=	"Couldn't find fuse headers, please install librefuse."
 .      endif
 
