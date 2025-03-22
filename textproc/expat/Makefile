@@ -1,6 +1,6 @@
 # $NetBSD: Makefile,v 1.58 2024/09/04 13:08:26 adam Exp $
 
-DISTNAME=	expat-2.6.3
+DISTNAME=	expat-2.7.0
 CATEGORIES=	textproc
 MASTER_SITES=	${MASTER_SITE_GITHUB:=libexpat/}
 GITHUB_PROJECT=	libexpat
@@ -23,9 +23,6 @@ CONFIGURE_ENV+=		DOCBOOK_TO_MAN=false
 
 TEST_TARGET=	check
 REPLACE_BASH=	test-driver-wrapper.sh
-# we can't use cmake due to a cyclic dependency
-#USE_CMAKE=	yes
-#TEST_ENV+=	LD_LIBRARY_PATH=${WRKSRC}
 
 PKGCONFIG_OVERRIDE+=	expat.pc.in
 
