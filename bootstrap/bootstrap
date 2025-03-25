@@ -756,11 +756,13 @@ SCO_SV)
 	else
 		need_mksh=yes
 	fi
-	# Currently libarchive tries to use pthread_mutex_lock
-	# unconditionally if it finds the header.  We could also
-	# hide the header somehow.
-	LDFLAGS="${LDFLAGS} -lpthread -lsocket"
-	export LDFLAGS
+	if [ -e "/usr/lib/libpthread.so" ]; then
+		# Currently libarchive tries to use pthread_mutex_lock
+		# unconditionally if it finds the header.  We could also
+		# hide the header somehow.
+		LDFLAGS="${LDFLAGS} -lpthread -lsocket"
+		export LDFLAGS
+	fi
 	# For some reason, the uname command shipped with xdev has
 	# a broken -p option.
 	machine_arch=`uname -m`
