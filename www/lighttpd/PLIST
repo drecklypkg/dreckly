@@ -92,8 +92,8 @@ share/examples/lighttpd/conf.d/ssi.conf
 share/examples/lighttpd/conf.d/status.conf
 share/examples/lighttpd/conf.d/userdir.conf
 share/examples/lighttpd/conf.d/webdav.conf
+share/examples/lighttpd/lighttpd.annotated.conf
 share/examples/lighttpd/lighttpd.conf
 share/examples/lighttpd/modules.conf
 share/examples/lighttpd/rrdtool-graph.sh
-share/examples/lighttpd/spawn-php.sh
 share/examples/lighttpd/vhosts.d/vhosts.template
