@@ -1,6 +1,6 @@
 # $NetBSD: Makefile,v 1.42 2024/11/29 03:47:45 ryoon Exp $
 
-DISTNAME=	openal-soft-1.23.1
+DISTNAME=	openal-soft-1.24.1
 CATEGORIES=	audio
 MASTER_SITES=	https://openal-soft.org/openal-releases/
 EXTRACT_SUFX=	.tar.bz2
@@ -41,8 +41,8 @@ CMAKE_CONFIGURE_ARGS+=	-DALSOFT_REQUIRE_SOLARIS=ON
 .include "../../mk/oss.buildlink3.mk"
 
 .if ${OSS_TYPE} != "none"
-CMAKE_CONFIGURE_ARGS+=	-DALSOFT_BACKEND_OSS=ON
-CMAKE_CONFIGURE_ARGS+=	-DALSOFT_REQUIRE_OSS=ON
+CMAKE_CONFIGURE_ARGS+=		-DALSOFT_BACKEND_OSS=ON
+CMAKE_CONFIGURE_ARGS+=		-DALSOFT_REQUIRE_OSS=ON
 SUBST_CLASSES+=		oss
 SUBST_STAGE.oss=	pre-configure
 SUBST_MESSAGE.oss=	Fixing default OSS device references.
