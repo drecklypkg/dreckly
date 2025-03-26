@@ -58,6 +58,7 @@ echo "" >> config.h
 if [ "`uname -s`" = "OSF1" ]; then
 	echo "#define strtoull(nptr, endptr, base) strtoul(nptr, endptr, base)" >> config.h
 elif [ "`uname -s`" = "SCO_SV" ]; then
+	echo "#include <stdlib.h>" >> config.h
 	echo "#define strtoull(nptr, endptr, base) strtoul(nptr, endptr, base)" >> config.h
 elif [ "`uname -s`" = "HP-UX" ]; then
 	echo "#define strtoull(nptr, endptr, base) __strtoull(nptr, endptr, base)" >> config.h
