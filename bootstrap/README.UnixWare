@@ -12,8 +12,15 @@ For UnixWare, QEMU with acceleration disabled also seems to work.
 Guidelines
 ==========
 
-UnixWare has a limit of 1000 files per directory.  When transferring
-the tree to UnixWare, you should delete unwanted packages to reduce
+By default, UnixWare has a limit of 1000 files per directory.
+This should be increased before transferring the package tree:
+
+# /etc/conf/bin/idtune -m FLCKREC 16000
+# /etc/conf/bin/idtune -m MAXLINK 32767
+# /etc/conf/bin/idbuild
+# reboot
+
+Alternatively, you can delete unwanted packages to reduce
 the size of categories such as "devel".
 
 The default install of UnixWare 7 lacks a modern toolchain
