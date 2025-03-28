@@ -53,5 +53,7 @@ build_pkg() {
 for file in ${PKGBUILD_FILES}; do
 	echo ${file} | cut -d/ -f1,2
 done | sort | uniq | while read dir; do
-	build_pkg ${dir}
+	if [ -f ${dir}/Makefile ]; then
+		build_pkg ${dir}
+	fi
 done
