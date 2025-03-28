@@ -14,8 +14,7 @@ BUILTIN_FIND_HEADERS.H_PTHREAD=	pthread.h
 ###
 .if !defined(IS_BUILTIN.pthread)
 IS_BUILTIN.pthread=	no
-.  if empty(H_PTHREAD:M${LOCALBASE}/*) && \
-     exists(${TOOLS_CROSS_DESTDIR}${H_PTHREAD})
+.  if empty(H_PTHREAD:M${LOCALBASE}/*) && exists(${H_PTHREAD})
 IS_BUILTIN.pthread=	yes
 .  endif
 .endif

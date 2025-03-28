@@ -25,10 +25,6 @@ MAKEFLAGS.su-deinstall+=	_UPDATE_RUNNING=YES
 .  endif
 .endif
 
-.if !empty(USE_CROSS_COMPILE:M[yY][eE][sS])
-_PKG_ARGS_DEINSTALL+=	-p ${_CROSS_DESTDIR}${PREFIX}
-.endif
-
 # _pkgformat-deinstall:
 #	Removes a package from the system.
 #
@@ -43,7 +39,7 @@ _pkgformat-deinstall: .PHONY
 		found=${OLDNAME};					\
 	fi;								\
 	case "$$found" in						\
-	"") found=`${_PKG_BEST_EXISTS} ${PKGWILDCARD:Q} || ${TRUE}`;;	\
+	"") found=`${PKG_INFO} -E ${PKGWILDCARD:Q} || ${TRUE}`;;	\
 	esac;								\
 	if ${TEST} -n "$$found"; then					\
 		${ECHO} "Running ${PKG_DELETE} ${_PKG_ARGS_DEINSTALL} $$found"; \
@@ -53,7 +49,7 @@ _pkgformat-deinstall: .PHONY
 # XXX Need to handle BUILD_DEPENDS/TOOL_DEPENDS split.
 .  for _pkg_ in ${BUILD_DEPENDS:C/:.*$//}
 	${RUN}								\
-	found=`${_PKG_BEST_EXISTS} ${_pkg_:Q} || ${TRUE}`;		\
+	found=`${PKG_INFO} -E ${_pkg_:Q} || ${TRUE}`;			\
 	if ${TEST} -n "$$found"; then					\
 		${ECHO} "Running ${PKG_DELETE} ${_PKG_ARGS_DEINSTALL} $$found"; \
 		${SETENV} ${PKGTOOLS_ENV} ${PKG_DELETE} ${_PKG_ARGS_DEINSTALL} "$$found" || ${TRUE}; \

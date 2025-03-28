@@ -80,7 +80,7 @@ PREPEND_PATH+=	${_F2C_DIR}/bin
 # Dependencies:
 TOOL_DEPENDS+=	f2c>=20090411nb2:../../lang/f2c # translator
 
-.if empty(PKGPATH:Mdevel/libtool-base) && empty(PKGPATH:Mcross/cross-libtool-base) # See below
+.if empty(PKGPATH:Mdevel/libtool-base)
 .  include "../../devel/libf2c/buildlink3.mk" # library
 .endif
 
@@ -89,7 +89,7 @@ PKGSRC_MAKE_ENV+=	F2C_DIR=${F2C_DIR:Q}
 .  endif
 
 # libtool-base is special as it only needs f77 to extract linker flags etc.
-.if !empty(PKGPATH:Mdevel/libtool-base) || !empty(PKGPATH:Mcross/cross-libtool-base)
+.if !empty(PKGPATH:Mdevel/libtool-base)
 pre-configure: fake-f2c-libs
 
 _WRAP_EXTRA_ARGS.FC+=	-L${WRKDIR}/.f2c/lib -I${WRKDIR}/.f2c/include

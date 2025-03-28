@@ -340,6 +340,7 @@ SUBDIR+=	open_jtalk
 SUBDIR+=	open_jtalk-HTS_voice
 SUBDIR+=	open_jtalk-MMDAgent_voice
 SUBDIR+=	openal-soft
+SUBDIR+=	openal-soft-c
 SUBDIR+=	opencore-amr
 SUBDIR+=	opus-tools
 SUBDIR+=	opusfile

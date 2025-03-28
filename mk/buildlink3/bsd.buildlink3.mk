@@ -235,8 +235,8 @@ _SYS_VARS.bl3+=		${v}.${p}
 #
 # Note that this can currently produce false-positives due to buildlink3.mk
 # inclusion guards preventing BUILDLINK_TREE from having a complete view of
-# the full buildlink tree.  Thus for now, BUILDLINK_DEFAULT_DEPMETHOD is only
-# used when USE_INDIRECT_DEPENDS is enabled.
+# the full buildlink tree.  However, the alternative is potentially shipping
+# broken packages.
 #
 _stack_:=	bottom
 .for _pkg_ in ${BUILDLINK_TREE}
@@ -265,41 +265,21 @@ _stack_:=	${_stack_:[2..-1]}
 .  error "The above loop through BUILDLINK_TREE failed to balance"
 .endif
 
-# _BLNK_DEPENDS contains all of the elements of _BLNK_PACKAGES for which
-# we must add a dependency.
-#
-# In the USE_INDIRECT_DEPENDS=yes case, _BLNK_DEPENDS contains direct
-# dependencies and _BLNK_INDIRECT_DEPENDS contains indirect dependencies,
-# using the information calculated by BUILDLINK_DEFAULT_DEPMETHOD above.
-#
-# Otherwise (the historical behaviour and the current default), _BLNK_DEPENDS
-# contains direct dependencies from _BUILDLINK_DEPENDS, as well as packages
-# that are declared as "build" dependencies, even though that information may
-# well be incorrect due to the BUILDLINK_DEPMETHOD default of "full",
-# regardless of whether a parent package was declared as "build" or "full".
+# _BLNK_DEPENDS contains direct dependencies and _BLNK_INDIRECT_DEPENDS
+# contains indirect dependencies of _BLNK_PACKAGES, using the information
+# calculated by BUILDLINK_DEFAULT_DEPMETHOD above.
 #
 _BLNK_DEPENDS=			# empty
-_BLNK_INDIRECT_DEPENDS=		# empty, only used with USE_INDIRECT_DEPENDS
+_BLNK_INDIRECT_DEPENDS=		# empty
 
 .for _pkg_ in ${_BLNK_PACKAGES}
 USE_BUILTIN.${_pkg_}?=		no
-.  if ${USE_INDIRECT_DEPENDS:tl} == yes
 BUILDLINK_DEPMETHOD.${_pkg_}?=	${BUILDLINK_DEFAULT_DEPMETHOD.${_pkg_}:Ufull}
-.  else
-BUILDLINK_DEPMETHOD.${_pkg_}?=	full
-.  endif
 .  if !defined(IGNORE_PKG.${_pkg_}) && ${USE_BUILTIN.${_pkg_}} == no
-.    if ${USE_INDIRECT_DEPENDS:tl} == yes
-.      if !empty(_BUILDLINK_DEPENDS:M${_pkg_})
+.    if !empty(_BUILDLINK_DEPENDS:M${_pkg_})
 _BLNK_DEPENDS+=			${_pkg_}
-.      else
-_BLNK_INDIRECT_DEPENDS+=	${_pkg_}
-.      endif
 .    else
-.      if !empty(_BUILDLINK_DEPENDS:M${_pkg_}) || \
-	  !empty(BUILDLINK_DEPMETHOD.${_pkg_}:Mbuild)
-_BLNK_DEPENDS+=			${_pkg_}
-.      endif
+_BLNK_INDIRECT_DEPENDS+=	${_pkg_}
 .    endif
 .  endif
 .endfor
@@ -425,12 +405,12 @@ _BLNK_PKG_DBDIR.${_pkg_}?=	_BLNK_PKG_DBDIR.${_pkg_}_not_found
 _BLNK_PKG_INFO.${_pkg_}?=	${TRUE}
 BUILDLINK_PKGNAME.${_pkg_}?=	${_pkg_}
 # Usual systems has builtin packages in /usr
-.    if exists(${TOOLS_CROSS_DESTDIR}/usr)
+.    if exists(/usr)
 BUILDLINK_PREFIX.${_pkg_}?=	/usr
 # Haiku OS has posix packages in /boot/sytem/develop (or /boot/common)
-.    elif exists(${TOOLS_CROSS_DESTDIR}/boot/system/develop)
+.    elif exists(/boot/system/develop)
 BUILDLINK_PREFIX.${_pkg_}?=	/boot/system/develop
-.    elif exists(${TOOLS_CROSS_DESTDIR}/boot/common)
+.    elif exists(/boot/common)
 BUILDLINK_PREFIX.${_pkg_}?=	/boot/common
 .    else
 # XXX: elsewhere?
@@ -452,7 +432,7 @@ _BLNK_PKG_DBDIR.${_pkg_}!=	\
 	pkg=`${PKG_INFO} -E "${_depend_}" || ${TRUE}`;			\
 	case "$$pkg" in							\
 	"")	dir="_BLNK_PKG_DBDIR.${_pkg_}_not_found" ;;		\
-	*)	dir="${_PKG_DBDIR}/$$pkg";				\
+	*)	dir="${PKG_DBDIR}/$$pkg";				\
 	esac;								\
 	${ECHO} $$dir
 .      endif
@@ -465,7 +445,7 @@ MAKEVARS+=	_BLNK_PKG_DBDIR.${_pkg_}
 .  if empty(_BLNK_PKG_DBDIR.${_pkg_}:M*not_found)
 _BLNK_PKG_INFO.${_pkg_}?=	${NATIVE_PKG_INFO_CMD} -K ${_BLNK_PKG_DBDIR.${_pkg_}:H}
 .  else
-_BLNK_PKG_INFO.${_pkg_}?=	${NATIVE_PKG_INFO_CMD} -K ${_PKG_DBDIR}
+_BLNK_PKG_INFO.${_pkg_}?=	${NATIVE_PKG_INFO_CMD} -K ${PKG_DBDIR}
 .  endif
 
 BUILDLINK_PKGNAME.${_pkg_}?=	${_BLNK_PKG_DBDIR.${_pkg_}:T}
@@ -543,7 +523,7 @@ BUILDLINK_LIBS+=	${_flag_}
      !empty(BUILDLINK_AUTO_DIRS.${_pkg_}:M[yY][eE][sS])
 .  if !empty(BUILDLINK_INCDIRS.${_pkg_})
 .    for _dir_ in ${BUILDLINK_INCDIRS.${_pkg_}:S/^/${BUILDLINK_PREFIX.${_pkg_}}\//}
-.      if exists(${TOOLS_CROSS_DESTDIR}${_dir_})
+.      if exists(${_dir_})
 .        if empty(BUILDLINK_CPPFLAGS:M-I${_dir_})
 BUILDLINK_CPPFLAGS+=	-I${_dir_}
 .        endif
@@ -552,7 +532,7 @@ BUILDLINK_CPPFLAGS+=	-I${_dir_}
 .  endif
 .  if !empty(BUILDLINK_LIBDIRS.${_pkg_})
 .    for _dir_ in ${BUILDLINK_LIBDIRS.${_pkg_}:S/^/${BUILDLINK_PREFIX.${_pkg_}}\//}
-.      if exists(${TOOLS_CROSS_DESTDIR}${_dir_})
+.      if exists(${_dir_})
 .        if empty(BUILDLINK_LDFLAGS:M-L${_dir_})
 BUILDLINK_LDFLAGS+=	-L${_dir_}
 .        endif
@@ -561,7 +541,7 @@ BUILDLINK_LDFLAGS+=	-L${_dir_}
 .  endif
 .  if !empty(BUILDLINK_RPATHDIRS.${_pkg_})
 .    for _dir_ in ${BUILDLINK_RPATHDIRS.${_pkg_}:S/^/${BUILDLINK_PREFIX.${_pkg_}}\//}
-.      if exists(${TOOLS_CROSS_DESTDIR}${_dir_})
+.      if exists(${_dir_})
 .        if empty(BUILDLINK_LDFLAGS:M${COMPILER_RPATH_FLAG}${_dir_})
 BUILDLINK_LDFLAGS+=	${COMPILER_RPATH_FLAG}${_dir_}
 .        endif
@@ -578,7 +558,7 @@ BUILDLINK_LDFLAGS+=	${COMPILER_RPATH_FLAG}${_dir_}
 .for _pkg_ in ${_BLNK_PACKAGES}
 .  if !empty(BUILDLINK_RPATHDIRS.${_pkg_})
 .    for _dir_ in ${BUILDLINK_RPATHDIRS.${_pkg_}:S/^/${LOCALBASE}\//}
-.      if exists(${TOOLS_CROSS_DESTDIR}${_dir_})
+.      if exists(${_dir_})
 .        if empty(BUILDLINK_LDFLAGS:M${COMPILER_RPATH_FLAG}${_dir_})
 BUILDLINK_LDFLAGS+=	${COMPILER_RPATH_FLAG}${_dir_}
 .        endif
@@ -749,10 +729,10 @@ ${_BLNK_COOKIE.${_pkg_}}:
 	*)              buildlink_dir="${BUILDLINK_DIR}" ;;		\
 	esac;								\
 	[ -z "${BUILDLINK_PREFIX.${_pkg_}:Q}" ] ||			\
-	cd ${TOOLS_CROSS_DESTDIR}${BUILDLINK_PREFIX.${_pkg_}} &&	\
+	cd ${BUILDLINK_PREFIX.${_pkg_}} &&				\
 	${_BLNK_FILES_CMD.${_pkg_}} |					\
 	while read file; do						\
-		src="${TOOLS_CROSS_DESTDIR}${BUILDLINK_PREFIX.${_pkg_}}/$$file"; \
+		src="${BUILDLINK_PREFIX.${_pkg_}}/$$file"; 		\
 		[ -f "$$src" ] || continue;				\
 		dest="$$buildlink_dir/$$file";				\
 		if [ -n "${BUILDLINK_FNAME_TRANSFORM.${_pkg_}:Q}" ]; then \
@@ -789,10 +769,10 @@ ${_BLNK_COOKIE.${_pkg_}}:
 	*)              buildlink_dir="${BUILDLINK_DIR}" ;;		\
 	esac;								\
 	[ -z "${BUILDLINK_PREFIX.${_pkg_}:Q}" ] ||			\
-	cd ${TOOLS_CROSS_DESTDIR}${BUILDLINK_PREFIX.${_pkg_}} &&	\
+	cd ${BUILDLINK_PREFIX.${_pkg_}} &&				\
 	${_BLNK_FILES_CMD.${_pkg_}} |					\
 	while read file; do						\
-		src="${TOOLS_CROSS_DESTDIR}${BUILDLINK_PREFIX.${_pkg_}}/$$file"; \
+		src="${BUILDLINK_PREFIX.${_pkg_}}/$$file";		\
 		if [ ! -f "$$src" ]; then				\
 			msg="$$src: not found";				\
 		else							\
@@ -956,7 +936,7 @@ _CWRAPPERS_TRANSFORM+=	I:${_dir_}/:
 .for _pkg_ in ${_BLNK_PACKAGES}
 .  if !empty(BUILDLINK_LIBDIRS.${_pkg_})
 .    for _dir_ in ${BUILDLINK_LIBDIRS.${_pkg_}}
-.      if exists(${TOOLS_CROSS_DESTDIR}${BUILDLINK_PREFIX.${_pkg_}}/${_dir_})
+.      if exists(${BUILDLINK_PREFIX.${_pkg_}}/${_dir_})
 _BLNK_PASSTHRU_RPATHDIRS+=	${BUILDLINK_PREFIX.${_pkg_}}/${_dir_}
 .      endif
 .    endfor
@@ -1127,15 +1107,9 @@ _CWRAPPERS_TRANSFORM+=	R:${_dir_}:${_dir_}
 # ${LOCALBASE} or ${X11BASE} into references into ${BUILDLINK_DIR}.
 #
 _BLNK_TRANSFORM+=	P:${LOCALBASE}:${_BLNK_MANGLE_DIR.${BUILDLINK_DIR}}
-.if ${USE_CROSS_COMPILE:tl} == "yes"
-_BLNK_TRANSFORM+=	P:${CROSS_DESTDIR}${LOCALBASE}:${_BLNK_MANGLE_DIR.${BUILDLINK_DIR}}
-.endif
 .if defined(USE_X11) && ${X11_TYPE} != "modular"
 _BLNK_TRANSFORM+=	P:${X11BASE}:${_BLNK_MANGLE_DIR.${BUILDLINK_X11_DIR}}
 _CWRAPPERS_TRANSFORM+=	P:${LOCALBASE}:${BUILDLINK_DIR}
-.if ${USE_CROSS_COMPILE:tl} == "yes"
-_CWRAPPERS_TRANSFORM+=	P:${CROSS_DESTDIR}${LOCALBASE}:${BUILDLINK_DIR}
-.endif
 .endif
 _CWRAPPERS_TRANSFORM+=	P:${X11BASE}:${BUILDLINK_X11_DIR}
 #
@@ -1156,12 +1130,6 @@ _BLNK_TRANSFORM+=	I:${LOCALBASE}:${_BLNK_MANGLE_DIR.${BUILDLINK_DIR}}
 _BLNK_TRANSFORM+=	L:${LOCALBASE}:${_BLNK_MANGLE_DIR.${BUILDLINK_DIR}}
 _CWRAPPERS_TRANSFORM+=	I:${LOCALBASE}:${BUILDLINK_DIR}
 _CWRAPPERS_TRANSFORM+=	L:${LOCALBASE}:${BUILDLINK_DIR}
-.if ${USE_CROSS_COMPILE:tl} == "yes"
-_BLNK_TRANSFORM+=	I:${CROSS_DESTDIR}${LOCALBASE}:${_BLNK_MANGLE_DIR.${BUILDLINK_DIR}}
-_BLNK_TRANSFORM+=	L:${CROSS_DESTDIR}${LOCALBASE}:${_BLNK_MANGLE_DIR.${BUILDLINK_DIR}}
-_CWRAPPERS_TRANSFORM+=	I:${CROSS_DESTDIR}${LOCALBASE}:${BUILDLINK_DIR}
-_CWRAPPERS_TRANSFORM+=	L:${CROSS_DESTDIR}${LOCALBASE}:${BUILDLINK_DIR}
-.endif
 #
 # Transform references to ${X11BASE} into ${BUILDLINK_X11_DIR}.
 # (do so only after transforming references to ${LOCALBASE} if the
@@ -1177,9 +1145,6 @@ _CWRAPPERS_TRANSFORM+=	L:${X11BASE}:${BUILDLINK_X11_DIR}
 # Protect any remaining references to ${LOCALBASE}, or ${X11BASE}.
 #
 _BLNK_TRANSFORM+=	untransform:sub-mangle:${LOCALBASE}:${_BLNK_MANGLE_DIR.${LOCALBASE}}
-.if ${USE_CROSS_COMPILE:tl} == "yes"
-_BLNK_TRANSFORM+=	untransform:sub-mangle:${CROSS_DESTDIR}${LOCALBASE}:${_BLNK_MANGLE_DIR.${LOCALBASE}}
-.endif
 .if defined(USE_X11) && ${X11_TYPE} != "modular"
 _BLNK_TRANSFORM+=	untransform:sub-mangle:${X11BASE}:${_BLNK_MANGLE_DIR.${X11BASE}}
 .endif

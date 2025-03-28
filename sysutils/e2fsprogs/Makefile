@@ -30,6 +30,8 @@ CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFDIR}
 INFO_FILES=		yes
 INSTALL_TARGET=		install install-libs
 
+CONFIGURE_ENV+=		with_crond_dir=no
+
 PKGCONFIG_OVERRIDE+=	lib/blkid/blkid.pc.in
 PKGCONFIG_OVERRIDE+=	lib/e2p/e2p.pc.in
 PKGCONFIG_OVERRIDE+=	lib/et/com_err.pc.in

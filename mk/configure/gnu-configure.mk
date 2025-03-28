@@ -47,7 +47,7 @@ _PKG_VARS.gnu-configure=	\
 	GNU_CONFIGURE_LIBDIR GNU_CONFIGURE_INFODIR GNU_CONFIGURE_MANDIR \
 	CONFIGURE_HAS_LIBDIR CONFIGURE_HAS_MANDIR CONFIGURE_HAS_INFODIR \
 	OVERRIDE_DIRDEPTH.configure \
-	USE_GNU_CONFIGURE_HOST USE_GNU_CONFIGURE_TARGET
+	USE_GNU_CONFIGURE_HOST
 
 HAS_CONFIGURE=			defined
 OVERRIDE_GNU_CONFIG_SCRIPTS=	defined
@@ -58,8 +58,7 @@ CONFIGURE_ENV+=	LIBS=${LIBS:M*:Q}
 CONFIGURE_ENV+=	ac_given_INSTALL=${INSTALL:Q}\ -c\ -o\ ${BINOWN}\ -g\ ${BINGRP}
 
 .if (defined(USE_LIBTOOL) || !empty(PKGPATH:Mdevel/libtool-base)) && \
-    defined(_OPSYS_MAX_CMDLEN_CMD) && \
-    ${USE_CROSS_COMPILE:tl} != "yes"
+    defined(_OPSYS_MAX_CMDLEN_CMD)
 CONFIGURE_ENV+=	lt_cv_sys_max_cmd_len=${_OPSYS_MAX_CMDLEN_CMD:sh}
 .endif
 
@@ -88,17 +87,9 @@ CONFIGURE_ARGS+=	--libdir=${GNU_CONFIGURE_LIBDIR}
 .endif
 
 USE_GNU_CONFIGURE_HOST?=	yes
-USE_GNU_CONFIGURE_TARGET?=	no # enable for toolchain packages
 .if !empty(USE_GNU_CONFIGURE_HOST:M[yY][eE][sS])
-.  if !empty(TOOLS_USE_CROSS_COMPILE:M[yY][eE][sS])
-CONFIGURE_ARGS+=	--build=${NATIVE_MACHINE_GNU_PLATFORM:Q}
-.  else
 CONFIGURE_ARGS+=	--build=${MACHINE_GNU_PLATFORM:Q}
-.  endif
 CONFIGURE_ARGS+=	--host=${MACHINE_GNU_PLATFORM:Q}
-.  if ${USE_GNU_CONFIGURE_TARGET:tl} == "yes"
-CONFIGURE_ARGS+=	--target=${TARGET_MACHINE_GNU_PLATFORM:Q}
-.  endif
 .endif
 
 # PKGINFODIR is the subdirectory of ${PREFIX} into which the info

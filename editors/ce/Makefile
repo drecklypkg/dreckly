@@ -28,6 +28,8 @@ SUBST_FILES.paths=	teach-ce.in
 SUBST_VARS.paths=	LN
 SUBST_SED.paths+=	-e '1s,/bin/bash,'${SH:Q}','
 
+CFLAGS.SCO_SV+=		-DS_IFSOCK=1337
+
 .include "options.mk"
 
 .include "../../mk/termcap.buildlink3.mk"

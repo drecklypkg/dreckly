@@ -58,7 +58,6 @@ _VARGROUPS+=	gcc
 _USER_VARS.gcc=	\
 	USE_NATIVE_GCC USE_PKGSRC_GCC USE_PKGSRC_GCC_RUNTIME \
 	GCCBASE GCC_VERSION_SUFFIX \
-	TOOLS_USE_CROSS_COMPILE \
 	PKGSRC_USE_FORTIFY PKGSRC_USE_RELRO PKGSRC_USE_SSP \
 	COMPILER_USE_SYMLINKS CC
 _PKG_VARS.gcc=	\
@@ -314,11 +313,7 @@ _CC:=	${_dir_}/${CC:[1]}
 .      endif
 .    endif
 .  endfor
-.  if ${TOOLS_USE_CROSS_COMPILE:tl} == "no"
-# Pass along _CC only if we're working on native packages -- don't pass
-# the cross-compiler on to submakes for building native packages.
 MAKEFLAGS+=	_CC=${_CC:Q}
-.  endif
 .endif
 
 # Calculate _COMPILER_VERSION.  This gets turned into COMPILER_VERSION
@@ -1044,9 +1039,6 @@ _GCC_VARS=	# empty
 _GCCBINDIR=	${_GCC_PREFIX}bin
 .elif !empty(_IS_BUILTIN_GCC:M[yY][eE][sS])
 _GCCBINDIR=	${_CC:H}
-.endif
-.if !empty(TOOLS_USE_CROSS_COMPILE:M[yY][eE][sS])
-_GCC_BIN_PREFIX=	${MACHINE_GNU_PLATFORM}-
 .endif
 _GCC_BIN_PREFIX?=	# empty
 GCC_VERSION_SUFFIX?=	# empty

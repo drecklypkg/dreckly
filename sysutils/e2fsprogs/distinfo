@@ -19,3 +19,4 @@ SHA1 (patch-lib_ext2fs_tdb.c) = dd50993cd0beba0451cfb3422ca9f54700ee0e38
 SHA1 (patch-lib_ext2fs_unix__io.c) = 75f6eee01c125abb027d0dfde0a73538b2ed5cae
 SHA1 (patch-lib_uuid_gen__uuid.c) = 083ac45a8d2d30a5c272720fb9a6a1785c97eee2
 SHA1 (patch-misc_create__inode.c) = b3a9f313ea7cb55d9a40c7916a7862472e0aeaa8
+SHA1 (patch-scrub_Makefile.in) = cd31c6d42e21280b78f689eef0257dcd4bcf5ce8

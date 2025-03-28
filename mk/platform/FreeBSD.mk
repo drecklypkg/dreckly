@@ -106,3 +106,6 @@ _OPSYS_CAN_CHECK_SSP=		no  # only supports libssp at this time
 # check for maximum command line length and set it in configure's environment,
 # to avoid a test required by the libtool script that takes forever.
 _OPSYS_MAX_CMDLEN_CMD=	/sbin/sysctl -n kern.argmax
+
+# Comes with a native heimdal implementation
+KRB5_DEFAULT?=		heimdal

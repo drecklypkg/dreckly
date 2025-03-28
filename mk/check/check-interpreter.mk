@@ -81,7 +81,7 @@ _check-interpreter: error-check .PHONY
 			continue;;					\
 		esac;							\
 		if { [ ! -f ${DESTDIR:Q}"$$interp" ] &&			\
-		     [ ! -f ${_CROSS_DESTDIR:U:Q}"$$interp" ]; }; then	\
+		     [ ! -f "$$interp" ]; }; then			\
 			${DELAYED_ERROR_MSG} "[check-interpreter.mk] The interpreter \"$$interp\" of \"${DESTDIR}${PREFIX}/$$file\" does not exist."; \
 		fi;							\
 	done

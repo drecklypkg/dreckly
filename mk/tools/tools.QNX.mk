@@ -55,9 +55,7 @@ TOOLS_PLATFORM.patch?=		/usr/bin/patch
 TOOLS_PLATFORM.pax?=		/bin/pax
 TOOLS_PLATFORM.printf?=		/usr/bin/printf
 TOOLS_PLATFORM.pwd?=		/bin/pwd
-.if ${TOOLS_USE_CROSS_COMPILE:tl} != yes
 TOOLS_PLATFORM.readelf?=	${QNX_HOST}/usr/bin/readelf
-.endif
 TOOLS_PLATFORM.rm?=		/bin/rm
 TOOLS_PLATFORM.rmdir?=		/usr/bin/rmdir
 TOOLS_PLATFORM.sed?=		/usr/bin/sed
@@ -65,9 +63,7 @@ TOOLS_PLATFORM.sh?=		/bin/sh
 TOOLS_PLATFORM.sleep?=		/usr/bin/sleep
 TOOLS_PLATFORM.soelim?=		${QNX_HOST}/usr/bin/soelim
 TOOLS_PLATFORM.sort?=		/usr/bin/sort
-.if ${TOOLS_USE_CROSS_COMPILE:tl} != yes
 TOOLS_PLATFORM.strip?=		${QNX_HOST}/usr/bin/strip
-.endif
 TOOLS_PLATFORM.tail?=		/usr/bin/tail
 TOOLS_PLATFORM.tar?=		/usr/bin/tar
 TOOLS_PLATFORM.tbl?=		${QNX_HOST}/usr/bin/tbl
@@ -82,28 +78,3 @@ TOOLS_PLATFORM.unzip?=		/usr/bin/unzip
 TOOLS_PLATFORM.wc?=		/usr/bin/wc
 TOOLS_PLATFORM.xargs?=		/usr/bin/xargs
 TOOLS_PLATFORM.yacc?=		${QNX_HOST}/usr/bin/bison -y
-
-
-
-.if ${TOOLS_USE_CROSS_COMPILE:tl} == yes
-.  for _t_ in ar as ld nm objcopy objdump ranlib readelf strip
-TOOLS_PATH.${MACHINE_GNU_PLATFORM}-${_t_}?=	\
-	${QNX_HOST}/usr/bin/nto${MACHINE_GNU_PLATFORM}-${_t_}
-TOOLS_CREATE+=	${MACHINE_GNU_PLATFORM}-${_t_}
-.  endfor
-TOOLS_PATH.ar?=			${QNX_HOST}/usr/bin/${MACHINE_GNU_PLATFORM}-ar
-TOOLS_CREATE+=			ar
-TOOLS_PATH.ranlib?=		${QNX_HOST}/usr/bin/${MACHINE_GNU_PLATFORM}-ranlib
-TOOLS_CREATE+=			ranlib
-
-NATIVE_CC:=	${QNX_HOST}/usr/bin/qcc
-CC=		${QNX_HOST}/usr/bin/qcc -V gcc_nto${MACHINE_GNU_PLATFORM}
-
-NATIVE_CXX:=	${QNX_HOST}/usr/bin/QCC
-CXX=		${QNX_HOST}/usr/bin/QCC -V gcc_nto${MACHINE_GNU_PLATFORM}
-
-NATIVE_LD:=	${QNX_HOST}/usr/bin/ld
-LD=		${QNX_HOST}/usr/bin/nto${MACHINE_GNU_PLATFORM}-ld
-
-.endif
-

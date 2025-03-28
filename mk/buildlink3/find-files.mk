@@ -77,13 +77,12 @@ USE_TOOLS+=	grep
 ${_var_}=	__nonexistent__
 .    for _file_ in ${BUILTIN_FIND_FILES.${_var_}}
 .      if !empty(${_var_}:M__nonexistent__) && \
-          exists(${TOOLS_CROSS_DESTDIR}${_file_})
+          exists(${_file_})
 .        if !defined(BUILTIN_FIND_GREP.${_var_})
 ${_var_}=	${_file_}
 .        else
 ${_var_}!=								\
-	if ${GREP} -q ${BUILTIN_FIND_GREP.${_var_}:Q}			\
-	    ${TOOLS_CROSS_DESTDIR:Q}${_file_:Q}; then			\
+	if ${GREP} -q ${BUILTIN_FIND_GREP.${_var_}:Q} ${_file_:Q}; then	\
 		${ECHO} ${_file_:Q};					\
 	else								\
 		${ECHO} __nonexistent__;				\

@@ -81,13 +81,13 @@ ${_var_}=	__nonexistent__
 .    for _file_ in ${BUILTIN_FIND_HEADERS.${_var_}}
 .      for _dir_ in ${BUILTIN_INCLUDE_DIRS}
 .        if !empty(${_var_}:M__nonexistent__) && \
-            exists(${TOOLS_CROSS_DESTDIR}${_dir_}/${_file_})
+            exists(${_dir_}/${_file_})
 .          if !defined(BUILTIN_FIND_GREP.${_var_})
 ${_var_}=	${_dir_}/${_file_}
 .          else
 ${_var_}!=								\
 	if ${GREP} -q ${BUILTIN_FIND_GREP.${_var_}:Q}			\
-	    ${TOOLS_CROSS_DESTDIR:Q}${_dir_:Q}/${_file_:Q}; then	\
+	    ${_dir_:Q}/${_file_:Q}; then				\
 		${ECHO} ${_dir_:Q}/${_file_:Q};				\
 	else								\
 		${ECHO} __nonexistent__;				\

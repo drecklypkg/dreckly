@@ -173,14 +173,6 @@ LIBABISUFFIX?=	64
 LIBABISUFFIX?=	64
 .endif
 
-# When building 32-bit packages on x86_64 GNU ld isn't smart enough to
-# figure out the target architecture based on the objects so we need to
-# explicitly set it.
-.if ${HOST_MACHINE_ARCH} == "x86_64" && ${MACHINE_ARCH} == "i386"
-_WRAP_EXTRA_ARGS.LD+=	-m elf_i386
-CWRAPPERS_APPEND.ld+=	-m elf_i386
-.endif
-
 .for _glibc_path in ${_OPSYS_LIB_DIRS}
 .  if exists(${_glibc_path}/libc.so.6)
 ## Use _CMD so the command only gets run when needed!

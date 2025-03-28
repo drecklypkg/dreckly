@@ -19,8 +19,10 @@ fi
 PATH="${CI_SYSTEM_PATH}"
 
 # Ensure we start with clean work areas.  CI_PREFIX and CI_WRKDIR must not
-# exist, bootstrap will create them.
+# exist, bootstrap will create them.  Some packages can leave directories with
+# insufficient permissions so we need to ensure they are fixed-up first.
 #
+chmod -R u+w ${CI_PREFIX} ${CI_TMPDIR} ${CI_WRKDIR} 2>/dev/null || true
 rm -rf ${CI_PREFIX} ${CI_TMPDIR} ${CI_WRKDIR}
 mkdir -p ${CI_TMPDIR}
 

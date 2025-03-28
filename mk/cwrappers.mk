@@ -36,12 +36,6 @@ CWRAPPERS_ALIASES.ld=		ld
 CWRAPPERS_ALIASES.libtool=	libtool
 CWRAPPERS_ALIASES.shlibtool=	shlibtool
 
-.if !empty(TOOLS_USE_CROSS_COMPILE:M[yY][eE][sS])
-CWRAPPERS_ALIASES.cc+=		${CC:T}
-CWRAPPERS_ALIASES.cxx+=		${CXX:T}
-CWRAPPERS_ALIASES.ld+=		${LD:T}
-.endif
-
 CWRAPPERS_WRAPPEE.as=		${AS:Ufalse}
 CWRAPPERS_WRAPPEE.cxx=		${PKG_CXX:Ufalse}
 CWRAPPERS_WRAPPEE.cc=		${PKG_CC:Ufalse}
