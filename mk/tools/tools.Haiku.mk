@@ -43,7 +43,6 @@ TOOLS_PLATFORM.expr?=		/bin/expr
 TOOLS_PLATFORM.false?=		false			# shell builtin
 TOOLS_PLATFORM.fgrep?=		/bin/fgrep
 TOOLS_PLATFORM.find?=		/bin/find
-TOOLS_PLATFORM.ftp?=		/bin/ftp
 TOOLS_PLATFORM.gawk?=		/bin/gawk
 .if exists(/bin/m4)
 TOOLS_PLATFORM.gm4?=		/bin/m4
