@@ -35,7 +35,7 @@ CMAKE_CONFIGURE_ARGS+=	-DUSE_JACK=OFF
 PLIST_VARS+=	ffmpeg
 .if !empty(PKG_OPTIONS:Mffmpeg)
 PLIST.ffmpeg=	yes
-.  include "../../multimedia/ffmpeg4/buildlink3.mk"
+.  include "../../multimedia/ffmpeg7/buildlink3.mk"
 .else
 CMAKE_CONFIGURE_ARGS+=	-DUSE_FFMPEG=OFF
 .endif

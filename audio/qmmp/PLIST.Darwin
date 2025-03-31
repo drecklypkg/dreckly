@@ -1,0 +1,2 @@
+@comment $NetBSD$
+lib/qmmp-${QMMP_VER}/Output/libqtmultimedia.so
