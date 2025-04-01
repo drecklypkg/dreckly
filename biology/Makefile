@@ -92,6 +92,7 @@ SUBDIR+=	sra-tools
 SUBDIR+=	stacks
 SUBDIR+=	stride
 SUBDIR+=	stringtie
+SUBDIR+=	subread
 SUBDIR+=	trimmomatic
 SUBDIR+=	vcf-split
 SUBDIR+=	vcf2hap
