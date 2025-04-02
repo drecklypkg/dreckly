@@ -21,9 +21,6 @@ USE_TOOLS+=		perl:test
 
 CONFIGURE_ARGS+=	--program-prefix=g
 
-# workaround for broken strndup
-CONFIGURE_ARGS.MirBSD+=	ac_cv_func_strndup=no
-
 # XXX: Do not install gmake setgid and do not override the owner group
 # XXX: based on possible /dev/kmem permissions.
 CONFIGURE_ARGS+=	ac_cv_func_getloadavg_setgid=no
@@ -47,6 +44,14 @@ CPPFLAGS+=	-DPKGSRC_DEFAULT_SHELL="\"/usr/bin/bash\""
 # kernel bug, fixed in NetBSD 9.99.82
 .if ${OPSYS} == "NetBSD" && ${OPSYS_VERSION} < 099982
 CONFIGURE_ARGS.NetBSD+=	--disable-posix-spawn
+.endif
+
+.if ${OPSYS} == "UnixWare"
+# avoid colliding with libc functions
+SUBST_CLASSES+=		strlist
+SUBST_STAGE.strlist=	pre-configure
+SUBST_FILES.strlist=	src/main.c
+SUBST_SED.strlist=	-e 's/strlist/strlist_make/g'
 .endif
 
 .include "options.mk"
