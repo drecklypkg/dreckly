@@ -194,6 +194,7 @@ SUBDIR+=	eukleides
 SUBDIR+=	eukleides10
 SUBDIR+=	euler
 SUBDIR+=	fast_float
+SUBDIR+=	fastcluster
 SUBDIR+=	fftpack
 SUBDIR+=	ffts
 SUBDIR+=	fftw
