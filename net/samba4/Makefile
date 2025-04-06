@@ -124,6 +124,14 @@ PLIST_SUBST+=	SOEXT=dylib
 PLIST_SUBST+=	SOEXT=so
 .endif
 
+# mdb is built only on LP64 hosts (PR pkg/58947)
+PLIST_VARS+=	mdb
+.for platform in ${LP64PLATFORMS}
+.  if ${MACHINE_PLATFORM:M${platform}}
+PLIST.mdb=	yes
+.  endif
+.endfor
+
 .if !defined(PWD_MKDB)
 PWD_MKDB!=	${TYPE} pwd_mkdb 2>&1 | \
 		${AWK} '/not found/ { print "pwd_mkdb"; exit } { print $$3 }'
