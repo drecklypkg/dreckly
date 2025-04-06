@@ -5,7 +5,7 @@ PKGNAME=	${PYPKGPREFIX}-${DISTNAME}
 CATEGORIES=	math
 MASTER_SITES=	${MASTER_SITE_PYPI:=f/fastcluster/}
 
-MAINTAINER=	matthewd@fastmail.us
+MAINTAINER=	bacon@NetBSD.org
 HOMEPAGE=	http://danifold.net/fastcluster.html
 COMMENT=	Fast hierarchical clustering routines for R and Python
 LICENSE=	2-clause-bsd
