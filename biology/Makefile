@@ -28,6 +28,7 @@ SUBDIR+=	clustalw
 SUBDIR+=	coalesce
 SUBDIR+=	coordgenlibs
 SUBDIR+=	fasda
+SUBDIR+=	fasda-utils
 SUBDIR+=	fastDNAml
 SUBDIR+=	fastp
 SUBDIR+=	fastq-trim
