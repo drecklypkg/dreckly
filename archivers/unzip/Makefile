@@ -31,6 +31,7 @@ CPPFLAGS+=	-DBSD
      ${OPSYS} == "AIX"  || \
      ${OPSYS} == "OpenBSD"  || \
      ${OPSYS} == "Cygwin"  || \
+     ${OPSYS} == "UnixWare"  || \
     (${OPSYS} == "Darwin" && !empty(OS_VERSION:M[01234678].*))) || \
      ${OS_VARIANT} == "SCOOSR5" || \
      ${OPSYS} == "Linux"
