@@ -24,6 +24,8 @@ TEST_TARGET=		check
 
 CPPFLAGS+=	-DPNG_USER_CHUNK_CACHE_MAX=128 -DPNG_USER_CHUNK_MALLOC_MAX=8000000
 
+CPPFLAGS.UnixWare+=	-D_XOPEN_SOURCE=500 -D_POSIX_C_SOURCE=199506
+
 .include "../../mk/bsd.prefs.mk"
 # keep this in sync with the same code in buildlink3.mk
 .if ${MACHINE_ARCH} != "i386" && ${MACHINE_ARCH} != "x86_64"
