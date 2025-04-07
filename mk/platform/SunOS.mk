@@ -67,7 +67,6 @@ _OPSYS_HAS_INET6=	no		# IPv6 is not standard
 .endif
 _OPSYS_HAS_JAVA=	no		# Java is not standard
 _OPSYS_HAS_MANZ=	no		# no MANZ for gzipping of man pages
-_OPSYS_HAS_OSSAUDIO=	no		# libossaudio is available
 _OPSYS_PTHREAD_AUTO=	no		# -lpthread needed for pthreads
 _OPSYS_SHLIB_TYPE=	ELF		# shared lib type
 

@@ -155,7 +155,6 @@ _OPSYS_HAS_INET6=	no	# IPv6 is not standard
 .endif
 _OPSYS_HAS_JAVA=	yes	# Java is standard
 _OPSYS_HAS_MANZ=	yes	# MANZ controls gzipping of man pages
-_OPSYS_HAS_OSSAUDIO=	no	# libossaudio is available
 _OPSYS_PTHREAD_AUTO=	yes	# -lpthread not needed for pthreads
 _OPSYS_LINKER_RPATH_FLAG=	-L	# darwin has no rpath, use -L instead
 _OPSYS_COMPILER_RPATH_FLAG=	-L	# compiler flag to pass rpaths to linker
