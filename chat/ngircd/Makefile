@@ -19,6 +19,8 @@ CONF_FILES+=	${PREFIX}/share/examples/ngircd/sample-ngircd.conf \
 
 BUILD_DEFS+=	VARBASE
 
+LDFLAGS.UnixWare+=	-lsocket -lresolv -lnsl
+
 .include "../../mk/bsd.prefs.mk"
 
 NGIRCD_USER?=	ngircd
