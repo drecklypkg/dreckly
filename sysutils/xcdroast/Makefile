@@ -20,7 +20,9 @@ CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFDIR}
 
 .include "../../mk/bsd.prefs.mk"
 
-.if ${_OPSYS_HAS_OSSAUDIO} == "yes"
+.include "../../mk/oss.buildlink3.mk"
+
+.if ${OSS_TYPE} != "none"
 CFLAGS+=	-DHAVE_OSS
 CONFIGURE_ENV+=	AUDIO_LIBS=${LIBOSSAUDIO}
 .endif
