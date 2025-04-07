@@ -25,6 +25,10 @@ SO_SUFFIX.Darwin=	dylib
 SO_SUFFIX.*=		so
 PLIST_SUBST+=		SO_SUFFIX=${SO_SUFFIX:Q}
 
+# These are close enough to Solaris for the build to work.
+MAKE_FLAGS.SCO_SV+=	KERNEL_NAME=SunOS
+MAKE_FLAGS.UnixWare+=	KERNEL_NAME=SunOS
+
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/argon2 ${DESTDIR}${PREFIX}/bin
 	${INSTALL_DATA} ${WRKSRC}/include/argon2.h ${DESTDIR}${PREFIX}/include
