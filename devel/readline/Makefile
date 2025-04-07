@@ -25,7 +25,7 @@ PKGCONFIG_OVERRIDE+=	readline.pc.in
 CONFIGURE_ENV.NetBSD+=	bash_cv_wcwidth_broken=no
 .endif
 
-BUILD_TARGET=		everything-libtool
+BUILD_TARGET=		all-libtool
 INSTALL_TARGET=		install-libtool install-pc
 
 .include "../../mk/termcap.buildlink3.mk"
