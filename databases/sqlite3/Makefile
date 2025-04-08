@@ -48,9 +48,10 @@ LIBS+=			${BUILDLINK_LDADD.dl}
 # Solaris needs -lrt, PR pkg/58714
 LIBS.SunOS+=		-lrt
 
-.if ${OS_VARIANT} == "SCOOSR5"
+CFLAGS.UnixWare+=	-DHAVE_NANOSLEEP=0 -DHAVE_USLEEP=1
+LDFLAGS.UnixWare+=	-lthread
+
 LDFLAGS.SCO_SV+=	-lpthread
-.endif
 
 .include "../../mk/pthread.buildlink3.mk"
 .include "../../mk/readline.buildlink3.mk"
