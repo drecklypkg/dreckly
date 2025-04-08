@@ -1,6 +1,6 @@
 # $NetBSD: Makefile,v 1.51 2024/10/02 17:58:28 adam Exp $
 
-DISTNAME=	xz-5.6.3
+DISTNAME=	xz-5.8.1
 CATEGORIES=	archivers
 MASTER_SITES=	${MASTER_SITE_GITHUB:=tukaani-project/}
 GITHUB_RELEASE=	v${PKGVERSION_NOREV}
@@ -26,6 +26,11 @@ CONFIGURE_ARGS+=	--disable-assembler
 
 CONFIGURE_ENV.SunOS+=	ac_cv_have_decl_optreset=no
 CONFIGURE_ENV.SunOS+=	gl_cv_cc_visibility=no
+
+PRINT_PLIST_AWK+=	/\.mo/ { $$0 = "$${PLIST.nls}" $$0 }
+.for lang in de fr it ko pt_BR ro sr uk
+PRINT_PLIST_AWK+=	/^man\/${lang}\// { $$0 = "$${PLIST.nls}" $$0 }
+.endfor
 
 .include "options.mk"
 
