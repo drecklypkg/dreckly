@@ -27,6 +27,10 @@ ULIMIT_CMD_stacksize?=	ulimit -s `ulimit -H -s`
 ULIMIT_CMD_memorysize?=	ulimit -v `ulimit -H -v`
 USERADD?=		/usr/sbin/useradd
 
+# This is commonly needed in packages that use GNU's getopt.c
+# since they duplicate optarg definitions from libc.
+LDFLAGS+=		-Wl,-zmuldefs
+
 _OPSYS_SYSTEM_RPATH?=	/usr/lib
 _OPSYS_LIB_DIRS?=	/usr/lib
 _OPSYS_INCLUDE_DIRS?=	/usr/include
@@ -60,3 +64,6 @@ _OPSYS_CAN_CHECK_SHLIBS=	no # can't use readelf in check/bsd.check-vars.mk
 # to avoid a test required by the libtool script that takes forever.
 # FIXME: Adjust to work on this system and enable the lines below.
 #_OPSYS_MAX_CMDLEN_CMD=	/sbin/sysctl -n kern.argmax
+
+_OPSYS_PREFER.curses?=	pkgsrc
+_OPSYS_PREFER.termcap?=	pkgsrc
