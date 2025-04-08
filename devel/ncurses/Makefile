@@ -43,6 +43,8 @@ CONFIGURE_ARGS+=	--with-panel-libname=gnupanel
 CONFIGURE_ARGS.Darwin+=	--disable-mixed-case
 CONFIGURE_ARGS.SunOS+=	--disable-const
 
+CONFIGURE_ARGS.UnixWare+=	--disable-libtool-version
+
 TERMINFODIR=		share/terminfo
 
 SUBST_CLASSES+=		rpath
