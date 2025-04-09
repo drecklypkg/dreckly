@@ -44,6 +44,9 @@
 #endif
 
 #include <nbcompat.h>
+#ifdef __linux__
+#include <sys/sysmacros.h>
+#endif
 #if HAVE_SYS_CDEFS_H
 #include <sys/cdefs.h>
 #endif
