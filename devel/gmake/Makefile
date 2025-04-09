@@ -37,7 +37,8 @@ CPPFLAGS+=	-DPKGSRC_DEFAULT_SHELL="\"${PREFIX}/bin/mksh\""
 .elif ${TOOLS_PLATFORM.sh:M?*/bin/pdksh}
 DEPENDS+=	pdksh-[0-9]*:../../shells/pdksh
 CPPFLAGS+=	-DPKGSRC_DEFAULT_SHELL="\"${PREFIX}/bin/pdksh\""
-.elif ${OPSYS} == "SunOS" && exists(/usr/bin/bash)
+.elif (${OPSYS} == "SunOS" || ${OPSYS} == "UnixWare" || \
+	${OPSYS} == "SCO_SV") && exists(/usr/bin/bash)
 CPPFLAGS+=	-DPKGSRC_DEFAULT_SHELL="\"/usr/bin/bash\""
 .endif
 
