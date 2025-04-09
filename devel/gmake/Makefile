@@ -47,7 +47,7 @@ CPPFLAGS+=	-DPKGSRC_DEFAULT_SHELL="\"/usr/bin/bash\""
 CONFIGURE_ARGS.NetBSD+=	--disable-posix-spawn
 .endif
 
-.if ${OPSYS} == "UnixWare"
+.if ${OPSYS} == "UnixWare" || ${OPSYS} == "SCO_SV"
 # avoid colliding with libc functions
 SUBST_CLASSES+=		strlist
 SUBST_STAGE.strlist=	pre-configure
