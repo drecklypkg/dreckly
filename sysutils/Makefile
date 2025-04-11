@@ -469,6 +469,7 @@ SUBDIR+=	mktemp
 SUBDIR+=	mlog
 SUBDIR+=	monit
 SUBDIR+=	monitoring
+SUBDIR+=	moxfm
 SUBDIR+=	mrsync
 SUBDIR+=	mtools
 SUBDIR+=	mtoolsfm
