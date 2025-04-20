@@ -48,6 +48,11 @@ CONFIGURE_ENV+=		bigendian=yes
 .  endif
 .endif
 
+# fails otherwise due to movz/movn in assembler code
+.if ${MACHINE_ARCH:Mmips64*}
+CFLAGS.NetBSD+=		-march=mips4
+.endif
+
 # altivec support is detected at runtime, and only code that is gated
 # on the runtime detection can use it.  The code in ffmpeg that is
 # gated on the runtime detection doesn't need -maltivec -mabi=altivec.

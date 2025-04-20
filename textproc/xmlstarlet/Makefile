@@ -1,5 +1,4 @@
 # $NetBSD: Makefile,v 1.34 2024/11/14 22:21:57 wiz Exp $
-#
 
 DISTNAME=		xmlstarlet-1.6.1
 PKGREVISION=		12
