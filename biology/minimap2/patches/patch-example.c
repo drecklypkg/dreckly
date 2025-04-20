@@ -1,4 +1,4 @@
-$NetBSD: patch-example.c,v 1.2 2024/04/10 12:36:12 bacon Exp $
+$NetBSD$
 
 # Fix data type mismatch
 
