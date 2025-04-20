@@ -1,8 +1,8 @@
-$NetBSD: patch-Makefile.simde,v 1.3 2024/05/18 00:27:16 nia Exp $
+$NetBSD$
 
 # Respect standard env vars
 
---- Makefile.simde.orig	2024-03-27 14:57:17.000000000 +0000
+--- Makefile.simde.orig	2025-04-18 17:41:47.000000000 +0000
 +++ Makefile.simde
 @@ -1,12 +1,25 @@
 -CFLAGS=		-g -Wall -O2 -Wc++-compat #-Wextra
@@ -19,10 +19,11 @@ $NetBSD: patch-Makefile.simde,v 1.3 2024/05/18 00:27:16 nia Exp $
 +OBJS=		kthread.o kalloc.o misc.o bseq.o sketch.o sdust.o options.o \
 +		index.o lchain.o align.o hit.o map.o format.o pe.o seed.o \
 +		esterr.o splitidx.o ksw2_extz2_simde.o ksw2_extd2_simde.o \
-+		ksw2_exts2_simde.o ksw2_ll_simde.o
++		ksw2_exts2_simde.o ksw2_ll_simde.o jump.o
  PROG=		minimap2
  PROG_EXTRA=	sdust minimap2-lite
- LIBS=		-lm -lz -lpthread
+-LIBS=		-lm -lz -lpthread
++LDFLAGS+=	-lm -lz -lpthread
  
 +PREFIX?=	/usr/local
 +MAN1DIR?=	${PREFIX}/man/man1
@@ -35,8 +36,18 @@ $NetBSD: patch-Makefile.simde,v 1.3 2024/05/18 00:27:16 nia Exp $
  
  ifneq ($(arm_neon),) # if arm_neon is defined
  ifeq ($(aarch64),)   #if aarch64 is not defined
-@@ -26,7 +39,7 @@ ifneq ($(tsan),)
- 	LIBS+=-fsanitize=thread
+@@ -18,15 +31,15 @@ endif
+ 
+ ifneq ($(asan),)
+ 	CFLAGS+=-fsanitize=address
+-	LIBS+=-fsanitize=address
++	LDFLAGS+=-fsanitize=address
+ endif
+ 
+ ifneq ($(tsan),)
+ 	CFLAGS+=-fsanitize=thread
+-	LIBS+=-fsanitize=thread
++	LDFLAGS+=-fsanitize=thread
  endif
  
 -.PHONY:all extra clean depend
@@ -49,16 +60,21 @@ $NetBSD: patch-Makefile.simde,v 1.3 2024/05/18 00:27:16 nia Exp $
  
  minimap2:main.o libminimap2.a
 -		$(CC) $(CFLAGS) main.o -o $@ -L. -lminimap2 $(LIBS)
-+		$(CC) $(LDFLAGS) main.o -o $@ -L. -lminimap2 $(LIBS)
++		$(CC) $(CFLAGS) main.o -o $@ -L. -lminimap2 $(LDFLAGS)
  
  minimap2-lite:example.o libminimap2.a
 -		$(CC) $(CFLAGS) $< -o $@ -L. -lminimap2 $(LIBS)
-+		$(CC) $(LDFLAGS) $< -o $@ -L. -lminimap2 $(LIBS)
++		$(CC) $(CFLAGS) $< -o $@ -L. -lminimap2 $(LDFLAGS)
  
  libminimap2.a:$(OBJS)
  		$(AR) -csru $@ $(OBJS)
-@@ -62,6 +75,22 @@ ksw2_exts2_simde.o:ksw2_exts2_sse.c ksw2
+@@ -60,8 +73,27 @@ ksw2_extd2_simde.o:ksw2_extd2_sse.c ksw2
+ ksw2_exts2_simde.o:ksw2_exts2_sse.c ksw2.h kalloc.h
+ 		$(CC) -c $(CFLAGS) -msse4.1 $(CPPFLAGS) $(INCLUDES) $< -o $@
  
++jump.o:jump.c ksw2.h kalloc.h
++		$(CC) -c $(CFLAGS) -msse4.1 $(CPPFLAGS) $(INCLUDES) $< -o $@
++
  # other non-file targets
  
 +

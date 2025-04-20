@@ -1,8 +1,7 @@
-# $NetBSD: Makefile,v 1.7 2024/05/18 00:27:16 nia Exp $
+# $NetBSD: Makefile,v 1.4 2023/08/14 05:23:51 wiz Exp $
 
-VERSION=	2.28
+VERSION=	2.29
 DISTNAME=	minimap2-${VERSION}
-PKGREVISION=	1
 CATEGORIES=	biology python
 MASTER_SITES=	${MASTER_SITE_GITHUB:=lh3/}
 GITHUB_TAG=	v${VERSION}
@@ -14,6 +13,8 @@ LICENSE=	mit
 
 USE_TOOLS+=	gmake
 MAKE_FILE=	Makefile.simde
+
+CFLAGS+=	-DHAVE_KALLOC
 
 INSTALLATION_DIRS+=	bin ${PKGMANDIR}/man1
 
