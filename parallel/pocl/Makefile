@@ -16,6 +16,9 @@ USE_LANGUAGES=		c c++
 USE_TOOLS+=		pkg-config
 TEST_TARGET=		check
 
+# error: _Float16 is not supported on this target
+NOT_FOR_PLATFORM+=	*-*-i386
+
 CMAKE_CONFIGURE_ARGS+=	-DCMAKE_BUILD_TYPE=Release
 #CMAKE_CONFIGURE_ARGS+=	-DCMAKE_INSTALL_LIBDIR=lib
 CMAKE_CONFIGURE_ARGS+=	-DPOCL_INSTALL_ICD_VENDORDIR="${PREFIX}/share/examples/OpenCL/vendors"
