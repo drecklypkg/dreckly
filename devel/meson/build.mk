@@ -125,6 +125,10 @@ MESON_CROSS_ARGS+=	--cross-file ${MESON_CROSS_FILE:Q}
 
 .endif				# ${USE_CROSS_COMPILE:U:tl} == yes
 
+.if defined(USE_PKGLOCALEDIR) && ${USE_PKGLOCALEDIR:tl} != "no"
+MESON_ARGS+=	--localedir=${PKGLOCALEDIR}/locale
+.endif
+
 do-configure: meson-configure
 meson-configure:
 .for d in ${CONFIGURE_DIRS}
