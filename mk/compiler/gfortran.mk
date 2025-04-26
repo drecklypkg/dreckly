@@ -51,7 +51,7 @@ POSSIBLE_GFORTRAN_VERSION?=	${CC_VERSION:S/gcc-//:C/.[0-9].[0-9]$//}
 # Choose gcc12 for Darwin/aarch64.  \todo Explain why.
 # gcc7 does not build on Darwin 12.6.x, so match aarch64.
 .if ${MACHINE_PLATFORM:MDarwin-*-*}
-POSSIBLE_GFORTRAN_VERSION=	14
+POSSIBLE_GFORTRAN_VERSION=	12
 .endif
 
 # pkgsrc gcc9 is missing NetBSD patches for aarch64, so if 9 is
@@ -70,8 +70,6 @@ POSSIBLE_GFORTRAN_VERSION=	10
 
 # If the POSSIBLE version exists in pkgsrc, use it.
 # Otherwise, pick gcc 10 as a mainstream default.
-# No need to check for lang/gcc${POSSIBLE_GFORTRAN_VERSION}-${OPSYS:tl} here.
-# If it exists, so should lang/gcc${POSSIBLE_GFORTRAN_VERSION}.
 .if exists(${PKGSRCDIR}/lang/gcc${POSSIBLE_GFORTRAN_VERSION}/buildlink3.mk)
 GFORTRAN_VERSION?=		${POSSIBLE_GFORTRAN_VERSION}
 .else
@@ -128,16 +126,7 @@ PREPEND_PATH+=	${_GFORTRAN_DIR}/bin
 
 # Add the dependency on gfortran.
 BUILDLINK_DEPMETHOD.gcc${GFORTRAN_VERSION}=	full
-#  Use the platform-specific gcc package if it exists, e.g. lang/gcc14-darwin.
-#  Package names are all lower-case, unlike ${OPSYS}.
-#  FIXME: This is an incremental step toward supporting platform-specific
-#  gcc packages in general, using lang/gcc14-darwin as a test case.
-#  mk/compiler/gcc.mk will need similar updates on some platforms.
-.  if exists(../../lang/gcc${GFORTRAN_VERSION}-${OPSYS:tl})
-.    include "../../lang/gcc${GFORTRAN_VERSION}-${OPSYS:tl}/buildlink3.mk"
-.  else
-.    include "../../lang/gcc${GFORTRAN_VERSION}/buildlink3.mk"
-.  endif
+.  include "../../lang/gcc${GFORTRAN_VERSION}/buildlink3.mk"
 
 .  if defined(GFORTRAN_DIR) && !empty(GFORTRAN_DIR)
 PKGSRC_MAKE_ENV+=	GFORTRAN_DIR=${GFORTRAN_DIR:Q}
