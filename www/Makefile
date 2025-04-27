@@ -72,6 +72,7 @@ SUBDIR+=	august
 SUBDIR+=	awstats
 SUBDIR+=	badwolf
 SUBDIR+=	bannerfilter
+SUBDIR+=	basilisk
 SUBDIR+=	bins
 SUBDIR+=	bkedit
 SUBDIR+=	bluefish
