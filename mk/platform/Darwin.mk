@@ -90,6 +90,8 @@ _OPSYS_EMULDIR.darwin=	# empty
 
 _OPSYS_SYSTEM_RPATH?=	/usr/lib
 
+# FIXME: This is a misnomer, since OS X means macOS 10 and macOS is now
+# beyond version 10.  Should probably be MACOS_VERSION.
 .if !defined(OSX_VERSION)
 OSX_VERSION!=		sw_vers -productVersion
 .  if "${OSX_VERSION:R:R}" != "${OSX_VERSION:R}"
