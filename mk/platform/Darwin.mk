@@ -98,6 +98,14 @@ OSX_VERSION:=		${OSX_VERSION:R}
 MAKEFLAGS+=		OSX_VERSION=${OSX_VERSION:Q}
 .endif
 
+# Different versions of the SDK can be used with a given macOS version.
+# The SDK version often determines compatibility rather than the macOS
+# version, so make this information available.
+.if !defined(CLTOOLS_VERSION)
+CLTOOLS_VERSION_FULL!=	/usr/sbin/pkgutil --pkg-info=com.apple.pkg.CLTools_Executables | fgrep version | /usr/bin/awk '{ print $2 }'
+CLTOOLS_VERSION:=	${CLTOOLS_VERSION_FULL:C/\..*//}
+.endif
+
 #
 # If the user has set MACOSX_DEPLOYMENT_TARGET (ideally at bootstrap time) to
 # select a specific SDK then we prefer that.

@@ -50,8 +50,11 @@ POSSIBLE_GFORTRAN_VERSION?=	${CC_VERSION:S/gcc-//:C/.[0-9].[0-9]$//}
 
 # Choose gcc12 for Darwin/aarch64.  \todo Explain why.
 # gcc7 does not build on Darwin 12.6.x, so match aarch64.
-.if ${MACHINE_PLATFORM:MDarwin-*-*}
+# FIXME: Switch other macOS versions to gcc14 after verifying build
+.if ${MACHINE_PLATFORM:MDarwin-*-aarch64*}
 POSSIBLE_GFORTRAN_VERSION=	14
+.elif ${MACHINE_PLATFORM:MDarwin-*-*}
+POSSIBLE_GFORTRAN_VERSION=	12
 .endif
 
 # pkgsrc gcc9 is missing NetBSD patches for aarch64, so if 9 is
@@ -128,12 +131,16 @@ PREPEND_PATH+=	${_GFORTRAN_DIR}/bin
 
 # Add the dependency on gfortran.
 BUILDLINK_DEPMETHOD.gcc${GFORTRAN_VERSION}=	full
-#  Use the platform-specific gcc package if it exists, e.g. lang/gcc14-darwin.
-#  Package names are all lower-case, unlike ${OPSYS}.
-#  FIXME: This is an incremental step toward supporting platform-specific
-#  gcc packages in general, using lang/gcc14-darwin as a test case.
-#  mk/compiler/gcc.mk will need similar updates on some platforms.
-.  if exists(../../lang/gcc${GFORTRAN_VERSION}-${OPSYS:tl})
+# Use the platform-specific gcc package if it exists, e.g. lang/gcc14-darwin.
+# Package names are all lower-case, unlike ${OPSYS}.
+# This is an incremental step toward supporting platform-specific
+# gcc packages in general, using lang/gcc14-darwin as a test case.
+# FIXME: mk/compiler/gcc.mk will need similar updates on some platforms.
+# For now, we use this to unbreak gcc on Darwin aarch64 without impacting
+# any other platforms.
+# FIXME: Use gcc14-darwin for all supported Darwin versions eventually
+.  if exists(../../lang/gcc${GFORTRAN_VERSION}-${OPSYS:tl}) && \
+      ${MACHINE_PLATFORM:MDarwin-*-aarch64*}
 .    include "../../lang/gcc${GFORTRAN_VERSION}-${OPSYS:tl}/buildlink3.mk"
 .  else
 .    include "../../lang/gcc${GFORTRAN_VERSION}/buildlink3.mk"
