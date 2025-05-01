@@ -1,5 +1,7 @@
 # $NetBSD: Makefile,v 1.32 2025/04/12 06:52:22 wiz Exp $
 
+PKGREVISION=	1
+
 .include "Makefile.common"
 
 PKGCONFIG_OVERRIDE=	theora.pc.in theoradec.pc.in theoraenc.pc.in
