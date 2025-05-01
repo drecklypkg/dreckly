@@ -85,6 +85,11 @@ CWRAPPERS_APPEND.ld+=	${LINKER_RPATH_FLAG}${PREFIX}/lib/${PKGNAME_NOREV}
 
 .include "../../mk/bsd.prefs.mk"
 
+# The default bundled copy of ICU does not contain big-endian
+# data files, so this one is generated manually.
+DISTFILES+=		icudt63b.dat.gz
+SITES.icudt63b.dat.gz=	${MASTER_SITE_LOCAL}
+
 .if ${MACHINE_ARCH} == "i386" || ${MACHINE_ARCH} == "x86_64"
 TOOL_DEPENDS+=		yasm>=1.1:../../devel/yasm
 .endif
@@ -142,6 +147,8 @@ post-install:
 	    ${DESTDIR}${PREFIX}/share/icons/hicolor/128x128/apps/palemoon.png
 	${INSTALL_DATA} ${WRKSRC}/palemoon/branding/unofficial/newmoon.desktop \
 	    ${DESTDIR}${PREFIX}/share/applications/palemoon.desktop
+	${INSTALL_DATA} ${WRKDIR}/icudt63b.dat \
+	    ${DESTDIR}${PREFIX}/lib/${PKGNAME_NOREV}/
 
 .include "options.mk"
 .include "../../archivers/bzip2/buildlink3.mk"
