@@ -22,7 +22,8 @@ lib/${PKGNAME}/dependentlibs.list
 lib/${PKGNAME}/dictionaries/en-US.aff
 lib/${PKGNAME}/dictionaries/en-US.dic
 lib/${PKGNAME}/fonts/TwemojiMozilla.ttf
-${PLIST.icu}lib/${PKGNAME}/icudt58l.dat
+lib/${PKGNAME}/icudt58b.dat
+lib/${PKGNAME}/icudt58l.dat
 lib/${PKGNAME}/liblgpllibs.so
 ${PLIST.ffvpx}lib/${PKGNAME}/libmozavcodec.so
 ${PLIST.ffvpx}lib/${PKGNAME}/libmozavutil.so

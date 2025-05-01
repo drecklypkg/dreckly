@@ -71,21 +71,12 @@ CONFIGURE_ARGS+=	--with-system-cairo
 CONFIGURE_ARGS+=	--with-system-bz2
 CONFIGURE_ARGS+=	--with-system-zlib
 
-AF_EXTERNAL_ICU?=	no
-.for plat in ${BIGENDIANPLATFORMS}
-.  if !empty(MACHINE_PLATFORM:M${plat})
-# See https://github.com/rmottola/Arctic-Fox/issues/210
-AF_EXTERNAL_ICU=	yes
-.  endif
-.endfor
+DISTFILES?=		${DEFAULT_DISTFILES}
 
-PLIST_VARS+=		icu
-.if ${AF_EXTERNAL_ICU:tl} != "no"
-CONFIGURE_ARGS+=	--with-system-icu
-.  include "../../textproc/icu/buildlink3.mk"
-.else
-PLIST.icu=		yes
-.endif
+# The default bundled copy of ICU does not contain big-endian
+# data files, so this one is generated manually.
+DISTFILES+=		icudt58b.dat.gz
+SITES.icudt58b.dat.gz=	${MASTER_SITE_LOCAL}
 
 .if ${MACHINE_ARCH} == "alpha" || ${MACHINE_ARCH} == "sparc64"
 # Without this NetBSD/sparc64 starts, but crashes on some sites
@@ -160,6 +151,8 @@ post-install:
 	    ${DESTDIR}${PREFIX}/share/icons/hicolor/128x128/apps/arcticfox.png
 	${INSTALL_DATA} ${FILESDIR}/arcticfox.desktop \
 	    ${DESTDIR}${PREFIX}/share/applications/arcticfox.desktop
+	${INSTALL_DATA} ${WRKDIR}/icudt58b.dat \
+	    ${DESTDIR}${PREFIX}/lib/${PKGNAME_NOREV}/icudt58b.dat
 
 .include "options.mk"
 .include "../../archivers/bzip2/buildlink3.mk"
