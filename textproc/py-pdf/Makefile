@@ -13,10 +13,11 @@ LICENSE=	modified-bsd
 TOOL_DEPENDS+=	${PYPKGPREFIX}-flit_core>=3.9:../../devel/py-flit_core
 # full
 DEPENDS+=	${PYPKGPREFIX}-Pillow>=8.0.0:../../graphics/py-Pillow
-DEPENDS+=	${PYPKGPREFIX}-cryptography-[0-9]*:../../security/py-cryptography
 TEST_DEPENDS+=	${PYPKGPREFIX}-test_socket-[0-9]*:../../devel/py-test_socket
 TEST_DEPENDS+=	${PYPKGPREFIX}-test-timeout-[0-9]*:../../devel/py-test-timeout
 TEST_DEPENDS+=	${PYPKGPREFIX}-yaml-[0-9]*:../../textproc/py-yaml
+
+PYTHON_VERSIONED_DEPENDENCIES+=	cryptography
 
 USE_LANGUAGES=	# none
 
@@ -30,5 +31,6 @@ ALLOW_NETWORK_ACCESS=	yes
 DEPENDS+=	${PYPKGPREFIX}-typing-extensions>=4.0:../../devel/py-typing-extensions
 .endif
 
+.include "../../lang/python/versioned_dependencies.mk"
 .include "../../lang/python/wheel.mk"
 .include "../../mk/bsd.pkg.mk"
