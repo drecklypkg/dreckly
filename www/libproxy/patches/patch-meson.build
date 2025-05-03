@@ -1,0 +1,48 @@
+$NetBSD$
+
+This is excessive - not all of these have been tested against
+all platforms.
+
+--- meson.build.orig	2025-05-03 16:43:50.416281101 +0000
++++ meson.build
+@@ -29,32 +29,6 @@ project_c_args = []
+ test_c_args = [
+   '-Wcast-align',
+   '-Wdeclaration-after-statement',
+-  '-Werror=address',
+-  '-Werror=array-bounds',
+-  '-Werror=empty-body',
+-  '-Werror=implicit',
+-  '-Werror=implicit-function-declaration',
+-  '-Werror=incompatible-pointer-types',
+-  '-Werror=init-self',
+-  '-Werror=int-conversion',
+-  '-Werror=int-to-pointer-cast',
+-  '-Werror=main',
+-  '-Werror=misleading-indentation',
+-  '-Werror=missing-braces',
+-  '-Werror=missing-include-dirs',
+-  '-Werror=nonnull',
+-  '-Werror=overflow',
+-  '-Werror=parenthesis',
+-  '-Werror=pointer-arith',
+-  '-Werror=pointer-to-int-cast',
+-  '-Werror=redundant-decls',
+-  '-Werror=return-type',
+-  '-Werror=sequence-point',
+-  '-Werror=shadow',
+-  '-Werror=strict-prototypes',
+-  '-Werror=trigraphs',
+-  '-Werror=undef',
+-  '-Werror=write-strings',
+   '-Wformat-nonliteral',
+   '-Wignored-qualifiers',
+   '-Wimplicit-function-declaration',
+@@ -79,7 +53,6 @@ test_c_args = [
+   '-Wuninitialized',
+   '-Wunused',
+   '-fno-strict-aliasing',
+-  ['-Werror=format-security', '-Werror=format=2'],
+ ]
+ 
+ foreach arg: test_c_args
