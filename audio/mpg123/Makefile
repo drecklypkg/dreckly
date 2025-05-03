@@ -13,7 +13,7 @@ MPG123_BUILDING_BASE=	# empty
 
 PLIST_VARS+=	coreaudio oss sun alsa
 
-.if ${OPSYS} == "NetBSD" || ${OPSYS} == "OpenBSD" || ${OPSYS} == "SunOS"
+.if ${OPSYS} == "NetBSD" || ${OPSYS} == "SunOS"
 MPG123_DEFAULT_MODULE=	sun
 PLIST.sun=		yes
 .elif ${OPSYS} == "Darwin"
