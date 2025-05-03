@@ -3,7 +3,7 @@
 PKG_OPTIONS_VAR=		PKG_OPTIONS.fluidsynth
 
 # Audio backends
-PKG_SUPPORTED_OPTIONS=		alsa jack portaudio pulseaudio sdl2
+PKG_SUPPORTED_OPTIONS=		alsa jack portaudio pulseaudio sdl2 sdl3
 PKG_SUGGESTED_OPTIONS.Linux=	alsa
 # Misc
 PKG_SUPPORTED_OPTIONS+=		dbus ladspa
@@ -62,6 +62,13 @@ CMAKE_CONFIGURE_ARGS+=	-Denable-sdl2=ON
 .include "../../devel/SDL2/buildlink3.mk"
 .else
 CMAKE_CONFIGURE_ARGS+=	-Denable-sdl2=OFF
+.endif
+
+.if !empty(PKG_OPTIONS:Msdl3)
+CMAKE_CONFIGURE_ARGS+=	-Denable-sdl3=ON
+.include "../../devel/SDL3/buildlink3.mk"
+.else
+CMAKE_CONFIGURE_ARGS+=	-Denable-sdl3=OFF
 .endif
 
 .if !empty(PKG_OPTIONS:Mladspa)
