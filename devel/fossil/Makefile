@@ -13,6 +13,9 @@ LICENSE=	2-clause-bsd
 HAS_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--with-zlib=${BUILDLINK_PREFIX.zlib:Q}
 
+# error: 'for' loop initial declarations are only allowed in C99 mode
+FORCE_C_STD=		gnu99
+
 INSTALLATION_DIRS+=	bin ${PKGMANDIR}/man1 share/doc/${PKGBASE}
 
 LDFLAGS.Darwin+=	-liconv
