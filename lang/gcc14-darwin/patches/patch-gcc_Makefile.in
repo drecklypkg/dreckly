@@ -1,0 +1,21 @@
+$NetBSD$
+
+Ensure libgcc from either the corresponding gcc-libs package (preferred) or
+this gcc package is found first.  Note that there must not be any whitespace
+between $(LINKER_RPATH_FLAG) and the path, otherwise the flag may be
+misinterpreted by the linker (e.g. Apple ld).
+
+This only really applies to builds performed outside of pkgsrc.  When using
+one of our gcc-libs packages, a custom specs is used to override link_libgcc
+and explicitly use the one from gcc-libs.
+
+--- gcc/Makefile.in.orig	2023-04-30 08:35:03.000000000 +0000
++++ gcc/Makefile.in
+@@ -2326,6 +2326,7 @@ default-d.o: config/default-d.cc
+ # Language-independent files.
+ 
+ DRIVER_DEFINES = \
++  -DLINK_LIBGCC_SPEC="\"%D $(LINKER_RPATH_FLAG)$(prefix)/@MACHINE_GNU_PLATFORM@/lib $(LINKER_RPATH_FLAG)$(libdir)\"" \
+   -DSTANDARD_STARTFILE_PREFIX=\"$(unlibsubdir)/\" \
+   -DSTANDARD_EXEC_PREFIX=\"$(libdir)/gcc/\" \
+   -DSTANDARD_LIBEXEC_PREFIX=\"$(libexecdir)/gcc/\" \

@@ -90,12 +90,22 @@ _OPSYS_EMULDIR.darwin=	# empty
 
 _OPSYS_SYSTEM_RPATH?=	/usr/lib
 
+# FIXME: This is a misnomer, since OS X means macOS 10 and macOS is now
+# beyond version 10.  Should probably be MACOS_VERSION.
 .if !defined(OSX_VERSION)
 OSX_VERSION!=		sw_vers -productVersion
 .  if "${OSX_VERSION:R:R}" != "${OSX_VERSION:R}"
 OSX_VERSION:=		${OSX_VERSION:R}
 .  endif
 MAKEFLAGS+=		OSX_VERSION=${OSX_VERSION:Q}
+.endif
+
+# Different versions of the SDK can be used with a given macOS version.
+# The SDK version often determines compatibility rather than the macOS
+# version, so make this information available.
+.if !defined(CLTOOLS_VERSION)
+CLTOOLS_VERSION_FULL!=	/usr/sbin/pkgutil --pkg-info=com.apple.pkg.CLTools_Executables | fgrep version | /usr/bin/awk '{ print $2 }'
+CLTOOLS_VERSION:=	${CLTOOLS_VERSION_FULL:C/\..*//}
 .endif
 
 #

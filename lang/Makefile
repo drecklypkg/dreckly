@@ -82,6 +82,7 @@ SUBDIR+=	gcc13-gnat
 SUBDIR+=	gcc13-libjit
 SUBDIR+=	gcc13-libs
 SUBDIR+=	gcc14
+SUBDIR+=	gcc14-darwin
 SUBDIR+=	gcc14-libjit
 SUBDIR+=	gcc14-libs
 SUBDIR+=	gcc5-aux
