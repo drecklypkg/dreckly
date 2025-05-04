@@ -13,12 +13,12 @@ GNU_CONFIGURE=		yes
 USE_PKGLOCALEDIR=	yes
 USE_LANGUAGES=		c c++
 
-CONFIGURE_ENV+=		MARKDOWN=multimarkdown
+CONFIGURE_ENV+=		MARKDOWN=markdown
 
 CONFIGURE_ARGS+=	--enable-corefonts
 CONFIGURE_ARGS+=	--enable-i18n
 
-TOOL_DEPENDS+=	multimarkdown-[0-9]*:../../textproc/multimarkdown
+TOOL_DEPENDS+=	discount-[0-9]*:../../textproc/discount
 
 USE_LIBTOOL=	yes
 USE_TOOLS+=	pkg-config gmake perl autoreconf autoconf automake autopoint
