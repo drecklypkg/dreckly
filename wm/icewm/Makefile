@@ -1,6 +1,6 @@
 # $NetBSD: Makefile,v 1.59 2024/06/28 17:11:26 gutteridge Exp $
 
-DISTNAME=	icewm-3.7.0
+DISTNAME=	icewm-3.7.4
 CATEGORIES=	wm
 MASTER_SITES=	${MASTER_SITE_GITHUB:=ice-wm/}
 
