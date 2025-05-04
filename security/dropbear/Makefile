@@ -25,6 +25,8 @@ BUILD_TARGET=		all scp
 
 PKG_SYSCONFSUBDIR=	dropbear
 
+RCD_SCRIPTS+=		dropbear
+
 OWN_DIRS+=		${PKG_SYSCONFDIR}
 
 SUBST_CLASSES+=		paths
