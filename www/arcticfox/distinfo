@@ -1,10 +1,10 @@
-$NetBSD: distinfo,v 1.18 2024/12/22 21:31:44 nia Exp $
+$NetBSD: distinfo,v 1.23 2025/05/06 21:22:41 nia Exp $
 
 BLAKE2s (arcticfox-45.3.tar.gz) = 7c89b8236e5a14b267799168d30f6f48333c63d021372ef994b92b168dfb8a55
 SHA512 (arcticfox-45.3.tar.gz) = 65a44a75d4546945381369487604dedb3142a15cec511f4c3ead61d8c0ebcb0b009a01375e07f168573303332690a2ba8843c1bdc001dbb97aaa6c3d45707034
 Size (arcticfox-45.3.tar.gz) = 226073097 bytes
 SHA1 (patch-intl_icu_source_configure) = 051da587e03131b3a6c1dec7c55ab0cc9c06c26c
-SHA1 (patch-ipc_chromium_src_base_atomicops.h) = 3ca1d435c9f85d1e5a54532739909454c86242a2
+SHA1 (patch-ipc_chromium_src_base_atomicops.h) = 2043fdb88aea0fa294d8a125c169ce8459b79456
 SHA1 (patch-ipc_chromium_src_base_atomicops__internals__arm__gcc.h) = ecf6c5ee16346c0ecf06c886fd7d76dc33b85734
 SHA1 (patch-js_src_jit_ExecutableAllocatorPosix.cpp) = 91e900b6d995edc70b3234468580f7db5aa88446
 SHA1 (patch-js_src_vm_ArrayBufferObject.cpp) = 7af433cde0b6391facdf7f785f8f1b660f458a73
@@ -15,5 +15,5 @@ SHA1 (patch-media_libyuv_source_scale__argb.cc) = 2522d5a448c521acbb28ea027142c6
 SHA1 (patch-nsprpub_pr_include_md___netbsd.cfg) = cf3afcd707440055d945363839fa38b7ec72d561
 SHA1 (patch-nsprpub_pr_include_md___netbsd.h) = 0d9129445fae852d3a9d5015a5634f3a9eb232e7
 SHA1 (patch-old-configure.in) = 6cfeb1cc72cb23122bd83e91a64d0c9b5a410324
-SHA1 (patch-toolkit_components_protobuf_src_google_protobuf_stubs_atomicops.h) = eef34a9539f5ef2666bb26b175e3787ce4e50677
+SHA1 (patch-toolkit_components_protobuf_src_google_protobuf_stubs_atomicops.h) = 7afc1aa53dbef467cbbc33852a92c219f5340d5b
 SHA1 (patch-toolkit_components_protobuf_src_google_protobuf_stubs_atomicops__internals__arm__gcc.h) = 0ce774c5dc9f53a858d4b9f490ec25d548b4bb96
