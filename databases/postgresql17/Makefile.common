@@ -16,7 +16,7 @@
 # used by databases/postgresql17-pltcl/Makefile
 # used by databases/postgresql17-server/Makefile
 
-DISTNAME=	postgresql-17.4
+DISTNAME=	postgresql-17.5
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_PGSQL:=source/v${PKGVERSION_NOREV}/}
 EXTRACT_SUFX=	.tar.bz2
