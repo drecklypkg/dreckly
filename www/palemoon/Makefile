@@ -32,6 +32,9 @@ USE_LANGUAGES=	c c++
 
 USE_CXX_FEATURES+=	c++17
 
+# technically 9.1 required, but only 10 tested
+GCC_REQD+=		10
+
 WRKSRC=		${WRKDIR}/pale-moon
 
 CONFIG_GUESS_OVERRIDE+=	platform/build/autoconf/config.guess
@@ -98,7 +101,21 @@ TOOL_DEPENDS+=		yasm>=1.1:../../devel/yasm
 LDFLAGS+=		-Wl,--no-keep-memory
 .endif
 
+PLIST_VARS+=		be le
 PLIST_VARS+=		ffvpx
+
+PM_BIG_ENDIAN?=	no
+.for plat in ${BIGENDIANPLATFORMS}
+.  if !empty(MACHINE_PLATFORM:M${plat})
+PM_BIG_ENDIAN=	yes
+.  endif
+.endfor
+
+.if ${PM_BIG_ENDIAN:tl} != "no"
+PLIST.be=	yes
+.else
+PLIST.le=	yes
+.endif
 
 .if ${MACHINE_ARCH} == "x86_64"
 PLIST.ffvpx=		yes	# see platform/old-configure.in
@@ -147,8 +164,10 @@ post-install:
 	    ${DESTDIR}${PREFIX}/share/icons/hicolor/128x128/apps/palemoon.png
 	${INSTALL_DATA} ${WRKSRC}/palemoon/branding/unofficial/newmoon.desktop \
 	    ${DESTDIR}${PREFIX}/share/applications/palemoon.desktop
+.if ${PM_BIG_ENDIAN:tl} != "no"
 	${INSTALL_DATA} ${WRKDIR}/icudt63b.dat \
 	    ${DESTDIR}${PREFIX}/lib/${PKGNAME_NOREV}/
+.endif
 
 .include "options.mk"
 .include "../../archivers/bzip2/buildlink3.mk"
@@ -162,7 +181,7 @@ post-install:
 .include "../../lang/python/batteries-included.mk"
 .include "../../lang/python/application.mk"
 .include "../../lang/python/tool.mk"
-.include "../../multimedia/ffmpeg5/buildlink3.mk"
+.include "../../multimedia/ffmpeg6/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"
 .include "../../sysutils/desktop-file-utils/desktopdb.mk"
 .include "../../x11/gtk2/buildlink3.mk"
