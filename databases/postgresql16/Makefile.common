@@ -16,7 +16,7 @@
 # used by databases/postgresql16-pltcl/Makefile
 # used by databases/postgresql16-server/Makefile
 
-DISTNAME=	postgresql-16.8
+DISTNAME=	postgresql-16.9
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_PGSQL:=source/v${PKGVERSION_NOREV}/}
 EXTRACT_SUFX=	.tar.bz2
