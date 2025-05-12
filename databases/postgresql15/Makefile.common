@@ -16,7 +16,7 @@
 # used by databases/postgresql15-pltcl/Makefile
 # used by databases/postgresql15-server/Makefile
 
-DISTNAME=	postgresql-15.12
+DISTNAME=	postgresql-15.13
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_PGSQL:=source/v${PKGVERSION_NOREV}/}
 EXTRACT_SUFX=	.tar.bz2
