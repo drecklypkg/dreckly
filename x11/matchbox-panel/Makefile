@@ -28,11 +28,7 @@ MAKE_ENV+=		PKGLOCALEDIR=${PKGLOCALEDIR}
 .include "../../mk/bsd.prefs.mk"
 
 PLIST_VARS=		apm
-.if ${OPSYS} == "DragonFly" || ${OPSYS} == "SunOS" || \
-    (${OPSYS} == "NetBSD" && \
-      (${MACHINE_ARCH} == "x86_64" || ${MACHINE_CPU} == "aarch64"))
-# Nada
-.else
+.if exists(/usr/include/apm.h) || exists(/usr/include/machine/apmvar.h)
 PLIST.apm=		yes
 .endif
 
