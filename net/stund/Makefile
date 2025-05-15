@@ -18,6 +18,10 @@ USE_TOOLS+=	gmake
 # Fails with C++14 default language
 FORCE_CXX_STD=		c++03
 
+# Necessary to get ioctl definitions.
+CPPFLAGS.SunOS+=	-DBSD_COMP
+LDFLAGS.SunOS+=		-lsocket -lnsl
+
 INSTALLATION_DIRS=	bin sbin share/doc/stund
 
 do-install:
