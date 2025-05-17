@@ -13,7 +13,7 @@ LICENSE=	mit
 
 WRKSRC=		${WRKDIR}/secp256k1-${GITHUB_TAG}
 GNU_CONFIGURE=	yes
-USE_TOOLS+=	autoconf automake gmake
+USE_TOOLS+=	autoconf automake gmake pkg-config
 USE_LIBTOOL=	yes
 
 # Inspired by the configure flags ArchLinux uses
