@@ -853,6 +853,7 @@ SUBDIR+=	tuxpaint-config
 SUBDIR+=	tuxpaint-stamps
 SUBDIR+=	urt
 SUBDIR+=	vcg
+SUBDIR+=	vertex-theme
 SUBDIR+=	veusz
 SUBDIR+=	vid
 SUBDIR+=	viewfax
