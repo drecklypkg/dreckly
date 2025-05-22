@@ -18,7 +18,7 @@ PLIST.dtrace=		yes
 PLIST.tkinter=	yes
 .include "../../lang/tcl/buildlink3.mk"
 .include "../../x11/tk/buildlink3.mk"
-CFLAGS+=	-I${PREFIX}/include/tcl/generic
+CFLAGS+=	-I${BUILDLINK_PREFIX.tcl:Q}/${BUILDLINK_INCDIRS.tcl:Q}
 .else
 CONFIGURE_ENV+=	py_cv_module__tkinter="n/a"
 .endif

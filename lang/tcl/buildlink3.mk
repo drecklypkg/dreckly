@@ -10,6 +10,7 @@ BUILDLINK_ABI_DEPENDS.tcl+=	tcl>=8.6.1nb1
 BUILDLINK_PKGSRCDIR.tcl?=	../../lang/tcl
 
 BUILDLINK_FILES.tcl+=	bin/tclsh*
+BUILDLINK_INCDIRS.tcl+=	include/tcl/generic
 #
 # Make "-ltcl" and "-ltcl8.6" resolve into "-ltcl86", so that we don't
 # need to patch so many Makefiles.
