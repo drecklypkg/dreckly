@@ -85,6 +85,7 @@ SUBDIR+=	charls
 SUBDIR+=	cinepaint
 SUBDIR+=	circos
 SUBDIR+=	claraocr
+SUBDIR+=	clearlooks-phenix-theme
 SUBDIR+=	cliris
 SUBDIR+=	clutter
 SUBDIR+=	clutter-box2d
