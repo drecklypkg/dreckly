@@ -82,6 +82,18 @@ CHECK_PORTABILITY_SKIP+=	mkbindist.sh
 
 INSTALLATION_DIRS=	bin include lib ${PKGMANDIR}/man1 share/gdal
 
+PLIST_VARS+=	le
+
+.include "../../mk/endian.mk"
+
+# In ogr/ogrsf_frmts/CMakeLists.txt, the building of the miramon
+# sub-system is dependent on "NOT WORDS_BIGENDIAN".
+PRINT_PLIST_AWK+=	/MM_m_idofic.csv/ { print "$${PLIST.le}" $$0; next }
+
+.if ${MACHINE_ENDIAN} != "big"
+PLIST.le=	yes
+.endif
+
 # \todo: Support geopdf by including poppler, PoDoFo, or PDFium.
 # https://gdal.org/drivers/raster/pdf.html
 
