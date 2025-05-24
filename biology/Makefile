@@ -9,6 +9,7 @@ SUBDIR+=	arka
 SUBDIR+=	atac-seq
 SUBDIR+=	azara
 SUBDIR+=	balance-tui
+SUBDIR+=	bamtools
 SUBDIR+=	bcf-score
 SUBDIR+=	bcftools
 SUBDIR+=	beagle
