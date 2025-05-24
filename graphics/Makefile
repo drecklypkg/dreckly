@@ -406,6 +406,7 @@ SUBDIR+=	nvtv
 SUBDIR+=	ocaml-cairo
 SUBDIR+=	ocrad
 SUBDIR+=	oculante
+SUBDIR+=	onestepback-gtk-theme
 SUBDIR+=	opencolorio
 SUBDIR+=	opencsg
 SUBDIR+=	opencv
