@@ -6,7 +6,7 @@ TOOL_DEPENDS+=	docbook-xml-[0-9]*:../../textproc/docbook-xml
 TOOL_DEPENDS+=	docbook-xsl-[0-9]*:../../textproc/docbook-xsl
 
 USE_LIBTOOL=		yes
-USE_TOOLS+=		gmake perl
+USE_TOOLS+=		gmake perl pkg-config
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--with-libxml-prefix=${BUILDLINK_PREFIX.libxml2}
 CONFIGURE_ARGS+=	--without-python
@@ -35,6 +35,10 @@ BUILDLINK_TRANSFORM+=	opt:-Wl,./libxslt.syms:-Wl,./libxslt_solaris.syms
 CONFIGURE_ARGS+=	LIBGCRYPT_CONFIG=${CROSS_DESTDIR:Q}${LOCALBASE:Q}/bin/libgcrypt-config
 CONFIGURE_ARGS+=	XML_CONFIG=${CROSS_DESTDIR:Q}${LOCALBASE:Q}/bin/xml2-config
 .endif
+
+# matching old build system defaults
+CONFIGURE_ARGS+=	--with-crypto
+CONFIGURE_ARGS+=	--with-plugins
 
 .include "../../security/libgcrypt/buildlink3.mk"
 BUILDLINK_API_DEPENDS.libxml2+=	libxml2>=2.6.27
