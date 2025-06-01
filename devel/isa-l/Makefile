@@ -10,7 +10,7 @@ CATEGORIES=	devel
 MASTER_SITES=	${MASTER_SITE_GITHUB:=intel/}
 GITHUB_TAG=	v${PKGVERSION_NOREV}
 
-OWNER=		pkgsrc-users@NetBSD.org
+MAINTAINER=	bacon@NetBSD.org
 HOMEPAGE=	https://github.com/intel/isa-l
 COMMENT=	Intel(R) Intelligent Storage Acceleration Libray
 LICENSE=	modified-bsd
