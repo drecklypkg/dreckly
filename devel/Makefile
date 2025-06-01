@@ -804,6 +804,7 @@ SUBDIR+=	iniparser
 SUBDIR+=	intel2gas
 SUBDIR+=	intellij-ce-bin
 SUBDIR+=	intellij-ue-bin
+SUBDIR+=	isa-l
 SUBDIR+=	isect
 SUBDIR+=	ivykis
 SUBDIR+=	jam
