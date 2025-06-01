@@ -1,0 +1,12 @@
+# $NetBSD$
+
+BUILDLINK_TREE+=	isa-l
+
+.if !defined(ISA_L_BUILDLINK3_MK)
+ISA_L_BUILDLINK3_MK:=
+
+BUILDLINK_API_DEPENDS.isa-l+=	isa-l>=2.31.1
+BUILDLINK_PKGSRCDIR.isa-l?=	../../devel/isa-l
+.endif	# ISA_L_BUILDLINK3_MK
+
+BUILDLINK_TREE+=	-isa-l
