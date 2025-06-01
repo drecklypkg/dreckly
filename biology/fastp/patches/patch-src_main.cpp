@@ -1,4 +1,4 @@
-$NetBSD: patch-src_main.cpp,v 1.1 2023/06/01 13:03:53 bacon Exp $
+$NetBSD$
 
 # Make sure main() returns a value
 
