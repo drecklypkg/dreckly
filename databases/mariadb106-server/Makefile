@@ -44,7 +44,7 @@ BUILD_DEFS+=		MARIADB_DATADIR
 OWN_DIRS_PERMS+=	${MARIADB_DATADIR} ${MARIADB_USER} ${MARIADB_GROUP} 0700
 OWN_DIRS_PERMS+=	${VARBASE}/log/mariadb ${MARIADB_USER} ${MARIADB_GROUP} 0700
 
-USE_TOOLS=		bash:run perl:run
+USE_TOOLS+=		bash:run perl:run
 REPLACE_BASH+=		scripts/wsrep_sst_*.sh
 REPLACE_BASH+=		scripts/mariadb-service-convert
 
