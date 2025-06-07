@@ -8,7 +8,7 @@
 # MYSQL_VERSION_DEFAULT
 #	The preferred MySQL version.
 #
-#	Possible: 80 mariadb114 mariadb1011 mariadb106 mariadb105
+#	Possible: 80 mariadb118 mariadb114 mariadb1011 mariadb106 mariadb105
 #	Default: mariadb1011
 #
 # Package-settable variables:
@@ -38,7 +38,8 @@ _SYS_VARS.mysql=	MYSQL_VERSION MYSQL_VERSION_REQD MYSQL_VERSIONS_ALL
 #
 # Set variables for all possible MySQL variants
 #
-MARIADB_VERSIONS_ALL+=		mariadb114 mariadb1011 mariadb106 mariadb105
+MARIADB_VERSIONS_ALL+=		mariadb118 mariadb114 mariadb1011 mariadb106
+MARIADB_VERSIONS_ALL+=		mariadb105
 
 MYSQL_VERSIONS_ALL=		80
 MYSQL_VERSIONS_ALL+=		${MARIADB_VERSIONS_ALL}
@@ -58,6 +59,9 @@ MYSQL_PKGSRCDIR.mariadb1011=	../../databases/mariadb1011-client
 MYSQL_PKGBASE.mariadb114=	mariadb-client-11.4.*
 MYSQL_PKGSRCDIR.mariadb114=	../../databases/mariadb114-client
 
+MYSQL_PKGBASE.mariadb118=	mariadb-client-11.8.*
+MYSQL_PKGSRCDIR.mariadb118=	../../databases/mariadb118-client
+
 .for ver in ${MYSQL_VERSIONS_ALL}
 MYSQL_OK.${ver}=		no
 _SYS_VARS.mysql+=		MYSQL_PKGBASE.${ver} MYSQL_PKGSRCDIR.${ver}
@@ -71,7 +75,8 @@ _SYS_VARS.mysql+=		MYSQL_PKGBASE.${ver} MYSQL_PKGSRCDIR.${ver}
 # be chosen.
 #
 MYSQL_VERSION_DEFAULT?=		mariadb1011
-MYSQL_VERSIONS_ACCEPTED?=	80 mariadb114 mariadb1011 mariadb106 mariadb105
+MYSQL_VERSIONS_ACCEPTED?=	80 mariadb118 mariadb114 mariadb1011 mariadb106 \
+				mariadb105
 
 #
 # Previous versions of this file used shouty caps in the version names.  We
