@@ -261,7 +261,6 @@ lib/mysql/plugin/caching_sha2_password.so
 lib/mysql/plugin/client_ed25519.so
 lib/mysql/plugin/dialog.so
 lib/mysql/plugin/mysql_clear_password.so
-lib/mysql/plugin/parsec.so
 lib/mysql/plugin/sha256_password.so
 lib/mysql/plugin/zstd.so
 lib/pkgconfig/libmariadb.pc
