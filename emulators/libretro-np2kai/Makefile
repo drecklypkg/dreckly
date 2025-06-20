@@ -26,5 +26,7 @@ USE_LANGUAGES=	c c++
 MAKE_FLAGS=	SUPPORT_NET=0
 .endif
 
+BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,--version-script=link.T
+
 .include "../../emulators/retroarch/core.mk"
 .include "../../mk/bsd.pkg.mk"
