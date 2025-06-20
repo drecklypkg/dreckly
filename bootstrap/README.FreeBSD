@@ -5,6 +5,10 @@ Please read the general README file as well.
 Currently bootstrap is only supported using the compiler shipped in base and not
 a version of GCC installed from ports, and clang from ports is untested.
 
+Dreckly requires llvm to be installed in order to build packages with FreeBSD's
+compiler shipped in base. Llvm from FreeBSD ports can be installed with:
+	pkg install llvm
+
 bootstrap-pkgsrc has been tested on FreeBSD 12-14.
 
 For unprivileged bootstraps, note that on FreeBSD prior to 14 /home is a symlink
