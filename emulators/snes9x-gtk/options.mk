@@ -40,5 +40,5 @@ CMAKE_CONFIGURE_ARGS+=	-DUSE_PORTAUDIO=OFF
 .if !empty(PKG_OPTIONS:Mwayland)
 .include "../../devel/wayland/buildlink3.mk"
 .else
-CMAKE_CONFIGURE_ARGS+=	-DUSE_WAYLAND=ON
+CMAKE_CONFIGURE_ARGS+=	-DUSE_WAYLAND=OFF
 .endif
