@@ -21,13 +21,10 @@ PKG_SUPPORTED_OPTIONS=	readline
 .include "../../mk/bsd.options.mk"
 
 .if !empty(PKG_OPTIONS:Mreadline)
-.if ${OPSYS} == "OpenBSD"
-BUILDLINK_TRANSFORM+= l:readline:ereadline:ehistory
-.endif
 .include "../../devel/readline/buildlink3.mk"
-CONFIGURE_ARGS+=		--with-readline
-READLINE_DIR=			${BUILDLINK_PREFIX.readline}
-CONFIGURE_ARGS+=		--readline ${READLINE_DIR}
+CONFIGURE_ARGS+=	--with-readline
+READLINE_DIR=		${BUILDLINK_PREFIX.readline}
+CONFIGURE_ARGS+=	--readline ${READLINE_DIR}
 .endif
 
 do-build:
