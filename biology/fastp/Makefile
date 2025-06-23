@@ -1,6 +1,6 @@
 # $NetBSD$
 
-DISTNAME=	fastp-0.25.0
+DISTNAME=	fastp-1.0.1
 CATEGORIES=	biology
 MASTER_SITES=	${MASTER_SITE_GITHUB:=OpenGene/}
 GITHUB_TAG=	v${PKGVERSION_NOREV}
@@ -19,7 +19,7 @@ post-install:
 	${STRIP} ${DESTDIR}${PREFIX}/bin/fastp
 
 .include "../../devel/zlib/buildlink3.mk"
+.include "../../mk/pthread.buildlink3.mk"
 .include "../../devel/isa-l/buildlink3.mk"
 .include "../../devel/libdeflate/buildlink3.mk"
-.include "../../mk/pthread.buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
