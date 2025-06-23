@@ -1,0 +1,5 @@
+$NetBSD$
+
+BLAKE2s (oils-for-unix-0.31.0.tar.gz) = ecc5ff2bf6ce4f5dbfbfa79d42cdb1d0c518bbcf3fa9d23e8e2812197f4baade
+SHA512 (oils-for-unix-0.31.0.tar.gz) = 8d4b4a46a6a83a7035b77a8977be398d58be409b46dc4e183f4f3aaf308e284eda62e4cc841769defbfb68ddb3081c2511f75bb877cd67f169f29fb4a3df6f05
+Size (oils-for-unix-0.31.0.tar.gz) = 855925 bytes
