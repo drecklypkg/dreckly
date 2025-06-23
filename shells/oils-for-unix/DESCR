@@ -1,0 +1,6 @@
+Oils is a Unix shell with JSON-compatible structured data. It's our
+upgrade path from bash to a better language and runtime.
+
+bin/osh runs POSIX shell scripts and many bash scripts. bin/ysh is an
+improved shell language.
+

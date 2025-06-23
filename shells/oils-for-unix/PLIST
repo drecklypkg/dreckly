@@ -1,0 +1,5 @@
+@comment $NetBSD$
+bin/oils-for-unix
+bin/osh
+bin/ysh
+share/man/man1/osh.1
