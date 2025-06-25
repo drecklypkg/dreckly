@@ -1,4 +1,4 @@
-@comment $NetBSD: PLIST,v 1.8 2024/10/11 22:38:32 bacon Exp $
+@comment $NetBSD$
 bin/ace2sam
 bin/blast2sam.pl
 bin/bowtie2sam.pl
@@ -27,6 +27,7 @@ man/man1/samtools-ampliconstats.1
 man/man1/samtools-bedcov.1
 man/man1/samtools-calmd.1
 man/man1/samtools-cat.1
+man/man1/samtools-checksum.1
 man/man1/samtools-collate.1
 man/man1/samtools-consensus.1
 man/man1/samtools-coverage.1
