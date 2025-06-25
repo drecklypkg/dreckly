@@ -1,4 +1,4 @@
-@comment $NetBSD: PLIST,v 1.7 2024/10/11 22:41:14 bacon Exp $
+@comment $NetBSD$
 bin/bcftools
 bin/color-chrs
 bin/gff2gff.py
@@ -46,4 +46,6 @@ libexec/bcftools/trio-stats.so
 libexec/bcftools/trio-switch-rate.so
 libexec/bcftools/variant-distance.so
 libexec/bcftools/variantkey-hex.so
+libexec/bcftools/vcf2table.so
+libexec/bcftools/vrfs.so
 man/man1/bcftools.1
