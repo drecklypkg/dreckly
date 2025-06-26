@@ -1,4 +1,4 @@
-@comment $NetBSD: PLIST,v 1.1 2024/10/11 22:49:06 bacon Exp $
+@comment $NetBSD$
 libexec/bcftools/blup.so
 libexec/bcftools/liftover.so
 libexec/bcftools/metal.so

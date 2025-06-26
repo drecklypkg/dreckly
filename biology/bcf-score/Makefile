@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.1 2024/10/11 22:49:06 bacon Exp $
+# $NetBSD$
 
 DISTNAME=	bcf-score-1.20
 CATEGORIES=	biology
@@ -66,9 +66,9 @@ do-install:
 	(cd ${WRKSRC}/bcf-score && pax -rw . ${DESTDIR}${DATADIR})
 
 .include "../../devel/zlib/buildlink3.mk"
+.include "../../www/curl/buildlink3.mk"
 .include "../../math/gsl/buildlink3.mk"
 .include "../../lang/python/application.mk"
-.include "../../www/curl/buildlink3.mk"
 .include "../../biology/htslib/buildlink3.mk"
 .include "../../math/suitesparse/buildlink3.mk"
 .include "../../math/R/buildlink3.mk"
