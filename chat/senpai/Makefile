@@ -14,7 +14,6 @@ LICENSE=	isc
 TOOL_DEPENDS+=		scdoc-[0-9]*:../../textproc/scdoc
 
 INSTALLATION_DIRS=	bin ${PKGMANDIR}/man1 ${PKGMANDIR}/man5
-GO_BUILD_PATTERN=	./...
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKDIR}/.gopath/bin/senpai \
