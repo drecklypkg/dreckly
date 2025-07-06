@@ -1,6 +1,6 @@
 # $NetBSD: Makefile,v 1.30 2024/09/06 18:48:41 bsiegert Exp $
 
-DISTNAME=	senpai-v0.3.0
+DISTNAME=	senpai-v0.4.1
 PKGNAME=	${DISTNAME:S,-v,-,}
 PKGREVISION=	8
 CATEGORIES=	chat
