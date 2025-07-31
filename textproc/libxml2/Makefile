@@ -14,7 +14,6 @@ GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFDIR}
 CONFIGURE_ARGS+=	--with-zlib=${BUILDLINK_PREFIX.zlib}
 CONFIGURE_ARGS+=	--with-lzma=${BUILDLINK_PREFIX.xz}
-CONFIGURE_ARGS+=	--with-ftp
 CONFIGURE_ARGS+=	--with-legacy
 CONFIGURE_ARGS+=	--without-python
 TEST_TARGET=		check
