@@ -11,9 +11,10 @@ COMMENT=	SQL Database Engine in a C Library
 
 .include "options.mk"
 
-USE_LIBTOOL=		yes
 USE_TOOLS+=		gmake
-GNU_CONFIGURE=		yes
+HAS_CONFIGURE=		yes
+CONFIGURE_ARGS+=	--mandir=${PREFIX}/${PKGMANDIR}
+CONFIGURE_ARGS+=	--prefix=${PREFIX}
 CONFIGURE_ARGS+=	--disable-static-shell
 
 PKGCONFIG_OVERRIDE+=	sqlite3.pc.in
