@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	gtksourceview5
 GTKSOURCEVIEW5_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.gtksourceview5+=	gtksourceview5>=5.0.0
-BUILDLINK_ABI_DEPENDS.gtksourceview5?=	gtksourceview5>=5.10.0nb8
+BUILDLINK_ABI_DEPENDS.gtksourceview5?=	gtksourceview5>=5.10.0nb9
 BUILDLINK_PKGSRCDIR.gtksourceview5?=	../../x11/gtksourceview5
 
 .include "../../textproc/libxml2/buildlink3.mk"

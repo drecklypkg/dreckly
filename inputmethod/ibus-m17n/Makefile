@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	ibus-m17n-1.3.4
-PKGREVISION=	52
+PKGREVISION=	53
 CATEGORIES=	inputmethod
 MASTER_SITES=	http://ibus.googlecode.com/files/
 

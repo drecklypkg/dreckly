@@ -3,7 +3,7 @@
 
 PKGVER=		0.8.8
 DISTNAME=	compiz-bcop-${PKGVER}
-PKGREVISION=	13
+PKGREVISION=	14
 CATEGORIES=	devel wm x11
 MASTER_SITES=	https://gitlab.com/compiz/compiz-bcop/-/archive/v${PKGVER}/
 

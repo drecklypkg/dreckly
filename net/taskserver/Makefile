@@ -2,7 +2,7 @@
 
 DISTNAME=	taskd-1.1.0
 PKGNAME=	${DISTNAME:S/taskd/taskserver/}
-PKGREVISION=	17
+PKGREVISION=	18
 CATEGORIES=	net
 MASTER_SITES=	https://taskwarrior.org/download/
 

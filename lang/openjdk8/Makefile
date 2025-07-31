@@ -2,6 +2,7 @@
 
 DISTNAME=	jdk8u-${GITHUB_TAG}
 PKGNAME=	openjdk8-1.8.${GITHUB_TAG:C/.*u([0-9]+).*/\1/}
+PKGREVISION=	1
 CATEGORIES=	lang
 MASTER_SITES=	${MASTER_SITE_GITHUB:=battleblow/}
 MASTER_SITES+=	${MASTER_SITE_LOCAL:=openjdk7/}	# for bootstrap kits

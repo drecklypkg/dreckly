@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	ogle
 OGLE_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.ogle+=	ogle>=0.9.2
-BUILDLINK_ABI_DEPENDS.ogle+=	ogle>=0.9.2nb21
+BUILDLINK_ABI_DEPENDS.ogle+=	ogle>=0.9.2nb22
 BUILDLINK_PKGSRCDIR.ogle?=	../../multimedia/ogle
 
 .include "../../textproc/libxml2/buildlink3.mk"

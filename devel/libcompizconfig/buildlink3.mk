@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libcompizconfig
 LIBCOMPIZCONFIG_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libcompizconfig+=	libcompizconfig>=0.6.0
-BUILDLINK_ABI_DEPENDS.libcompizconfig+=	libcompizconfig>=0.8.8nb76
+BUILDLINK_ABI_DEPENDS.libcompizconfig+=	libcompizconfig>=0.8.8nb77
 BUILDLINK_PKGSRCDIR.libcompizconfig?=	../../devel/libcompizconfig
 
 .include "../../devel/protobuf/buildlink3.mk"

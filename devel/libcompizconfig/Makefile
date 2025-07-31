@@ -2,7 +2,7 @@
 
 PKGVER=		0.8.8
 DISTNAME=	libcompizconfig-${PKGVER}
-PKGREVISION=	76
+PKGREVISION=	77
 CATEGORIES=	devel gnome
 MASTER_SITES=	#
 

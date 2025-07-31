@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	samba
 SAMBA_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.samba+=	samba>=4.9.4
-BUILDLINK_ABI_DEPENDS.samba+=	samba>=4.21.2nb2
+BUILDLINK_ABI_DEPENDS.samba+=	samba>=4.21.2nb3
 BUILDLINK_PKGSRCDIR.samba?=	../../net/samba4
 
 .include "../../archivers/libarchive/buildlink3.mk"

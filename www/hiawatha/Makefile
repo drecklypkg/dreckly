@@ -3,7 +3,7 @@
 PKGNAME=	hiawatha-${PKGVER}
 DISTNAME=	hiawatha-v${PKGVER}
 PKGVER=		11.6
-PKGREVISION=	5
+PKGREVISION=	6
 CATEGORIES=	www
 MASTER_SITES=	${MASTER_SITE_GITLAB:=hsleisink/hiawatha/-/archive/v${PKGVER}/}
 EXTRACT_SUFX=	.tar.gz

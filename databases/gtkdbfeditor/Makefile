@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	gtkdbfeditor-1.0.4
-PKGREVISION=	46
+PKGREVISION=	47
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=gtkdbfeditor/}
 

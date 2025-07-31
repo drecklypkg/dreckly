@@ -5,7 +5,7 @@
 #       to find out the current sound file versions
 
 DISTNAME=	asterisk-16.29.1
-PKGREVISION=	18
+PKGREVISION=	19
 CATEGORIES=	comms net audio
 MASTER_SITES=	https://downloads.asterisk.org/pub/telephony/asterisk/
 MASTER_SITES+=	https://downloads.asterisk.org/pub/telephony/asterisk/old-releases/

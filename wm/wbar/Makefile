@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	wbar-2.2.2
-PKGREVISION=	49
+PKGREVISION=	50
 CATEGORIES=	wm
 MASTER_SITES=	http://wbar.googlecode.com/files/
 

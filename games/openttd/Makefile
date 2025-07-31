@@ -2,7 +2,7 @@
 
 DISTNAME=	openttd-14.1-source
 PKGNAME=	${DISTNAME:S/-source//}
-PKGREVISION=	4
+PKGREVISION=	5
 CATEGORIES=	games
 MASTER_SITES=	https://proxy.binaries.openttd.org/openttd-releases/${PKGVERSION_NOREV}/
 MASTER_SITES+=	https://cdn.openttd.org/openttd-releases/${PKGVERSION_NOREV}/

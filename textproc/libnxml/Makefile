@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	libnxml-0.18.3
-PKGREVISION=	34
+PKGREVISION=	35
 CATEGORIES=	textproc
 MASTER_SITES=	http://www.autistici.org/bakunin/libnxml/
 

@@ -2,7 +2,7 @@
 #
 
 DISTNAME=		mailfront-2.22
-PKGREVISION=		16
+PKGREVISION=		17
 CATEGORIES=		mail
 MASTER_SITES=		${HOMEPAGE}archive/
 

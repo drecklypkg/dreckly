@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	kdoctools
 KDOCTOOLS_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.kdoctools+=	kdoctools>=5.21.0
-BUILDLINK_ABI_DEPENDS.kdoctools?=	kdoctools>=5.116.0nb3
+BUILDLINK_ABI_DEPENDS.kdoctools?=	kdoctools>=5.116.0nb4
 BUILDLINK_PKGSRCDIR.kdoctools?=		../../devel/kdoctools
 
 BUILDLINK_FILES.kdoctools+=		share/kf5/kdoctools/customization/*.xsl

@@ -2,7 +2,7 @@
 
 DISTNAME=	megatools-1.11.0-git-20200404
 PKGNAME=	megatools-1.11.0.20200404
-PKGREVISION=	15
+PKGREVISION=	16
 CATEGORIES=	net
 MASTER_SITES=	https://megatools.megous.com/builds/experimental/
 

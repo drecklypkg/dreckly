@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	gupnp-igd
 GUPNP_IGD_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.gupnp-igd+=	gupnp-igd>=0.2.1
-BUILDLINK_ABI_DEPENDS.gupnp-igd+=	gupnp-igd>=1.6.0nb5
+BUILDLINK_ABI_DEPENDS.gupnp-igd+=	gupnp-igd>=1.6.0nb6
 BUILDLINK_PKGSRCDIR.gupnp-igd?=		../../net/gupnp-igd
 
 .include "../../net/gupnp/buildlink3.mk"

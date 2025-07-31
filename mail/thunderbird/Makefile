@@ -2,6 +2,7 @@
 
 DISTNAME=	thunderbird-${TB_VER}.source
 PKGNAME=	thunderbird-${TB_VER:S/esr//}
+PKGREVISION=	1
 TB_VER=		128.5.1esr
 CATEGORIES=	mail
 MASTER_SITES=	${MASTER_SITE_MOZILLA:=thunderbird/releases/${TB_VER}/source/}

@@ -5,7 +5,7 @@ R_PKGVER=	3.99-0.17
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 COMMENT=	Tools for parsing and generating XML within R
-PKGREVISION=	3
+PKGREVISION=	4
 LICENSE=	2-clause-bsd
 
 DEPENDS+=	R-bitops-[0-9]*:../../math/R-bitops

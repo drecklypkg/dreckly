@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	spandsp-0.0.6pre21
-PKGREVISION=	19
+PKGREVISION=	20
 CATEGORIES=	comms
 MASTER_SITES=	https://www.soft-switch.org/downloads/spandsp/
 EXTRACT_SUFX=	.tgz

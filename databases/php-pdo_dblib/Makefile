@@ -3,7 +3,7 @@
 MODNAME=		pdo_dblib
 CATEGORIES+=		databases
 COMMENT=		PHP extension for PHP Data Objects (FreeTDS/Sybase/MS SQL)
-PKGREVISION=		16
+PKGREVISION=		17
 
 USE_PHP_EXT_PATCHES=	yes
 

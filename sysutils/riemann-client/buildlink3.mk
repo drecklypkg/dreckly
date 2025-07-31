@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	riemann-client
 RIEMANN_CLIENT_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.riemann-client+=	riemann-client>=2
-BUILDLINK_ABI_DEPENDS.riemann-client?=	riemann-client>=2.2.0nb5
+BUILDLINK_ABI_DEPENDS.riemann-client?=	riemann-client>=2.2.0nb6
 BUILDLINK_PKGSRCDIR.riemann-client?=	../../sysutils/riemann-client
 
 pkgbase := riemann-client

@@ -2,7 +2,7 @@
 
 CONFIGURE_ARGS+=	--without-gui
 
-PKGREVISION= 9
+PKGREVISION= 10
 
 .include "Makefile.common"
 .include "../../mk/bsd.pkg.mk"

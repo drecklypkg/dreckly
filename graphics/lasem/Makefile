@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	lasem-0.4.1
-PKGREVISION=	36
+PKGREVISION=	37
 CATEGORIES=	graphics gnome
 MASTER_SITES=	${MASTER_SITE_GNOME:=sources/lasem/0.4/}
 EXTRACT_SUFX=	.tar.xz

@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.79 2024/12/18 02:44:32 maya Exp $
 
 PKGNAME=	${DISTNAME:S/mozc-/uim-mozc-/}
-PKGREVISION=	6
+PKGREVISION=	7
 
 TOOL_DEPENDS+=	bazel-[0-9]*:../../devel/bazel
 

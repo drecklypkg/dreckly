@@ -3,7 +3,7 @@
 VERSION=	1.7
 DISTNAME=	skype4pidgin-${VERSION}
 PKGNAME=	skypeweb-purple-${VERSION}
-PKGREVISION=	10
+PKGREVISION=	11
 CATEGORIES=	chat
 MASTER_SITES=	${MASTER_SITE_GITHUB:=EionRobb/}
 # default picks from PKGNAME

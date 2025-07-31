@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	ggz-client-libs
 GGZ_CLIENT_LIBS_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.ggz-client-libs+=	ggz-client-libs>=0.0.14.1
-BUILDLINK_ABI_DEPENDS.ggz-client-libs+=	ggz-client-libs>=0.0.14.1nb24
+BUILDLINK_ABI_DEPENDS.ggz-client-libs+=	ggz-client-libs>=0.0.14.1nb25
 BUILDLINK_PKGSRCDIR.ggz-client-libs?=	../../games/ggz-client-libs
 
 .include "../../games/libggz/buildlink3.mk"

@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libspatialite
 LIBSPATIALITE_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libspatialite+=	libspatialite>=4.3.0a
-BUILDLINK_ABI_DEPENDS.libspatialite+=	libspatialite>=5.1.0nb7
+BUILDLINK_ABI_DEPENDS.libspatialite+=	libspatialite>=5.1.0nb8
 BUILDLINK_PKGSRCDIR.libspatialite?=	../../geography/libspatialite
 
 .include "../../archivers/minizip/buildlink3.mk"

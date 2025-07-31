@@ -2,7 +2,7 @@
 #
 
 DISTNAME=		libofa-0.9.3
-PKGREVISION=		36
+PKGREVISION=		37
 CATEGORIES=		audio
 MASTER_SITES=		https://www.aydogan.net/distfiles/audio/
 

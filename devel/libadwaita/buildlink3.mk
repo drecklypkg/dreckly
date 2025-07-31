@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libadwaita
 LIBADWAITA_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libadwaita+=	libadwaita>=1.0.5
-BUILDLINK_ABI_DEPENDS.libadwaita+=	libadwaita>=1.6.1nb3
+BUILDLINK_ABI_DEPENDS.libadwaita+=	libadwaita>=1.6.1nb4
 BUILDLINK_PKGSRCDIR.libadwaita?=	../../devel/libadwaita
 
 .include "../../devel/appstream/buildlink3.mk"

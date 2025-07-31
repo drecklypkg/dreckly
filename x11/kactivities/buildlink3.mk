@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	kactivities
 KACTIVITIES_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.kactivities+=	kactivities>=4.7.95
-BUILDLINK_ABI_DEPENDS.kactivities+=	kactivities>=4.13.3nb45
+BUILDLINK_ABI_DEPENDS.kactivities+=	kactivities>=4.13.3nb46
 BUILDLINK_PKGSRCDIR.kactivities?=	../../x11/kactivities
 
 .include "../../x11/kdelibs4/buildlink3.mk"

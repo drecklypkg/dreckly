@@ -2,7 +2,7 @@
 
 DISTNAME=	avidemux_2.5.4
 PKGNAME=	${DISTNAME:S/_/-/}
-PKGREVISION=	79
+PKGREVISION=	80
 CATEGORIES=	multimedia
 MASTER_SITES=	http://download.berlios.de/avidemux/
 

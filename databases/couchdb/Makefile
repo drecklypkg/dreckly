@@ -2,7 +2,7 @@
 
 DISTNAME=		apache-couchdb-3.2.2
 PKGNAME=		${DISTNAME:S/apache-//}
-PKGREVISION=		9
+PKGREVISION=		10
 CATEGORIES=		databases
 MASTER_SITES=		${MASTER_SITE_APACHE:=couchdb/source/${PKGVERSION_NOREV}/}
 

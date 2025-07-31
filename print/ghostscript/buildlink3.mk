@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	ghostscript
 GHOSTSCRIPT_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.ghostscript+=	ghostscript>=8.63nb1
-BUILDLINK_ABI_DEPENDS.ghostscript+=	ghostscript>=9.05nb40
+BUILDLINK_ABI_DEPENDS.ghostscript+=	ghostscript>=9.05nb41
 BUILDLINK_PKGSRCDIR.ghostscript?=	../../print/ghostscript
 
 pkgbase := ghostscript

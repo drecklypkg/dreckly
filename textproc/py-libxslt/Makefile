@@ -1,6 +1,6 @@
 # $NetBSD: Makefile,v 1.75 2024/11/14 22:21:54 wiz Exp $
 
-PKGREVISION= 3
+PKGREVISION= 4
 .include "../../textproc/libxslt/Makefile.common"
 
 PKGNAME=	${PYPKGPREFIX}-${DISTNAME}

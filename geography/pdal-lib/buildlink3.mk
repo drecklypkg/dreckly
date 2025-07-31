@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	pdal-lib
 PDAL_LIB_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.pdal-lib+=	pdal-lib>=2.1.0
-BUILDLINK_ABI_DEPENDS.pdal-lib+=	pdal-lib>=2.7.1nb11
+BUILDLINK_ABI_DEPENDS.pdal-lib+=	pdal-lib>=2.7.1nb12
 BUILDLINK_PKGSRCDIR.pdal-lib?=		../../geography/pdal-lib
 
 .include "../../geography/gdal-lib/buildlink3.mk"

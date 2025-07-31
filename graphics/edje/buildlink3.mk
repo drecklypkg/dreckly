@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	edje
 EDJE_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.edje+=	edje>=1.7.10
-BUILDLINK_ABI_DEPENDS.edje?=	edje>=1.7.10nb19
+BUILDLINK_ABI_DEPENDS.edje?=	edje>=1.7.10nb20
 BUILDLINK_PKGSRCDIR.edje?=	../../graphics/edje
 
 .include	"../../devel/ecore/buildlink3.mk"

@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	xmlrpc-c
 XMLRPC_C_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.xmlrpc-c+=	xmlrpc-c-ss>=1.16.34
-BUILDLINK_ABI_DEPENDS.xmlrpc-c+=	xmlrpc-c-ss>=1.51.04nb17
+BUILDLINK_ABI_DEPENDS.xmlrpc-c+=	xmlrpc-c-ss>=1.51.04nb18
 BUILDLINK_PKGSRCDIR.xmlrpc-c?=		../../textproc/xmlrpc-c
 
 .include "../../www/libwww/buildlink3.mk"

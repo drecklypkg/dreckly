@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libxenserver
 LIBXENSERVER_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libxenserver+=	libxenserver>=5.6.100
-BUILDLINK_ABI_DEPENDS.libxenserver+=	libxenserver>=6.2.0nb36
+BUILDLINK_ABI_DEPENDS.libxenserver+=	libxenserver>=6.2.0nb37
 BUILDLINK_PKGSRCDIR.libxenserver?=	../../devel/libxenserver
 
 .include "../../textproc/libxml2/buildlink3.mk"

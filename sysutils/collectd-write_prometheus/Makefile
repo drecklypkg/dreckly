@@ -3,7 +3,7 @@
 COLLECTD_PACKAGE=	write_prometheus
 
 COMMENT=		Statistics collection daemon - write_prometheus plugin
-PKGREVISION=		19
+PKGREVISION=		20
 
 .include "../../devel/protobuf-c/buildlink3.mk"
 COLLECTD_LIB.protobuf-c=${BUILDLINK_PREFIX.protobuf-c}

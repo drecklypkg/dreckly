@@ -2,7 +2,7 @@
 
 DISTNAME=		aiccu_20070115
 PKGNAME=		${DISTNAME:S/_/-/:S/.//g}
-PKGREVISION=		19
+PKGREVISION=		20
 CATEGORIES=		net
 MASTER_SITES=		http://www.sixxs.net/archive/sixxs/aiccu/unix/
 

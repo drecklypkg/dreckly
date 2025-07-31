@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libvirt
 LIBVIRT_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libvirt+=	libvirt>=1.2.9nb27
-BUILDLINK_ABI_DEPENDS.libvirt?=	libvirt>=1.2.9nb55
+BUILDLINK_ABI_DEPENDS.libvirt?=	libvirt>=1.2.9nb56
 BUILDLINK_PKGSRCDIR.libvirt?=	../../sysutils/libvirt
 
 .include "../../devel/yajl/buildlink3.mk"

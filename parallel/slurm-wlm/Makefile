@@ -2,7 +2,7 @@
 
 DISTNAME=	slurm-19.05.5
 PKGNAME=	${DISTNAME:S/-/-wlm-/}
-PKGREVISION=	26
+PKGREVISION=	27
 CATEGORIES=	parallel
 MASTER_SITES=	http://download.schedmd.com/slurm/
 MASTER_SITES+=	http://www.schedmd.com/download/latest/

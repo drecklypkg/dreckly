@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	podcastdl-0.3.3
-PKGREVISION=	17
+PKGREVISION=	18
 CATEGORIES=	net
 MASTER_SITES=	http://files.bebik.net/podcastdl/ \
 		http://rodrigo.osorio.free.fr/freebsd/distfiles/

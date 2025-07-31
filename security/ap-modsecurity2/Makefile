@@ -2,7 +2,7 @@
 
 DISTNAME=	modsecurity-apache_2.7.7
 PKGNAME=	${APACHE_PKG_PREFIX}-${DISTNAME:S/apache_//}
-PKGREVISION=	38
+PKGREVISION=	39
 CATEGORIES=	www security
 MASTER_SITES=	https://www.modsecurity.org/tarball/${PKGVERSION_NOREV}/
 

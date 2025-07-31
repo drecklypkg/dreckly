@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	hwloc
 HWLOC_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.hwloc+=	hwloc>=1.4
-BUILDLINK_ABI_DEPENDS.hwloc?=	hwloc>=1.11.13nb12
+BUILDLINK_ABI_DEPENDS.hwloc?=	hwloc>=1.11.13nb13
 BUILDLINK_PKGSRCDIR.hwloc?=	../../parallel/hwloc
 
 .include "../../mk/bsd.fast.prefs.mk"

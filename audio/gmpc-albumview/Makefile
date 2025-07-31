@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.54 2024/11/17 07:15:32 wiz Exp $
 
 DISTNAME=	gmpc-albumview-11.8.16
-PKGREVISION=	34
+PKGREVISION=	35
 CATEGORIES=	audio
 MASTER_SITES=	https://download.sarine.nl/Programs/gmpc/11.8/
 

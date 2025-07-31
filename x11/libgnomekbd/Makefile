@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	libgnomekbd-3.6.0
-PKGREVISION=	28
+PKGREVISION=	29
 CATEGORIES=	x11
 MASTER_SITES=	${MASTER_SITE_GNOME:=sources/libgnomekbd/3.6/}
 EXTRACT_SUFX=	.tar.xz

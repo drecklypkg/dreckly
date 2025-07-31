@@ -2,7 +2,7 @@
 
 DISTNAME=	fbreader-sources-0.99.4
 PKGNAME=	${DISTNAME:S/-sources//}
-PKGREVISION=	69
+PKGREVISION=	70
 CATEGORIES=	misc
 MASTER_SITES=	http://www.fbreader.org/files/desktop/
 EXTRACT_SUFX=	.tgz

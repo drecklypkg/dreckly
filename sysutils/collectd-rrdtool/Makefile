@@ -4,7 +4,7 @@ COLLECTD_PACKAGE=	rrdtool
 COLLECTD_PLUGINS=	rrdtool rrdcached
 
 COMMENT=		Statistics collection daemon - rrdtool plugins
-PKGREVISION=		14
+PKGREVISION=		15
 
 .include "../../databases/rrdtool/buildlink3.mk"
 COLLECTD_LIB.rrd=	${BUILDLINK_PREFIX.rrdtool}

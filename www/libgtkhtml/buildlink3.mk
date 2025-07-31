@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libgtkhtml
 LIBGTKHTML_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libgtkhtml+=	libgtkhtml>=2.6.0
-BUILDLINK_ABI_DEPENDS.libgtkhtml+=	libgtkhtml>=2.6.3nb64
+BUILDLINK_ABI_DEPENDS.libgtkhtml+=	libgtkhtml>=2.6.3nb65
 BUILDLINK_PKGSRCDIR.libgtkhtml?=	../../www/libgtkhtml
 
 .include "../../textproc/libxml2/buildlink3.mk"

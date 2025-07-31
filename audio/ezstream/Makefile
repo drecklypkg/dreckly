@@ -2,7 +2,7 @@
 #
 
 DISTNAME=		ezstream-1.0.2
-PKGREVISION=		12
+PKGREVISION=		13
 CATEGORIES=		audio
 MASTER_SITES=		https://downloads.xiph.org/releases/ezstream/
 MASTER_SITES+=		https://ezstream.mrsserver.net/releases/

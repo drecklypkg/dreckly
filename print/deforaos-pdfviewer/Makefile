@@ -2,7 +2,7 @@
 
 DISTNAME=	PDFViewer-0.1.0
 PKGNAME=	deforaos-pdfviewer-0.1.0
-PKGREVISION=	32
+PKGREVISION=	33
 CATEGORIES=	print
 MASTER_SITES=	https://ftp.defora.org/pub/DeforaOS/Apps/Desktop/src/PDFViewer/
 

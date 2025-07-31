@@ -2,6 +2,7 @@
 
 R_PKGNAME=	proj4
 R_PKGVER=	1.0-14
+PKGREVISION=	1
 CATEGORIES=	geography
 
 MAINTAINER=	pkgsrc-users@NetBSD.org

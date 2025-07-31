@@ -3,7 +3,7 @@
 
 DISTNAME=		bk_edit-0.6.23
 PKGNAME=		${DISTNAME:S/_//}
-PKGREVISION=		16
+PKGREVISION=		17
 CATEGORIES=		www
 MASTER_SITES=		http://www.vakuumverpackt.de/nettools/bk_edit/
 

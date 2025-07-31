@@ -2,7 +2,7 @@
 
 DISTNAME=	rmagick-6.0.1
 PKGNAME=	${RUBY_PKGPREFIX}-${DISTNAME:S/rmagick/RMagick/}
-PKGREVISION=	8
+PKGREVISION=	9
 CATEGORIES=	graphics
 
 MAINTAINER=	pkgsrc-users@NetBSD.org

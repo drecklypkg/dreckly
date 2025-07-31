@@ -2,7 +2,7 @@
 
 DISTNAME=	resynthesizer-0.16
 PKGNAME=	gimp-${DISTNAME}
-PKGREVISION=	59
+PKGREVISION=	60
 CATEGORIES=	graphics
 MASTER_SITES=	http://www.logarithmic.net/pfh-files/resynthesizer/
 

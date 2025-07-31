@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	libopensync-plugin-syncml-0.22
-PKGREVISION=	38
+PKGREVISION=	39
 CATEGORIES=	comms
 ##MASTER_SITES=	http://www.opensync.org/download/releases/0.22/
 EXTRACT_SUFX=	.tar.bz2

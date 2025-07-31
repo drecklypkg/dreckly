@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	evolution
 EVOLUTION_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.evolution+=	evolution>=2.8.0
-BUILDLINK_ABI_DEPENDS.evolution+=	evolution>=3.34.1nb35
+BUILDLINK_ABI_DEPENDS.evolution+=	evolution>=3.34.1nb36
 BUILDLINK_PKGSRCDIR.evolution?=		../../mail/evolution
 
 .include "../../mail/evolution-data-server/buildlink3.mk"

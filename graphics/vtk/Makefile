@@ -2,7 +2,7 @@
 
 DISTNAME=	VTK-9.2.6
 PKGNAME=	${DISTNAME:tl}
-PKGREVISION=	13
+PKGREVISION=	14
 CATEGORIES=	graphics
 MASTER_SITES=	https://www.vtk.org/files/release/${PKGVERSION_NOREV:R}/
 

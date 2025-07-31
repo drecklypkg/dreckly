@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	centerim-4.22.10
-PKGREVISION=	46
+PKGREVISION=	47
 CATEGORIES=	chat
 MASTER_SITES=	https://transacid.de/centerim/releases/
 

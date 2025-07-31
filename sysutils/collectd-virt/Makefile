@@ -3,7 +3,7 @@
 COLLECTD_PACKAGE=	virt
 
 COMMENT=		Statistics collection daemon - virt plugin
-PKGREVISION=		15
+PKGREVISION=		16
 
 .include "../../sysutils/libvirt/buildlink3.mk"
 COLLECTD_LIB.virt=	${BUILDLINK_PREFIX.libvirt}

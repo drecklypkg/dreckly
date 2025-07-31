@@ -2,7 +2,7 @@
 
 DISTNAME=	qttools-everywhere-src-${QTVERSION}
 PKGNAME=	qt6-qttools-${QTVERSION}
-PKGREVISION=	3
+PKGREVISION=	4
 COMMENT=	Qt6 development tools
 CATEGORIES=	devel
 LICENSE=	gnu-lgpl-v3 OR gnu-gpl-v2 OR gnu-gpl-v3

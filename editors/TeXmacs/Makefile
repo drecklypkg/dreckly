@@ -4,7 +4,7 @@
 
 DISTNAME=		TeXmacs-2.1.2-src
 PKGNAME=		${DISTNAME:S/-src//}
-PKGREVISION=		8
+PKGREVISION=		9
 CATEGORIES=		editors
 MASTER_SITES=		ftp://ftp.texmacs.org/pub/TeXmacs/tmftp/source/
 MASTER_SITES+=		http://www.texmacs.org/Download/ftp/tmftp/source/

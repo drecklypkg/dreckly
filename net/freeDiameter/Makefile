@@ -2,7 +2,7 @@
 
 DISTNAME=	1.5.0
 PKGNAME=	freeDiameter-${DISTNAME}
-PKGREVISION=	19
+PKGREVISION=	20
 CATEGORIES=	net
 MASTER_SITES=	http://www.freediameter.net/hg/freeDiameter/archive/
 DIST_SUBDIR=	freeDiameter

@@ -2,7 +2,7 @@
 
 DISTNAME=	qt-creator-opensource-src-5.0.3
 PKGNAME=	${DISTNAME:S/qt-/qt/:S/-opensource-src//}
-PKGREVISION=	23
+PKGREVISION=	24
 CATEGORIES=	editors
 MASTER_SITES=	http://download.qt.io/official_releases/${PKGBASE}/${PKGVERSION_NOREV:R}/${PKGVERSION_NOREV}/
 MASTER_SITES+=	http://download.qt.io/archive/${PKGBASE}/${PKGVERSION_NOREV:R}/${PKGVERSION_NOREV}/

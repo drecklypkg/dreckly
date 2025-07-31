@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	gnunet
 GNUNET_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.gnunet+=	gnunet>=0.19.2
-BUILDLINK_ABI_DEPENDS.gnunet?=	gnunet>=0.21.1nb5
+BUILDLINK_ABI_DEPENDS.gnunet?=	gnunet>=0.21.1nb6
 BUILDLINK_PKGSRCDIR.gnunet?=	../../net/gnunet
 
 pkgbase:= gnunet

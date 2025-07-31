@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libsoup3
 LIBSOUP3_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libsoup3+=	libsoup3>=3.2.2
-BUILDLINK_ABI_DEPENDS.libsoup3+=	libsoup3>=3.4.4nb6
+BUILDLINK_ABI_DEPENDS.libsoup3+=	libsoup3>=3.4.5nb1
 BUILDLINK_PKGSRCDIR.libsoup3?=		../../net/libsoup3
 
 pkgbase := libsoup3

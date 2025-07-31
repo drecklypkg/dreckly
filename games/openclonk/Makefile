@@ -2,7 +2,7 @@
 
 DISTNAME=	openclonk-8.1-src
 PKGNAME=	${DISTNAME:S/-src//}
-PKGREVISION=	5
+PKGREVISION=	6
 CATEGORIES=	games
 MASTER_SITES=	http://www.openclonk.org/builds/release/${PKGVERSION_NOREV}/
 EXTRACT_SUFX=	.tar.bz2

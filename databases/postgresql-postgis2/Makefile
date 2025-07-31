@@ -7,7 +7,7 @@
 MAJOR=		3.5
 DISTNAME=	postgis-${MAJOR}.0
 PKGNAME=	postgresql${PGSQL_VERSION}-${DISTNAME}
-PKGREVISION=	6
+PKGREVISION=	7
 #PKGREVISION=	0
 CATEGORIES=	databases geography
 MASTER_SITES=	https://download.osgeo.org/postgis/source/

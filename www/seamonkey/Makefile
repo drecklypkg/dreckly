@@ -2,6 +2,7 @@
 
 DISTNAME=	seamonkey-${SM_VER}.source
 PKGNAME=	seamonkey-${SM_VER:S/b/beta/}
+PKGREVISION=	1
 SM_VER=		2.53.20
 CATEGORIES=	www
 MASTER_SITES=	https://archive.seamonkey-project.org/releases/${SM_VER}/source/

@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	SOPE-5.5.0
-PKGREVISION=	9
+PKGREVISION=	10
 CATEGORIES=	devel
 MASTER_SITES=	https://packages.inverse.ca/SOGo/sources/
 

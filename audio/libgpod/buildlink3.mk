@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libgpod
 LIBGPOD_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libgpod+=	libgpod>=0.3.2
-BUILDLINK_ABI_DEPENDS.libgpod+=	libgpod>=0.8.3nb19
+BUILDLINK_ABI_DEPENDS.libgpod+=	libgpod>=0.8.3nb20
 BUILDLINK_PKGSRCDIR.libgpod?=	../../audio/libgpod
 
 .include "../../devel/glib2/buildlink3.mk"

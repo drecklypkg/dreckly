@@ -3,7 +3,7 @@
 
 DISTNAME=		gtksourceview3-${VERSION}
 COMMENT=		Ruby binding of gtksourceview3
-PKGREVISION=		5
+PKGREVISION=		6
 CATEGORIES=		x11
 
 MAINTAINER=		pkgsrc-users@NetBSD.org

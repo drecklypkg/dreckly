@@ -2,7 +2,7 @@
 
 DISTNAME=	riemann-c-client-2.2.0
 PKGNAME=	${DISTNAME:S/c-//}
-PKGREVISION=	5
+PKGREVISION=	6
 CATEGORIES=	sysutils
 MASTER_SITES=	https://git.madhouse-project.org/algernon/riemann-c-client/archive/
 

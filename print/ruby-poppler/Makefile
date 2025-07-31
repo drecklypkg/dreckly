@@ -2,7 +2,7 @@
 
 DISTNAME=		poppler-${VERSION}
 COMMENT=		Ruby binding of poppler-glib
-PKGREVISION=		4
+PKGREVISION=		5
 CATEGORIES=		print
 
 MAINTAINER=		pkgsrc-users@NetBSD.org

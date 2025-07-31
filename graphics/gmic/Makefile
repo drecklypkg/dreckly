@@ -2,7 +2,7 @@
 
 DISTNAME=	gmic_3.2.3
 PKGNAME=	${DISTNAME:S/_/-/}
-PKGREVISION=	23
+PKGREVISION=	24
 CATEGORIES=	graphics
 MASTER_SITES=	https://gmic.eu/files/source/
 

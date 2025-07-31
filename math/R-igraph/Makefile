@@ -6,7 +6,7 @@ CATEGORIES+=	graphics
 
 MAINTAINER=	minskim@NetBSD.org
 COMMENT=	Network analysis and visualization
-PKGREVISION=	1
+PKGREVISION=	2
 LICENSE=	gnu-gpl-v2 OR gnu-gpl-v3
 
 DEPENDS+=	R-cli-[0-9]*:../../devel/R-cli

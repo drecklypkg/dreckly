@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	sword
 SWORD_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.sword+=	sword>=1.8.1
-BUILDLINK_ABI_DEPENDS.sword?=	sword>=1.9.0nb17
+BUILDLINK_ABI_DEPENDS.sword?=	sword>=1.9.0nb18
 BUILDLINK_PKGSRCDIR.sword?=	../../misc/sword
 
 .include "../../textproc/icu/buildlink3.mk"

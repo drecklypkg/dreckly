@@ -3,7 +3,7 @@
 
 PLUGIN_NAME=    rssyl
 
-PKGREVISION= 14
+PKGREVISION= 15
 .include "../../mail/claws-mail/plugins.mk"
 
 MAINTAINER=	pkgsrc-users@NetBSD.org

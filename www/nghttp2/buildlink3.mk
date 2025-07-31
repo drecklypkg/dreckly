@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	nghttp2
 NGHTTP2_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.nghttp2+=	nghttp2>=1.0.0
-BUILDLINK_ABI_DEPENDS.nghttp2+=	nghttp2>=1.64.0nb3
+BUILDLINK_ABI_DEPENDS.nghttp2+=	nghttp2>=1.64.0nb4
 BUILDLINK_PKGSRCDIR.nghttp2?=	../../www/nghttp2
 
 .include "../../textproc/libxml2/buildlink3.mk"

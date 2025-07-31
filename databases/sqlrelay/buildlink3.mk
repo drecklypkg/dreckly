@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	sqlrelay
 SQLRELAY_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.sqlrelay+=	sqlrelay>=1.0.0
-BUILDLINK_ABI_DEPENDS.sqlrelay+=	sqlrelay>=1.9.3nb9
+BUILDLINK_ABI_DEPENDS.sqlrelay+=	sqlrelay>=1.9.3nb10
 BUILDLINK_PKGSRCDIR.sqlrelay?=		../../databases/sqlrelay
 
 .include "../../devel/rudiments/buildlink3.mk"

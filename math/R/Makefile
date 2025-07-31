@@ -5,7 +5,7 @@
 # to avoid unnecessarily breaking macOS users.
 #
 DISTNAME=	R-4.4.2
-PKGREVISION=	2
+PKGREVISION=	3
 CATEGORIES=	math
 MASTER_SITES=	${MASTER_SITE_R_CRAN:=base/R-4/}
 

@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libgadu
 LIBGADU_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libgadu+=	libgadu>=1.12.2
-BUILDLINK_ABI_DEPENDS.libgadu?=	libgadu>=1.12.2nb32
+BUILDLINK_ABI_DEPENDS.libgadu?=	libgadu>=1.12.2nb33
 BUILDLINK_PKGSRCDIR.libgadu?=	../../chat/libgadu
 
 .include "../../devel/protobuf-c/buildlink3.mk"

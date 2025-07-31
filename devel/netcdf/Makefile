@@ -2,7 +2,7 @@
 
 DISTNAME=	netcdf-c-4.9.2
 PKGNAME=	${DISTNAME:S/-c-/-/}
-PKGREVISION=	7
+PKGREVISION=	8
 CATEGORIES=	devel
 MASTER_SITES=	https://downloads.unidata.ucar.edu/netcdf-c/4.9.2/
 

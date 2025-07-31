@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libxmlpp
 LIBXMLPP_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libxmlpp+=	libxml++>=2.10.0
-BUILDLINK_ABI_DEPENDS.libxmlpp+=	libxml++>=2.40.1nb19
+BUILDLINK_ABI_DEPENDS.libxmlpp+=	libxml++>=2.40.1nb20
 BUILDLINK_PKGSRCDIR.libxmlpp?=		../../textproc/libxml++
 
 .include "../../textproc/libxml2/buildlink3.mk"

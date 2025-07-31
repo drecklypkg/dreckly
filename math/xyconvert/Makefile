@@ -3,7 +3,7 @@
 .include "../../math/xylib/Makefile.common"
 
 PKGNAME=	${DISTNAME:S/lib/convert/g}
-PKGREVISION=	14
+PKGREVISION=	15
 COMMENT=	Converter for x-y (powder diffraction) data files
 BUILD_TARGET=	gui/xyconvert
 

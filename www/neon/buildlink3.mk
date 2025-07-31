@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	neon
 NEON_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.neon+=	neon>=0.24.4
-BUILDLINK_ABI_DEPENDS.neon+=	neon>=0.33.0nb5
+BUILDLINK_ABI_DEPENDS.neon+=	neon>=0.33.0nb6
 BUILDLINK_PKGSRCDIR.neon?=	../../www/neon
 
 pkgbase := neon

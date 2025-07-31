@@ -2,7 +2,7 @@
 
 EL_VER=		1.9.6.1
 PKGNAME=	eternal-lands-${EL_VER}
-PKGREVISION=	6
+PKGREVISION=	7
 CATEGORIES=	games
 
 # latest versions of everything available...

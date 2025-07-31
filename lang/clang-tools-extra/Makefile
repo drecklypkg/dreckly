@@ -2,7 +2,7 @@
 
 INSTALL_DIRS=	build/tools/extra
 
-PKGREVISION= 3
+PKGREVISION= 4
 .include "../../lang/clang/Makefile.common"
 
 PKGNAME=	${DISTNAME:S/clang/clang-tools-extra/:S/.src//}

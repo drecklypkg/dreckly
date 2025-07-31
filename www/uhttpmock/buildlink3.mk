@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	uhttpmock
 UHTTPMOCK_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.uhttpmock+=	uhttpmock>=0.4.0
-BUILDLINK_ABI_DEPENDS.uhttpmock+=	uhttpmock>=0.11.0nb3
+BUILDLINK_ABI_DEPENDS.uhttpmock+=	uhttpmock>=0.11.0nb4
 BUILDLINK_PKGSRCDIR.uhttpmock?=		../../www/uhttpmock
 
 .include "../../devel/glib2/buildlink3.mk"

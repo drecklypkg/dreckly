@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	im-ja-1.5
-PKGREVISION=	90
+PKGREVISION=	91
 CATEGORIES=	inputmethod japanese
 MASTER_SITES=	http://im-ja.sourceforge.net/
 

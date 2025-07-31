@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libxklavier
 LIBXKLAVIER_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libxklavier+=	libxklavier>=3.0
-BUILDLINK_ABI_DEPENDS.libxklavier+=	libxklavier>=5.4nb16
+BUILDLINK_ABI_DEPENDS.libxklavier+=	libxklavier>=5.4nb17
 BUILDLINK_PKGSRCDIR.libxklavier?=	../../x11/libxklavier
 
 .include "../../textproc/libxml2/buildlink3.mk"

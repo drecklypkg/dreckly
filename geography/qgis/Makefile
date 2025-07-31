@@ -4,6 +4,7 @@
 # to later branches, and instead discuss whether/how we want multiple
 # versions, or to only track one LTR branch.
 DISTNAME=	qgis-3.34.13
+PKGREVISION=	1
 CATEGORIES=	geography
 MASTER_SITES=	https://qgis.org/downloads/
 EXTRACT_SUFX=	.tar.bz2

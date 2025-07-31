@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libggz
 LIBGGZ_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libggz+=	libggz>=0.0.14.1
-BUILDLINK_ABI_DEPENDS.libggz+=	libggz>=0.0.14.1nb23
+BUILDLINK_ABI_DEPENDS.libggz+=	libggz>=0.0.14.1nb24
 BUILDLINK_PKGSRCDIR.libggz?=	../../games/libggz
 
 .include "../../security/gnutls/buildlink3.mk"

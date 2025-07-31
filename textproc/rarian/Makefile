@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	rarian-0.8.5
-PKGREVISION=	3
+PKGREVISION=	4
 CATEGORIES=	textproc
 MASTER_SITES=	https://rarian.freedesktop.org/Releases/
 MASTER_SITES+=	https://gitlab.freedesktop.org/rarian/rarian/-/releases/0.8.5/downloads/assets/

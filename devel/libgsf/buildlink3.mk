@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libgsf
 LIBGSF_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libgsf+=	libgsf>=1.13.3
-BUILDLINK_ABI_DEPENDS.libgsf+=	libgsf>=1.14.53nb3
+BUILDLINK_ABI_DEPENDS.libgsf+=	libgsf>=1.14.53nb4
 BUILDLINK_PKGSRCDIR.libgsf?=	../../devel/libgsf
 
 .include "../../archivers/bzip2/buildlink3.mk"

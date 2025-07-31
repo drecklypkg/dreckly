@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	xscreensaver
 XSCREENSAVER_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.xscreensaver+=	xscreensaver>=4.14
-BUILDLINK_ABI_DEPENDS.xscreensaver+=	xscreensaver>=6.08nb10
+BUILDLINK_ABI_DEPENDS.xscreensaver+=	xscreensaver>=6.08nb12
 BUILDLINK_PKGSRCDIR.xscreensaver?=	../../x11/xscreensaver
 
 .include "../../textproc/libxml2/buildlink3.mk"

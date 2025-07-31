@@ -2,7 +2,7 @@
 
 RSYSLOG_MOD=	omprog
 PKGNAME=	${DISTNAME:S/rsyslog/rsyslog-${RSYSLOG_MOD}/}
-PKGREVISION=	22
+PKGREVISION=	23
 
 DEPENDS+=	rsyslog>=${PKGVERSION_NOREV}:../../sysutils/rsyslog
 

@@ -2,7 +2,7 @@
 
 DISTNAME=	tracker-miners-3.0.1
 PKGNAME=	gnome-${DISTNAME}
-PKGREVISION=	38
+PKGREVISION=	39
 CATEGORIES=	sysutils gnome
 MASTER_SITES=	${MASTER_SITE_GNOME:=sources/tracker-miners/3.0/}
 EXTRACT_SUFX=	.tar.xz

@@ -3,7 +3,7 @@
 .include "../../inputmethod/input-pad/Makefile.common"
 
 PKGNAME=	${PYPKGPREFIX}-${DISTNAME}
-PKGREVISION=	37
+PKGREVISION=	38
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 COMMENT=	Python wrapper for Input Pad

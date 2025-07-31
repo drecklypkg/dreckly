@@ -3,7 +3,7 @@
 
 DISTNAME=		rsvg2-${VERSION}
 COMMENT=		Ruby binding of librsvg
-PKGREVISION=		3
+PKGREVISION=		4
 CATEGORIES=		graphics
 
 MAINTAINER=		pkgsrc-users@NetBSD.org

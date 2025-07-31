@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	hfstospell
 HFSTOSPELL_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.hfstospell+=	hfstospell>=0.5.1
-BUILDLINK_ABI_DEPENDS.hfstospell?=	hfstospell>=0.5.4nb4
+BUILDLINK_ABI_DEPENDS.hfstospell?=	hfstospell>=0.5.4nb5
 BUILDLINK_PKGSRCDIR.hfstospell?=	../../textproc/hfstospell
 
 .include "../../textproc/icu/buildlink3.mk"

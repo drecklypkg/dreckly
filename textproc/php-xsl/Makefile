@@ -3,7 +3,7 @@
 MODNAME=		xsl
 CATEGORIES+=		textproc
 COMMENT=		PHP extension for XSLT functions
-PKGREVISION=		12
+PKGREVISION=		13
 
 CONFLICTS=	php-xsl-[0-9]*
 

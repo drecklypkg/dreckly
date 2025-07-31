@@ -6,7 +6,7 @@ DISTNAME=	netatalk-4-0-6
 
 PKGVER=		${GITHUB_TAG:C/^.+netatalk-//:C/-/./g}
 PKGNAME=	${DISTNAME:C/-[0-9].*$//}-${PKGVER}
-PKGREVISION=	3
+PKGREVISION=	4
 CATEGORIES=	net
 MASTER_SITES=	${MASTER_SITE_GITHUB:=Netatalk/}
 

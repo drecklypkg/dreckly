@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	curl
 CURL_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.curl+=	curl>=7.12.3
-BUILDLINK_ABI_DEPENDS.curl+=	curl>=8.11.0nb2
+BUILDLINK_ABI_DEPENDS.curl+=	curl>=8.12.0nb1
 BUILDLINK_PKGSRCDIR.curl?=	../../www/curl
 
 pkgbase:= curl

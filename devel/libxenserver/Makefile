@@ -4,7 +4,7 @@
 VERSION=	6.2.0
 DISTNAME=	XenServer-${VERSION}-SDK
 PKGNAME=	libxenserver-${VERSION}
-PKGREVISION=	36
+PKGREVISION=	37
 CATEGORIES=	devel
 MASTER_SITES=	http://downloadns.citrix.com.edgesuite.net/7289/
 

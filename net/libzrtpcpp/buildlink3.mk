@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libzrtpcpp
 LIBZRTPCPP_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libzrtpcpp+=	libzrtpcpp>=4.4.0
-BUILDLINK_ABI_DEPENDS.libzrtpcpp?=	libzrtpcpp>=4.7.0nb10
+BUILDLINK_ABI_DEPENDS.libzrtpcpp?=	libzrtpcpp>=4.7.0nb11
 BUILDLINK_PKGSRCDIR.libzrtpcpp?=	../../net/libzrtpcpp
 
 pkgbase := libzrtpcpp

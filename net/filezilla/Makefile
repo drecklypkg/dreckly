@@ -3,7 +3,7 @@
 VERSION=	3.67.0
 DISTNAME=	FileZilla_${VERSION}_src
 PKGNAME=	filezilla-${VERSION}
-PKGREVISION=	7
+PKGREVISION=	8
 CATEGORIES=	net x11
 MASTER_SITES=	https://download.filezilla-project.org/client/
 EXTRACT_SUFX=	.tar.xz

@@ -2,7 +2,7 @@
 
 DISTNAME=	ruby-xslt-0.9.10
 PKGNAME=	${RUBY_PKGPREFIX}-${DISTNAME:S/ruby-//}
-PKGREVISION=	12
+PKGREVISION=	13
 CATEGORIES=	textproc
 
 MAINTAINER=	pkgsrc-users@NetBSD.org

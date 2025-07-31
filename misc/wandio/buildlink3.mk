@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	wandio
 WANDIO_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.wandio+=	wandio>=4.2.2
-BUILDLINK_ABI_DEPENDS.wandio?=	wandio>=4.2.2nb17
+BUILDLINK_ABI_DEPENDS.wandio?=	wandio>=4.2.2nb18
 BUILDLINK_PKGSRCDIR.wandio?=	../../misc/wandio
 
 .include "../../archivers/bzip2/buildlink3.mk"

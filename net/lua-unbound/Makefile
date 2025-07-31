@@ -2,7 +2,7 @@
 
 DISTNAME=	luaunbound-1.0.0
 PKGNAME=	${LUA_PKGPREFIX}-${DISTNAME:S/lua//}
-PKGREVISION=	7
+PKGREVISION=	8
 CATEGORIES=	net
 MASTER_SITES=	https://code.zash.se/dl/luaunbound/
 

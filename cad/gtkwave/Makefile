@@ -2,7 +2,7 @@
 #
 
 DISTNAME=		gtkwave-3.3.121
-PKGREVISION=		5
+PKGREVISION=		6
 CATEGORIES=		cad
 MASTER_SITES=		${MASTER_SITE_SOURCEFORGE:=gtkwave/}
 #MASTER_SITES=		http://home.nc.rr.com/gtkwave/

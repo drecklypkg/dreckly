@@ -2,7 +2,7 @@
 #
 
 DISTNAME=		snort-2.9.16.1
-PKGREVISION=		10
+PKGREVISION=		11
 CATEGORIES=		net security
 MASTER_SITES=		https://www.snort.org/downloads/archive/snort/
 

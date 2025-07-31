@@ -3,7 +3,7 @@
 
 DISTNAME=		ices-${ICES_VERSION}
 PKGNAME=		ices-mp3-${ICES_VERSION}
-PKGREVISION=		39
+PKGREVISION=		40
 ICES_VERSION=		0.4
 CATEGORIES=		audio
 MASTER_SITES=		https://svn.xiph.org/releases/ices/

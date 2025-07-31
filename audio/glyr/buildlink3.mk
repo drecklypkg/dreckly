@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	glyr
 GLYR_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.glyr+=	glyr>=1.0.10nb22
-BUILDLINK_ABI_DEPENDS.glyr?=	glyr>=1.0.10nb41
+BUILDLINK_ABI_DEPENDS.glyr?=	glyr>=1.0.10nb42
 BUILDLINK_PKGSRCDIR.glyr?=	../../audio/glyr
 
 .include "../../databases/sqlite3/buildlink3.mk"

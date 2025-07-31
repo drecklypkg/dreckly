@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	efreet
 EFREET_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.efreet+=	efreet>=1.7.10
-BUILDLINK_ABI_DEPENDS.efreet?=	efreet>=1.7.10nb17
+BUILDLINK_ABI_DEPENDS.efreet?=	efreet>=1.7.10nb18
 BUILDLINK_PKGSRCDIR.efreet?=	../../sysutils/efreet
 
 .include        "../../devel/ecore/buildlink3.mk"

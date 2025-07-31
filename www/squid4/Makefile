@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.35 2024/11/14 22:22:11 wiz Exp $
 
 DISTNAME=	squid-4.17
-PKGREVISION=	13
+PKGREVISION=	14
 CATEGORIES=	www
 MASTER_SITES=	http://www.squid-cache.org/Versions/v4/
 EXTRACT_SUFX=	.tar.xz

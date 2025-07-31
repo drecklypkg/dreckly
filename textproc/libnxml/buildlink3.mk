@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libnxml
 LIBNXML_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libnxml+=	libnxml>=0.18.3
-BUILDLINK_ABI_DEPENDS.libnxml+=	libnxml>=0.18.3nb34
+BUILDLINK_ABI_DEPENDS.libnxml+=	libnxml>=0.18.3nb35
 BUILDLINK_PKGSRCDIR.libnxml?=	../../textproc/libnxml
 
 

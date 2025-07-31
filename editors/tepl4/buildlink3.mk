@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	tepl4
 TEPL4_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.tepl4+=	tepl4>=4.4.0
-BUILDLINK_ABI_DEPENDS.tepl4?=	tepl4>=4.4.0nb22
+BUILDLINK_ABI_DEPENDS.tepl4?=	tepl4>=4.4.0nb23
 BUILDLINK_PKGSRCDIR.tepl4?=	../../editors/tepl4
 
 .include "../../devel/amtk/buildlink3.mk"

@@ -2,7 +2,7 @@
 
 DISTNAME=	x2goclient-${PKGVER}
 PKGVER=		4.1.2.3
-PKGREVISION=	6
+PKGREVISION=	7
 CATEGORIES=	x11 net
 MASTER_SITES=	http://code.x2go.org/releases/source/x2goclient/
 

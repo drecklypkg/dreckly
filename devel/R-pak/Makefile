@@ -2,7 +2,7 @@
 
 R_PKGNAME=	pak
 R_PKGVER=	0.8.0
-PKGREVISION=	3
+PKGREVISION=	4
 CATEGORIES=	devel
 
 MAINTAINER=	pkgsrc-users@NetBSD.org

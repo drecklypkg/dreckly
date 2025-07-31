@@ -5,7 +5,7 @@ R_PKGVER=	2.9-2
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 COMMENT=	Interface to NetCDF datasets
-PKGREVISION=	3
+PKGREVISION=	4
 LICENSE=	gnu-gpl-v2 OR gnu-gpl-v3	# OR file LICENSE
 
 TEST_DEPENDS+=	R-bit64-[0-9]*:../../devel/R-bit64

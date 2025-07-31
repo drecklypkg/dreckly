@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libgda
 LIBGDA_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libgda+=	libgda>=2.99.2
-BUILDLINK_ABI_DEPENDS.libgda+=	libgda>=5.2.9nb15
+BUILDLINK_ABI_DEPENDS.libgda+=	libgda>=5.2.9nb16
 BUILDLINK_PKGSRCDIR.libgda?=	../../databases/libgda
 
 .include "../../mk/bsd.fast.prefs.mk"

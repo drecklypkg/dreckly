@@ -3,7 +3,7 @@
 
 DISTNAME=	shibboleth-sp-3.1.0
 PKGREVISION=
-PKGREVISION=	18
+PKGREVISION=	19
 CATEGORIES=	www
 MASTER_SITES=	http://shibboleth.net/downloads/service-provider/${PKGVERSION_NOREV}/
 

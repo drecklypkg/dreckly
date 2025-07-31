@@ -4,7 +4,7 @@
 # We can't omit PKGNAME here to handle PKG_OPTIONS.
 #
 PKGNAME=		php-${PHP_VERSION:S/RC/rc/}
-PKGREVISION=		9
+PKGREVISION=		10
 
 COMMENT=		PHP Hypertext Preprocessor version 7.4
 LICENSE=		php

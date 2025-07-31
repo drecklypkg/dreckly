@@ -2,7 +2,7 @@
 
 DISTNAME=	ghostscript-${GS_VERSION}
 PKGNAME=	${DISTNAME:S/ghostscript/ghostscript-agpl/}
-PKGREVISION=	3
+PKGREVISION=	4
 CATEGORIES=	print
 MASTER_SITES=	${MASTER_SITE_GITHUB:=ArtifexSoftware/}
 GITHUB_PROJECT=	ghostpdl-downloads

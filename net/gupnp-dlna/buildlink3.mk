@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	gupnp-dlna
 GUPNP_DLNA_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.gupnp-dlna+=	gupnp-dlna>=0.12
-BUILDLINK_ABI_DEPENDS.gupnp-dlna+=	gupnp-dlna>=0.12.0nb6
+BUILDLINK_ABI_DEPENDS.gupnp-dlna+=	gupnp-dlna>=0.12.0nb7
 BUILDLINK_PKGSRCDIR.gupnp-dlna?=	../../net/gupnp-dlna
 
 .include "../../net/gupnp/buildlink3.mk"

@@ -3,7 +3,7 @@
 
 DISTNAME=	gkrellm_snmp-0.21
 PKGNAME=	${DISTNAME:S/_/-/}
-PKGREVISION=	61
+PKGREVISION=	62
 CATEGORIES=	net
 MASTER_SITES=	http://triq.net/gkrellm/
 

@@ -7,7 +7,7 @@ CATEGORIES+=		net
 
 MAINTAINER=		pkgsrc-users@NetBSD.org
 COMMENT=		PHP extension for YAZ
-PKGREVISION=		11
+PKGREVISION=		12
 LICENSE=		modified-bsd
 
 PHP_VERSIONS_ACCEPTED=	56 74

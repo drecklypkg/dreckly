@@ -2,7 +2,7 @@
 
 DISTNAME=	fuse-1.6.0
 PKGNAME=	${DISTNAME:S/fuse/fuse-emulator/}
-PKGREVISION=	22
+PKGREVISION=	23
 CATEGORIES=	emulators
 MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=fuse-emulator/}
 

@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	ocaml-lablgtk3
 OCAML_LABLGTK3_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.ocaml-lablgtk3+=	ocaml-lablgtk3>=3.0beta8
-BUILDLINK_ABI_DEPENDS.ocaml-lablgtk3+=	ocaml-lablgtk3>=3.1.3nb16
+BUILDLINK_ABI_DEPENDS.ocaml-lablgtk3+=	ocaml-lablgtk3>=3.1.3nb19
 BUILDLINK_PKGSRCDIR.ocaml-lablgtk3?=	../../x11/ocaml-lablgtk3
 
 # options must be exposed if and only if we built with them

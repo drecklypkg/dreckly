@@ -2,7 +2,7 @@
 
 DISTNAME=		ganglia-3.7.2
 PKGNAME=		ganglia-monitor-core-3.7.2
-PKGREVISION=		32
+PKGREVISION=		33
 CATEGORIES=		parallel net
 MASTER_SITES=		${MASTER_SITE_SOURCEFORGE:=ganglia/}
 

@@ -2,7 +2,7 @@
 
 VERSION=	1.7.3
 DISTNAME=	libgeotiff-${VERSION}${RC}
-PKGREVISION=	5
+PKGREVISION=	6
 CATEGORIES=	geography
 MASTER_SITES=	https://download.osgeo.org/geotiff/libgeotiff/
 

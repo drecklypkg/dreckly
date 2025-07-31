@@ -3,7 +3,7 @@
 MODNAME=		wddx
 CATEGORIES+=		textproc
 COMMENT=		PHP extension for WDDX support
-PKGREVISION=		12
+PKGREVISION=		13
 
 CONFLICTS=	php-wddx-[0-9]*
 

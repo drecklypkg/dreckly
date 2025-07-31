@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	SOPE-2.3.23
-PKGREVISION=	22
+PKGREVISION=	23
 CATEGORIES=	devel
 MASTER_SITES=	http://www.sogo.nu/files/downloads/SOGo/Sources/
 

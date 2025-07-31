@@ -7,7 +7,7 @@ BUILDLINK_TREE+=	input-pad
 INPUT_PAD_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.input-pad+=	input-pad>=1.0.2
-BUILDLINK_ABI_DEPENDS.input-pad?=	input-pad>=1.0.3nb37
+BUILDLINK_ABI_DEPENDS.input-pad?=	input-pad>=1.0.3nb38
 BUILDLINK_PKGSRCDIR.input-pad?=		../../inputmethod/input-pad
 
 .include "../../devel/gettext-lib/buildlink3.mk"

@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	augeas
 AUGEAS_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.augeas+=	augeas>=1.3.0
-BUILDLINK_ABI_DEPENDS.augeas?=	augeas>=1.12.0nb12
+BUILDLINK_ABI_DEPENDS.augeas?=	augeas>=1.12.0nb13
 BUILDLINK_PKGSRCDIR.augeas?=	../../sysutils/augeas
 
 .include "../../textproc/libxml2/buildlink3.mk"

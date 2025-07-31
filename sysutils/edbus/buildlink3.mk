@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	edbus
 EDBUS_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.edbus+=	edbus>=1.7.10
-BUILDLINK_ABI_DEPENDS.edbus?=	edbus>=1.7.10nb17
+BUILDLINK_ABI_DEPENDS.edbus?=	edbus>=1.7.10nb18
 BUILDLINK_PKGSRCDIR.edbus?=	../../sysutils/edbus
 
 .include "../../devel/ecore/buildlink3.mk"

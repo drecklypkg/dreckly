@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libbluray
 LIBBLURAY_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libbluray+=	libbluray>=0.8.1
-BUILDLINK_ABI_DEPENDS.libbluray?=	libbluray>=1.3.4nb8
+BUILDLINK_ABI_DEPENDS.libbluray?=	libbluray>=1.3.4nb9
 BUILDLINK_PKGSRCDIR.libbluray?=		../../multimedia/libbluray
 
 .include "../../graphics/freetype2/buildlink3.mk"

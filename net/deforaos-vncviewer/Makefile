@@ -2,7 +2,7 @@
 
 DISTNAME=	VNCViewer-0.1.0
 PKGNAME=	deforaos-vncviewer-0.1.0
-PKGREVISION=	27
+PKGREVISION=	28
 CATEGORIES=	net
 MASTER_SITES=	https://ftp.defora.org/pub/DeforaOS/Apps/Desktop/src/VNCViewer/
 

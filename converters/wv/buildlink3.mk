@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	wv
 WV_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.wv+=	wv>=1.0.0
-BUILDLINK_ABI_DEPENDS.wv+=	wv>=1.2.9nb30
+BUILDLINK_ABI_DEPENDS.wv+=	wv>=1.2.9nb31
 BUILDLINK_PKGSRCDIR.wv?=	../../converters/wv
 
 .include "../../converters/libiconv/buildlink3.mk"

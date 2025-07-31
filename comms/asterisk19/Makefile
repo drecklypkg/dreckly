@@ -6,7 +6,7 @@
 #       Also look in ${WRKSRC}/third-party/versions.mak for pjproject
 
 DISTNAME=	asterisk-19.8.1
-PKGREVISION=	6
+PKGREVISION=	7
 CATEGORIES=	comms net audio
 MASTER_SITES=	https://downloads.asterisk.org/pub/telephony/asterisk/
 MASTER_SITES+=	https://downloads.asterisk.org/pub/telephony/asterisk/old-releases/

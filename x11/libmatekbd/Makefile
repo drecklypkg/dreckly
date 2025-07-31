@@ -1,6 +1,6 @@
 # $NetBSD: Makefile,v 1.46 2024/11/17 07:16:57 wiz Exp $
 
-PKGREVISION= 12
+PKGREVISION= 13
 .include "../../meta-pkgs/mate/Makefile.common"
 
 DISTNAME=	libmatekbd-${VERSION:R}.1

@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	libgtkhtml-2.6.3
-PKGREVISION=	64
+PKGREVISION=	65
 CATEGORIES=	www devel gnome
 MASTER_SITES=	${MASTER_SITE_GNOME:=sources/libgtkhtml/2.6/}
 EXTRACT_SUFX=	.tar.bz2

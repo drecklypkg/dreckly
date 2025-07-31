@@ -3,7 +3,7 @@
 DISTNAME=	v4.5.0
 DIST_SUBDIR=	imv
 PKGNAME=	imv-${DISTNAME:S/^v//g}
-PKGREVISION=	4
+PKGREVISION=	5
 CATEGORIES=	graphics
 MASTER_SITES=	https://git.sr.ht/~exec64/imv/archive/
 

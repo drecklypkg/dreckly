@@ -3,7 +3,7 @@
 
 DISTNAME=	konoha-1.0.0-952
 PKGNAME=	konoha-1.0.0.952
-PKGREVISION=	56
+PKGREVISION=	57
 CATEGORIES=	lang
 MASTER_SITES=	http://konoha.googlecode.com/files/
 

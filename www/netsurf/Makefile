@@ -2,7 +2,7 @@
 
 DISTNAME=	netsurf-all-3.11
 PKGNAME=	${DISTNAME:S/-all//}
-PKGREVISION=	27
+PKGREVISION=	28
 CATEGORIES=	www
 MASTER_SITES=	https://download.netsurf-browser.org/netsurf/releases/source-full/
 

@@ -5,7 +5,7 @@ DISTNAME=	pidgin-otr-${VERSION}
 # This is present to cope with release candidates where the names do
 # not match (e.g., DISTNAME has rc3, unpack directory doesn't).
 # PKGNAME= pidgin-otr-${VERSION}
-PKGREVISION=	41
+PKGREVISION=	42
 CATEGORIES=	chat security
 MASTER_SITES=	http://www.cypherpunks.ca/otr/
 

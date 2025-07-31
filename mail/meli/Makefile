@@ -2,6 +2,7 @@
 
 DISTNAME=	v0.8.10
 PKGNAME=	${DISTNAME:S|^v|meli-|}
+PKGREVISION=	1
 CATEGORIES=	mail news
 DIST_SUBDIR=	${PKGNAME_NOREV}
 MASTER_SITES=	https://git.meli-email.org/meli/meli/archive/

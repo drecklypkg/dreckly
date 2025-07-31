@@ -2,7 +2,7 @@
 
 .include "Makefile.common"
 
-PKGREVISION=	1
+PKGREVISION=	2
 CATEGORIES=	devel
 
 MAINTAINER=	pkgsrc-users@NetBSD.org

@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libcroco
 LIBCROCO_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libcroco+=	libcroco>=0.6.0
-BUILDLINK_ABI_DEPENDS.libcroco+=	libcroco>=0.6.13nb13
+BUILDLINK_ABI_DEPENDS.libcroco+=	libcroco>=0.6.13nb14
 BUILDLINK_PKGSRCDIR.libcroco?=		../../textproc/libcroco
 
 .include "../../devel/glib2/buildlink3.mk"

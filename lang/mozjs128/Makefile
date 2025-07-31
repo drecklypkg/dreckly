@@ -3,7 +3,7 @@
 MOZVER=		128.1.0esr
 DISTNAME=	firefox-${MOZVER}.source
 PKGNAME=	mozjs128-${MOZVER:S/esr//}
-PKGREVISION=	3
+PKGREVISION=	4
 CATEGORIES=	lang
 MASTER_SITES=	${MASTER_SITE_MOZILLA:=firefox/releases/${MOZVER}/source/}
 EXTRACT_SUFX=	.tar.xz

@@ -2,7 +2,7 @@
 
 R_PKGNAME=	rgdal
 R_PKGVER=	1.6-7
-PKGREVISION=	12
+PKGREVISION=	13
 CATEGORIES=	geography
 
 MAINTAINER=	pkgsrc-users@NetBSD.org

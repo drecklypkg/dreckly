@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.45 2024/11/19 20:05:39 nros Exp $
 
 DISTNAME=	lightspark-0.8.5
-PKGREVISION=	25
+PKGREVISION=	26
 CATEGORIES=	multimedia
 MASTER_SITES=	${MASTER_SITE_GITHUB:=lightspark/}
 

@@ -2,7 +2,7 @@
 
 DISTNAME=	Surfer-0.3.1
 PKGNAME=	deforaos-surfer-0.3.1
-PKGREVISION=	17
+PKGREVISION=	18
 CATEGORIES=	www
 MASTER_SITES=	https://ftp.defora.org/pub/DeforaOS/Apps/Desktop/src/Surfer/
 

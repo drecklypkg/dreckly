@@ -2,7 +2,7 @@
 
 DISTNAME=	mozjs78_78.15.0.orig
 PKGNAME=	${DISTNAME:S/_/-/:S/.orig//}
-PKGREVISION=	12
+PKGREVISION=	13
 CATEGORIES=	lang
 MASTER_SITES=	http://deb.debian.org/debian/pool/main/m/mozjs78/
 EXTRACT_SUFX=	.tar.xz

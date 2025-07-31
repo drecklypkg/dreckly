@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	poppler
 POPPLER_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.poppler+=	poppler>=0.5.1
-BUILDLINK_ABI_DEPENDS.poppler+=	poppler>=24.10.0nb3
+BUILDLINK_ABI_DEPENDS.poppler+=	poppler>=24.10.0nb4
 BUILDLINK_PKGSRCDIR.poppler?=	../../print/poppler
 
 USE_CXX_FEATURES+=	c++20

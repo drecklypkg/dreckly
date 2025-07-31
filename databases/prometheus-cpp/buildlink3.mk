@@ -10,7 +10,7 @@ USE_CXX_FEATURES+=		c++14
 BUILDLINK_DEPMETHOD.prometheus-cpp?=	build
 
 BUILDLINK_API_DEPENDS.prometheus-cpp+=	prometheus-cpp>=1.1.0
-BUILDLINK_ABI_DEPENDS.prometheus-cpp?=	prometheus-cpp>=1.1.0nb8
+BUILDLINK_ABI_DEPENDS.prometheus-cpp?=	prometheus-cpp>=1.1.0nb9
 BUILDLINK_PKGSRCDIR.prometheus-cpp?=	../../databases/prometheus-cpp
 
 .include "../../devel/zlib/buildlink3.mk"

@@ -2,7 +2,7 @@
 
 DISTNAME=	ghostscript-${GS_VERSION}
 PKGNAME=	${DISTNAME:S/ghostscript/ghostscript-gpl/}
-PKGREVISION=	56
+PKGREVISION=	57
 CATEGORIES=	print
 MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=ghostscript/}
 MASTER_SITES+=	https://ghostscript.com/releases/

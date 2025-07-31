@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	kdevelop-${KAPPSVER}
-PKGREVISION=	6
+PKGREVISION=	7
 CATEGORIES=	devel
 
 HOMEPAGE=	https://www.kdevelop.org/

@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	openbox
 OPENBOX_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.openbox+=	openbox>=3.5
-BUILDLINK_ABI_DEPENDS.openbox?=	openbox>=3.6.1nb35
+BUILDLINK_ABI_DEPENDS.openbox?=	openbox>=3.6.1nb36
 BUILDLINK_PKGSRCDIR.openbox?=	../../wm/openbox
 
 pkgbase := openbox

@@ -2,7 +2,7 @@
 
 DISTNAME=	mongodb-src-r6.0.13
 PKGNAME=	${DISTNAME:S/src-r//}
-PKGREVISION=	6
+PKGREVISION=	7
 CATEGORIES=	databases
 MASTER_SITES=	http://fastdl.mongodb.org/src/
 

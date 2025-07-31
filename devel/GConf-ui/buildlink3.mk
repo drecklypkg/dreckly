@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	GConf-ui
 GCONF_UI_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.GConf-ui+=	GConf-ui>=2.8.0.1
-BUILDLINK_ABI_DEPENDS.GConf-ui+=	GConf-ui>=3.2.3nb31
+BUILDLINK_ABI_DEPENDS.GConf-ui+=	GConf-ui>=3.2.3nb32
 BUILDLINK_PKGSRCDIR.GConf-ui?=		../../devel/GConf-ui
 
 .include "../../devel/GConf/buildlink3.mk"

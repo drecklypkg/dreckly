@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	lldb
 LLDB_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.lldb+=	lldb>=18.0.0
-BUILDLINK_ABI_DEPENDS.lldb+=	lldb>=18.1.8nb3
+BUILDLINK_ABI_DEPENDS.lldb+=	lldb>=18.1.8nb4
 BUILDLINK_PKGSRCDIR.lldb?=	../../devel/lldb
 
 .include "../../devel/zlib/buildlink3.mk"

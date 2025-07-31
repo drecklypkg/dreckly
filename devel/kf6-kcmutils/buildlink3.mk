@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	kf6-kcmutils
 KF6_KCMUTILS_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.kf6-kcmutils+=	kf6-kcmutils>=6.2.0
-BUILDLINK_ABI_DEPENDS.kf6-kcmutils?=	kf6-kcmutils>=6.2.0nb7
+BUILDLINK_ABI_DEPENDS.kf6-kcmutils?=	kf6-kcmutils>=6.8.0nb1
 BUILDLINK_PKGSRCDIR.kf6-kcmutils?=	../../devel/kf6-kcmutils
 
 .include "../../devel/kf6-kcoreaddons/buildlink3.mk"

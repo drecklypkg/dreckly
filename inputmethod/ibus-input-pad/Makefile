@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	ibus-input-pad-1.4.2
-PKGREVISION=	37
+PKGREVISION=	38
 CATEGORIES=	inputmethod
 MASTER_SITES=	http://input-pad.googlecode.com/files/
 

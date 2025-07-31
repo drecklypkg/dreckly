@@ -2,7 +2,7 @@
 
 DISTNAME=	frama-c-25.0-Manganese
 PKGNAME=	${DISTNAME:S/-Manganese//}
-PKGREVISION=	18
+PKGREVISION=	19
 CATEGORIES=	devel
 MASTER_SITES=	https://frama-c.com/download/
 

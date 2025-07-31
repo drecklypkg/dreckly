@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	spdylay
 SPDYLAY_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.spdylay+=	spdylay>=1.3.2
-BUILDLINK_ABI_DEPENDS.spdylay+=	spdylay>=1.4.0nb14
+BUILDLINK_ABI_DEPENDS.spdylay+=	spdylay>=1.4.0nb15
 BUILDLINK_PKGSRCDIR.spdylay?=	../../www/spdylay
 
 .include "../../devel/libevent/buildlink3.mk"

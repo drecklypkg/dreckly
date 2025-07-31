@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libgweather
 LIBGWEATHER_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libgweather+=	libgweather>=2.22.0
-BUILDLINK_ABI_DEPENDS.libgweather+=	libgweather>=40.0nb27
+BUILDLINK_ABI_DEPENDS.libgweather+=	libgweather>=40.0nb28
 BUILDLINK_PKGSRCDIR.libgweather?=	../../devel/libgweather
 
 .include "../../geography/geocode-glib/buildlink3.mk"

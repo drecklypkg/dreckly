@@ -2,7 +2,7 @@
 
 DISTNAME=	netatalk-2.3.2
 PKGNAME=	${DISTNAME:C/-/22-/}
-PKGREVISION=	5
+PKGREVISION=	6
 CATEGORIES=	net print
 MASTER_SITES=	${MASTER_SITE_GITHUB:=Netatalk/}Netatalk/releases/download/${DISTNAME:C/\./-/g}/
 EXTRACT_SUFX=	.tar.xz

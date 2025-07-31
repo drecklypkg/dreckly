@@ -4,7 +4,7 @@
 # python version too early and clashes with PYTHON_VERSIONS_INCOMPATIBLE
 # from libpeas bl3, so we include it early to ensure a valid version is
 # chosen.  This is not ideal, please fix it properly at some point.
-PKGREVISION= 13
+PKGREVISION= 14
 .include "../../devel/libpeas/buildlink3.mk"
 .include "../../meta-pkgs/mate/Makefile.common"
 

@@ -2,7 +2,7 @@
 
 PKGNAME=		koverartist-0.7.6
 DISTNAME=		38195-koverartist_0.7.6.orig
-PKGREVISION=		75
+PKGREVISION=		76
 CATEGORIES=		graphics kde
 MASTER_SITES=		http://kde-apps.org/CONTENT/content-files/
 EXTRACT_SUFX=		.tar.bz2

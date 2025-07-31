@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	qalculate
 QALCULATE_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.qalculate+=	qalculate>=0.8.2
-BUILDLINK_ABI_DEPENDS.qalculate+=	qalculate>=5.1.1nb3
+BUILDLINK_ABI_DEPENDS.qalculate+=	qalculate>=5.1.1nb4
 BUILDLINK_PKGSRCDIR.qalculate?=		../../math/qalculate
 
 .include "../../math/mpfr/buildlink3.mk"

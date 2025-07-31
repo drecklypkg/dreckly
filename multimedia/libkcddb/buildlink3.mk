@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libkcddb
 LIBKCDDB_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libkcddb+=	libkcddb>=19.08.3
-BUILDLINK_ABI_DEPENDS.libkcddb?=	libkcddb>=23.08.4nb7
+BUILDLINK_ABI_DEPENDS.libkcddb?=	libkcddb>=23.08.4nb8
 BUILDLINK_PKGSRCDIR.libkcddb?=	../../multimedia/libkcddb
 
 .include "../../audio/libmusicbrainz5/buildlink3.mk"

@@ -2,6 +2,7 @@
 
 R_PKGNAME=	curl
 R_PKGVER=	6.0.1
+PKGREVISION=	1
 CATEGORIES=	www
 
 MAINTAINER=	pkgsrc-users@NetBSD.org

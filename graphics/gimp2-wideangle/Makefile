@@ -2,7 +2,7 @@
 
 DISTNAME=	wideangle
 PKGNAME=	gimp2-wideangle-1.0.10
-PKGREVISION=	26
+PKGREVISION=	27
 CATEGORIES=	graphics
 MASTER_SITES=	http://members.ozemail.com.au/~hodsond/
 EXTRACT_SUFX=	.c

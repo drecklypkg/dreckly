@@ -2,7 +2,7 @@
 #
 
 DISTNAME=		libredwg-0.12.4
-PKGREVISION=		9
+PKGREVISION=		10
 CATEGORIES=		cad
 MASTER_SITES=		${MASTER_SITE_GNU:=libredwg/}
 EXTRACT_SUFX=		.tar.xz

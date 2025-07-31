@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	pcl
 PCL_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.pcl+=	pcl>=1.10.0
-BUILDLINK_ABI_DEPENDS.pcl+=	pcl>=1.14.1nb9
+BUILDLINK_ABI_DEPENDS.pcl+=	pcl>=1.14.1nb10
 BUILDLINK_PKGSRCDIR.pcl?=	../../graphics/pcl
 
 .include "../../devel/boost-libs/buildlink3.mk"

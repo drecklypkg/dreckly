@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	idzebra-2.0.62
-PKGREVISION=	28
+PKGREVISION=	29
 CATEGORIES=	databases
 MASTER_SITES=	https://download.indexdata.com/pub/zebra/
 

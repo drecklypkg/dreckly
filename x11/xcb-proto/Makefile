@@ -3,7 +3,7 @@
 # When updating this package, also update x11/py-xcbgen
 
 DISTNAME=	xcb-proto-1.17.0
-PKGREVISION=	4
+PKGREVISION=	5
 CATEGORIES=	x11
 MASTER_SITES=	https://xorg.freedesktop.org/archive/individual/proto/
 EXTRACT_SUFX=	.tar.xz

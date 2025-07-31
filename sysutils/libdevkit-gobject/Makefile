@@ -2,7 +2,7 @@
 
 DISTNAME=	DeviceKit-003
 PKGNAME=	${DISTNAME:S/DeviceKit/libdevkit-gobject/}
-PKGREVISION=	20
+PKGREVISION=	21
 CATEGORIES=	sysutils
 MASTER_SITES=	http://hal.freedesktop.org/releases/
 

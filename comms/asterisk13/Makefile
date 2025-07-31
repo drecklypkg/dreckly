@@ -6,7 +6,7 @@
 
 DISTNAME=	asterisk-13.38.3
 #PKGREVISION=	1
-PKGREVISION=	22
+PKGREVISION=	23
 CATEGORIES=	comms net audio
 MASTER_SITES=	https://downloads.asterisk.org/pub/telephony/asterisk/
 MASTER_SITES+=	https://downloads.asterisk.org/pub/telephony/asterisk/old-releases/

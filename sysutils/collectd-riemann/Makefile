@@ -4,7 +4,7 @@ COLLECTD_PACKAGE=	riemann
 COLLECTD_PLUGINS=	write_riemann
 
 COMMENT=		Statistics collection daemon - riemann plugin
-PKGREVISION=		20
+PKGREVISION=		21
 
 .include "../../sysutils/riemann-client/buildlink3.mk"
 COLLECTD_LIB.riemann-client=${BUILDLINK_PREFIX.riemann-client}

@@ -2,7 +2,7 @@
 
 DISTNAME=		gkrellmwireless-2.0.3
 PKGNAME=		${DISTNAME:S/gkrellm/gkrellm-/}
-PKGREVISION=		61
+PKGREVISION=		62
 CATEGORIES=		net sysutils
 MASTER_SITES=		http://gkrellm.luon.net/files/
 

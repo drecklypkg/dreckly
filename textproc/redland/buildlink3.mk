@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	redland
 REDLAND_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.redland+=	redland>=1.0.7
-BUILDLINK_ABI_DEPENDS.redland+=	redland>=1.0.17nb44
+BUILDLINK_ABI_DEPENDS.redland+=	redland>=1.0.17nb45
 BUILDLINK_PKGSRCDIR.redland?=	../../textproc/redland
 
 .include "../../security/openssl/buildlink3.mk"

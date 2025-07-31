@@ -2,7 +2,7 @@
 
 R_PKGNAME=	xml2
 R_PKGVER=	1.3.6
-PKGREVISION=	4
+PKGREVISION=	5
 CATEGORIES=	textproc
 
 MAINTAINER=	pkgsrc-users@NetBSD.org

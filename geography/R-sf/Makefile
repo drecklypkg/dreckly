@@ -2,6 +2,7 @@
 
 R_PKGNAME=	sf
 R_PKGVER=	1.0-19
+PKGREVISION=	1
 CATEGORIES=	geography
 
 MAINTAINER=	pkgsrc-users@NetBSD.org

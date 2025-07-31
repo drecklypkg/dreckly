@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	nspluginwrapper-1.4.4
-PKGREVISION=	49
+PKGREVISION=	50
 CATEGORIES=	www
 MASTER_SITES=	#
 DISTFILES=	${DISTNAME}.tar.gz ${DISTNAME}-suse121-generic.${WRAPPER_ARCH}.tar.gz

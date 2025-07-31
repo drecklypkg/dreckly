@@ -2,7 +2,7 @@
 
 DISTNAME=	opensaml-3.1.0
 PKGREVISION=	
-PKGREVISION=	18
+PKGREVISION=	19
 CATEGORIES=	security
 MASTER_SITES=	http://shibboleth.net/downloads/c++-opensaml/${PKGVERSION_NOREV}/
 

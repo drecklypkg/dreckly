@@ -2,7 +2,7 @@
 
 DISTNAME=	python-augeas-1.1.0
 PKGNAME=	${DISTNAME:S/python/${PYPKGPREFIX}/}
-PKGREVISION=	14
+PKGREVISION=	15
 CATEGORIES=	sysutils python
 MASTER_SITES=	${MASTER_SITE_PYPI:=p/python-augeas/}
 

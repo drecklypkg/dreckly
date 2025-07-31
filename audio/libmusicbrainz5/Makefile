@@ -2,7 +2,7 @@
 
 DISTNAME=	libmusicbrainz-5.1.0
 PKGNAME=	${DISTNAME:S/brainz/brainz5/}
-PKGREVISION=	19
+PKGREVISION=	20
 CATEGORIES=	audio
 MASTER_SITES=	${MASTER_SITE_GITHUB:=metabrainz/}
 GITHUB_PROJECT=	libmusicbrainz

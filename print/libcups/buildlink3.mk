@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libcups
 LIBCUPS_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libcups+=	libcups>=1.1.19nb3
-BUILDLINK_ABI_DEPENDS.libcups+=	libcups>=2.4.11nb3
+BUILDLINK_ABI_DEPENDS.libcups+=	libcups>=2.4.11nb4
 BUILDLINK_PKGSRCDIR.libcups?=	../../print/libcups
 
 pkgbase := libcups

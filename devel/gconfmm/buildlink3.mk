@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	gconfmm
 GCONFMM_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.gconfmm+=	gconfmm>=2.10.0
-BUILDLINK_ABI_DEPENDS.gconfmm+=	gconfmm>=2.28.3nb37
+BUILDLINK_ABI_DEPENDS.gconfmm+=	gconfmm>=2.28.3nb38
 BUILDLINK_PKGSRCDIR.gconfmm?=	../../devel/gconfmm
 
 .include "../../devel/GConf/buildlink3.mk"

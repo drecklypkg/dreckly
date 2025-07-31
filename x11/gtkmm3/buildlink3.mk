@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	gtkmm3
 GTKMM3_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.gtkmm3+=	gtkmm3>=3.4.2
-BUILDLINK_ABI_DEPENDS.gtkmm3+=	gtkmm3>=3.24.9nb6
+BUILDLINK_ABI_DEPENDS.gtkmm3+=	gtkmm3>=3.24.9nb7
 BUILDLINK_PKGSRCDIR.gtkmm3?=	../../x11/gtkmm3
 
 .include "../../devel/atkmm/buildlink3.mk"

@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	strigi
 STRIGI_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.strigi+=	strigi>=0.6.2
-BUILDLINK_ABI_DEPENDS.strigi?=	strigi>=0.7.8nb61
+BUILDLINK_ABI_DEPENDS.strigi?=	strigi>=0.7.8nb62
 BUILDLINK_PKGSRCDIR.strigi?=	../../sysutils/strigi
 
 .include "../../archivers/bzip2/buildlink3.mk"

@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	osg
 OSG_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.osg+=	osg>=2.8.3
-BUILDLINK_ABI_DEPENDS.osg+=	osg>=3.6.5nb61
+BUILDLINK_ABI_DEPENDS.osg+=	osg>=3.6.5nb62
 BUILDLINK_PKGSRCDIR.osg?=	../../graphics/osg
 
 .include "../../mk/bsd.fast.prefs.mk"

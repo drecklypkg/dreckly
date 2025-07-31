@@ -2,7 +2,7 @@
 #
 
 DISTNAME=		gopchop-1.1.8
-PKGREVISION=		54
+PKGREVISION=		55
 CATEGORIES=		multimedia
 MASTER_SITES=		${MASTER_SITE_SOURCEFORGE:=gopchop/}
 MASTER_SITES+=		http://outflux.net/unix/software/GOPchop/download/

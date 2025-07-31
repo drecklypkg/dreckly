@@ -2,7 +2,7 @@
 
 LIBGDA_PROVIDER=	postgres
 
-PKGREVISION= 15
+PKGREVISION= 16
 .include "../../databases/libgda/Makefile.common"
 
 CONFIGURE_ARGS+=	--with-postgres=${PGSQL_PREFIX:Q}

@@ -2,7 +2,7 @@
 
 DISTNAME=	qore-sybase-modules-1.2
 PKGNAME=	${DISTNAME:S/sybase-modules/freetds-module/}
-PKGREVISION=	11
+PKGREVISION=	12
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_GITHUB:=qorelanguage/}
 EXTRACT_SUFX=	.tar.bz2

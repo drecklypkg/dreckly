@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	streamtuner
 STREAMTUNER_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.streamtuner+=	streamtuner>=0.99
-BUILDLINK_ABI_DEPENDS.streamtuner+=	streamtuner>=0.99.99nb90
+BUILDLINK_ABI_DEPENDS.streamtuner+=	streamtuner>=0.99.99nb91
 BUILDLINK_PKGSRCDIR.streamtuner?=	../../audio/streamtuner
 
 .include "../../www/curl/buildlink3.mk"

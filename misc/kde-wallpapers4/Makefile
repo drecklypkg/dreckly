@@ -2,7 +2,7 @@
 
 DISTNAME=	kde-wallpapers-15.08.3
 PKGNAME=	${DISTNAME:S/-1/4-1/}
-PKGREVISION=	44
+PKGREVISION=	45
 CATEGORIES=	misc
 COMMENT=	Wallpapers for the KDE integrated X11 desktop
 MASTER_SITES=	${MASTER_SITE_KDE:=applications/15.08.3/src/}

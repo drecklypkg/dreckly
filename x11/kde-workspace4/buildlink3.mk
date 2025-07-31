@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	kde-workspace
 KDE_WORKSPACE_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.kde-workspace+=	kde-workspace4>=4.0.0
-BUILDLINK_ABI_DEPENDS.kde-workspace+=	kde-workspace4>=4.11.22nb62
+BUILDLINK_ABI_DEPENDS.kde-workspace+=	kde-workspace4>=4.11.22nb63
 BUILDLINK_PKGSRCDIR.kde-workspace?=	../../x11/kde-workspace4
 
 .include "../../graphics/qimageblitz/buildlink3.mk"

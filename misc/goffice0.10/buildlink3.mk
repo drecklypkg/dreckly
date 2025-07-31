@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	goffice0.10
 GOFFICE0.10_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.goffice0.10+=	goffice0.10>=0.10.0
-BUILDLINK_ABI_DEPENDS.goffice0.10+=	goffice0.10>=0.10.57nb5
+BUILDLINK_ABI_DEPENDS.goffice0.10+=	goffice0.10>=0.10.57nb6
 BUILDLINK_PKGSRCDIR.goffice0.10?=	../../misc/goffice0.10
 
 .include "../../devel/glib2/buildlink3.mk"

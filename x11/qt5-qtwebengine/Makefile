@@ -3,6 +3,7 @@
 
 DISTNAME=	qtwebengine-everywhere-opensource-src-${QTVERSION}
 PKGNAME=	qt5-qtwebengine-${QTVERSION}
+PKGREVISION=	1
 COMMENT=	Chromium-based web engine for Qt5
 
 MAKE_ENV+=		QTDIR=${QTDIR}

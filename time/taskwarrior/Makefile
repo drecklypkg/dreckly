@@ -3,7 +3,7 @@
 
 DISTNAME=	task-2.6.2
 PKGNAME=	${DISTNAME:S/task/taskwarrior/}
-PKGREVISION=	8
+PKGREVISION=	9
 CATEGORIES=	time
 MASTER_SITES=	http://www.taskwarrior.org/download/
 

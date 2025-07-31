@@ -2,7 +2,7 @@
 
 DISTNAME=	libxml++-5.0.1
 PKGNAME=	${DISTNAME:S/libxml++/libxml++5.0/}
-PKGREVISION=	11
+PKGREVISION=	12
 CATEGORIES=	textproc
 MASTER_SITES=	${MASTER_SITE_GNOME:=sources/libxml++/${PKGVERSION_NOREV:R}/}
 EXTRACT_SUFX=	.tar.xz

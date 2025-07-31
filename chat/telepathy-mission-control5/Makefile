@@ -2,7 +2,7 @@
 
 DISTNAME=	telepathy-mission-control-5.7.9
 PKGNAME=	telepathy-mission-control5-5.7.9
-PKGREVISION=	25
+PKGREVISION=	26
 CATEGORIES=	chat
 MASTER_SITES=	https://telepathy.freedesktop.org/releases/telepathy-mission-control/
 

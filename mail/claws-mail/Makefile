@@ -3,7 +3,7 @@
 INSTALLATION_DIRS+=	${EGDIR}
 INSTALLATION_DIRS+=	share/claws-mail
 
-PKGREVISION= 23
+PKGREVISION= 24
 .include "Makefile.common"
 
 PKGNAME=	claws-mail-${CLAWS_VERSION}

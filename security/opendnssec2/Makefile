@@ -3,7 +3,7 @@
 
 DISTNAME=	opendnssec-2.1.14
 PKGNAME=	${DISTNAME:S/opendnssec/opendnssec2/}
-PKGREVISION=	4
+PKGREVISION=	5
 CATEGORIES=	security net
 MASTER_SITES=	https://www.opendnssec.org/files/source/
 

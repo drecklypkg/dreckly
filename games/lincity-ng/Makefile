@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	lincity-ng-2.0
-PKGREVISION=	20
+PKGREVISION=	21
 CATEGORIES=	games
 MASTER_SITES=	http://download.berlios.de/lincity-ng/
 EXTRACT_SUFX=	.tar.bz2

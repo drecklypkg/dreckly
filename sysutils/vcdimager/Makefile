@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	vcdimager-2.0.1
-PKGREVISION=	12
+PKGREVISION=	13
 CATEGORIES=	sysutils
 MASTER_SITES=	${MASTER_SITE_GNU:=vcdimager/}
 

@@ -2,7 +2,7 @@
 
 DISTNAME=		refocus-it-2.0.0
 PKGNAME=		gimp-refocus-it-2.0.0
-PKGREVISION=		76
+PKGREVISION=		77
 CATEGORIES=		graphics
 MASTER_SITES=		${MASTER_SITE_SOURCEFORGE:=refocus-it/}
 

@@ -3,7 +3,7 @@
 PKGVER=			0.8.4
 DISTNAME=		compizconfig-python-${PKGVER}
 PKGNAME=		${PYPKGPREFIX}-compizconfig-${PKGVER}
-PKGREVISION=		84
+PKGREVISION=		85
 CATEGORIES=		devel gnome
 MASTER_SITES=		#
 

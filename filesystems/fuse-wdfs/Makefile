@@ -3,7 +3,7 @@
 
 DISTNAME=	wdfs-1.4.2
 PKGNAME=	fuse-${DISTNAME}
-PKGREVISION=	26
+PKGREVISION=	27
 CATEGORIES=	filesystems
 MASTER_SITES=	http://noedler.de/projekte/wdfs/
 

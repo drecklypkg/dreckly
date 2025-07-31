@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	gdal-lib
 GDAL_LIB_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.gdal-lib+=	gdal-lib>=3.7.0
-BUILDLINK_ABI_DEPENDS.gdal-lib+=	gdal-lib>=3.10.0nb1
+BUILDLINK_ABI_DEPENDS.gdal-lib+=	gdal-lib>=3.10.0nb2
 BUILDLINK_PKGSRCDIR.gdal-lib?=		../../geography/gdal-lib
 
 pkgbase := gdal-lib

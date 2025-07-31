@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	pidgin-libnotify-0.14
-PKGREVISION=	78
+PKGREVISION=	79
 CATEGORIES=	chat
 MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=gaim-libnotify/}
 

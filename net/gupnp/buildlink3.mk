@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	gupnp
 GUPNP_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.gupnp+=	gupnp>=1.6
-BUILDLINK_ABI_DEPENDS.gupnp+=	gupnp>=1.6.6nb6
+BUILDLINK_ABI_DEPENDS.gupnp+=	gupnp>=1.6.6nb7
 BUILDLINK_PKGSRCDIR.gupnp?=	../../net/gupnp
 
 .include "../../mk/bsd.fast.prefs.mk"

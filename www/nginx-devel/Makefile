@@ -2,6 +2,7 @@
 
 DISTNAME=	nginx-1.27.4
 PKGNAME=	${DISTNAME:S/-/-devel-/1}
+PKGREVISION=	1
 CATEGORIES=	www
 MASTER_SITES=	https://nginx.org/download/
 DISTFILES=	${DEFAULT_DISTFILES}

@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	m17n-im-config-0.9.0
-PKGREVISION=	61
+PKGREVISION=	62
 CATEGORIES=	inputmethod devel
 MASTER_SITES=	http://www.m17n.org/m17n-lib-download/
 

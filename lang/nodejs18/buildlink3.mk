@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	nodejs
 NODEJS_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.nodejs+=	nodejs>=10
-BUILDLINK_ABI_DEPENDS.nodejs+=	nodejs>=18.20.4nb3
+BUILDLINK_ABI_DEPENDS.nodejs+=	nodejs>=18.20.7nb1
 BUILDLINK_PKGSRCDIR.nodejs?=	../../lang/nodejs18
 
 .include "../../mk/bsd.fast.prefs.mk"

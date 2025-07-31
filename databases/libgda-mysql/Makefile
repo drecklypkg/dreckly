@@ -2,7 +2,7 @@
 
 LIBGDA_PROVIDER=	mysql
 
-PKGREVISION= 16
+PKGREVISION= 17
 .include "../../databases/libgda/Makefile.common"
 
 CONFIGURE_ARGS+=	--with-mysql=${BUILDLINK_PREFIX.mysql-client}

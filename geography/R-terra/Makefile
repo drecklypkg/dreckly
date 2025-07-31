@@ -2,6 +2,7 @@
 
 R_PKGNAME=	terra
 R_PKGVER=	1.7-83
+PKGREVISION=	1
 CATEGORIES=	geography
 
 MAINTAINER=	pkgsrc-users@NetBSD.org

@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.56 2024/11/14 22:21:33 wiz Exp $
 
 PKGNAME=	${PYPKGPREFIX}-${DISTNAME}
-PKGREVISION=	24
+PKGREVISION=	25
 COMMENT=	Liberty Alliance Single Sign On binding for Python
 
 CONFIGURE_ARGS+=	--disable-php4

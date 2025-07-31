@@ -2,6 +2,7 @@
 
 DISTNAME=	libsoup-3.4.5
 PKGNAME=	${DISTNAME:S/soup/soup3/}
+PKGREVISION=	1
 CATEGORIES=	net gnome
 MASTER_SITES=	${MASTER_SITE_GNOME:=sources/libsoup/${PKGVERSION_NOREV:R}/}
 EXTRACT_SUFX=	.tar.xz

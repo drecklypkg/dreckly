@@ -2,7 +2,7 @@
 
 DISTNAME=	xmltooling-3.1.0
 PKGREVISION=	
-PKGREVISION=	18
+PKGREVISION=	19
 CATEGORIES=	textproc
 MASTER_SITES=	http://shibboleth.net/downloads/c++-opensaml/3.1.0/
 

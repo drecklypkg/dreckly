@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libVNCServer
 LIBVNCSERVER_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libVNCServer+=	libVNCServer>=0.9.12
-BUILDLINK_ABI_DEPENDS.libVNCServer+=	libVNCServer>=0.9.13nb13
+BUILDLINK_ABI_DEPENDS.libVNCServer+=	libVNCServer>=0.9.15nb1
 BUILDLINK_PKGSRCDIR.libVNCServer?=	../../net/libvncserver
 
 .include "../../archivers/lzo/buildlink3.mk"

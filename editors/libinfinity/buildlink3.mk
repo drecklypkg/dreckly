@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libinfinity
 LIBINFINITY_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libinfinity+=	libinfinity>=0.7.2
-BUILDLINK_ABI_DEPENDS.libinfinity?=	libinfinity>=0.7.2nb7
+BUILDLINK_ABI_DEPENDS.libinfinity?=	libinfinity>=0.7.2nb8
 BUILDLINK_PKGSRCDIR.libinfinity?=	../../editors/libinfinity
 
 .include "../../devel/glib2/buildlink3.mk"

@@ -2,7 +2,7 @@
 #
 
 DISTNAME=		frameworks-0.3.7
-PKGREVISION=		54
+PKGREVISION=		55
 CATEGORIES=		graphics
 MASTER_SITES=		http://frameworks.polycrystal.org/release/
 SITES.frameworks.png=	http://frameworks.polycrystal.org/images/

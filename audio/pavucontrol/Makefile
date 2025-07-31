@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	pavucontrol-4.0
-PKGREVISION=	38
+PKGREVISION=	39
 CATEGORIES=	audio
 MASTER_SITES=	http://freedesktop.org/software/pulseaudio/pavucontrol/
 EXTRACT_SUFX=	.tar.xz

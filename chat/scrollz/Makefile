@@ -2,7 +2,7 @@
 
 DISTNAME=	ScrollZ-2.2.3
 PKGNAME=	${DISTNAME:tl}
-PKGREVISION=	21
+PKGREVISION=	22
 CATEGORIES=	chat
 MASTER_SITES=	https://www.scrollz.info/download/
 

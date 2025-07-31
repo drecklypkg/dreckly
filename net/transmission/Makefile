@@ -8,7 +8,7 @@ RCD_SCRIPTS=		transmission
 
 BUILD_DEFS+=		VARBASE
 
-PKGREVISION= 5
+PKGREVISION= 6
 .include "../../mk/bsd.prefs.mk"
 
 TRANSMISSION_USER?=	transmission

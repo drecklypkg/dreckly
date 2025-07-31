@@ -2,7 +2,7 @@
 
 DISTNAME=	gateway-${KANNEL_VER}
 PKGNAME=	kannel-${KANNEL_VER}
-PKGREVISION=	25
+PKGREVISION=	26
 CATEGORIES=	www net
 MASTER_SITES=	https://www.kannel.org/download/${KANNEL_VER}/
 EXTRACT_SUFX=	.tar.bz2

@@ -2,6 +2,7 @@
 
 R_PKGNAME=	RCurl
 R_PKGVER=	1.98-1.16
+PKGREVISION=	1
 CATEGORIES=	www
 
 MAINTAINER=	pkgsrc-users@NetBSD.org

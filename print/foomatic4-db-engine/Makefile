@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	foomatic-db-engine-4.0.13
-PKGREVISION=	19
+PKGREVISION=	20
 CATEGORIES=	print
 MASTER_SITES=	http://www.openprinting.org/download/foomatic/
 

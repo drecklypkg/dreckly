@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	xpad-4.8.0
-PKGREVISION=	34
+PKGREVISION=	35
 CATEGORIES=	x11
 MASTER_SITES=	https://launchpad.net/xpad/trunk/${PKGVERSION_NOREV}/+download/
 EXTRACT_SUFX=	.tar.bz2

@@ -2,6 +2,7 @@
 
 R_PKGNAME=	magick
 R_PKGVER=	2.8.5
+PKGREVISION=	1
 CATEGORIES=	graphics
 
 MAINTAINER=	pkgsrc-users@NetBSD.org

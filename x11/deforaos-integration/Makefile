@@ -2,7 +2,7 @@
 
 DISTNAME=	Integration-0.1.1
 PKGNAME=	deforaos-integration-0.1.1
-PKGREVISION=	33
+PKGREVISION=	34
 CATEGORIES=	x11
 MASTER_SITES=	https://ftp.defora.org/pub/DeforaOS/Apps/Desktop/src/Integration/
 

@@ -2,7 +2,7 @@
 
 MODNAME=	rrd
 PECL_VERSION=	2.0.3
-PKGREVISION=	3
+PKGREVISION=	4
 CATEGORIES=	databases
 
 MAINTAINER=	pkgsrc-users@NetBSD.org

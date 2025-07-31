@@ -2,6 +2,7 @@
 
 DISTNAME=	firefox-128.8.0esr.source
 PKGNAME=	${DISTNAME:S/esr.source$//}
+PKGREVISION=	1
 CATEGORIES=	www
 MASTER_SITES=	${MASTER_SITE_MOZILLA:=firefox/releases/${PKGVERSION_NOREV}esr/source/}
 MASTER_SITES+=	${MASTER_SITE_MOZILLA_ALL:=firefox/releases/${PKGVERSION_NOREV}esr/source/}

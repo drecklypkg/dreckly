@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.65 2024/11/14 22:21:29 wiz Exp $
 
 DISTNAME=	gsasl-2.0.1
-PKGREVISION=	9
+PKGREVISION=	10
 CATEGORIES=	security
 MASTER_SITES=	${MASTER_SITE_GNU:=gsasl/}
 

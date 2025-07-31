@@ -2,7 +2,7 @@
 
 DISTNAME=	HandBrake-1.6.1-source
 PKGNAME=	${DISTNAME:tl:S/-source//}
-PKGREVISION=	20
+PKGREVISION=	21
 CATEGORIES=	multimedia
 MASTER_SITES=	${MASTER_SITE_GITHUB:=HandBrake/}
 EXTRACT_SUFX=	.tar.bz2

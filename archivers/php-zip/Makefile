@@ -3,7 +3,7 @@
 MODNAME=		zip
 CATEGORIES+=		archivers
 COMMENT=		PHP extension for ZIP archive handling
-PKGREVISION=		16
+PKGREVISION=		17
 
 CONFLICTS=		php-zip-[0-9]*
 

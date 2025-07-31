@@ -7,7 +7,7 @@ BUILDLINK_TREE+=	gmtk
 GMTK_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.gmtk+=	gmtk>=1.0.7
-BUILDLINK_ABI_DEPENDS.gmtk+=	gmtk>=1.0.9nb49
+BUILDLINK_ABI_DEPENDS.gmtk+=	gmtk>=1.0.9nb50
 BUILDLINK_PKGSRCDIR.gmtk?=	../../devel/gmtk
 
 pkgbase := gmtk

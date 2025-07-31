@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	xml2doc-20030510
-PKGREVISION=	26
+PKGREVISION=	27
 CATEGORIES=	textproc
 MASTER_SITES=	http://xml2doc.sourceforge.net/src/
 EXTRACT_SUFX=	.tgz

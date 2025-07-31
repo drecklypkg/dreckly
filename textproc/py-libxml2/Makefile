@@ -2,7 +2,7 @@
 
 PYTHON_27_ACCEPTED=	yes
 
-PKGREVISION= 3
+PKGREVISION= 4
 .include "../../textproc/libxml2/Makefile.common"
 
 PKGNAME=	${PYPKGPREFIX}-${DISTNAME}

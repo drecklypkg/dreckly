@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libgnt
 LIBGNT_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libgnt+=	libgnt>=2.14.0
-BUILDLINK_ABI_DEPENDS.libgnt?=	libgnt>=2.14.0nb14
+BUILDLINK_ABI_DEPENDS.libgnt?=	libgnt>=2.14.0nb15
 BUILDLINK_PKGSRCDIR.libgnt?=	../../devel/libgnt
 
 .include "../../devel/glib2/buildlink3.mk"

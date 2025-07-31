@@ -3,7 +3,7 @@
 
 RSYSLOG_MOD=	mysql
 PKGNAME=	${DISTNAME:S/rsyslog/rsyslog-${RSYSLOG_MOD}/}
-PKGREVISION=	23
+PKGREVISION=	24
 
 DEPENDS+=	rsyslog>=${PKGVERSION_NOREV}:../../sysutils/rsyslog
 

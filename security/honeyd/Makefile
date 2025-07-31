@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	honeyd-1.5c
-PKGREVISION=	17
+PKGREVISION=	18
 CATEGORIES=	security net
 MASTER_SITES=	https://www.honeyd.org/uploads/
 

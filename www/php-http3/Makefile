@@ -9,7 +9,7 @@ PECL_DISTNAME=		pecl_http-${PECL_VERSION}
 MAINTAINER=		pkgsrc-users@NetBSD.org
 HOMEPAGE=		http://pecl.php.net/package/pecl_http
 COMMENT=		PHP extension for extended HTTP support
-PKGREVISION=		10
+PKGREVISION=		11
 LICENSE=		2-clause-bsd AND isc
 
 CONFLICTS=		php-http-[0-9]*

@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.59 2024/11/14 22:19:24 wiz Exp $
 
 DISTNAME=	kdoctools-${KF5VER}
-PKGREVISION=	3
+PKGREVISION=	4
 CATEGORIES=	devel
 
 HOMEPAGE=	https://community.kde.org/Frameworks

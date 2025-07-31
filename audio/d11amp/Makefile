@@ -2,7 +2,7 @@
 
 DISTNAME=		d11amp_0.61
 PKGNAME=		${DISTNAME:S/_/-/}
-PKGREVISION=		14
+PKGREVISION=		15
 CATEGORIES=		audio
 MASTER_SITES=		https://www.dettus.net/d11amp/
 EXTRACT_SUFX=		.tar.bz2

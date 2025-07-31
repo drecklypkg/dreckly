@@ -7,7 +7,7 @@
 #       and libjwt
 
 DISTNAME=	asterisk-18.25.0
-PKGREVISION=	3
+PKGREVISION=	4
 CATEGORIES=	comms net audio
 MASTER_SITES=	https://downloads.asterisk.org/pub/telephony/asterisk/
 MASTER_SITES+=	https://downloads.asterisk.org/pub/telephony/asterisk/old-releases/

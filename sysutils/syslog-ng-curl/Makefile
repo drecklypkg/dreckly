@@ -2,7 +2,7 @@
 
 SYSLOG_MOD=		http
 COMMENT=		Syslog-ng curl module
-PKGREVISION=		8
+PKGREVISION=		9
 
 .include "../../sysutils/syslog-ng/module.mk"
 

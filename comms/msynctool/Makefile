@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	msynctool-0.22
-PKGREVISION=	37
+PKGREVISION=	38
 CATEGORIES=	comms
 ##MASTER_SITES=	http://www.opensync.org/download/releases/0.22/
 EXTRACT_SUFX=	.tar.bz2

@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	herrie-2.2
-PKGREVISION=	45
+PKGREVISION=	46
 CATEGORIES=	audio
 MASTER_SITES=	http://herrie.info/distfiles/
 EXTRACT_SUFX=	.tar.bz2

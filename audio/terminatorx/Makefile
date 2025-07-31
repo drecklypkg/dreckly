@@ -2,7 +2,7 @@
 
 DISTNAME=	terminatorX-4.2.0
 PKGNAME=	${DISTNAME:S/X/x/1}
-PKGREVISION=	13
+PKGREVISION=	14
 CATEGORIES=	audio
 MASTER_SITES=	https://terminatorx.org/dist/
 

@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	gnome-nds-thumbnailer-1.2.1
-PKGREVISION=	53
+PKGREVISION=	54
 CATEGORIES=	sysutils graphics emulators
 MASTER_SITES=	https://download.gnome.org/sources/gnome-nds-thumbnailer/1.2/
 EXTRACT_SUFX=	.tar.bz2

@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	kde-runtime
 KDE_RUNTIME_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.kde-runtime+=	kde-runtime4>=4.0.0
-BUILDLINK_ABI_DEPENDS.kde-runtime+=	kde-runtime4>=15.12.0nb100
+BUILDLINK_ABI_DEPENDS.kde-runtime+=	kde-runtime4>=15.12.0nb103
 BUILDLINK_PKGSRCDIR.kde-runtime?=	../../x11/kde-runtime4
 
 .include "../../x11/kdelibs4/buildlink3.mk"

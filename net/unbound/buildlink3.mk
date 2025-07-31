@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	unbound
 UNBOUND_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.unbound+=	unbound>=1.6.0
-BUILDLINK_ABI_DEPENDS.unbound+=	unbound>=1.22.0nb3
+BUILDLINK_ABI_DEPENDS.unbound+=	unbound>=1.22.0nb4
 BUILDLINK_PKGSRCDIR.unbound?=	../../net/unbound
 
 .include "../../devel/libevent/buildlink3.mk"

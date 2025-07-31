@@ -7,7 +7,7 @@ BUILDLINK_TREE+=	mate-control-center
 MATE_CONTROL_CENTER_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.mate-control-center+=	mate-control-center>=1.8.3
-BUILDLINK_ABI_DEPENDS.mate-control-center+=	mate-control-center>=1.26.1nb12
+BUILDLINK_ABI_DEPENDS.mate-control-center+=	mate-control-center>=1.26.1nb13
 BUILDLINK_PKGSRCDIR.mate-control-center?=	../../x11/mate-control-center
 
 .include "../../x11/mate-desktop/buildlink3.mk"

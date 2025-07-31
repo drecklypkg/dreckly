@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	grilo
 GRILO_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.grilo+=	grilo>=0.3
-BUILDLINK_ABI_DEPENDS.grilo+=	grilo>=0.3.16nb3
+BUILDLINK_ABI_DEPENDS.grilo+=	grilo>=0.3.16nb4
 BUILDLINK_PKGSRCDIR.grilo?=	../../net/grilo
 
 .include "../../devel/glib2/buildlink3.mk"

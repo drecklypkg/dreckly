@@ -2,6 +2,7 @@
 
 R_PKGNAME=	lwgeom
 R_PKGVER=	0.2-14
+PKGREVISION=	1
 CATEGORIES=	geography
 
 MAINTAINER=	pkgsrc-users@NetBSD.org

@@ -1,6 +1,6 @@
 # $NetBSD: Makefile,v 1.83 2024/11/14 22:21:15 wiz Exp $
 
-PKGREVISION= 13
+PKGREVISION= 14
 .include "Makefile.common"
 
 PKGNAME=	${DISTNAME:S/pdns/powerdns/}

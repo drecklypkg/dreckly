@@ -2,7 +2,7 @@
 
 PYTHON_VERSIONS_INCOMPATIBLE=	27
 
-PKGREVISION= 14
+PKGREVISION= 15
 .include "../../meta-pkgs/mate/Makefile.common"
 
 DISTNAME=	pluma-${VERSION:R}.1

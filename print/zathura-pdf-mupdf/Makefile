@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.80 2024/11/17 07:16:36 wiz Exp $
 
 DISTNAME=	zathura-pdf-mupdf-0.4.4
-PKGREVISION=	5
+PKGREVISION=	6
 CATEGORIES=	print
 MASTER_SITES=	https://pwmt.org/projects/zathura-pdf-mupdf/download/
 EXTRACT_SUFX=	.tar.xz

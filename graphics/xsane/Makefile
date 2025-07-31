@@ -2,7 +2,7 @@
 
 DISTNAME=	xsane-0.999
 PKGNAME=	xsane-0.99.9
-PKGREVISION=	37
+PKGREVISION=	38
 CATEGORIES=	graphics
 #MASTER_SITES=	http://www.xsane.org/download/
 MASTER_SITES=	https://ftp.osuosl.org/pub/blfs/conglomeration/xsane/

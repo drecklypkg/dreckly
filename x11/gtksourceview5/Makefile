@@ -2,7 +2,7 @@
 
 DISTNAME=	gtksourceview-5.10.0
 PKGNAME=	${DISTNAME:S/gtksourceview/gtksourceview5/}
-PKGREVISION=	8
+PKGREVISION=	9
 CATEGORIES=	x11 gnome
 MASTER_SITES=	${MASTER_SITE_GNOME:=sources/gtksourceview/${PKGVERSION_NOREV:R}/}
 EXTRACT_SUFX=	.tar.xz

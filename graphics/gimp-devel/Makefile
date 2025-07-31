@@ -2,7 +2,7 @@
 
 DISTNAME=	gimp-3.0.0-RC1
 PKGNAME=	${DISTNAME:S/gimp/gimp-devel/:S/-RC/rc/}
-PKGREVISION=	3
+PKGREVISION=	4
 CATEGORIES=	graphics
 MASTER_SITES=	https://download.gimp.org/pub/gimp/v${PKGVERSION_NOREV:R}/
 EXTRACT_SUFX=	.tar.xz

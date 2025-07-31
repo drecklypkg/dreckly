@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	poppler-qt6
 POPPLER_QT6_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.poppler-qt6+=	poppler-qt6>=22.01.0
-BUILDLINK_ABI_DEPENDS.poppler-qt6?=	poppler-qt6>=24.10.0nb3
+BUILDLINK_ABI_DEPENDS.poppler-qt6?=	poppler-qt6>=24.10.0nb4
 BUILDLINK_PKGSRCDIR.poppler-qt6?=	../../print/poppler-qt6
 
 .include "../../print/poppler/buildlink3.mk"

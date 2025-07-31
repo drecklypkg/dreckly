@@ -2,7 +2,7 @@
 
 DISTNAME=	freerdp-2.11.7
 PKGNAME=	${DISTNAME:S/freerdp-/freerdp2-/1}
-PKGREVISION=	3
+PKGREVISION=	4
 CATEGORIES=	net
 MASTER_SITES=	https://pub.freerdp.com/releases/
 

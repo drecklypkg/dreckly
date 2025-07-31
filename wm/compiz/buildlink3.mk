@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	compiz
 COMPIZ_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.compiz+=	compiz>=0.6.2
-BUILDLINK_ABI_DEPENDS.compiz+=	compiz>=0.8.8nb92
+BUILDLINK_ABI_DEPENDS.compiz+=	compiz>=0.8.8nb94
 BUILDLINK_PKGSRCDIR.compiz?=	../../wm/compiz
 
 pkgbase := compiz

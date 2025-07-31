@@ -2,7 +2,7 @@
 
 DISTNAME=	netcdf-cxx4-4.3.1
 PKGNAME=	${DISTNAME:S/cxx4/cxx/}
-PKGREVISION=	7
+PKGREVISION=	8
 CATEGORIES=	devel
 MASTER_SITES=	https://downloads.unidata.ucar.edu/netcdf-cxx/${PKGVERSION_NOREV}/
 

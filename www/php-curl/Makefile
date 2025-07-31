@@ -3,7 +3,7 @@
 MODNAME=		curl
 CATEGORIES+=		www
 COMMENT=		PHP extension for curl functions
-PKGREVISION=		21
+PKGREVISION=		22
 
 CONFLICTS=	php-curl-[0-9]*
 

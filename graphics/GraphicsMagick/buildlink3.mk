@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	GraphicsMagick
 GRAPHICSMAGICK_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.GraphicsMagick+=	GraphicsMagick>=1.3.12nb6
-BUILDLINK_ABI_DEPENDS.GraphicsMagick+=	GraphicsMagick>=1.3.42nb7
+BUILDLINK_ABI_DEPENDS.GraphicsMagick+=	GraphicsMagick>=1.3.42nb9
 BUILDLINK_PKGSRCDIR.GraphicsMagick?=	../../graphics/GraphicsMagick
 
 pkgbase := GraphicsMagick

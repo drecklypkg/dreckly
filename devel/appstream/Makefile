@@ -1,6 +1,7 @@
 # $NetBSD: Makefile,v 1.14 2024/12/12 18:45:04 jperkin Exp $
 
 DISTNAME=	appstream-1.0.4
+PKGREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	${MASTER_SITE_GITHUB:=ximion/}
 GITHUB_TAG=	v${PKGVERSION_NOREV}

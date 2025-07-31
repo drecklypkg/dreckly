@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	eio
 EIO_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.eio+=	eio>=1.7.10
-BUILDLINK_ABI_DEPENDS.eio?=	eio>=1.7.10nb17
+BUILDLINK_ABI_DEPENDS.eio?=	eio>=1.7.10nb18
 BUILDLINK_PKGSRCDIR.eio?=	../../devel/eio
 
 .include "../../converters/libiconv/buildlink3.mk"

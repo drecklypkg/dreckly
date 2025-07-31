@@ -2,7 +2,7 @@
 
 .include "../../www/phraseanet/Makefile.common"
 PKGNAME=        phraseanet-indexer-${VERS}
-PKGREVISION=	16
+PKGREVISION=	17
 
 EXTRACT_ELEMENTS=	${DISTNAME}/bin/src/phraseanet_indexer
 WRKSRC=			${WRKDIR}/${DISTNAME}/bin/src/phraseanet_indexer

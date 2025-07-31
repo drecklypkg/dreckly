@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	gssdp
 GSSDP_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.gssdp+=	gssdp>=1.6
-BUILDLINK_ABI_DEPENDS.gssdp+=	gssdp>=1.6.2nb6
+BUILDLINK_ABI_DEPENDS.gssdp+=	gssdp>=1.6.2nb7
 BUILDLINK_PKGSRCDIR.gssdp?=	../../net/gssdp
 
 .include "../../devel/glib2/buildlink3.mk"

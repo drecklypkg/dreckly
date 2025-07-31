@@ -2,7 +2,7 @@
 
 DISTNAME=	multimarkdown-6.5.2
 MASTER_SITES=	${MASTER_SITE_GITHUB:=fletcher/}
-PKGREVISION=	13
+PKGREVISION=	14
 CATEGORIES=	textproc
 GITHUB_PROJECT=	MultiMarkdown-6
 

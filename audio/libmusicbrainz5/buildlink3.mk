@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libmusicbrainz5
 LIBMUSICBRAINZ5_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libmusicbrainz5+=	libmusicbrainz5>=5.0.1
-BUILDLINK_ABI_DEPENDS.libmusicbrainz5?=	libmusicbrainz5>=5.1.0nb19
+BUILDLINK_ABI_DEPENDS.libmusicbrainz5?=	libmusicbrainz5>=5.1.0nb20
 BUILDLINK_PKGSRCDIR.libmusicbrainz5?=	../../audio/libmusicbrainz5
 
 .include "../../textproc/libxml2/buildlink3.mk"

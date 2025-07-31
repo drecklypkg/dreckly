@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libcomprex
 LIBCOMPREX_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libcomprex+=	libcomprex>=0.3.2
-BUILDLINK_ABI_DEPENDS.libcomprex+=	libcomprex>=0.3.3nb37
+BUILDLINK_ABI_DEPENDS.libcomprex+=	libcomprex>=0.3.3nb38
 BUILDLINK_PKGSRCDIR.libcomprex?=	../../archivers/libcomprex
 
 .include "../../www/curl/buildlink3.mk"

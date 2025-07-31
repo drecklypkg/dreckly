@@ -3,7 +3,7 @@
 
 DISTNAME=	gkrellmlaunch-0.5
 PKGNAME=	${DISTNAME:S/gkrellm/gkrellm-/}
-PKGREVISION=	61
+PKGREVISION=	62
 CATEGORIES=	misc
 MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=gkrellmlaunch/}
 

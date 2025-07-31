@@ -10,7 +10,7 @@ COMMENT=	SMB/CIFS protocol server suite
 LICENSE=	gnu-gpl-v3
 
 VERSION=	3.6.25
-PKGREVISION=	44
+PKGREVISION=	45
 
 CONFLICTS+=	ja-samba-[0-9]* pam-smbpass-[0-9]* winbind-[0-9]*
 

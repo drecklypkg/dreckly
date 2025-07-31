@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	kf6-kparts
 KF6_KPARTS_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.kf6-kparts+=	kf6-kparts>=6.2.0
-BUILDLINK_ABI_DEPENDS.kf6-kparts?=	kf6-kparts>=6.2.0nb7
+BUILDLINK_ABI_DEPENDS.kf6-kparts?=	kf6-kparts>=6.8.0nb1
 BUILDLINK_PKGSRCDIR.kf6-kparts?=	../../devel/kf6-kparts
 
 .include "../../devel/kf6-kconfig/buildlink3.mk"

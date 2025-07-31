@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	kf6-kio
 KF6_KIO_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.kf6-kio+=	kf6-kio>=6.2.0
-BUILDLINK_ABI_DEPENDS.kf6-kio?=	kf6-kio>=6.2.0nb7
+BUILDLINK_ABI_DEPENDS.kf6-kio?=	kf6-kio>=6.8.0nb1
 BUILDLINK_PKGSRCDIR.kf6-kio?=	../../devel/kf6-kio
 
 .include "../../archivers/kf6-karchive/buildlink3.mk"

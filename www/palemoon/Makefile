@@ -3,6 +3,7 @@
 # https://developer.palemoon.org/build/linux/
 
 PKGNAME=	palemoon-33.8.1.1
+PKGREVISION=	1
 CATEGORIES=	www
 
 DIST_SUBDIR=	palemoon-${PKGVERSION_NOREV}

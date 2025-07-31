@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libcurl-gnutls
 LIBCURL_GNUTLS_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libcurl-gnutls+=	libcurl-gnutls>=7.12.3
-BUILDLINK_ABI_DEPENDS.libcurl-gnutls+=	libcurl-gnutls>=8.11.0nb1
+BUILDLINK_ABI_DEPENDS.libcurl-gnutls+=	libcurl-gnutls>=8.12.0nb1
 BUILDLINK_PKGSRCDIR.libcurl-gnutls?=	../../www/libcurl-gnutls
 
 pkgbase:= libcurl-gnutls

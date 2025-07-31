@@ -2,7 +2,7 @@
 #
 
 DISTNAME=		libassetml-1.2.1
-PKGREVISION=		20
+PKGREVISION=		21
 CATEGORIES=		multimedia devel
 MASTER_SITES=		${MASTER_SITE_SOURCEFORGE:=ofset/}
 

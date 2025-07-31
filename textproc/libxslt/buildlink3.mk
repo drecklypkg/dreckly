@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	libxslt
 LIBXSLT_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.libxslt+=	libxslt>=1.1.8
-BUILDLINK_ABI_DEPENDS.libxslt+=	libxslt>=1.1.42nb3
+BUILDLINK_ABI_DEPENDS.libxslt+=	libxslt>=1.1.43nb1
 BUILDLINK_PKGSRCDIR.libxslt?=	../../textproc/libxslt
 
 .include "../../security/libgcrypt/buildlink3.mk"

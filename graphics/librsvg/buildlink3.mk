@@ -10,7 +10,7 @@ LIBRSVG_BUILDLINK3_MK:=
 .include "../../graphics/librsvg/available.mk"
 
 .if ${LIBRSVG_TYPE} == "rust"
-BUILDLINK_ABI_DEPENDS.librsvg+=	librsvg>=2.58.1nb3
+BUILDLINK_ABI_DEPENDS.librsvg+=	librsvg>=2.58.1nb4
 BUILDLINK_PKGSRCDIR.librsvg?=	../../graphics/librsvg
 BUILDLINK_ABI_DEPENDS.librsvg+=	librsvg>=2.54.4nb1
 BUILDLINK_API_DEPENDS.librsvg+=	librsvg>=2.41

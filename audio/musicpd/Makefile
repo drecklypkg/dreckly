@@ -2,7 +2,7 @@
 
 DISTNAME=	mpd-0.23.15
 PKGNAME=	${DISTNAME:S/mpd/musicpd/}
-PKGREVISION=	13
+PKGREVISION=	14
 CATEGORIES=	audio
 MASTER_SITES=	https://www.musicpd.org/download/mpd/${PKGVERSION_NOREV:R}/
 EXTRACT_SUFX=	.tar.xz

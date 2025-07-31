@@ -3,7 +3,7 @@
 
 DISTNAME=	gkrellflynn-0.8
 PKGNAME=	${DISTNAME:S/gkrell/gkrellm-/}
-PKGREVISION=	61
+PKGREVISION=	62
 CATEGORIES=	misc
 MASTER_SITES=	http://bax.comlab.uni-rostock.de/fileadmin/downloads/
 

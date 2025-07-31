@@ -2,7 +2,7 @@
 
 DISTNAME=	prometheus-cpp-with-submodules
 PKGNAME=	prometheus-cpp-1.1.0
-PKGREVISION=	8
+PKGREVISION=	9
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_GITHUB:=jupp0r/}
 GITHUB_RELEASE=	v${PKGVERSION_NOREV}

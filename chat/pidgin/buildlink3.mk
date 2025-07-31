@@ -6,7 +6,7 @@ BUILDLINK_TREE+=	pidgin
 PIDGIN_BUILDLINK3_MK:=
 
 BUILDLINK_API_DEPENDS.pidgin+=	pidgin>=2.5.1
-BUILDLINK_ABI_DEPENDS.pidgin+=	pidgin>=2.14.13nb4
+BUILDLINK_ABI_DEPENDS.pidgin+=	pidgin>=2.14.13nb6
 BUILDLINK_PKGSRCDIR.pidgin?=	../../chat/pidgin
 
 .include "../../chat/libpurple/buildlink3.mk"

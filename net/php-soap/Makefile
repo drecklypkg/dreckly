@@ -3,7 +3,7 @@
 MODNAME=		soap
 CATEGORIES+=		net
 COMMENT=		PHP extension for SOAP functions
-PKGREVISION=		12
+PKGREVISION=		13
 
 MAINTAINER=		pkgsrc-users@NetBSD.org
 

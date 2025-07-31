@@ -2,7 +2,7 @@
 
 DISTNAME=	kdeartwork-15.08.3
 PKGNAME=	${DISTNAME:S/-1/4-1/}
-PKGREVISION=	49
+PKGREVISION=	50
 CATEGORIES=	misc
 COMMENT=	Artwork for the KDE integrated X11 desktop
 MASTER_SITES=	${MASTER_SITE_KDE:=applications/15.08.3/src/}

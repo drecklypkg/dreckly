@@ -2,7 +2,7 @@
 
 DISTNAME=	e_dbus-1.7.10
 PKGNAME=	${DISTNAME:S/e_dbus/edbus/}
-PKGREVISION=	17
+PKGREVISION=	18
 CATEGORIES=	sysutils
 MASTER_SITES=	https://download.enlightenment.org/att/releases/
 EXTRACT_SUFX=	.tar.bz2

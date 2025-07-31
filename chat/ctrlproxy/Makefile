@@ -2,7 +2,7 @@
 #
 
 DISTNAME=		ctrlproxy-3.0.8
-PKGREVISION=		24
+PKGREVISION=		25
 CATEGORIES=		chat
 MASTER_SITES=		http://www.ctrlproxy.org/releases/
 

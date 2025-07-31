@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	fuse-darling-dmg-1.0.4.20210411
-PKGREVISION=	11
+PKGREVISION=	12
 CATEGORIES=	filesystems
 MASTER_SITES=	${MASTER_SITE_GITHUB:=darlinghq/}
 GITHUB_PROJECT=	darling-dmg

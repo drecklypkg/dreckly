@@ -2,7 +2,7 @@
 
 DISTNAME=	Ardour-8.2.0
 PKGNAME=	${DISTNAME:tl}
-PKGREVISION=	10
+PKGREVISION=	11
 CATEGORIES=	audio
 # currently, distfiles must be downloaded by hand from ardour.org
 # and uploaded using `make upload-distfiles`.

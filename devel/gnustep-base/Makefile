@@ -6,7 +6,7 @@ GITHUB_PROJECT=	libs-base
 GITHUB_TAG=	base-1_29_0
 WRKSRC=		${WRKDIR}/libs-base-base-1_29_0
 
-PKGREVISION=	9
+PKGREVISION=	10
 CATEGORIES=	devel gnustep
 
 MAINTAINER=	pkgsrc-users@NetBSD.org

@@ -2,7 +2,7 @@
 
 DISTNAME=		synergy-core-1.14.6.19
 PKGNAME=		${DISTNAME:S/-core//}
-PKGREVISION=		8
+PKGREVISION=		9
 CATEGORIES=		net x11
 MASTER_SITES=		${MASTER_SITE_GITHUB:=symless/}
 GITHUB_PROJECT=		synergy-core

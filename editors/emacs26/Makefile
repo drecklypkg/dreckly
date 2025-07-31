@@ -4,7 +4,7 @@ CONFLICTS+=	emacs26-nox11-[0-9]*
 
 .include "../../editors/emacs26/Makefile.common"
 
-PKGREVISION=	46
+PKGREVISION=	47
 
 .include "options.mk"
 

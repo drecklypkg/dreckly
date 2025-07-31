@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	libggz-0.0.14.1
-PKGREVISION=	23
+PKGREVISION=	24
 CATEGORIES=	games
 MASTER_SITES=	http://mirrors.ibiblio.org/pub/mirrors/ggzgamingzone/ggz/0.0.14.1/
 

@@ -2,7 +2,7 @@
 #
 
 DISTNAME=	gkrellm-multiping-2.0.8
-PKGREVISION=	61
+PKGREVISION=	62
 CATEGORIES=	net
 #MASTER_SITES=	http://kmlinux.fjfi.cvut.cz/~makovick/gkrellm/
 EXTRACT_SUFX=	.tgz
