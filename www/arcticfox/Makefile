@@ -1,6 +1,6 @@
 # $NetBSD: Makefile,v 1.71 2025/05/06 21:22:41 nia Exp $
 
-DISTNAME=	arcticfox-45.3
+DISTNAME=	arcticfox-46.1
 CATEGORIES=	www
 MASTER_SITES=	${MASTER_SITE_GITHUB:=rmottola/}
 GITHUB_PROJECT=	Arctic-Fox
@@ -175,6 +175,7 @@ CONFIGURE_ARGS+=	--enable-default-toolkit=cairo-cocoa
 # gtk3 now supported and default, but gtk2 less buggy
 CONFIGURE_ARGS+=	--enable-default-toolkit=cairo-gtk2
 .  include "../../x11/gtk2/buildlink3.mk"
+.  include "../../x11/libX11/buildlink3.mk"
 .  include "../../x11/libXt/buildlink3.mk"
 .endif
 .include "../../mk/atomic64.mk"
