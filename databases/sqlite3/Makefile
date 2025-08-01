@@ -4,6 +4,7 @@
 
 DISTNAME=	sqlite-autoconf-${SQLITE3_DISTVERSION}
 PKGNAME=	sqlite3-${SQLITE3_VERSION}
+PKGREVISION=	1
 CATEGORIES=	databases
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
@@ -16,6 +17,9 @@ HAS_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--mandir=${PREFIX}/${PKGMANDIR}
 CONFIGURE_ARGS+=	--prefix=${PREFIX}
 CONFIGURE_ARGS+=	--disable-static-shell
+CONFIGURE_ARGS+=	--rtree
+CONFIGURE_ARGS+=	--session
+CONFIGURE_ARGS+=	--geopoly
 
 PKGCONFIG_OVERRIDE+=	sqlite3.pc.in
 
@@ -32,8 +36,6 @@ CFLAGS.NetBSD+=		-DUSE_PREAD
 .if !empty(MACHINE_PLATFORM:MDarwin-[0-8].*-*)
 CFLAGS+=		-DSQLITE_ENABLE_LOCKING_STYLE=0 -DSQLITE_WITHOUT_ZONEMALLOC
 .endif
-
-CFLAGS+=		-DSQLITE_ENABLE_MATH_FUNCTIONS=1
 
 # This define includes the sqlite3_unlock_notify() API in the build.
 # It is required by Firefox 4.x.
