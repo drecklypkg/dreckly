@@ -20,7 +20,8 @@ lib/basilisk-52.9.0/dictionaries/en-US.aff
 lib/basilisk-52.9.0/dictionaries/en-US.dic
 lib/basilisk-52.9.0/fonts/TwemojiMozilla.ttf
 lib/basilisk-52.9.0/gtk2/libmozgtk.so
-lib/basilisk-52.9.0/icudt63l.dat
+${PLIST.be}lib/basilisk-52.9.0/icudt63b.dat
+${PLIST.le}lib/basilisk-52.9.0/icudt63l.dat
 lib/basilisk-52.9.0/libhunspell.so
 lib/basilisk-52.9.0/liblgpllibs.so
 ${PLIST.ffvpx}lib/basilisk-52.9.0/libmozavcodec.so
