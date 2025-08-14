@@ -1,0 +1,4 @@
+@comment $NetBSD$
+bin/bin2iso
+share/doc/bin2iso/CHANGELOG
+share/doc/bin2iso/README.md

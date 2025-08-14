@@ -14,6 +14,7 @@ SUBDIR+=	bdf2psf
 SUBDIR+=	bdf2sfd
 SUBDIR+=	bib2xml
 SUBDIR+=	bibtex2html
+SUBDIR+=	bin2iso
 SUBDIR+=	cbmconvert
 SUBDIR+=	chef
 SUBDIR+=	cn2jp
