@@ -1,0 +1,37 @@
+$NetBSD$
+
+# Unbreak build on macOS aarch64
+# https://github.com/libffi/libffi/pull/857/files
+
+--- src/aarch64/sysv.S.orig	2025-08-20 10:59:09.101633281 +0000
++++ src/aarch64/sysv.S
+@@ -89,8 +89,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    x5 closure
+ */
+ 
+-	cfi_startproc
+ CNAME(ffi_call_SYSV):
++	cfi_startproc
+ 	BTI_C
+ 	/* Sign the lr with x1 since that is where it will be stored */
+ 	SIGN_LR_WITH_REG(x1)
+@@ -347,8 +347,8 @@ CNAME(ffi_closure_SYSV_V):
+ #endif
+ 
+ 	.align	4
+-	cfi_startproc
+ CNAME(ffi_closure_SYSV):
++	cfi_startproc
+ 	BTI_C
+ 	SIGN_LR
+ 	stp     x29, x30, [sp, #-ffi_closure_SYSV_FS]!
+@@ -643,8 +643,8 @@ CNAME(ffi_go_closure_SYSV_V):
+ #endif
+ 
+ 	.align	4
+-	cfi_startproc
+ CNAME(ffi_go_closure_SYSV):
++	cfi_startproc
+ 	BTI_C
+ 	stp     x29, x30, [sp, #-ffi_closure_SYSV_FS]!
+ 	cfi_adjust_cfa_offset (ffi_closure_SYSV_FS)
