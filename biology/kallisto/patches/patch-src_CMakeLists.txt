@@ -1,4 +1,4 @@
-$NetBSD: patch-src_CMakeLists.txt,v 1.6 2024/09/20 00:03:15 bacon Exp $
+$NetBSD$
 
 # Use external htslib
 
