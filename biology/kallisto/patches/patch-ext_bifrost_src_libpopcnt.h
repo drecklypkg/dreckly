@@ -1,4 +1,4 @@
-$NetBSD: patch-ext_bifrost_src_libpopcnt.h,v 1.3 2024/09/20 00:03:15 bacon Exp $
+$NetBSD$
 
 # Use native popcnt
 
