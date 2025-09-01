@@ -1,11 +1,9 @@
-# $NetBSD: Makefile,v 1.55 2024/12/15 09:49:06 adam Exp $
+# $NetBSD: Makefile,v 1.75 2025/08/28 05:58:15 adam Exp $
 
-DISTNAME=	yt_dlp-2024.12.13
+DISTNAME=	yt_dlp-2025.8.27
 PKGNAME=	${DISTNAME:S/_/-/}
 CATEGORIES=	net
 MASTER_SITES=	${MASTER_SITE_PYPI:=y/yt-dlp/}
-# TODO: create symlink, as mpv makes use of youtube-dl?
-# CONFLICTS=	youtube-dl-[0-9]*
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	https://github.com/yt-dlp/yt-dlp
@@ -15,6 +13,8 @@ LICENSE=	unlicense
 TOOL_DEPENDS+=	${PYPKGPREFIX}-hatchling-[0-9]*:../../devel/py-hatchling
 
 USE_LANGUAGES=	# none
+
+PYTHON_VERSIONS_INCOMPATIBLE=	39
 
 SUBST_CLASSES+=		paths
 SUBST_STAGE.paths=	pre-configure
