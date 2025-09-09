@@ -117,7 +117,8 @@ PLIST.be=	yes
 PLIST.le=	yes
 .endif
 
-.if ${MACHINE_ARCH} == "x86_64"
+.if ${MACHINE_ARCH} == "x86_64" || ${MACHINE_ARCH:Maarch64*} || \
+    ${MACHINE_ARCH:Mearm*}
 PLIST.ffvpx=		yes	# see platform/old-configure.in
 .endif
 
