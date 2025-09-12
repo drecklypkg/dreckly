@@ -15,6 +15,7 @@ SHA1 (patch-Modules_FindX11.cmake) = 124a2d51155cb4455e8b829dc74598cbd50a4e1c
 SHA1 (patch-Modules_FortranCInterface_CMakeLists.txt) = f5477f5c94ebab82caea6db702b449032ba3dc75
 SHA1 (patch-Modules_Platform_Darwin.cmake) = 7629f034111ff64b144ff41316299d5edcfe081a
 SHA1 (patch-Modules_Platform_UnixPaths.cmake) = 911271546d3ac52be0e8000857bdb236ac50ec1c
+SHA1 (patch-Source_CTest_cmCTestCurl.h) = fb348daece85fa3245155f0890aa33dece6db53b
 SHA1 (patch-Source_Checks_Curses_CMakeLists.txt) = 0575cf1a01c4462fc7271d6d28529d46df291748
 SHA1 (patch-Source_Checks_Curses_CheckCurses.c) = 530ee1300595e64c97630d27792cc2dca3b9049a
 SHA1 (patch-Source_Checks_cm__cxx17__check.cpp) = d5e2708df6fcda078b1b5ea59264c663d2633ced
