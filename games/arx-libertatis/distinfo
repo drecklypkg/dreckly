@@ -5,4 +5,6 @@ SHA512 (arx-libertatis-1.2.tar.xz) = faa838469ed65346e660eda5af95626bd140fa589f6
 Size (arx-libertatis-1.2.tar.xz) = 2478640 bytes
 SHA1 (patch-CMakeLists.txt) = 61ec31c85ef4b775f9467b343e6b9e1516e146a1
 SHA1 (patch-cmake_CompileCheck.cmake) = ca205e24c331f84765bf1bc29e0d7db9213250cc
+SHA1 (patch-src_io_resource_PakReader.cpp) = 48dcb412144920412a558cba59673052fe6e92e6
+SHA1 (patch-src_io_resource_ResourcePath.cpp) = 598e7b189ec2ec272d94e6eda24fe8c729706c97
 SHA1 (patch-src_platform_Thread.cpp) = a1ef75e2e9e9c9981aee992ade0713eecdf538b2
