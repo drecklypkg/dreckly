@@ -37,6 +37,12 @@ USE_TOOLS+=	ksh
 CONFIG_SHELL=	ksh
 .endif
 
+.if ${MACHINE_PLATFORM:MSunOS-*-i386} || \
+    ${MACHINE_PLATFORM:MLinux-*-i386} || \
+    ${MACHINE_PLATFORM:MUnixWare-*-i386}
+CONFIGURE_ARGS+=	--disable-year2038
+.endif
+
 # DragonFly has a cpu_set_t (not to be confused with cpuset_t), but util-linux
 # incorrectly assumes that its contents are identical to those on Linux.
 # Therefore, behave like NetBSD et al. and assume we *don't* have cpu_set_t
