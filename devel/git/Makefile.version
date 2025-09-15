@@ -4,4 +4,4 @@
 # used by devel/git-cvs/Makefile
 # used by devel/git-svn/Makefile
 
-GIT_VERSION=	2.49.0
+GIT_VERSION=	2.49.1
