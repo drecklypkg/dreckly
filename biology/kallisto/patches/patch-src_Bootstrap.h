@@ -1,4 +1,4 @@
-$NetBSD: patch-src_Bootstrap.h,v 1.3 2024/09/20 00:03:15 bacon Exp $
+$NetBSD$
 
 # Portability
 

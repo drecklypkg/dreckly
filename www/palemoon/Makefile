@@ -2,8 +2,7 @@
 # for build instructions see
 # https://developer.palemoon.org/build/linux/
 
-PKGNAME=	palemoon-33.8.1.1
-PKGREVISION=	1
+PKGNAME=	palemoon-33.8.2
 CATEGORIES=	www
 
 DIST_SUBDIR=	palemoon-${PKGVERSION_NOREV}
@@ -15,7 +14,7 @@ SITES.palemoon.tar.gz= \
 	-https://repo.palemoon.org/MoonchildProductions/Pale-Moon/archive/${PKGVERSION_NOREV}_Release.tar.gz
 
 SITES.uxp.tar.gz= \
-	-https://repo.palemoon.org/MoonchildProductions/UXP/archive/RB_20250730.tar.gz
+	-https://repo.palemoon.org/MoonchildProductions/UXP/archive/RB_20250824.tar.gz
 
 SITES.psutil.tar.gz= \
 	-https://files.pythonhosted.org/packages/7b/58/2675697b6831e6ac4b7b7bc4e5dcdb24a2f39f8411186573eb0de16eb6d5/psutil-3.4.2.tar.gz
@@ -118,7 +117,8 @@ PLIST.be=	yes
 PLIST.le=	yes
 .endif
 
-.if ${MACHINE_ARCH} == "x86_64"
+.if ${MACHINE_ARCH} == "x86_64" || ${MACHINE_ARCH:Maarch64*} || \
+    ${MACHINE_ARCH:Mearm*}
 PLIST.ffvpx=		yes	# see platform/old-configure.in
 .endif
 

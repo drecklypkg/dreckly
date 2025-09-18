@@ -1,4 +1,4 @@
-$NetBSD: patch-src_kseq.h,v 1.4 2024/09/20 00:03:15 bacon Exp $
+$NetBSD$
 
 # Portability
 
