@@ -11,7 +11,7 @@ PKGREVISION= 3
 INSTALLATION_DIRS+=	lib
 
 BJAM_ARGS+=		--without-python
-PLIST_VARS+=		backtrace context fiber log longdbl stacktrace_from_exception
+PLIST_VARS+=		context fiber log
 
 .include "../../mk/compiler.mk"
 
@@ -29,11 +29,7 @@ PLIST.fiber=		yes
 .  endif
 .endif
 
-.if ${MACHINE_ARCH} == x86_86 && !empty(PKGSRC_COMPILER:Mgcc)
-PLIST.stacktrace_from_exception=	yes
-.else
 BJAM_BUILD+=		boost.stacktrace.from_exception=off
-.endif
 
 # Darwin GCC is unable to build Boost.Log
 .if ${OPSYS} == "Darwin" && !empty(PKGSRC_COMPILER:Mgcc)
@@ -42,17 +38,11 @@ BJAM_ARGS+=		--without-log
 PLIST.log=		yes
 .endif
 
-# FIXME: other systems might also not support 'long double'
-# see patch-boost_math_tools_config.hpp
-.if ${OPSYS} != "FreeBSD"
-PLIST.longdbl=		yes
-.endif
-
 # Add backtrace libs when they got built because of libbacktrace
 # being available in the toolchain (not easy to detect beforehand).
 GENERATE_PLIST+=	cd ${DESTDIR}/${PREFIX}; \
 			for f in lib/libboost_stacktrace_backtrace.*; do \
-			if [ -f "$$f" ]; then echo "$$f"; fi; \
+			if [ -f "$$f" ]; then ${ECHO} "$$f"; fi; \
 			done;
 
 UNLIMIT_RESOURCES+=	stacksize
