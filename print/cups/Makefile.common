@@ -4,7 +4,7 @@
 # used by print/cups-base/Makefile
 # used by print/libcups/Makefile
 
-CUPS_VERS=	2.4.11
+CUPS_VERS=	2.4.14
 DISTNAME=	cups-${CUPS_VERS}-source
 CATEGORIES=	print
 

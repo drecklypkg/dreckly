@@ -1,6 +1,5 @@
 # $NetBSD: Makefile,v 1.71 2024/11/14 22:21:22 wiz Exp $
 
-PKGREVISION= 4
 .include "../../print/cups/Makefile.common"
 
 PKGNAME=	cups-base-${CUPS_VERS}
@@ -38,6 +37,9 @@ CONFIGURE_ARGS+=	--without-menudir
 CONFIGURE_ARGS+=	--with-tls=gnutls
 
 CONFIGURE_ENV+=		DSOFLAGS=${LDFLAGS:M*:Q}
+
+# Non-functioning strip on MacOS
+ALL_ENV.Darwin+=	STRIP=
 
 .include "../../mk/bsd.prefs.mk"
 .include "options.mk"
