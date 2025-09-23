@@ -102,7 +102,6 @@ LDFLAGS+=		-Wl,--no-keep-memory
 .endif
 
 PLIST_VARS+=		be le
-PLIST_VARS+=		ffvpx
 
 PM_BIG_ENDIAN?=	no
 .for plat in ${BIGENDIANPLATFORMS}
@@ -115,11 +114,6 @@ PM_BIG_ENDIAN=	yes
 PLIST.be=	yes
 .else
 PLIST.le=	yes
-.endif
-
-.if ${MACHINE_ARCH} == "x86_64" || ${MACHINE_ARCH:Maarch64*} || \
-    ${MACHINE_ARCH:Mearm*}
-PLIST.ffvpx=		yes	# see platform/old-configure.in
 .endif
 
 INSTALLATION_DIRS+=	share/applications
