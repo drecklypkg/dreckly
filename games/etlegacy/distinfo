@@ -9,3 +9,4 @@ Size (etlegacy-2.83.1/etlegacy.tar.gz) = 15611296 bytes
 SHA1 (patch-cmake_ETLInstall.cmake) = a5b2a80b6cef0f28e5d1042fb84ea617d62fec74
 SHA1 (patch-cmake_FindLua.cmake) = b25e7deef2f03f40dfbe577e94717b1bfc0aca59
 SHA1 (patch-src_sdl_sdl__glimp.c) = 6f229c946cba675b8d0b3602500078fb9337367f
+SHA1 (patch-src_ui_ui__shared.c) = 974a73d35919c00259181bf66090004b8a42f908
