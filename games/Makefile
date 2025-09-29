@@ -26,6 +26,7 @@ SUBDIR+=	ajbsp
 SUBDIR+=	alephone
 SUBDIR+=	amaze
 SUBDIR+=	amnesia-tdd
+SUBDIR+=	amoebax
 SUBDIR+=	an
 SUBDIR+=	angband
 SUBDIR+=	angband-sdl
