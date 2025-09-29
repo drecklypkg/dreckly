@@ -440,6 +440,7 @@ SUBDIR+=	vms-empire
 SUBDIR+=	vvvvvv
 SUBDIR+=	wargames
 SUBDIR+=	warmux
+SUBDIR+=	warsow
 SUBDIR+=	warzone2100
 SUBDIR+=	wesnoth
 SUBDIR+=	widelands
