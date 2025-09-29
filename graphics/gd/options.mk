@@ -2,7 +2,13 @@
 
 PKG_OPTIONS_VAR=	PKG_OPTIONS.gd
 PKG_SUPPORTED_OPTIONS=	libimagequant raqm tiff x11
-PKG_SUGGESTED_OPTIONS=	libimagequant raqm tiff
+PKG_SUGGESTED_OPTIONS=	raqm tiff
+
+.include "../../lang/rust/platform.mk"
+
+.if ${PLATFORM_SUPPORTS_RUST:tl} != "no"
+PKG_SUGGESTED_OPTIONS+=	libimagequant
+.endif
 
 .include "../../mk/bsd.options.mk"
 
