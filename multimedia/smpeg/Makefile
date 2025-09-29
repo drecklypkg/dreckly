@@ -17,6 +17,12 @@ GNU_CONFIGURE=	yes
 
 CPPFLAGS+=	-Dunix=1
 
+# Avoid use of deprecated register keyword.
+.include "../../mk/compiler.mk"
+.if ${CC_VERSION:Mclang-*}
+CPPFLAGS+=	-Dregister=""
+.endif
+
 CONFIGURE_ARGS+=	--disable-gtk-player
 CONFIGURE_ARGS+=	--disable-sdltest
 
