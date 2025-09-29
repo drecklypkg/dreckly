@@ -7,7 +7,7 @@ EXTRACT_SUFX=	.tar.bz2
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	https://www.emma-soft.com/games/amoebax/
-COMMENT=	Action puzzle game like Puyo Puyoo
+COMMENT=	Action puzzle game like Puyo Puyo
 LICENSE=	gnu-gpl-v2
 
 GNU_CONFIGURE=	yes
