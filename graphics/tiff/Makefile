@@ -1,6 +1,6 @@
 # $NetBSD: Makefile,v 1.167 2024/11/25 12:17:46 hauke Exp $
 
-VERSION_BASE=	4.7.0
+VERSION_BASE=	4.7.1
 # Accomodate testing unreleased versions.
 VERSION_RC=
 DISTNAME=	tiff-${VERSION_BASE}${VERSION_RC}
@@ -16,10 +16,12 @@ WRKSRC=		${WRKDIR}/tiff-${VERSION_BASE}
 
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
-USE_LANGUAGES=		c99 c++
+USE_LANGUAGES=		c c++
 USE_TOOLS=		gmake pkg-config
 USE_LIBTOOL=		yes
 GNU_CONFIGURE=		yes
+
+FORCE_C_STD=		gnu99
 
 CONFIGURE_ARGS+=	--enable-rpath
 CONFIGURE_ARGS+=	--enable-cxx
@@ -44,7 +46,6 @@ post-install:
 .include "options.mk"
 
 .include "../../devel/zlib/buildlink3.mk"
-# XXX for liblzma; there are more potential suppliers
 .include "../../archivers/xz/buildlink3.mk"
 .include "../../graphics/jbigkit/buildlink3.mk"
 .include "../../mk/jpeg.buildlink3.mk"
