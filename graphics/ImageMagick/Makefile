@@ -1,6 +1,5 @@
-# $NetBSD: Makefile,v 1.346 2024/11/24 06:59:05 adam Exp $
+# $NetBSD: Makefile,v 1.356 2025/09/21 15:11:36 wiz Exp $
 
-PKGREVISION= 7
 .include "Makefile.common"
 
 PKGNAME=	ImageMagick-${DISTVERSION}
@@ -12,6 +11,7 @@ CONFLICTS=	geomview<1.8.1nb2  # used to have a program named 'animate'
 
 USE_LANGUAGES=		c c++
 USE_TOOLS+=		gmake pkg-config:run
+CONFIGURE_ARGS+=	--disable-docs
 CONFIGURE_ARGS+=	--disable-assert
 CONFIGURE_ARGS+=	--with-jpeg
 CONFIGURE_ARGS+=	--with-xml=yes
