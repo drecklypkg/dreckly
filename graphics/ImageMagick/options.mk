@@ -5,7 +5,7 @@ PKG_SUPPORTED_OPTIONS=		djvu fontconfig fpx ghostscript heif jp2
 PKG_SUPPORTED_OPTIONS+=		liblqr openexr raqm tiff wmf x11
 PKG_OPTIONS_REQUIRED_GROUPS=	policy
 PKG_OPTIONS_GROUP.policy=	imagemagick-policy-limited imagemagick-policy-open imagemagick-policy-secure imagemagick-policy-websafe
-PKG_SUGGESTED_OPTIONS=		fontconfig ghostscript heif jp2 liblqr raqm tiff x11 imagemagick-policy-open
+PKG_SUGGESTED_OPTIONS=		fontconfig ghostscript jp2 liblqr raqm tiff x11 imagemagick-policy-open
 
 .include "../../mk/bsd.options.mk"
 
