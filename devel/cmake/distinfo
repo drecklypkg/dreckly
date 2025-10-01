@@ -21,6 +21,7 @@ SHA1 (patch-Source_Checks_Curses_CheckCurses.c) = 530ee1300595e64c97630d27792cc2
 SHA1 (patch-Source_Checks_cm__cxx17__check.cpp) = d5e2708df6fcda078b1b5ea59264c663d2633ced
 SHA1 (patch-Source_Modules_CMakeBuildUtilities.cmake) = 7046fb8a0d2aadb81e027d8e2f1a4bccf2bd79cf
 SHA1 (patch-Source_QtDialog_CMakeLists.txt) = 1cefaa7ee6cd09e84d699ea54844ae3811d890f7
+SHA1 (patch-Source_cmCurl.cxx) = b512c693318cb3fa74e61eb5e3de9f62e8e900ac
 SHA1 (patch-Source_kwsys_ProcessUNIX.c) = e333da03c3ac31be6a992809062a60a9cccc62c0
 SHA1 (patch-Tests_CMakeLists.txt) = 555e0be38ef92530c7315a87db65dd3004d7744c
 SHA1 (patch-Utilities_KWIML_CMakeLists.txt) = e4bdf9fc58757e87bf7e3e3e195839eededbc796
