@@ -1,6 +1,6 @@
-# $NetBSD: Makefile,v 1.29 2024/06/07 20:35:50 adam Exp $
+# $NetBSD: Makefile,v 1.31 2025/08/29 08:43:16 adam Exp $
 
-DISTNAME=	pcre2-10.44
+DISTNAME=	pcre2-10.46
 CATEGORIES=	devel
 MASTER_SITES=	${MASTER_SITE_GITHUB:=PhilipHazel/}
 GITHUB_RELEASE=	${DISTNAME}
