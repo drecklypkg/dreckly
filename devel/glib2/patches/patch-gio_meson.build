@@ -1,15 +1,15 @@
-$NetBSD: patch-gio_meson.build,v 1.10 2023/06/26 19:25:56 adam Exp $
+$NetBSD: patch-gio_meson.build,v 1.12 2025/06/03 11:05:06 jperkin Exp $
 
-Disable inotify on SunOS.
+Do not use inotify on SunOS.
 
---- gio/meson.build.orig	2023-05-23 10:55:59.000000000 +0000
+--- gio/meson.build.orig	2025-06-03 10:43:41.187491613 +0000
 +++ gio/meson.build
-@@ -789,7 +789,7 @@ gioenumtypes_c = custom_target('gioenumt
- gioenumtypes_dep = declare_dependency(sources : [gioenumtypes_h, glib_enumtypes_h, gio_visibility_h])
+@@ -789,7 +789,7 @@ gioenumtypes_dep = declare_dependency(so
  
- # inotify
--if glib_conf.has('HAVE_SYS_INOTIFY_H') and have_func_inotify_init1
-+if glib_conf.has('HAVE_SYS_INOTIFY_H') and have_func_inotify_init1 and host_system != 'sunos'
-   subdir('inotify')
-   internal_deps += [ inotify_lib ]
- endif
+ file_monitor_backend = get_option('file_monitor_backend')
+ if file_monitor_backend == 'auto'
+-  if glib_conf.has('HAVE_SYS_INOTIFY_H') and have_func_inotify_init1
++  if glib_conf.has('HAVE_SYS_INOTIFY_H') and have_func_inotify_init1 and host_system != 'sunos'
+     file_monitor_backend = 'inotify'
+   elif have_func_kqueue and have_func_kevent
+     file_monitor_backend = 'kqueue'
