@@ -12,7 +12,7 @@ HOMEPAGE=	http://www.cmake.org/
 COMMENT=	Cross platform make
 LICENSE=	modified-bsd
 
-USE_TOOLS+=		gmake
+USE_TOOLS+=		gmake pkg-config
 USE_LANGUAGES=		c c++
 HAS_CONFIGURE=		yes
 CONFIGURE_SCRIPT=	bootstrap
@@ -70,7 +70,7 @@ post-install:
 .for file in ${CMAKE_BINFILES}
 	if [ -e ${DESTDIR}${PREFIX}/bin/${file} ]; then \
 		${MV} ${DESTDIR}${PREFIX}/bin/${file} \
-			${DESTDIR}${PREFIX}/bin/${file}39 \
+			${DESTDIR}${PREFIX}/bin/${file}39 ; \
 	fi
 .endfor
 	${RM} -f ${DESTDIR}${PREFIX}/share/aclocal/cmake.m4

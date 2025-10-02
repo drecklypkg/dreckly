@@ -1,21 +1,31 @@
 $NetBSD: patch-CMakeLists.txt,v 1.5 2016/07/28 17:44:43 prlw1 Exp $
 
-Remove libuv version requirement, since it no longer works.
+More reliable mechanism to find libuv.
 
 Don't insist on ncurses.
 
 --- CMakeLists.txt.orig	2017-11-10 12:28:57.000000000 +0000
 +++ CMakeLists.txt
-@@ -544,7 +544,7 @@ int main(void) { return 0; }
+@@ -544,7 +544,8 @@ int main(void) { return 0; }
    if(CMAKE_USE_LIBUV)
      if(CMAKE_USE_SYSTEM_LIBUV)
        if(NOT CMAKE_VERSION VERSION_LESS 3.0)
 -        find_package(LibUV 1.0.0)
-+        find_package(LibUV)
++        include(FindPkgConfig)
++        pkg_check_modules(LIBUV libuv)
        else()
          message(FATAL_ERROR "CMAKE_USE_SYSTEM_LIBUV requires CMake >= 3.0")
        endif()
-@@ -579,7 +579,6 @@ int main(void) { return 0; }
+@@ -552,7 +553,7 @@ int main(void) { return 0; }
+         message(FATAL_ERROR
+           "CMAKE_USE_SYSTEM_LIBUV is ON but a libuv is not found!")
+       endif()
+-      set(CMAKE_LIBUV_LIBRARIES LibUV::LibUV)
++      set(CMAKE_LIBUV_LIBRARIES ${LIBUV_LIBRARIES})
+     else()
+       set(CMAKE_LIBUV_LIBRARIES cmlibuv)
+       add_subdirectory(Utilities/cmlibuv)
+@@ -579,7 +580,6 @@ int main(void) { return 0; }
    if (UNIX)
      # there is a bug in the Syllable libraries which makes linking ccmake fail, Alex
      if(NOT CMAKE_SYSTEM_NAME MATCHES syllable)
