@@ -74,6 +74,7 @@ post-install:
 	fi
 .endfor
 	${RM} -f ${DESTDIR}${PREFIX}/share/aclocal/cmake.m4
+	${RM} -f ${DESTDIR}${PREFIX}/share/cmake-3.9/Modules/Compiler/*.orig
 
 INCOMPAT_CURSES=	NetBSD-[0-6].*-*
 
