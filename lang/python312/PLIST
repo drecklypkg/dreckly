@@ -1,4 +1,4 @@
-@comment $NetBSD: PLIST,v 1.11 2024/12/05 07:52:32 adam Exp $
+@comment $NetBSD: PLIST,v 1.13 2025/04/09 14:49:18 adam Exp $
 bin/2to3-${PY_VER_SUFFIX}
 bin/idle${PY_VER_SUFFIX}
 bin/pydoc${PY_VER_SUFFIX}
@@ -1034,7 +1034,7 @@ lib/python${PY_VER_SUFFIX}/ensurepip/__init__.pyo
 lib/python${PY_VER_SUFFIX}/ensurepip/__main__.py
 lib/python${PY_VER_SUFFIX}/ensurepip/__main__.pyc
 lib/python${PY_VER_SUFFIX}/ensurepip/__main__.pyo
-lib/python${PY_VER_SUFFIX}/ensurepip/_bundled/pip-24.3.1-py3-none-any.whl
+lib/python${PY_VER_SUFFIX}/ensurepip/_bundled/pip-25.0.1-py3-none-any.whl
 lib/python${PY_VER_SUFFIX}/ensurepip/_uninstall.py
 lib/python${PY_VER_SUFFIX}/ensurepip/_uninstall.pyc
 lib/python${PY_VER_SUFFIX}/ensurepip/_uninstall.pyo
@@ -2298,7 +2298,6 @@ lib/python${PY_VER_SUFFIX}/test/audit-tests.pyo
 lib/python${PY_VER_SUFFIX}/test/autotest.py
 lib/python${PY_VER_SUFFIX}/test/autotest.pyc
 lib/python${PY_VER_SUFFIX}/test/autotest.pyo
-lib/python${PY_VER_SUFFIX}/test/badsyntax_pep3120.py
 lib/python${PY_VER_SUFFIX}/test/bisect_cmd.py
 lib/python${PY_VER_SUFFIX}/test/bisect_cmd.pyc
 lib/python${PY_VER_SUFFIX}/test/bisect_cmd.pyo
@@ -3103,12 +3102,18 @@ lib/python${PY_VER_SUFFIX}/test/test_capi/test_complex.pyo
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_dict.py
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_dict.pyc
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_dict.pyo
+lib/python${PY_VER_SUFFIX}/test/test_capi/test_eval.py
+lib/python${PY_VER_SUFFIX}/test/test_capi/test_eval.pyc
+lib/python${PY_VER_SUFFIX}/test/test_capi/test_eval.pyo
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_eval_code_ex.py
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_eval_code_ex.pyc
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_eval_code_ex.pyo
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_exceptions.py
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_exceptions.pyc
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_exceptions.pyo
+lib/python${PY_VER_SUFFIX}/test/test_capi/test_file.py
+lib/python${PY_VER_SUFFIX}/test/test_capi/test_file.pyc
+lib/python${PY_VER_SUFFIX}/test/test_capi/test_file.pyo
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_float.py
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_float.pyc
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_float.pyo
@@ -3118,6 +3123,9 @@ lib/python${PY_VER_SUFFIX}/test/test_capi/test_getargs.pyo
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_immortal.py
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_immortal.pyc
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_immortal.pyo
+lib/python${PY_VER_SUFFIX}/test/test_capi/test_import.py
+lib/python${PY_VER_SUFFIX}/test/test_capi/test_import.pyc
+lib/python${PY_VER_SUFFIX}/test/test_capi/test_import.pyo
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_list.py
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_list.pyc
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_list.pyo
@@ -3154,6 +3162,13 @@ lib/python${PY_VER_SUFFIX}/test/test_capi/test_unicode.pyo
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_watchers.py
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_watchers.pyc
 lib/python${PY_VER_SUFFIX}/test/test_capi/test_watchers.pyo
+lib/python${PY_VER_SUFFIX}/test/test_cext/__init__.py
+lib/python${PY_VER_SUFFIX}/test/test_cext/__init__.pyc
+lib/python${PY_VER_SUFFIX}/test/test_cext/__init__.pyo
+lib/python${PY_VER_SUFFIX}/test/test_cext/extension.c
+lib/python${PY_VER_SUFFIX}/test/test_cext/setup.py
+lib/python${PY_VER_SUFFIX}/test/test_cext/setup.pyc
+lib/python${PY_VER_SUFFIX}/test/test_cext/setup.pyo
 lib/python${PY_VER_SUFFIX}/test/test_cgi.py
 lib/python${PY_VER_SUFFIX}/test/test_cgi.pyc
 lib/python${PY_VER_SUFFIX}/test/test_cgi.pyo
@@ -3380,6 +3395,9 @@ lib/python${PY_VER_SUFFIX}/test/test_ctypes/test_checkretval.pyo
 lib/python${PY_VER_SUFFIX}/test/test_ctypes/test_delattr.py
 lib/python${PY_VER_SUFFIX}/test/test_ctypes/test_delattr.pyc
 lib/python${PY_VER_SUFFIX}/test/test_ctypes/test_delattr.pyo
+lib/python${PY_VER_SUFFIX}/test/test_ctypes/test_dlerror.py
+lib/python${PY_VER_SUFFIX}/test/test_ctypes/test_dlerror.pyc
+lib/python${PY_VER_SUFFIX}/test/test_ctypes/test_dlerror.pyo
 lib/python${PY_VER_SUFFIX}/test/test_ctypes/test_errno.py
 lib/python${PY_VER_SUFFIX}/test/test_ctypes/test_errno.pyc
 lib/python${PY_VER_SUFFIX}/test/test_ctypes/test_errno.pyo
@@ -4851,6 +4869,9 @@ lib/python${PY_VER_SUFFIX}/test/test_pyclbr.pyo
 lib/python${PY_VER_SUFFIX}/test/test_pydoc/__init__.py
 lib/python${PY_VER_SUFFIX}/test/test_pydoc/__init__.pyc
 lib/python${PY_VER_SUFFIX}/test/test_pydoc/__init__.pyo
+lib/python${PY_VER_SUFFIX}/test/test_pydoc/module_none.py
+lib/python${PY_VER_SUFFIX}/test/test_pydoc/module_none.pyc
+lib/python${PY_VER_SUFFIX}/test/test_pydoc/module_none.pyo
 lib/python${PY_VER_SUFFIX}/test/test_pydoc/pydoc_mod.py
 lib/python${PY_VER_SUFFIX}/test/test_pydoc/pydoc_mod.pyc
 lib/python${PY_VER_SUFFIX}/test/test_pydoc/pydoc_mod.pyo
@@ -5286,10 +5307,15 @@ lib/python${PY_VER_SUFFIX}/test/test_tools/__init__.pyo
 lib/python${PY_VER_SUFFIX}/test/test_tools/__main__.py
 lib/python${PY_VER_SUFFIX}/test/test_tools/__main__.pyc
 lib/python${PY_VER_SUFFIX}/test/test_tools/__main__.pyo
+lib/python${PY_VER_SUFFIX}/test/test_tools/i18n_data/ascii-escapes.pot
 lib/python${PY_VER_SUFFIX}/test/test_tools/i18n_data/docstrings.pot
 lib/python${PY_VER_SUFFIX}/test/test_tools/i18n_data/docstrings.py
 lib/python${PY_VER_SUFFIX}/test/test_tools/i18n_data/docstrings.pyc
 lib/python${PY_VER_SUFFIX}/test/test_tools/i18n_data/docstrings.pyo
+lib/python${PY_VER_SUFFIX}/test/test_tools/i18n_data/escapes.pot
+lib/python${PY_VER_SUFFIX}/test/test_tools/i18n_data/escapes.py
+lib/python${PY_VER_SUFFIX}/test/test_tools/i18n_data/escapes.pyc
+lib/python${PY_VER_SUFFIX}/test/test_tools/i18n_data/escapes.pyo
 lib/python${PY_VER_SUFFIX}/test/test_tools/i18n_data/fileloc.pot
 lib/python${PY_VER_SUFFIX}/test/test_tools/i18n_data/fileloc.py
 lib/python${PY_VER_SUFFIX}/test/test_tools/i18n_data/fileloc.pyc
@@ -5298,6 +5324,12 @@ lib/python${PY_VER_SUFFIX}/test/test_tools/i18n_data/messages.pot
 lib/python${PY_VER_SUFFIX}/test/test_tools/i18n_data/messages.py
 lib/python${PY_VER_SUFFIX}/test/test_tools/i18n_data/messages.pyc
 lib/python${PY_VER_SUFFIX}/test/test_tools/i18n_data/messages.pyo
+lib/python${PY_VER_SUFFIX}/test/test_tools/msgfmt_data/fuzzy.json
+lib/python${PY_VER_SUFFIX}/test/test_tools/msgfmt_data/fuzzy.mo
+lib/python${PY_VER_SUFFIX}/test/test_tools/msgfmt_data/fuzzy.po
+lib/python${PY_VER_SUFFIX}/test/test_tools/msgfmt_data/general.json
+lib/python${PY_VER_SUFFIX}/test/test_tools/msgfmt_data/general.mo
+lib/python${PY_VER_SUFFIX}/test/test_tools/msgfmt_data/general.po
 lib/python${PY_VER_SUFFIX}/test/test_tools/test_freeze.py
 lib/python${PY_VER_SUFFIX}/test/test_tools/test_freeze.pyc
 lib/python${PY_VER_SUFFIX}/test/test_tools/test_freeze.pyo
@@ -5307,6 +5339,9 @@ lib/python${PY_VER_SUFFIX}/test/test_tools/test_i18n.pyo
 lib/python${PY_VER_SUFFIX}/test/test_tools/test_makefile.py
 lib/python${PY_VER_SUFFIX}/test/test_tools/test_makefile.pyc
 lib/python${PY_VER_SUFFIX}/test/test_tools/test_makefile.pyo
+lib/python${PY_VER_SUFFIX}/test/test_tools/test_msgfmt.py
+lib/python${PY_VER_SUFFIX}/test/test_tools/test_msgfmt.pyc
+lib/python${PY_VER_SUFFIX}/test/test_tools/test_msgfmt.pyo
 lib/python${PY_VER_SUFFIX}/test/test_tools/test_reindent.py
 lib/python${PY_VER_SUFFIX}/test/test_tools/test_reindent.pyc
 lib/python${PY_VER_SUFFIX}/test/test_tools/test_reindent.pyo
@@ -5604,6 +5639,9 @@ lib/python${PY_VER_SUFFIX}/test/test_xdrlib.pyo
 lib/python${PY_VER_SUFFIX}/test/test_xml_dom_minicompat.py
 lib/python${PY_VER_SUFFIX}/test/test_xml_dom_minicompat.pyc
 lib/python${PY_VER_SUFFIX}/test/test_xml_dom_minicompat.pyo
+lib/python${PY_VER_SUFFIX}/test/test_xml_dom_xmlbuilder.py
+lib/python${PY_VER_SUFFIX}/test/test_xml_dom_xmlbuilder.pyc
+lib/python${PY_VER_SUFFIX}/test/test_xml_dom_xmlbuilder.pyo
 lib/python${PY_VER_SUFFIX}/test/test_xml_etree.py
 lib/python${PY_VER_SUFFIX}/test/test_xml_etree.pyc
 lib/python${PY_VER_SUFFIX}/test/test_xml_etree.pyo
@@ -5709,6 +5747,7 @@ lib/python${PY_VER_SUFFIX}/test/tokenizedata/__init__.pyo
 lib/python${PY_VER_SUFFIX}/test/tokenizedata/bad_coding.py
 lib/python${PY_VER_SUFFIX}/test/tokenizedata/bad_coding2.py
 lib/python${PY_VER_SUFFIX}/test/tokenizedata/badsyntax_3131.py
+lib/python${PY_VER_SUFFIX}/test/tokenizedata/badsyntax_pep3120.py
 lib/python${PY_VER_SUFFIX}/test/tokenizedata/coding20731.py
 lib/python${PY_VER_SUFFIX}/test/tokenizedata/coding20731.pyc
 lib/python${PY_VER_SUFFIX}/test/tokenizedata/coding20731.pyo
