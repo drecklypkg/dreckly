@@ -34,7 +34,7 @@ RUST_DIR?=	../../lang/rust
 
 .for rust_platform in ${RUST_PLATFORMS}
 .  if !empty(MACHINE_PLATFORM:M${rust_platform})
-PLATFORM_SUPPORTS_RUST=		yes
+PLATFORM_SUPPORTS_RUST?=	yes
 .  endif
 .endfor
 PLATFORM_SUPPORTS_RUST?=	no
