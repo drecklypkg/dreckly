@@ -1,4 +1,4 @@
-# $NetBSD: buildlink3.mk,v 1.13 2024/11/14 22:21:18 wiz Exp $
+# $NetBSD: buildlink3.mk,v 1.14 2025/04/17 21:52:05 wiz Exp $
 
 BUILDLINK_TREE+=	unbound
 
