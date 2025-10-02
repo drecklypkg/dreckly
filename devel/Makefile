@@ -253,6 +253,7 @@ SUBDIR+=	cmake
 SUBDIR+=	cmake-fedora
 SUBDIR+=	cmake-gui
 SUBDIR+=	cmake-mode
+SUBDIR+=	cmake39
 SUBDIR+=	cmocka
 SUBDIR+=	cmockery2
 SUBDIR+=	cmph
