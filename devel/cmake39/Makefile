@@ -80,7 +80,7 @@ INCOMPAT_CURSES=	NetBSD-[0-6].*-*
 BUILDLINK_API_DEPENDS.libarchive+=	libarchive>=3.0.0
 .include "../../archivers/libarchive/buildlink3.mk"
 .include "../../devel/libexecinfo/buildlink3.mk"
-.if ${OPSYS} != "HPUX" && !(${OPSYS} == "Darwin" || ${OPSYS_VERSION} < 100500)
+.if ${OPSYS} != "HPUX" && !(${OPSYS} == "Darwin" && ${OPSYS_VERSION} < 100500)
 .  include "../../devel/libuv/buildlink3.mk"
 .endif
 .include "../../misc/rhash/buildlink3.mk"
