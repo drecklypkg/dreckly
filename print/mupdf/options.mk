@@ -5,7 +5,7 @@ PKG_SUPPORTED_OPTIONS=	curl opengl
 
 .include "../../mk/bsd.fast.prefs.mk"
 
-.if ${OPSYS} != "Darwin"
+.if ${OPSYS} != "Darwin" && ${OPSYS} != "OpenBSD"
 PKG_SUGGESTED_OPTIONS=	opengl
 .endif
 

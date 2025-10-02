@@ -13,9 +13,6 @@ LICENSE=	gnu-agpl-v3
 USE_LANGUAGES=	c c++
 USE_TOOLS+=	pkg-config gmake
 
-USE_CC_FEATURES=	c99
-USE_CXX_FEATURES=	c++11
-
 CFLAGS.SunOS+=	-D_XOPEN_SOURCE=600
 LDFLAGS+=	${COMPILER_RPATH_FLAG}${X11BASE}/lib
 
@@ -25,6 +22,14 @@ MAKE_FLAGS+=		XLIBS=${LIBS:Q}
 MAKE_FLAGS+=		build=release
 MAKE_FLAGS+=		USE_SYSTEM_LIBS=yes
 MAKE_FLAGS+=		USE_SYSTEM_MUJS=yes
+MAKE_FLAGS+=		USE_ARGUMENT_FILE=no
+
+.include "../../mk/compiler.mk"
+
+# This single feature requires a C++20 compiler.
+.if ${CC_VERSION:Mgcc-[2-7].*}
+MAKE_FLAGS+=		barcode=no
+.endif
 
 INSTALL_MAKE_FLAGS+=	prefix=${PREFIX}
 INSTALL_MAKE_FLAGS+=	mandir=${PREFIX}/${PKGMANDIR}
