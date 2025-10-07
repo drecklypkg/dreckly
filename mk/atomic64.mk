@@ -18,10 +18,12 @@ CFLAGS+=	-march=i586
 
 # Non-NetBSD vendors tend to include libatomic as part of gcc.
 .if ${OPSYS} == "NetBSD" && \
-    (${MACHINE_ARCH} == "m68k" || \
+    (${MACHINE_ARCH} == "hppa" || \
+    ${MACHINE_ARCH} == "m68k" || \
     ${MACHINE_ARCH} == "mipsel" || \
     ${MACHINE_ARCH} == "mipseb" || \
     ${MACHINE_ARCH} == "powerpc" || \
+    ${MACHINE_ARCH} == "riscv32" || \
     ${MACHINE_ARCH} == "sh3el" || \
     ${MACHINE_ARCH} == "sh3eb" || \
     ${MACHINE_ARCH} == "sparc" || \
