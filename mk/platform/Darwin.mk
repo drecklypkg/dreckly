@@ -103,7 +103,7 @@ MAKEFLAGS+=		OSX_VERSION=${OSX_VERSION:Q}
 # Different versions of the SDK can be used with a given macOS version.
 # The SDK version often determines compatibility rather than the macOS
 # version, so make this information available.
-.if !defined(CLTOOLS_VERSION)
+.if !defined(CLTOOLS_VERSION) && exists(/usr/sbin/pkgutil)
 CLTOOLS_VERSION_FULL!=	/usr/sbin/pkgutil --pkg-info=com.apple.pkg.CLTools_Executables | fgrep version | /usr/bin/awk '{ print $$2 }'
 CLTOOLS_VERSION:=	${CLTOOLS_VERSION_FULL:C/\..*//}
 .endif
