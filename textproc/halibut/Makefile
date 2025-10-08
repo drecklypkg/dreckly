@@ -13,5 +13,7 @@ USE_TOOLS+=	perl
 
 INFO_FILES=	yes
 
-.include "../../devel/cmake/build.mk"
+FORCE_C_STD=	gnu99
+
+.include "../../devel/cmake39/build.mk"
 .include "../../mk/bsd.pkg.mk"
