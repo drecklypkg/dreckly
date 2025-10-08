@@ -4,6 +4,7 @@
 
 DISTNAME=	cmake-${CMAKE_VERSION}
 PKGNAME=	cmake39-${CMAKE_VERSION}
+PKGREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	https://cmake.org/files/v${CMAKE_API}/
 

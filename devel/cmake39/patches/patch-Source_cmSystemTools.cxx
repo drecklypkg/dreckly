@@ -2,7 +2,7 @@ $NetBSD$
 
 Handle the 39 suffix to the commands.
 
---- Source/cmSystemTools.cxx.orig	2025-10-07 13:06:58.950584257 +0000
+--- Source/cmSystemTools.cxx.orig	2017-11-10 12:28:58.000000000 +0000
 +++ Source/cmSystemTools.cxx
 @@ -2033,7 +2033,7 @@ void cmSystemTools::FindCMakeResources(c
      // Look for ..<CMAKE_BIN_DIR> (install tree) and then fall back to
@@ -13,16 +13,19 @@ Handle the 39 suffix to the commands.
        exe_dir += CMAKE_BIN_DIR;
      } else {
        exe_dir = cmSystemTools::GetFilenamePath(exe_dir);
-@@ -2053,7 +2053,7 @@ void cmSystemTools::FindCMakeResources(c
+@@ -2053,7 +2053,10 @@ void cmSystemTools::FindCMakeResources(c
  #endif
    exe_dir = cmSystemTools::GetActualCaseForPath(exe_dir);
    cmSystemToolsCMakeCommand = exe_dir;
 -  cmSystemToolsCMakeCommand += "/cmake";
 +  cmSystemToolsCMakeCommand += "/cmake39";
++  if (!cmSystemTools::FileExists(cmSystemToolsCMakeCommand.c_str())) {
++    cmSystemToolsCMakeCommand = exe_dir + "/cmake";
++  }
    cmSystemToolsCMakeCommand += cmSystemTools::GetExecutableExtension();
  #ifndef CMAKE_BUILD_WITH_CMAKE
    // The bootstrap cmake does not provide the other tools,
-@@ -2061,10 +2061,10 @@ void cmSystemTools::FindCMakeResources(c
+@@ -2061,10 +2064,10 @@ void cmSystemTools::FindCMakeResources(c
    exe_dir = CMAKE_BOOTSTRAP_BINARY_DIR "/bin";
  #endif
    cmSystemToolsCTestCommand = exe_dir;
@@ -35,7 +38,7 @@ Handle the 39 suffix to the commands.
    cmSystemToolsCPackCommand += cmSystemTools::GetExecutableExtension();
    cmSystemToolsCMakeGUICommand = exe_dir;
    cmSystemToolsCMakeGUICommand += "/cmake-gui";
-@@ -2073,13 +2073,13 @@ void cmSystemTools::FindCMakeResources(c
+@@ -2073,13 +2076,13 @@ void cmSystemTools::FindCMakeResources(c
      cmSystemToolsCMakeGUICommand = "";
    }
    cmSystemToolsCMakeCursesCommand = exe_dir;
