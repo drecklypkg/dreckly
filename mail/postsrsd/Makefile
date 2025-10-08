@@ -20,8 +20,6 @@ USER_GROUP=		${POSTSRSD_USER} ${POSTSRSD_GROUP}
 
 PKG_GECOS.${POSTSRSD_USER}?=	postSRSd
 
-
-USE_CMAKE=	yes
 TOOL_DEPENDS+=	help2man-[0-9]*:../../converters/help2man
 
 SUBST_CLASSES+=		man
@@ -30,4 +28,5 @@ SUBST_SED.man+=		-e "s,share/man,${PKGMANDIR},"
 SUBST_FILES.man+=	CMakeLists.txt
 SUBST_MESSAGE.man=	Fixing man page installation path.
 
+.include "../../devel/cmake39/build.mk"
 .include "../../mk/bsd.pkg.mk"
