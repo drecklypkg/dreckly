@@ -361,6 +361,7 @@ BUILDLINK_TRANSFORM+=	rm:-Wno-error=implicit-function-declaration
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=sign-conversion
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=incompatible-pointer-types
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=implicit-int
+BUILDLINK_TRANSFORM+=	rm:-Wno-array-bounds
 .endif
 
 .if ${_COMPILER_VERSION} < 040100
