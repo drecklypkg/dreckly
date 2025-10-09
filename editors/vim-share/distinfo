@@ -5,3 +5,4 @@ SHA512 (vim-9.1.1164.tar.gz) = 5a2ca5af200046a39acb6c24ef8f949cdb6adc755008d3224
 Size (vim-9.1.1164.tar.gz) = 18510357 bytes
 SHA1 (patch-Makefile) = d05c1b787804bc0907cbb9476d54aef558ceddad
 SHA1 (patch-feature.h) = e7d3385dc09e0ed7d45577344e9988264c0de4dd
+SHA1 (patch-popupwin.c) = b405ffc2e28c07e6263bbcb6ab4b65b0f0f75e62
