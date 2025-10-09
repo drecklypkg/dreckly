@@ -10,13 +10,13 @@ HOMEPAGE=	https://github.com/twogood/unshield
 COMMENT=	Extract InstallShield .CAB files
 LICENSE=	mit
 
-USE_CMAKE=	yes
 USE_TOOLS+=	pkg-config
 USE_LANGUAGES=	c c++
 CMAKE_CONFIGURE_ARGS+=	-DBUILD_SHARED=ON
 
 LDFLAGS+=	-liconv
 
+.include "../../devel/cmake39/build.mk"
 .include "../../converters/libiconv/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"
