@@ -6,4 +6,5 @@ Size (memcached-1.6.38.tar.gz) = 1282099 bytes
 SHA1 (patch-Makefile.in) = d0dce85040734a2532d4dced9daed0032433e80f
 SHA1 (patch-items.c) = 33e9ff564f755fa2ef201978cb509800ea400fa0
 SHA1 (patch-logger.h) = 130c573e07b7d9b6caff1c98e40b36a96cb3c064
+SHA1 (patch-memcached.h) = 19a16639e00ab9654fa27ce80d7f564160e32ae1
 SHA1 (patch-util.h) = a927b75d76181573a508c8d8330e700eb1af0b52
