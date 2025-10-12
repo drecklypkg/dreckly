@@ -12,4 +12,5 @@ SHA1 (patch-af) = e6d762b19dc82377727f045b731b40c04afefe11
 SHA1 (patch-ag) = 4083e488fed49f98f8c9b57ba4cb9b9295d1d5e0
 SHA1 (patch-ah) = 963022472f8c90788197780560a7f833d745ab6b
 SHA1 (patch-send.c) = 4e35af227c9662d9528a378f22ba1e38ac09f6a6
+SHA1 (patch-window.c) = f8c2d8040b1b1a5e85ccc611678df0aaef38e7d9
 SHA1 (patch-xli.h) = b8660bcb6dc221ac4e6edf560810c3e3fc335ab1
