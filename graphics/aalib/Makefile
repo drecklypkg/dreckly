@@ -29,4 +29,6 @@ SUBST_SED.malloc=	-e 's|<malloc.h>|<stdlib.h>|g'
 
 .include "options.mk"
 
+#CFLAGS.NetBSD+= -Wno-implicit-int -Wno-implicit-function-declaration -Wno-builtin-declaration-mismatch -Wno-incompatible-pointer-types -Wno-int-conversion
+
 .include "../../mk/bsd.pkg.mk"
