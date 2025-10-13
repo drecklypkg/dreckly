@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.5 2024/06/26 16:16:26 adam Exp $
+# $NetBSD: Makefile,v 1.9 2025/10/13 00:00:59 mrg Exp $
 
 DISTNAME=	minizip-ng-4.0.7
 CATEGORIES=	archivers
@@ -20,6 +20,9 @@ CMAKE_CONFIGURE_ARGS+=	-DBUILD_SHARED_LIBS=YES
 CMAKE_CONFIGURE_ARGS+=	-DMZ_COMPAT=NO
 
 PLIST_VARS+=	libcomp zlib
+
+# Uses symlink(2) and _POSIX_C_SOURCE=200809L which NetBSD hides
+CFLAGS.NetBSD+=	-D_NETBSD_SOURCE
 
 .include "../../mk/bsd.prefs.mk"
 # On Darwin, libcompression is preferred over zlib, see CMakeLists.txt
