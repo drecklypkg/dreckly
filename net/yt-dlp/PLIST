@@ -44,9 +44,6 @@ ${PYSITELIB}/yt_dlp/compat/imghdr.pyo
 ${PYSITELIB}/yt_dlp/compat/shutil.py
 ${PYSITELIB}/yt_dlp/compat/shutil.pyc
 ${PYSITELIB}/yt_dlp/compat/shutil.pyo
-${PYSITELIB}/yt_dlp/compat/types.py
-${PYSITELIB}/yt_dlp/compat/types.pyc
-${PYSITELIB}/yt_dlp/compat/types.pyo
 ${PYSITELIB}/yt_dlp/compat/urllib/__init__.py
 ${PYSITELIB}/yt_dlp/compat/urllib/__init__.pyc
 ${PYSITELIB}/yt_dlp/compat/urllib/__init__.pyo
@@ -1163,6 +1160,9 @@ ${PYSITELIB}/yt_dlp/extractor/icareus.pyo
 ${PYSITELIB}/yt_dlp/extractor/ichinanalive.py
 ${PYSITELIB}/yt_dlp/extractor/ichinanalive.pyc
 ${PYSITELIB}/yt_dlp/extractor/ichinanalive.pyo
+${PYSITELIB}/yt_dlp/extractor/idagio.py
+${PYSITELIB}/yt_dlp/extractor/idagio.pyc
+${PYSITELIB}/yt_dlp/extractor/idagio.pyo
 ${PYSITELIB}/yt_dlp/extractor/idolplus.py
 ${PYSITELIB}/yt_dlp/extractor/idolplus.pyc
 ${PYSITELIB}/yt_dlp/extractor/idolplus.pyo
