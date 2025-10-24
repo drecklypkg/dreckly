@@ -1,7 +1,6 @@
 # $NetBSD: Makefile,v 1.6 2022/06/28 11:33:55 wiz Exp $
 
-DISTNAME=	uw-ttyp0-1.3
-PKGREVISION=	5
+DISTNAME=	uw-ttyp0-2.1
 CATEGORIES=	fonts
 MASTER_SITES=	https://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0/
 
@@ -20,7 +19,16 @@ HAS_CONFIGURE=	yes
 MAKE_FLAGS+=	PREFIX=${PREFIX}
 MAKE_FLAGS+=	PCFDIR=${PREFIX}/share/fonts/X11/uw-ttyp0
 
-# Otherwise fontconfig picks fonts with less character support...
-MAKE_FLAGS+=	ENCODINGS=uni
+# seems to segfault
+MAKE_FLAGS+=	GEN_OTB=0
+
+.include "../../mk/bsd.fast.prefs.mk"
+
+.if ${OPSYS} == "Linux"
+TOOL_DEPENDS+=	bdf2psf-[0-9]*:../../converters/bdf2psf
+MAKE_FLAGS+=	GEN_CONS_LINUX=1
+.endif
+
+MAKE_FLAGS.NetBSD+=	GEN_CONS_NETBSD=1
 
 .include "../../mk/bsd.pkg.mk"
