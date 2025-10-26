@@ -37,4 +37,6 @@ CONFIGURE_ARGS+=	--conslinuxdir=${PREFIX}/share/consolefonts
 
 MAKE_FLAGS.NetBSD+=	GEN_CONS_NETBSD=1
 
+CONFIGURE_ARGS.NetBSD+=	--consnbsddir=${PREFIX}/share/examples/wsfont
+
 .include "../../mk/bsd.pkg.mk"
