@@ -1,10 +1,11 @@
 $NetBSD: patch-Makefile.in,v 1.1 2020/06/17 11:06:28 nia Exp $
 
-The install usage is not portable, replace it with BSD_INSTALL_*.
+- The install usage is not portable, replace it with BSD_INSTALL_*.
+- Fix spacing issues with sed usage.
 
---- Makefile.in.orig	2025-10-24 12:59:38.151733389 +0000
+--- Makefile.in.orig	2025-09-14 12:43:51.000000000 +0000
 +++ Makefile.in
-@@ -792,23 +792,23 @@ endif
+@@ -792,65 +792,60 @@ endif
  install : $(pcf) $(otb) $(conslinux) $(consfreebsdvt) $(consfreebsdsc) $(consnetbsd) $(consopenbsd)
  ifeq ($(strip $(GEN_PCF)),1)
  ifneq ($(strip $(pcf)),)
@@ -31,13 +32,14 @@ The install usage is not portable, replace it with BSD_INSTALL_*.
 -	install -m0755 -d $(DESTDIR)$(CONSLINUXDIR)
 +	$(BSD_INSTALL_DATA_DIR) $(DESTDIR)$(CONSLINUXDIR)
  	for oldname in $(conslinux) ; do     \
- 	  newname=`echo $$oldname | sed -e ' \
- 	    $(keepbasename)                  \
-@@ -816,41 +816,41 @@ ifneq ($(strip $(conslinux)),)
- 	    $(shuffleweight)                 \
- 	    $(renamecodeset)                 \
- 	    $(shufflecodeset)'` ;            \
+-	  newname=`echo $$oldname | sed -e ' \
+-	    $(keepbasename)                  \
+-	    $(optrenamefontsize)             \
+-	    $(shuffleweight)                 \
+-	    $(renamecodeset)                 \
+-	    $(shufflecodeset)'` ;            \
 -	  install -m0644 -p $$oldname $(DESTDIR)$(CONSLINUXDIR)/$$newname ; \
++	  newname=`echo $$oldname | sed -e '$(keepbasename) $(optrenamefontsize) $(shuffleweight) $(renamecodeset) $(shufflecodeset)'` ;            \
 +	  $(BSD_INSTALL_DATA) $$oldname $(DESTDIR)$(CONSLINUXDIR)/$$newname ; \
  	done
  endif

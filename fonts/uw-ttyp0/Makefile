@@ -31,7 +31,7 @@ TOOL_DEPENDS+=	mkfontscale-[0-9]*:../../fonts/mkfontscale
 TOOL_DEPENDS+=	bdf2psf-[0-9]*:../../converters/bdf2psf
 MAKE_FLAGS+=	GEN_CONS_LINUX=1
 
-CONFIGURE_ARGS+=	--conslinuxnaming=standard
+CONFIGURE_ARGS+=	--conslinuxnaming=console-setup
 CONFIGURE_ARGS+=	--conslinuxdir=${PREFIX}/share/consolefonts
 .endif
 
