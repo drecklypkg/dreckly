@@ -9,8 +9,6 @@ HOMEPAGE=	https://people.mpi-inf.mpg.de/~uwe/misc/uw-ttyp0/
 COMMENT=	Monospace bitmap screen fonts for X11
 LICENSE=	ttyp0-license AND mit
 
-TOOL_DEPENDS+=	bdftopcf-[0-9]*:../../fonts/bdftopcf
-
 USE_TOOLS+=	gmake perl gzip
 USE_LANGUAGES=	# none
 
@@ -23,6 +21,11 @@ MAKE_FLAGS+=	PCFDIR=${PREFIX}/share/fonts/X11/uw-ttyp0
 MAKE_FLAGS+=	GEN_OTB=0
 
 .include "../../mk/bsd.fast.prefs.mk"
+
+.if ${X11_TYPE} != "native"
+TOOL_DEPENDS+=	bdftopcf-[0-9]*:../../fonts/bdftopcf
+TOOL_DEPENDS+=	mkfontscale-[0-9]*:../../fonts/mkfontscale
+.endif
 
 .if ${OPSYS} == "Linux"
 TOOL_DEPENDS+=	bdf2psf-[0-9]*:../../converters/bdf2psf
