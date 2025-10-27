@@ -58,6 +58,8 @@ SUBST_SED.oss+=		-e "s,/dev/dsp,${DEVOSSAUDIO},g"
 CMAKE_CONFIGURE_ARGS+=	-DUSE_OSS=OFF
 .endif
 
+BUILDLINK_TRANSFORM+=	rm:-Werror
+
 .include "../../devel/cmake/build.mk"
 .include "../../archivers/libzip/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
