@@ -40,6 +40,7 @@ GITHUB_SUBMODULES+=	flyinghead libchdr 5f82799f2c8cad1e9cd26d39a0f8d36369a5534b 
 GITHUB_SUBMODULES+=	flyinghead mingw-breakpad 1ab24bcc817ebe629bf77daa53529d02361cb1e9 core/deps/breakpad
 GITHUB_SUBMODULES+=	vinniefalco LuaBridge 5d21e35633a1f87ed08af115b07d3386096f792b core/deps/luabridge
 GITHUB_SUBMODULES+=	RetroAchievements rcheevos 563230b1c249774b4852c944dc7cdcb952c9e8e8 core/deps/rcheevos
+GITHUB_SUBMODULES+=	vkedwardli Syphon-Framework 486dd8e4ef3bead482ea26de99770f4389e24e37 core/deps/Syphon
 
 .include "../../mk/oss.buildlink3.mk"
 .include "../../mk/bsd.fast.prefs.mk"

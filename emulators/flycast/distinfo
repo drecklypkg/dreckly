@@ -18,6 +18,9 @@ Size (flyinghead-mingw-breakpad-1ab24bcc817ebe629bf77daa53529d02361cb1e9.tar.gz)
 BLAKE2s (vinniefalco-LuaBridge-5d21e35633a1f87ed08af115b07d3386096f792b.tar.gz) = f3a119314557941ee898c123d1a1828f304367cf0170990a1809510afca0279b
 SHA512 (vinniefalco-LuaBridge-5d21e35633a1f87ed08af115b07d3386096f792b.tar.gz) = 4c6c105d7717adc78473f3b020ddad43a174336a4584d3f48815d2a2d6065db6d14cff6c22806ab184f034e7b7ca923e4f94246158d963ae041da515f62b28a3
 Size (vinniefalco-LuaBridge-5d21e35633a1f87ed08af115b07d3386096f792b.tar.gz) = 1197538 bytes
+BLAKE2s (vkedwardli-Syphon-Framework-486dd8e4ef3bead482ea26de99770f4389e24e37.tar.gz) = e7b330acb58bf5b7dd35535a4b80c06950542dd8af4d0870bfccb0f8122cba6d
+SHA512 (vkedwardli-Syphon-Framework-486dd8e4ef3bead482ea26de99770f4389e24e37.tar.gz) = a0ce6cb0f4b16a61f48020f80cd6526b16fbc857215a58155126343f6da78ba05f575de7625178049e42571f06402e90aea04c16470c6c965983e934e3b1e8d5
+Size (vkedwardli-Syphon-Framework-486dd8e4ef3bead482ea26de99770f4389e24e37.tar.gz) = 326352 bytes
 SHA1 (patch-CMakeLists.txt) = a07c8d8205e69913dd0f81541cedf4c5eedb92d8
 SHA1 (patch-core_sdl_sdl__gamepad.h) = 30ab8b6b07ed8f84874eeb7acac10312073d308d
 SHA1 (patch-core_ui_gui.cpp) = 0c204987aa02cb3a3419900668690e62cbf47bc4
