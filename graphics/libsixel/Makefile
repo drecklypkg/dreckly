@@ -1,11 +1,10 @@
 # $NetBSD: Makefile,v 1.73 2024/11/14 22:20:14 wiz Exp $
 
-DISTNAME=		libsixel-1.8.6
-PKGREVISION=		25
+DISTNAME=		libsixel-1.8.7
 CATEGORIES=		graphics
 MASTER_SITES=		${MASTER_SITE_GITHUB:=saitoha/}
 GITHUB_PROJECT=		libsixel
-GITHUB_TAG=		v${PKGVERSION_NOREV}
+GITHUB_RELEASE=		v${PKGVERSION_NOREV}
 
 MAINTAINER=		tsutsui@NetBSD.org
 HOMEPAGE=		https://saitoha.github.io/libsixel/
@@ -15,6 +14,8 @@ LICENSE=		mit AND public-domain
 GNU_CONFIGURE=		yes
 USE_LIBTOOL=		yes
 USE_TOOLS+=		pkg-config
+
+WRKSRC=			${WRKDIR}/sixel-${PKGVERSION_NOREV}
 
 CONFIGURE_ARGS+=	--disable-python
 CPPFLAGS.SunOS=		-D__EXTENSIONS__
