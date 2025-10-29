@@ -258,7 +258,7 @@ __rec_fmap(BTREE *t, recno_t top)
 		if (__rec_iput(t, nrec, &data, 0) != RET_SUCCESS)
 			return (RET_ERROR);
 	}
-	t->bt_cmap = (caddr_t)sp;
+	t->bt_cmap = (void *)sp;
 	return (RET_SUCCESS);
 }
 
@@ -295,6 +295,6 @@ __rec_vmap(BTREE *t, recno_t top)
 			return (RET_ERROR);
 		++sp;
 	}
-	t->bt_cmap = (caddr_t)sp;
+	t->bt_cmap = (void *)sp;
 	return (RET_SUCCESS);
 }
