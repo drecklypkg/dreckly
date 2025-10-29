@@ -56,9 +56,7 @@
  * in limits.h. But it is not usable under ordinal condition.
  */
 #if !defined(MAXPATHLEN)
-#if defined(_SCO_DS)
 #define MAXPATHLEN	1024
-#endif
 #endif
 
 #define	MAX_PAGE_NUMBER	0xffffffff	/* >= # of pages in a file */
