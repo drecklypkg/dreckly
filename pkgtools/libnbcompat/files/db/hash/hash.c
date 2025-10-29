@@ -513,7 +513,7 @@ flush_meta(HTAB *hashp)
 	for (i = 0; i < NCACHED; i++)
 		if (hashp->mapp[i])
 			if (__put_page(hashp, (char *)(void *)hashp->mapp[i],
-				(u_int)hashp->BITMAPS[i], 0, 1))
+				(unsigned int)hashp->BITMAPS[i], 0, 1))
 				return (-1);
 	return (0);
 }

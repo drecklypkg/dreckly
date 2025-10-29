@@ -272,7 +272,7 @@ newbuf(HTAB *hashp, uint32_t addr, BUFHEAD *prev_bp)
 }
 
 void
-__buf_init(HTAB *hashp, u_int nbytes)
+__buf_init(HTAB *hashp, unsigned int nbytes)
 {
 	BUFHEAD *bfp;
 	int npages;

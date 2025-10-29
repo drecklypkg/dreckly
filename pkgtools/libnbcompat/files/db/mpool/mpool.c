@@ -170,7 +170,7 @@ mpool_new( MPOOL *mp, pgno_t *pgnoaddr)
  */
 /*ARGSUSED*/
 void *
-mpool_get(MPOOL *mp, pgno_t pgno, u_int flags)
+mpool_get(MPOOL *mp, pgno_t pgno, unsigned int flags)
 {
 	struct _hqh *head;
 	BKT *bp;
@@ -251,7 +251,7 @@ mpool_get(MPOOL *mp, pgno_t pgno, u_int flags)
  */
 /*ARGSUSED*/
 int
-mpool_put(MPOOL *mp, void *page, u_int flags)
+mpool_put(MPOOL *mp, void *page, unsigned int flags)
 {
 	BKT *bp;
 

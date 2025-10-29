@@ -60,7 +60,7 @@ __RCSID("$NetBSD: rec_put.c,v 1.1 2008/10/10 00:21:44 joerg Exp $");
  *	already in the tree and R_NOOVERWRITE specified.
  */
 int
-__rec_put(const DB *dbp, DBT *key, const DBT *data, u_int flags)
+__rec_put(const DB *dbp, DBT *key, const DBT *data, unsigned int flags)
 {
 	BTREE *t;
 	DBT fdata, tdata;
@@ -184,7 +184,7 @@ einval:		errno = EINVAL;
  *	RET_ERROR, RET_SUCCESS
  */
 int
-__rec_iput(BTREE *t, recno_t nrec, const DBT *data, u_int flags)
+__rec_iput(BTREE *t, recno_t nrec, const DBT *data, unsigned int flags)
 {
 	DBT tdata;
 	EPG *e;

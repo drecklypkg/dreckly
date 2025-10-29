@@ -151,5 +151,5 @@ dbm_store(DBM *db, datum key, datum data, int flags)
 	dbtdata.data = data.dptr;
 	dbtdata.size = data.dsize;
 	return ((db->put)(db, &dbtkey, &dbtdata,
-	    (u_int)((flags == DBM_INSERT) ? R_NOOVERWRITE : 0)));
+	    (unsigned int)((flags == DBM_INSERT) ? R_NOOVERWRITE : 0)));
 }

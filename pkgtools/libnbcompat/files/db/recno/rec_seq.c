@@ -59,7 +59,7 @@ __RCSID("$NetBSD: rec_seq.c,v 1.1 2008/10/10 00:21:44 joerg Exp $");
  *	RET_ERROR, RET_SUCCESS or RET_SPECIAL if there's no next key.
  */
 int
-__rec_seq(const DB *dbp, DBT *key, DBT *data, u_int flags)
+__rec_seq(const DB *dbp, DBT *key, DBT *data, unsigned int flags)
 {
 	BTREE *t;
 	EPG *e;
