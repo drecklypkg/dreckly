@@ -32,10 +32,9 @@
 
 #include <nbcompat.h>
 #include <nbcompat/cdefs.h>
+#include <nbcompat/param.h>
 
 __RCSID("$NetBSD: rec_utils.c,v 1.1 2008/10/10 00:21:44 joerg Exp $");
-
-#include <sys/param.h>
 
 #include <assert.h>
 #include <stdio.h>

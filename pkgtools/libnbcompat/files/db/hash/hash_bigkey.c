@@ -35,6 +35,7 @@
 
 #include <nbcompat.h>
 #include <nbcompat/cdefs.h>
+#include <nbcompat/param.h>
 
 __RCSID("$NetBSD: hash_bigkey.c,v 1.1 2008/10/10 00:21:43 joerg Exp $");
 
@@ -55,8 +56,6 @@ __RCSID("$NetBSD: hash_bigkey.c,v 1.1 2008/10/10 00:21:43 joerg Exp $");
  *	collect_key
  *	collect_data
  */
-
-#include <sys/param.h>
 
 #include <errno.h>
 #include <stdio.h>

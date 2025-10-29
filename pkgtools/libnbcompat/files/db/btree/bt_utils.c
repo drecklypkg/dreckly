@@ -35,10 +35,9 @@
 
 #include <nbcompat.h>
 #include <nbcompat/cdefs.h>
+#include <nbcompat/param.h>
 
 __RCSID("$NetBSD: bt_utils.c,v 1.2 2013/09/08 12:02:03 ryoon Exp $");
-
-#include <sys/param.h>
 
 #include <assert.h>
 #include <stdio.h>
