@@ -44,6 +44,19 @@ breakage seep in.  Proper methodology for updating this package is:
 *NOTE* the most recent libnbcompat.
 *NOTE*
 
+libnbcompat-20251029 has been tested to build and install correctly
+on the following operating systems:
+
+	FreeBSD/amd64 14.2		<nia@NetBSD.org>
+	NetBSD/amd64 10.1		<nia@NetBSD.org>
+	OpenBSD/amd64 7.6		<nia@NetBSD.org>
+	Darwin/aarch64 15		<nia@NetBSD.org>
+	Darwin/x86_64 13		<nia@NetBSD.org>
+	Cygwin/x86_64 2022		<nia@NetBSD.org>
+	Sortix/x86_64 Nightly		<nia@NetBSD.org>
+	Linux/x86_64 Ubuntu 24.04	<nia@NetBSD.org>
+	SmartOS/x86_64 24 		<nia@NetBSD.org>
+
 libnbcompat-20240805 has been tested to build and install correctly
 on the following operating systems:
 
