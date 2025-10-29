@@ -395,9 +395,9 @@ typedef struct _btree {
 	FILE	 *bt_rfp;		/* R: record FILE pointer */
 	int	  bt_rfd;		/* R: record file descriptor */
 
-	caddr_t	  bt_cmap;		/* R: current point in mapped space */
-	caddr_t	  bt_smap;		/* R: start of mapped space */
-	caddr_t   bt_emap;		/* R: end of mapped space */
+	void *	  bt_cmap;		/* R: current point in mapped space */
+	void *	  bt_smap;		/* R: start of mapped space */
+	void *	  bt_emap;		/* R: end of mapped space */
 	size_t	  bt_msize;		/* R: size of mapped region. */
 
 	recno_t	  bt_nrecs;		/* R: number of records */
