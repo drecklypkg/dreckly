@@ -47,9 +47,7 @@ __RCSID("$NetBSD: __glob13.c,v 1.5 2019/02/20 14:44:24 christos Exp $");
  * in limits.h. But it is not usable under ordinal condition.
  */
 #if !defined(MAXPATHLEN)
-#if defined(_SCO_DS)
 #define MAXPATHLEN	1024
-#endif
 #endif
 
 /*
