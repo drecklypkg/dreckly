@@ -38,8 +38,6 @@
 
 __RCSID("$NetBSD: bt_overflow.c,v 1.1 2008/10/10 00:21:43 joerg Exp $");
 
-#include <sys/param.h>
-
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
