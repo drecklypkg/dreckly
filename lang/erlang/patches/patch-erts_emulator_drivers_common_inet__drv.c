@@ -4,9 +4,9 @@ Fix ctype(3) misuse.
 
 Unbreak build due to differences in the NetBSD SCTP implementation.
 
---- erts/emulator/drivers/common/inet_drv.c.orig	2024-03-06 15:30:18.000000000 +0000
+--- erts/emulator/drivers/common/inet_drv.c.orig	2025-10-24 12:43:08.000000000 +0000
 +++ erts/emulator/drivers/common/inet_drv.c
-@@ -591,9 +591,9 @@ static int my_strncasecmp(const char *s1
+@@ -606,9 +606,9 @@ static int my_strncasecmp(const char *s1
  {
      int i;
  
@@ -18,7 +18,7 @@ Unbreak build due to differences in the NetBSD SCTP implementation.
  }
  	
  
-@@ -1331,7 +1331,11 @@ static struct erl_drv_entry tcp_inet_dri
+@@ -1354,7 +1354,11 @@ static struct erl_drv_entry tcp_inet_dri
      inet_emergency_close
  };
  
@@ -30,4 +30,4 @@ Unbreak build due to differences in the NetBSD SCTP implementation.
 +#endif
  
  #ifdef HAVE_UDP
- static int        packet_inet_init(void);
+ 
