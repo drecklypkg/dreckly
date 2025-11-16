@@ -4,7 +4,7 @@
 # used by textproc/py-link-grammar/Makefile
 
 DISTNAME=	link-grammar-5.12.3
-MASTER_SITES=	http://www.nl.abisource.com/downloads/link-grammar/${PKGVERSION_NOREV}/
+MASTER_SITES=	https://www.gnucash.org/link-grammar/downloads/${PKGVERSION_NOREV}/
 
 HOMEPAGE=	http://www.nl.abisource.com/
 LICENSE=	modified-bsd AND gnu-lgpl-v2.1
