@@ -1,0 +1,32 @@
+$NetBSD$
+
+Link gnutls explicitly to avoid an obscure link-time symbol error.
+
+--- locale/Makefile.orig	2025-09-11 16:53:21.000000000 +0000
++++ locale/Makefile
+@@ -146,10 +146,10 @@ cups.strings: cups_en.po po2strings
+ # checkpo filename.po [... filenameN.po]
+ #
+ 
+-checkpo:	checkpo.o ../cups/$(LIBCUPSSTATIC)
++checkpo:	checkpo.o ../cups/$(LIBCUPS)
+ 	echo Linking $@...
+ 	$(LD_CC) $(ARCHFLAGS) $(ALL_LDFLAGS) -o checkpo checkpo.o \
+-		$(LINKCUPSSTATIC)
++		$(LINKCUPS) $(TLSLIBS)
+ 	$(CODE_SIGN) -s "$(CODE_SIGN_IDENTITY)" $@
+ 
+ checkall:	checkpo
+@@ -163,10 +163,10 @@ checkall:	checkpo
+ # po2strings filename.po filename.strings
+ #
+ 
+-po2strings:	po2strings.o ../cups/$(LIBCUPSSTATIC)
++po2strings:	po2strings.o ../cups/$(LIBCUPS)
+ 	echo Linking $@...
+ 	$(LD_CC) $(ARCHFLAGS) $(ALL_LDFLAGS) -o po2strings po2strings.o \
+-		$(LINKCUPSSTATIC)
++		$(LINKCUPS) $(TLSLIBS)
+ 	$(CODE_SIGN) -s "$(CODE_SIGN_IDENTITY)" $@
+ 
+ 

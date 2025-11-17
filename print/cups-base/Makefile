@@ -158,6 +158,7 @@ post-install:
 .include "../../graphics/tiff/buildlink3.mk"
 .include "../../print/libcups/buildlink3.mk"
 .include "../../print/libpaper/buildlink3.mk"
+BUILDLINK_ABI_DEPENDS.gnutls+=  gnutls>=3.8.10
 .include "../../security/gnutls/buildlink3.mk"
 .include "../../textproc/libunistring/buildlink3.mk"
 .include "../../mk/curses.buildlink3.mk"
