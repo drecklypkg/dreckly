@@ -1,4 +1,4 @@
-# $NetBSD: Makefile.common,v 1.3 2024/11/25 20:13:26 adam Exp $
+# $NetBSD: Makefile.common,v 1.14 2025/11/15 06:39:26 adam Exp $
 #
 # This Makefile fragment is included by all PostgreSQL packages built from
 # the main sources of the PostgreSQL distribution except jdbc-postgresql.
@@ -16,7 +16,7 @@
 # used by databases/postgresql17-pltcl/Makefile
 # used by databases/postgresql17-server/Makefile
 
-DISTNAME=	postgresql-17.5
+DISTNAME=	postgresql-17.7
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_PGSQL:=source/v${PKGVERSION_NOREV}/}
 EXTRACT_SUFX=	.tar.bz2
@@ -26,11 +26,13 @@ HOMEPAGE=	https://www.postgresql.org/
 LICENSE=	postgresql-license
 
 CONFLICTS+=	postgresql-[0-9]*
+CONFLICTS+=	postgresql1[0-689]-[0-9]*
 CONFLICTS+=	postgresql[2-9][0-9]-[0-9]*
 
 .if !empty(PKGNAME:M*-*-*)
 module=		${PKGNAME:C/-[0-9].*$//:C/^.*-//}
-CONFLICTS+=	postgresql[1-9][0-9]-${module}-[0-9]*
+CONFLICTS+=	postgresql1[0-689]-${module}-[0-9]*
+CONFLICTS+=	postgresql[2-9][0-9]-${module}-[0-9]*
 .endif
 
 DISTINFO_FILE?=		${.CURDIR}/../../databases/postgresql17/distinfo
@@ -44,7 +46,6 @@ PKG_SYSCONFSUBDIR=	postgresql
 
 PG_TEMPLATE.SunOS=	solaris
 PG_TEMPLATE.IRIX=	irix5
-PG_TEMPLATE.MirBSD=	openbsd
 PG_TEMPLATE.DragonFly=	freebsd
 .if !defined(PG_TEMPLATE.${OPSYS})
 PG_TEMPLATE.${OPSYS}=	${LOWER_OPSYS}
@@ -92,19 +93,25 @@ CONFIGURE_ENV.SunOS+=	ac_cv_header_sys_ucred_h=no
 CONFIGURE_ENV+=		pgac_cv_prog_cc_ldflags__Wl___as_needed=no
 .endif
 
+# Don't be to strict. Fixes build at least on macOS 15.4.
+CONFIGURE_ENV+=		pgac_cv_prog_CC_cflags__Werror_unguarded_availability_new=no
+
 # Postgres on Alpha has no spinlock or memory barrier implementation
 # and is "unlikely to work correctly".
 # https://www.postgresql.org/message-id/E1X0yaj-000753-N6%40gemulon.postgresql.org
 BROKEN_ON_PLATFORM+=	*-*-alpha
 
+# Sporadic failures with a _high_ number of MAKE_JOBS.
+# Please override this locally if you can't reproduce it rather
+# than removing MAKE_JOBS_SAFE, since this is necessary for
+# bulk build stability.
 MAKE_JOBS_SAFE=		no
 
 .if ${MACHINE_ARCH} == "sparc"
 CFLAGS.NetBSD+=		-D__sparc_v8__
 .endif
 
-# configure fails on OpenBSD and MirBSD if thread safety is enabled.
-CONFIGURE_ARGS.MirBSD+=		--disable-thread-safety
+# configure fails on OpenBSD if thread safety is enabled.
 CONFIGURE_ARGS.OpenBSD+=	--disable-thread-safety
 
 # PGSQL_BLCKSZ is the size in bytes of a PostgreSQL disk page or block.
@@ -138,11 +145,6 @@ BUILDLINK_TRANSFORM+=	rm:-ffast-math
 .if ${READLINE_TYPE} == "editline"
 CONFIGURE_ARGS+=	--with-libedit-preferred
 .endif
-
-OPSYSVARS+=	SOEXT
-SOEXT.Darwin=	dylib
-SOEXT.*=	so
-PLIST_SUBST+=	SOEXT=${SOEXT}
 
 .if !defined(META_PACKAGE)
 post-extract:
