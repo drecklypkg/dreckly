@@ -1,4 +1,4 @@
-# $NetBSD: Makefile.common,v 1.9 2024/11/25 20:13:25 adam Exp $
+# $NetBSD: Makefile.common,v 1.18 2025/11/15 06:39:25 adam Exp $
 #
 # This Makefile fragment is included by all PostgreSQL packages built from
 # the main sources of the PostgreSQL distribution except jdbc-postgresql.
@@ -16,7 +16,7 @@
 # used by databases/postgresql16-pltcl/Makefile
 # used by databases/postgresql16-server/Makefile
 
-DISTNAME=	postgresql-16.9
+DISTNAME=	postgresql-16.11
 CATEGORIES=	databases
 MASTER_SITES=	${MASTER_SITE_PGSQL:=source/v${PKGVERSION_NOREV}/}
 EXTRACT_SUFX=	.tar.bz2
@@ -26,10 +26,12 @@ HOMEPAGE=	https://www.postgresql.org/
 LICENSE=	postgresql-license
 
 CONFLICTS+=	postgresql-[0-9]*
+CONFLICTS+=	postgresql1[0-57-9]-[0-9]*
 CONFLICTS+=	postgresql[2-9][0-9]-[0-9]*
 
 .if !empty(PKGNAME:M*-*-*)
 module=		${PKGNAME:C/-[0-9].*$//:C/^.*-//}
+CONFLICTS+=	postgresql1[0-57-9]-${module}-[0-9]*
 CONFLICTS+=	postgresql[2-9][0-9]-${module}-[0-9]*
 .endif
 
@@ -44,7 +46,6 @@ PKG_SYSCONFSUBDIR=	postgresql
 
 PG_TEMPLATE.SunOS=	solaris
 PG_TEMPLATE.IRIX=	irix5
-PG_TEMPLATE.MirBSD=	openbsd
 PG_TEMPLATE.DragonFly=	freebsd
 .if !defined(PG_TEMPLATE.${OPSYS})
 PG_TEMPLATE.${OPSYS}=	${LOWER_OPSYS}
@@ -97,14 +98,17 @@ CONFIGURE_ENV+=		pgac_cv_prog_cc_ldflags__Wl___as_needed=no
 # https://www.postgresql.org/message-id/E1X0yaj-000753-N6%40gemulon.postgresql.org
 BROKEN_ON_PLATFORM+=	*-*-alpha
 
+# Sporadic failures with a _high_ number of MAKE_JOBS.
+# Please override this locally if you can't reproduce it rather
+# than removing MAKE_JOBS_SAFE, since this is necessary for
+# bulk build stability.
 MAKE_JOBS_SAFE=		no
 
 .if ${MACHINE_ARCH} == "sparc"
 CFLAGS.NetBSD+=		-D__sparc_v8__
 .endif
 
-# configure fails on OpenBSD and MirBSD if thread safety is enabled.
-CONFIGURE_ARGS.MirBSD+=		--disable-thread-safety
+# configure fails on OpenBSD if thread safety is enabled.
 CONFIGURE_ARGS.OpenBSD+=	--disable-thread-safety
 
 # PGSQL_BLCKSZ is the size in bytes of a PostgreSQL disk page or block.
