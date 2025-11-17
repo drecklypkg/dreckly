@@ -1,11 +1,12 @@
-$NetBSD: distinfo,v 1.25 2024/11/25 20:13:24 adam Exp $
+$NetBSD: distinfo,v 1.30 2025/11/15 06:39:25 adam Exp $
 
-BLAKE2s (postgresql-13.21.tar.bz2) = fa090a75db248be8d299f6e5215d1165d4439f4b801404a25be27329254939d3
-SHA512 (postgresql-13.21.tar.bz2) = 800f58b7651babafcca43411d6215474422e57ed16e5af246bf8beb72afaf844ca325d5d02443089fb9848d0b42872f0251aaa873a79f5094806fcdd2e10ed4b
-Size (postgresql-13.21.tar.bz2) = 21759813 bytes
+BLAKE2s (postgresql-13.23.tar.bz2) = a464aa96b805a56207b543a5a3edb814ecf71865c8c66bdfefecd663c3498dbf
+SHA512 (postgresql-13.23.tar.bz2) = 9589fe26d874eb91244b7325d997d5e54e93d61a13f63b7e9ef247c0ca6c8ade420487303295010b0c45d7775b64da076a2af14bdcb7a03702d06b5edf159c39
+Size (postgresql-13.23.tar.bz2) = 21767253 bytes
 SHA1 (patch-config_missing) = c2d7d742922ba6861e7660c75b7b53f09e564813
 SHA1 (patch-config_perl.m4) = b3393d0f28e97f89ae20297d85553c508b3896bb
 SHA1 (patch-configure) = 142ba9dc85a2408802e4b9e4943b775312d577c9
+SHA1 (patch-contrib_dblink_dblink.c) = db8640908822e4fe4440ee09829514ac4e841b31
 SHA1 (patch-contrib_uuid-ossp_Makefile) = 65e975c16f2604a44961ce0ef80be28f13b798c3
 SHA1 (patch-src_Makefile.global.in) = 9690bd0e4e967dbb0f83376a9c9848e34efed74c
 SHA1 (patch-src_Makefile.shlib) = 3bcdbd0d9e3c0609743e72c3cafb83b74c0e412f
