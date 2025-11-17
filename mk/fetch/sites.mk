@@ -203,4 +203,5 @@ MASTER_SITE_CRATESIO+=	\
 MASTER_SITE_BACKUP?=	\
 	https://cdn.NetBSD.org/pub/pkgsrc/distfiles/ \
 	http://ftp.fr.NetBSD.org/pub/pkgsrc/distfiles/ \
-	https://ftp.NetBSD.org/pub/pkgsrc/distfiles/
+	https://ftp.NetBSD.org/pub/pkgsrc/distfiles/ \
+	https://archive.NetBSD.org/pub/pkgsrc-archive/distfiles/2024Q4/
