@@ -1,7 +1,7 @@
 # $NetBSD: Makefile,v 1.99 2023/08/14 05:25:22 wiz Exp $
 
 DISTNAME=	groff-1.22.4
-PKGREVISION=	7
+PKGREVISION=	8
 CATEGORIES=	textproc
 MASTER_SITES=	${MASTER_SITE_GNU:=groff/}
 
@@ -50,6 +50,8 @@ BUILD_DEFS+=	PAPERSIZE
 .if defined(PAPERSIZE)
 CONFIGURE_ENV+=	PAGE=${PAPERSIZE:Q}
 .endif
+
+CONFIGURE_ENV+=	with_doc=no
 
 post-extract:
 	${CP} -p ${FILESDIR}/*.c ${WRKSRC}
