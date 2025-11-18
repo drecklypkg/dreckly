@@ -27,6 +27,8 @@ EXTRACT_USING=		bsdtar
 USE_FEATURES=		getopt_long
 CONFIGURE_ARGS+=	--with-urw-fonts-dir=${PREFIX}/share/fonts/urw
 
+FORCE_CXX_STD=		gnu++03
+
 INFO_FILES=		YES
 
 REPLACE_AWK+=		font/devlj4/generate/special.awk
