@@ -23,6 +23,8 @@ PKGCONFIG_OVERRIDE+=	enchant.pc.in
 GNU_CONFIGURE=		yes
 CFLAGS.SunOS+=		-D__EXTENSIONS__
 
+TOOLS_PLATFORM.groff=	# require packaged groff
+
 # Force disable all spell checkers that are not handled in options.mk,
 # to avoid them being unintentionally found if installed.
 CONFIGURE_ARGS+=	--without-nuspell
