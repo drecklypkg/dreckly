@@ -31,6 +31,7 @@ MESON_REQD+=	1.2.0
 # cairo/fontconfig are only needed for command line utilities
 MESON_ARGS+=	-Dcairo=disabled
 MESON_ARGS+=	-Dbenchmark=disabled
+MESON_ARGS+=	-Ddocs=disabled
 
 PLIST_SRC=		PLIST
 
