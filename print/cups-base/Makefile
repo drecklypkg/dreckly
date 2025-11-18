@@ -39,7 +39,8 @@ CONFIGURE_ARGS+=	--with-tls=gnutls
 CONFIGURE_ENV+=		DSOFLAGS=${LDFLAGS:M*:Q}
 
 # Non-functioning strip on MacOS
-ALL_ENV.Darwin+=	STRIP=
+ALL_ENV.Darwin+=	STRIP= INSTALL_STRIP_LIB=
+MAKE_FLAGS.Darwin+=	STRIP= INSTALL_STRIP_LIB=
 
 .include "../../mk/bsd.prefs.mk"
 .include "options.mk"
