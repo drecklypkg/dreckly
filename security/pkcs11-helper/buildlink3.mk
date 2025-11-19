@@ -1,4 +1,4 @@
-# $NetBSD: buildlink3.mk,v 1.33 2024/11/14 22:21:33 wiz Exp $
+# $NetBSD: buildlink3.mk,v 1.34 2025/04/17 21:52:18 wiz Exp $
 
 BUILDLINK_TREE+=	pkcs11-helper
 
