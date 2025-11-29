@@ -1,6 +1,6 @@
-# $NetBSD: Makefile,v 1.207 2024/09/13 07:44:41 wiz Exp $
+# $NetBSD: Makefile,v 1.215 2025/11/22 07:06:11 wiz Exp $
 
-DISTNAME=	libpng-1.6.44
+DISTNAME=	libpng-1.6.51
 PKGNAME=	${DISTNAME:S/lib//}
 CATEGORIES=	graphics
 MASTER_SITES+=	${MASTER_SITE_SOURCEFORGE:=libpng/}
@@ -27,6 +27,8 @@ CPPFLAGS+=	-DPNG_USER_CHUNK_CACHE_MAX=128 -DPNG_USER_CHUNK_MALLOC_MAX=8000000
 CPPFLAGS.UnixWare+=	-D_XOPEN_SOURCE=500 -D_POSIX_C_SOURCE=199506
 
 .include "../../mk/bsd.prefs.mk"
+.include "options.mk"
+
 # keep this in sync with the same code in buildlink3.mk
 .if ${MACHINE_ARCH} != "i386" && ${MACHINE_ARCH} != "x86_64"
 CPPFLAGS+=	-DPNG_NO_ASSEMBLER_CODE
