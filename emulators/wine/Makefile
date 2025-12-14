@@ -1,10 +1,10 @@
-# $NetBSD: Makefile,v 1.268 2024/12/08 10:29:36 nia Exp $
+# $NetBSD: Makefile,v 1.258 2024/05/29 16:32:28 adam Exp $
 
-DISTNAME=	wine-9.0
-PKGREVISION=	5
+DISTNAME=	wine-5.0.5
+PKGREVISION=	27
 CATEGORIES=	emulators
-MASTER_SITES=	https://dl.winehq.org/wine/source/${PKGVERSION_NOREV}/
-MASTER_SITES+=	http://mirrors.ibiblio.org/wine/source/${PKGVERSION_NOREV}/
+MASTER_SITES=	https://dl.winehq.org/wine/source/${PKGVERSION_NOREV:R}/
+MASTER_SITES+=	http://mirrors.ibiblio.org/wine/source/${PKGVERSION_NOREV:R}/
 EXTRACT_SUFX=	.tar.xz
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
@@ -20,7 +20,6 @@ REPLACE_PERL+=	tools/winemaker/winemaker
 REPLACE_PERL+=	tools/winedump/function_grep.pl
 
 CHECK_PIE_SUPPORTED=	no
-CHECK_SHLIBS_SUPPORTED=	no
 
 ONLY_FOR_PLATFORM+=	*-*-i386 *-*-x86_64
 
@@ -33,8 +32,6 @@ CONFIGURE_ARGS+=	--without-gssapi
 CONFIGURE_ARGS+=	--without-hal
 # LDAP causes build failures on NetBSD 9.99.x and newer.
 CONFIGURE_ARGS+=	--without-ldap
-# PCAP causes build failures on NetBSD 10.x and 9.x.
-CONFIGURE_ARGS+=	--without-pcap
 CONFIGURE_ARGS+=	--without-krb5
 CONFIGURE_ARGS+=	--without-opencl
 CONFIGURE_ARGS+=	--without-udev
@@ -48,12 +45,10 @@ PLIST_VARS+=		desktop lp32 lp64 oss
 
 .if ${MACHINE_ARCH} == "x86_64"
 PLIST.lp64=		yes
-PLIST_SUBST+=		WIN_ARCH="x86_64"
 CONFIGURE_ARGS+=	--enable-win64
 NOT_PAX_MPROTECT_SAFE+=	bin/wine64
 .else
 PLIST.lp32=		yes
-PLIST_SUBST+=		WIN_ARCH="i386"
 NOT_PAX_MPROTECT_SAFE+=	bin/wine
 .endif
 
@@ -61,10 +56,6 @@ NOT_PAX_MPROTECT_SAFE+=	bin/wine
 .  if ${OPSYS_VERSION} < 090000
 # Disable new_dtags as NetBSD versions prior to 9.0 don't honor DT_RUNPATH
 CONFIGURE_ENV+=		ac_cv_cflags__Wl___enable_new_dtags=no
-.  endif
-.  if ${OPSYS_VERSION} < 100000
-# Requires EVFILT_USER
-CONFIGURE_ENV+=		ac_cv_func_kqueue=no
 .  endif
 # gethostbyname_r is in libc, but has a different calling convention
 CONFIGURE_ENV+=		wine_cv_linux_gethostbyname_r_6=no
@@ -78,7 +69,7 @@ LDFLAGS+=		${LIBOSSAUDIO}
 SUBST_CLASSES+=		oss
 SUBST_STAGE.oss=	pre-configure
 SUBST_MESSAGE.oss=	Correcting the path to the OSS device.
-SUBST_FILES.oss+=	dlls/wineoss.drv/oss.c
+SUBST_FILES.oss+=	dlls/wineoss.drv/mmdevdrv.c
 SUBST_SED.oss+=		-e "s,/dev/dsp,${DEVOSSAUDIO},g"
 .else
 CONFIGURE_ARGS+=	--without-oss
@@ -89,7 +80,7 @@ CONFIGURE_ENV+=		ac_cv_c_fortify_enabled=no
 
 # Wine will use system frameworks on Darwin.
 .if ${OPSYS} != "Darwin"
-PLIST.desktop=		yes
+PLIST.desktop=	yes
 .include "../../graphics/MesaLib/buildlink3.mk"
 .include "../../graphics/glu/buildlink3.mk"
 .include "../../sysutils/desktop-file-utils/desktopdb.mk"
@@ -101,7 +92,6 @@ PLIST.desktop=		yes
 .include "../../audio/mpg123/buildlink3.mk"
 .include "../../audio/openal-soft/buildlink3.mk"
 .include "../../devel/SDL2/buildlink3.mk"
-.include "../../devel/libinotify/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../fonts/fontconfig/buildlink3.mk"
 .include "../../graphics/freetype2/buildlink3.mk"
