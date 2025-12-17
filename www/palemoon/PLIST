@@ -30,7 +30,6 @@ lib/${PKGNAME}/dictionaries/en-US.dic
 lib/${PKGNAME}/fonts/TwemojiMozilla.ttf
 ${PLIST.be}lib/${PKGNAME}/icudt63b.dat
 ${PLIST.le}lib/${PKGNAME}/icudt63l.dat
-lib/${PKGNAME}/libhunspell.so
 lib/${PKGNAME}/liblgpllibs.so
 lib/${PKGNAME}/libmozavcodec.so
 lib/${PKGNAME}/libmozavutil.so

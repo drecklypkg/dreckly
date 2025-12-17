@@ -1,3 +1,2 @@
 @comment $NetBSD$
 lib/${PKGNAME}/libfreebl3.so
-lib/${PKGNAME}/libhunspell.so
