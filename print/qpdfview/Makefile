@@ -17,6 +17,8 @@ GCC_REQD+=	8 # std::optional
 USE_TOOLS+=	pkg-config
 USE_LIBTOOL=	yes
 
+LDFLAGS.SunOS+=	-lsocket
+
 INSTALL_MAKE_FLAGS+=	INSTALL_ROOT=${DESTDIR}
 
 do-configure:
