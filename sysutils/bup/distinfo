@@ -6,3 +6,4 @@ Size (bup-0.33.5.tar.gz) = 497017 bytes
 BLAKE2s (bup-man-fca676714d8fc3c4c76add0a5d30b4bd951e1c2f.tar.gz) = ff01865573777b7c1d408877009a15d6c572c5c0fbb75221d26d6d7aefc093c4
 SHA512 (bup-man-fca676714d8fc3c4c76add0a5d30b4bd951e1c2f.tar.gz) = eb769b860fa3d5444f9b16830e4a125ecd3c5615f682c5199a97ab755500e0217998b8459fd577c85ff95a9a680a7ffe1795ad3cbbc50e4f01af0326eb043a51
 Size (bup-man-fca676714d8fc3c4c76add0a5d30b4bd951e1c2f.tar.gz) = 33213 bytes
+SHA1 (patch-lib_bup___helpers.c) = 2d0d70118858e9765fb5663a54f899c9084bf51a
