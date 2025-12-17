@@ -10,3 +10,4 @@ SHA1 (patch-ab) = 471cd0af0571eb63142c7933911e70500afeba6d
 SHA1 (patch-ad) = 3f715630ead6f0cb10d0bf71751c07d12e58e0f3
 SHA1 (patch-ae) = 21fecc68e1b2a3548d57f2908264122ed950dfdb
 SHA1 (patch-configure) = 1520c311d534e3aae1d257279cecc5ff39be6a4b
+SHA1 (patch-src_hostscreen.cpp) = 8600eb8268830a057f54f217ec44849cc329b469
