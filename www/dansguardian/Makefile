@@ -16,6 +16,8 @@ USE_LANGUAGES=	c c++
 USE_TOOLS+=	perl pkg-config
 RCD_SCRIPTS+=	dansguardian
 
+FORCE_CXX_STD=	gnu++98
+
 # Fix bug in configure.ac: the paths are expanded too soon
 SUBST_CLASSES+=		pathfix
 SUBST_STAGE.pathfix=	pre-configure
