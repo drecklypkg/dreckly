@@ -7,3 +7,4 @@ SHA1 (patch-SConscript) = 0eef48dccd21eb140672a8087ac05b24f0940e09
 SHA1 (patch-resources_powder.appdata.xml) = 7185f4e51c0125c0220772bed23c8ac8a119c845
 SHA1 (patch-resources_powder.desktop) = 9c77feb557afbd2e5ad4fb0b5f15be1809214555
 SHA1 (patch-src_Config.h) = 01d9cced7a87b6f33b1974bf51dd9d93949d41a2
+SHA1 (patch-src_gui_save_LocalSaveActivity.h) = 8171ef67f922eddd647bd2bb783994e0739db2b1
