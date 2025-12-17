@@ -18,6 +18,8 @@ MAKE_JOBS_SAFE=	no
 USE_IMAKE=	YES
 USE_TOOLS+=	mkfontdir bdftopcf
 
+TOOL_DEPENDS+=	mkfontscale-[0-9]*:../../fonts/mkfontscale
+
 FONTDIR=	${PREFIX}/share/fonts/X11
 FONTS_DIRS.x11=	${FONTDIR}/xtel
 REQD_DIRS=	${FONTDIR}/xtel
