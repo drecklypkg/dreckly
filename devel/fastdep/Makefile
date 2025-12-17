@@ -14,6 +14,8 @@ GNU_CONFIGURE=	YES
 USE_LANGUAGES=	c c++
 USE_TOOLS+=	gmake
 
+FORCE_CXX_STD=	gnu++98
+
 INSTALLATION_DIRS=	bin
 
 post-extract:
