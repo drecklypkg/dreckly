@@ -15,3 +15,4 @@ SHA1 (patch-Source_Core_Core_IPC__HLE_WII__Socket.h) = 8de6dec95689efb63c3795d3e
 SHA1 (patch-Source_Core_Core_MemTools.cpp) = 2316e8103749fe174db7f694f2eeb22035cd135c
 SHA1 (patch-Source_Core_VideoCommon_DriverDetails.cpp) = 227d2ab5835be08b23f13346c9b9252ae3295155
 SHA1 (patch-Source_Core_VideoCommon_DriverDetails.h) = dc3a8f559253ea2a3f75223cfe7eb0a6c2c39ce1
+SHA1 (patch-Source_Core_VideoCommon_TextureDecoder__Generic.cpp) = 2b6ca028e94291511c411dcf9cb8fe19e83582c2
