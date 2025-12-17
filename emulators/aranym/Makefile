@@ -26,6 +26,8 @@ USE_LANGUAGES=	c c++
 GNU_CONFIGURE=	yes
 MANCOMPRESSED=	yes
 
+FORCE_CXX_STD=	gnu++98
+
 CHECK_PORTABILITY_SKIP=	src/Unix/MacOSX/scripts/gen_machfiles.sh
 
 CONFIGURE_ARGS+=	--enable-fullmmu
