@@ -47,6 +47,7 @@ CPPFLAGS+=		-DHAVE_SHADOW_H
 LIBS+=	-lcrypt
 .endif
 
+CPPFLAGS.SunOS+=	-D__EXTENSIONS__
 CPPFLAGS.NetBSD+=	-D_NETBSD_SOURCE	# needed for setgroups(2)
 
 SPECIAL_PERMS+=	bin/slock ${SETUID_ROOT_PERMS}
