@@ -14,6 +14,7 @@ USE_TOOLS+=	gmake pkg-config autoconf automake autoreconf
 USE_LANGUAGES=	c99
 GNU_CONFIGURE=	yes
 
+CFLAGS.SunOS+=	-Du_int32_t=uint32_t
 LDFLAGS.SunOS+=	-lsocket
 
 CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFBASEDIR}
