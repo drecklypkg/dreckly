@@ -15,5 +15,7 @@ LDFLAGS.SunOS+=	-lsocket
 
 PYTHON_FOR_BUILD_ONLY=	tool
 
+FORCE_C_STD=	gnu99
+
 .include "../../devel/meson/build.mk"
 .include "../../mk/bsd.pkg.mk"
