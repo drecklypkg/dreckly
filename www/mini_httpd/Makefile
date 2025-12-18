@@ -25,6 +25,8 @@ MAKE_ENV+=		CRYPT_LIB=-lcrypt
 
 MAKE_ENV.SunOS+=	SYSV_LIBS="-lnsl -lsocket -lsendfile"
 
+CFLAGS.SunOS+=		-D__EXTENSIONS__
+
 SUBST_CLASSES=		htpasswd
 SUBST_MESSAGE.htpasswd=	Fix name of (m)htpasswd in manual pages.
 SUBST_STAGE.htpasswd=	pre-build

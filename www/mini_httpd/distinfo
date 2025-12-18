@@ -5,4 +5,4 @@ SHA512 (mini_httpd-1.30/mini_httpd-1.30.tar.gz) = c7464bbd6f9b18ad15f662978ca68f
 Size (mini_httpd-1.30/mini_httpd-1.30.tar.gz) = 43889 bytes
 SHA1 (patch-aa) = 9156d0f4a7d8b727db34bdf8b7691509f51f9e31
 SHA1 (patch-ab) = bf0f1cc373c0b7da4c4f4f4f0001ba357c16510a
-SHA1 (patch-ac) = c0587f2efa9a349cf739eafdeb2ee54f1fa44629
+SHA1 (patch-ac) = 8b3eae827fde72687f32ba5dea26bea8b033d3ca
