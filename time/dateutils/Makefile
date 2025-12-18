@@ -18,6 +18,8 @@ GNU_CONFIGURE=	yes
 INFO_FILES=	yes
 TEST_TARGET=	check
 
+CFLAGS.SunOS+=	-D__EXTENSIONS__
+
 # For patch-m4_sxe-compiler.m4
 pre-configure:
 	cd ${WRKSRC} && autoreconf -i
