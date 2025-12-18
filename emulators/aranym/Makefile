@@ -30,7 +30,6 @@ FORCE_CXX_STD=	gnu++98
 
 CHECK_PORTABILITY_SKIP=	src/Unix/MacOSX/scripts/gen_machfiles.sh
 
-CONFIGURE_ARGS+=	--enable-fullmmu
 CONFIGURE_ARGS+=	--enable-atc=full
 CONFIGURE_ARGS+=	--disable-sdltest
 
@@ -73,7 +72,6 @@ CONFIGURE_ARGS+=	--disable-opengl
 .  endif
 .endif
 .include "../../graphics/hicolor-icon-theme/buildlink3.mk"
-.include "../../math/mpfr/buildlink3.mk"
 .include "../../sysutils/desktop-file-utils/desktopdb.mk"
 .include "../../mk/jpeg.buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
