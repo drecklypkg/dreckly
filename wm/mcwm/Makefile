@@ -11,6 +11,8 @@ HOMEPAGE=	https://hack.org/mc/hacks/mcwm/
 COMMENT=	Minimalist stacking X window manager based on XCB
 LICENSE=	isc
 
+FORCE_C_STD=	gnu99
+
 INSTALLATION_DIRS+=	bin
 INSTALLATION_DIRS+=	${PKGMANDIR}/man1
 
