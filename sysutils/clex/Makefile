@@ -13,6 +13,8 @@ LICENSE=		gnu-gpl-v2
 USE_LANGUAGES=		c99
 GNU_CONFIGURE=		yes
 
+CFLAGS.SunOS+=		-D__EXTENSIONS__
+
 # for easy to maintain patches
 post-extract:
 	cd ${WRKSRC} && ${RM} -f src/*.orig
