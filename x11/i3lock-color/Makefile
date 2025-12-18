@@ -19,6 +19,8 @@ LDFLAGS.SunOS+=	-lsocket
 
 CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFBASEDIR}
 
+CONFIGURE_ENV+=		ac_cv_prog_ZSH_AVAILABLE=no
+
 INSTALL_MAKE_FLAGS+=	sysconfdir=${PREFIX}/share/examples/i3lock
 
 EGDIR=	${PREFIX}/share/examples/i3lock
