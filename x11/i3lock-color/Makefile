@@ -14,6 +14,8 @@ USE_TOOLS+=	gmake pkg-config autoconf automake autoreconf
 USE_LANGUAGES=	c99
 GNU_CONFIGURE=	yes
 
+LDFLAGS.SunOS+=	-lsocket
+
 CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFBASEDIR}
 
 INSTALL_MAKE_FLAGS+=	sysconfdir=${PREFIX}/share/examples/i3lock
