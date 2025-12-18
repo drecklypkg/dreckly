@@ -4,7 +4,15 @@ Fix y2038 bugs; time_t != long
 
 --- sunclock.c.orig	2008-08-07 12:40:24.000000000 +0000
 +++ sunclock.c
-@@ -127,7 +127,6 @@
+@@ -116,6 +116,7 @@
+ #include <sys/timeb.h>
+ #include <sys/stat.h>
+ #include <string.h>
++#include <strings.h>
+ #include <X11/Xatom.h>
+ 
+ #define DEFVAR
+@@ -127,7 +128,6 @@
   *  external routines
   */
  
