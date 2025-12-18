@@ -6,3 +6,4 @@ Size (cron_4.1.shar) = 205506 bytes
 SHA1 (patch-aa) = 98605040a8bd02b85b75baad1dabf53d807c5af8
 SHA1 (patch-ab) = 2d88ecfa9d3db6faf0951ad1a6e127a5e1e05054
 SHA1 (patch-entry.c) = c6f30866cb8416445a057c982d5fe755cc86cea2
+SHA1 (patch-externs.h) = 1054bccf999a1382b7fefa53678edd0d317b47e4
