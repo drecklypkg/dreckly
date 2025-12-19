@@ -14,6 +14,8 @@ USE_LANGUAGES=	c
 GNU_CONFIGURE=	yes
 USE_LIBTOOL=	yes
 
+CFLAGS.SunOS+=	-Dalloca=__builtin_alloca
+
 PKGCONFIG_OVERRIDE+=	libfirm.pc.in
 
 #
