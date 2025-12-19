@@ -5,6 +5,9 @@
 MAINTAINER=	nia@NetBSD.org
 COMMENT=	Super Nintendo Entertainment System (SNES) emulator (CLI version)
 
+# use the GTK version, this is very raw and unixy
+NOT_FOR_PLATFORM+=	Darwin-*-*
+
 FORCE_CXX_STD=		c++11
 
 CONFIGURE_DIRS=		unix
