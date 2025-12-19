@@ -15,7 +15,7 @@ MAKE_JOBS_SAFE=		no
 WRKSRC=			${WRKDIR}/portlib-1.01
 INSTALLATION_DIRS=	include lib
 
-post-patch:
+pre-configure:
 	${MV} ${WRKSRC}/Makefile ${WRKSRC}/Makefile.bak
 	${SED} <${WRKSRC}/Makefile.bak >${WRKSRC}/Makefile \
 		-e 's|/usr/local|${PREFIX}|'
