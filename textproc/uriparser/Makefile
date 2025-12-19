@@ -1,6 +1,6 @@
-# $NetBSD: Makefile,v 1.19 2024/08/25 06:19:17 wiz Exp $
+# $NetBSD: Makefile,v 1.21 2025/12/15 21:10:12 wiz Exp $
 
-DISTNAME=	uriparser-0.9.8
+DISTNAME=	uriparser-1.0.0
 CATEGORIES=	textproc
 MASTER_SITES=	${MASTER_SITE_GITHUB:=uriparser/}
 GITHUB_RELEASE=	${DISTNAME}
@@ -18,6 +18,7 @@ CMAKE_CONFIGURE_ARGS+=		-DURIPARSER_BUILD_DOCS=OFF
 
 # reallocarray etc
 CFLAGS.NetBSD+=		-D_OPENBSD_SOURCE
+CFLAGS.SunOS+=		-D__EXTENSIONS__
 
 LDFLAGS.SunOS+=		-lsocket -lnsl
 
