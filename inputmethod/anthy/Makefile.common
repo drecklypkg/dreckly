@@ -13,3 +13,5 @@ PATCHDIR=	${.CURDIR}/../../inputmethod/anthy/patches
 
 HOMEPAGE=	https://anthy.osdn.jp/
 LICENSE=	gnu-gpl-v2
+
+CFLAGS.SunOS+=	-Dalloca=__builtin_alloca
