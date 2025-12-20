@@ -15,6 +15,8 @@ USE_LANGUAGES=		c c++
 USE_TOOLS+=		gmake flex
 CONFIGURE_ARGS+=	--with-openssl=${BUILDLINK_PREFIX.openssl:Q}
 
+FORCE_CXX_STD=		gnu++98
+
 # The xorp people insist on their own PREFIX.
 # See http://www.xorp.org/bugzilla/show_bug.cgi?id=91
 #
