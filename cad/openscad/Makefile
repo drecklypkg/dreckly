@@ -49,4 +49,5 @@ do-configure:
 .include "../../x11/qt5-qscintilla/buildlink3.mk"
 .include "../../textproc/libxml++/buildlink3.mk"
 .include "../../math/double-conversion/buildlink3.mk"
+.include "../../mk/atomic64.mk"
 .include "../../mk/bsd.pkg.mk"
