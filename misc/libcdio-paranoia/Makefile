@@ -23,7 +23,11 @@ PKGCONFIG_OVERRIDE+=	libcdio_cdda.pc.in
 PKGCONFIG_OVERRIDE+=	libcdio_paranoia.pc.in
 TEST_TARGET=		check
 
+.include "../../mk/compiler.mk"
+
+.if ${CC_VERSION:Mgcc-*} || ${CC_VERSION:Mclang-*}
 CPPFLAGS.SunOS+=	-Dalloca=__builtin_alloca
+.endif
 
 .include "../../converters/libiconv/buildlink3.mk"
 .include "../../misc/libcdio/buildlink3.mk"
