@@ -46,7 +46,11 @@ SUBST_STAGE.stunnel=	pre-configure
 SUBST_FILES.stunnel=	tools/stunnel.conf-sample.in
 SUBST_VARS.stunnel=	STUNNEL_USER STUNNEL_GROUP
 
+.include "../../mk/compiler.mk"
+
+.if ${CC_VERSION:Mgcc-*} || ${CC_VERSION:Mclang-*}
 CPPFLAGS.SunOS+=	-Dalloca=__builtin_alloca
+.endif
 
 TEST_TARGET=		check
 
