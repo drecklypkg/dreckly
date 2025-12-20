@@ -5,3 +5,4 @@ SHA512 (libquvi-0.4.1.tar.bz2) = a5cc2c837c1a767dc5f543c7cf0b5611a92b7e397b532c1
 Size (libquvi-0.4.1.tar.bz2) = 308126 bytes
 SHA1 (patch-src_libquvi_curl__wrap.c) = 6935d417bb7201a78a66f9871586e5c27f190bbd
 SHA1 (patch-src_libquvi_lua__wrap.c) = ae032ca04cdaeaf3d7025faabeedb84f5aa3399b
+SHA1 (patch-src_libquvi_net__wrap.c) = 359e38cf4aea24302cbf74ced05ecd7be8ccc02b
