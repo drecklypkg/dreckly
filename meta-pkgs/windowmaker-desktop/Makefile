@@ -18,7 +18,6 @@ DEPENDS+=	asclock-[0-9]*:../../time/asclock
 DEPENDS+=	wmcpuload-[0-9]*:../../sysutils/wmcpuload
 DEPENDS+=	wmmemmon-[0-9]*:../../sysutils/wmmemmon
 DEPENDS+=	wmmail-[0-9]*:../../mail/wmmail
-DEPENDS+=	wmnet-[0-9]*:../../net/wmnet
 DEPENDS+=	wmweather-[0-9]*:../../x11/wmweather
 DEPENDS+=	wmMoonClock-[0-9]*:../../time/wmmoonclock
 .include "../../mk/oss.buildlink3.mk"
