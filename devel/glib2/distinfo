@@ -5,7 +5,6 @@ SHA512 (glib-2.84.4.tar.xz) = 2de9b2f7376c0e5f6ee585087090675d597c474199a10d04aa
 Size (glib-2.84.4.tar.xz) = 5618200 bytes
 SHA1 (patch-gio_gcredentialsprivate.h) = f719ae41a9eb1d2f04d866b246fa5176543f2df9
 SHA1 (patch-gio_gdbus-2.0_codegen_meson.build) = 9bd0befe0dd547f6f2d818e52bee14e31a017ac7
-SHA1 (patch-gio_giomodule.c) = 8e12ba27d0f13f43cff9a4e2301edf67aba0d1fe
 SHA1 (patch-gio_glib-compile-schemas.c) = 4fc8e8ba62bef01762007ebf21569053374808d0
 SHA1 (patch-gio_gresource-tool.c) = ad0e59f48f5f98ea66be568dbe2e5a5d1ac602fc
 SHA1 (patch-gio_gunixcredentialsmessage.c) = c13119ddd6262db7c03e53857e987f0c495d3312
