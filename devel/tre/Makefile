@@ -17,6 +17,13 @@ USE_LIBTOOL=		YES
 
 CONFIGURE_ARGS+=	--disable-system-abi
 
+# This contains some annoying legacy code that only includes <alloca.h>
+# when a non-GNU compiler is used, resulting in failures with recent gcc
+# (and probably clang too).
+#
+# Be safe, use an alloc function that returns NULL on failure.
+CONFIGURE_ARGS+=	--without-alloca
+
 INSTALLATION_DIRS+=	share/doc/tre
 
 post-install:
