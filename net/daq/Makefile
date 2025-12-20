@@ -17,6 +17,10 @@ TOOL_DEPENDS+=	bison-[0-9]*:../../devel/bison
 GNU_CONFIGURE=	yes
 USE_LIBTOOL=	yes
 
+FORCE_C_STD=	gnu99
+
+BUILDLINK_TRANSFORM+=	rm:-pedantic
+
 CPPFLAGS.SunOS+=	-Du_int32_t=uint32_t
 
 .include "../../devel/flex/buildlink3.mk"
