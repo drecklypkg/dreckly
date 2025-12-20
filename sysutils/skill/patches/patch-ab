@@ -2,9 +2,11 @@ $NetBSD: patch-ab,v 1.13 2007/10/27 02:52:23 obache Exp $
 
 --- main.c.orig	2007-05-04 20:56:20.000000000 +0000
 +++ main.c
-@@ -44,8 +44,18 @@ const char *CopyrightVersion = "%s %s\n\
+@@ -43,10 +43,21 @@ const char *CopyrightVersion = "%s %s\n\nCopyright (c)
+ 
  #include "conf.h"
  
++#include <sys/signal.h>
  #include <stdio.h>
 +#ifdef __STDC__
 +#include <stdlib.h>
@@ -14,14 +16,24 @@ $NetBSD: patch-ab,v 1.13 2007/10/27 02:52:23 obache Exp $
 +#ifdef __NetBSD__
 +#include <sys/sysctl.h>
 +#endif
-+
+ 
 +#ifndef KI_MAXCOMLEN	/* Pre NetBSD/1.5.  Missing on !NetBSD */
 +#define KI_MAXCOMLEN	24
 +#endif
- 
++
  /*
   * Processes which could not be checked -- usually due to permission
-@@ -137,7 +147,7 @@ main(argc, argv)
+  * problems (SunOS 4.1, SysVR4) -- are tallied in "MissedProcCnt".
+@@ -56,6 +67,8 @@ int MissedProcCnt = 0;
+  */
+ int MissedProcCnt = 0;
+ 
++int Recorded(pid_T pid);
++
+ int
+ main(argc, argv)
+ 	int argc;
+@@ -137,7 +150,7 @@ main(argc, argv)
  			for (i = 0; i < CmdIndx; i++) {
  				cmdp = (CmdList + i);
  				if ((cmdp->flags & CMD_FLAG_EXACT) != 0 &&
@@ -30,7 +42,15 @@ $NetBSD: patch-ab,v 1.13 2007/10/27 02:52:23 obache Exp $
  					break;
  				else if ((cmdp->flags & CMD_FLAG_REGEX) != 0 &&
  						RegexMatch(CMD, cmdp) != 0)
-@@ -384,8 +394,6 @@ Usage(error)
+@@ -259,7 +272,6 @@ WhoIs(uid)
+ WhoIs(uid)
+ 	uid_T uid;
+ {
+-	extern char *strncpy();			/* avoid <string/strings> war */
+ 	static char usrcache[MAXUSR+1]=ROOTUSR;	/* user name */
+ 	static uid_T uidcache = ROOTUID;	/* user id */
+ 	struct passwd *pp;
+@@ -384,8 +396,6 @@ SysErr()
  char *
  SysErr()
  {
