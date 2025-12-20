@@ -20,7 +20,8 @@ CONFIGURE_ENV+=		HAVE_PDFLATEX=no
 
 .if !empty(PKGSRC_COMPILER:Msunpro) || \
     ${MACHINE_PLATFORM:MDarwin-9.*-i386} || \
-    !empty(MACHINE_PLATFORM:MDarwin-??.*-*)
+    !empty(MACHINE_PLATFORM:MDarwin-??.*-*) || \
+    ${MACHINE_ARCH:M*arm*}
 CONFIGURE_ARGS+=	--disable-asm
 .endif
 
