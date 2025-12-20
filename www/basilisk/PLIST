@@ -24,8 +24,8 @@ ${PLIST.be}lib/basilisk-52.9.0/icudt63b.dat
 ${PLIST.le}lib/basilisk-52.9.0/icudt63l.dat
 lib/basilisk-52.9.0/libhunspell.so
 lib/basilisk-52.9.0/liblgpllibs.so
-${PLIST.ffvpx}lib/basilisk-52.9.0/libmozavcodec.so
-${PLIST.ffvpx}lib/basilisk-52.9.0/libmozavutil.so
+lib/basilisk-52.9.0/libmozavcodec.so
+lib/basilisk-52.9.0/libmozavutil.so
 lib/basilisk-52.9.0/libmozgtk.so
 lib/basilisk-52.9.0/libmozsqlite3.so
 lib/basilisk-52.9.0/libnspr4.so
