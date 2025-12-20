@@ -17,7 +17,15 @@ $NetBSD: patch-ab,v 1.1.1.1 2000/12/17 23:32:13 wiz Exp $
  int YEAR=0;      /* default is to show time, not year */
  /* led positions *************************************************************/
  int twelve[5]  = {5, 14, 24, 28, 37};
-@@ -85,14 +88,15 @@ static char *help_message[] = {
+@@ -77,6 +80,7 @@ void InsertTime();
+ Pixel GetColor(char *name);
+ void RedrawWindow( XpmIcon *v);
+ void InsertTime();
++int mytime();
+ /*****************************************************************************/
+ /*****************************************************************************/
+ static char *help_message[] = {
+@@ -85,14 +89,15 @@ static char *help_message[] = {
  "    -24                     24 hour format",
  "    -exe <program>          program to start on click",
  "    -led <color>            color of the led",
@@ -35,7 +43,7 @@ $NetBSD: patch-ab,v 1.1.1.1 2000/12/17 23:32:13 wiz Exp $
  NULL
  };
  
-@@ -173,6 +177,9 @@ int main(int argc,char *argv[])
+@@ -173,6 +178,9 @@ int main(int argc,char *argv[])
        case 'n':
          ITBLINKS = 0;
          continue;
@@ -45,7 +53,7 @@ $NetBSD: patch-ab,v 1.1.1.1 2000/12/17 23:32:13 wiz Exp $
        case 'y':
  	YEAR = 1;
  	continue;
-@@ -256,13 +263,17 @@ int main(int argc,char *argv[])
+@@ -256,13 +264,17 @@ int main(int argc,char *argv[])
      XShapeCombineMask(dpy, iconwin, ShapeBounding, 0, 0, pixmask, ShapeSet);
    }
    
