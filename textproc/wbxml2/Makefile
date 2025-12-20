@@ -17,7 +17,7 @@ GNU_CONFIGURE=	yes
 
 PKGCONFIG_OVERRIDE+=	libwbxml2.pc.in
 
-CPPFLAGS.SunOS+=	-std=c99 -D_XOPEN_SOURCE=600
+CPPFLAGS.SunOS+=	-std=gnu99 -D_XOPEN_SOURCE=600
 
 pre-configure:
 	cd ${WRKSRC} && \
