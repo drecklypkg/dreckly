@@ -5,3 +5,4 @@ SHA512 (chmlib-0.40.tar.bz2) = 3a3e151cf455b19e9e7c163a1d1e5ac52e8196f0b98f77932
 Size (chmlib-0.40.tar.bz2) = 252036 bytes
 SHA1 (patch-aa) = c4a7c21e8ae0cb097e9225cdf7e099395c5ed331
 SHA1 (patch-ac) = 32c3e3a1fe548123bce15de4cb81b869c9cbded8
+SHA1 (patch-src_chm_http.c) = 0a0f687a7f40bfce7489960a69b98613ccd06e33
