@@ -19,6 +19,8 @@ BUILD_TARGET=	mp3check
 # Fails with C++14 default language.
 FORCE_CXX_STD=	c++03
 
+CXXFLAGS+=	-fpermissive
+
 INSTALLATION_DIRS=	bin ${PKGMANDIR}/man1
 
 do-install:
