@@ -5,3 +5,4 @@ SHA512 (wbxml2-0.9.2.tar.gz) = 60d6728bb26e4f9f4b9008cfa86e73d48373931d4ca1800d9
 Size (wbxml2-0.9.2.tar.gz) = 304115 bytes
 SHA1 (patch-aa) = f508c228ecb0778121a07bad6069c0966188f8fc
 SHA1 (patch-configure.in) = a4e126689f113eadcd2ba40c2a8512d4b29e4bfd
+SHA1 (patch-src_wbxml.h) = c54967b711abe33c3856c7f40bb09027ae4fb555
