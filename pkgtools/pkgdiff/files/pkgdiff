@@ -126,7 +126,7 @@ PKGDIFF_FMT="${PKGDIFF_FMT} -U $lines"
 ;;
 esac # PKGDIFF_FMT unset or null
 
-if dodiff -q $PKGDIFF_FMT "$old" "$new" > /dev/null
+if dodiff -q "$old" "$new" > /dev/null
 then
 	:
 else
