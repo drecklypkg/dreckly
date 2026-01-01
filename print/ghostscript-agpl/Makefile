@@ -1,8 +1,7 @@
-# $NetBSD: Makefile,v 1.93 2024/11/14 22:21:24 wiz Exp $
+# $NetBSD: Makefile,v 1.103 2025/10/23 20:38:59 wiz Exp $
 
 DISTNAME=	ghostscript-${GS_VERSION}
 PKGNAME=	${DISTNAME:S/ghostscript/ghostscript-agpl/}
-PKGREVISION=	4
 CATEGORIES=	print
 MASTER_SITES=	${MASTER_SITE_GITHUB:=ArtifexSoftware/}
 GITHUB_PROJECT=	ghostpdl-downloads
@@ -23,6 +22,7 @@ LICENSE=	gnu-agpl-v3
 DEPENDS+=		ghostscript-fonts>=6.0:../../fonts/ghostscript-fonts
 
 USE_LANGUAGES+=		c c++
+FORCE_C_STD=		gnu99
 USE_TOOLS+=		gmake perl:run lex pkg-config
 GNU_CONFIGURE=		yes
 GNU_CONFIGURE_ICONV=	no
@@ -66,6 +66,12 @@ SUBST_STAGE.resdir=	post-extract
 SUBST_MESSAGE.resdir=	Fixing resource directory path
 SUBST_FILES.resdir=	Resource/Init/gs_res.ps
 SUBST_SED.resdir=	-e "s|/Resource/|${GS_RESOURCEDIR}/|g"
+
+# https://www.illumos.org/issues/17491
+SUBST_CLASSES.SunOS+=	assert
+SUBST_STAGE.assert=	pre-configure
+SUBST_FILES.assert=	base/assert_.h
+SUBST_SED.assert=	-e 's,_ASSERT_H,GS_ASSERT_H,g'
 
 # On Linux-*-x86_64, there was an error message:
 # gp_unix.o: relocation R_X86_64_32 against `a local symbol' can not be
