@@ -1,8 +1,8 @@
-# $NetBSD: Makefile.common,v 1.8 2024/08/03 06:52:01 adam Exp $
+# $NetBSD: Makefile.common,v 1.15 2025/12/04 16:23:55 adam Exp $
 # used by multimedia/ffmpeg6/Makefile
 # used by multimedia/ffplay6/Makefile
 
-DISTNAME=	ffmpeg-6.1.2
+DISTNAME=	ffmpeg-6.1.4
 CATEGORIES=	multimedia
 MASTER_SITES=	http://www.ffmpeg.org/releases/
 EXTRACT_SUFX=	.tar.xz
@@ -33,8 +33,13 @@ CONFIGURE_ARGS+=	--incdir=${PREFIX}/include/ffmpeg6
 CONFIGURE_ARGS+=	--libdir=${PREFIX}/lib/ffmpeg6
 CONFIGURE_ARGS+=	--shlibdir=${PREFIX}/lib/ffmpeg6
 LDFLAGS+=		${COMPILER_RPATH_FLAG}${PREFIX}/lib/ffmpeg6
+
+.include "../../mk/compiler.mk"
+
 # https://github.com/homebrew-ffmpeg/homebrew-ffmpeg/issues/140
+.if ${CC_VERSION:Mclang-15.*}
 LDFLAGS.Darwin+=	-Wl,-ld_classic
+.endif
 
 .if ${USE_CROSS_COMPILE:tl} == yes
 CONFIGURE_ARGS+=	--enable-cross-compile
@@ -76,8 +81,6 @@ CONFIG_SHELL=	${TOOLS_PATH.bash}
 
 # Let's not put garbage into /tmp
 CONFIGURE_ENV+=		TMPDIR=${WRKSRC}/tmp
-
-.include "../../mk/compiler.mk"
 
 .if !empty(PKGSRC_COMPILER:Msunpro)
 SUBST_CLASSES+=		sunwspro
