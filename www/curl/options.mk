@@ -30,6 +30,7 @@ CONFIGURE_ARGS+=	--without-libssh2
 .endif
 
 .if !empty(PKG_OPTIONS:Mgssapi)
+KRB5_ACCEPTED=		mit-krb5
 .include "../../mk/krb5.buildlink3.mk"
 CONFIGURE_ARGS+=	--with-gssapi=${KRB5BASE}
 CONFIGURE_ARGS+=	--with-gssapi-includes=${KRB5BASE}/include/gssapi
