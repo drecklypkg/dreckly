@@ -122,8 +122,9 @@ CONFIGURE_ARGS+=		--disable-bsd-user
 CONFIGURE_ARGS+=		--enable-bsd-user
 USER_EMUL=			i386 x86_64
 .  endif
-.elif ${OPSYS:M*BSD} || ${OPSYS} == "DragonFly"
-USER_EMUL=			i386 x86_64
+.elif ${OPSYS} == "FreeBSD"
+USER_EMUL=			arm ga i386 x86_64
+PLIST.ga=			yes
 PLIST.nbd=			yes
 .elif ${OPSYS} == "Darwin"
 USER_EMUL=
