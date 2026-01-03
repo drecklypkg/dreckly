@@ -19,6 +19,9 @@ GNU_CONFIGURE=		YES
 CONFIGURE_ARGS+=	--disable-lirc
 CONFIGURE_ARGS+=	--without-aalib
 
+# libedit is not good enough, need rl_kill_full_line(3)
+CONFIGURE_ARGS+=	--with-readline=${BUILDLINK_PREFIX.readline}
+
 pre-configure:
 	cd ${WRKSRC} && autoreconf -vif
 
