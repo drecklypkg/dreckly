@@ -5,3 +5,4 @@ SHA512 (getopt-1.1.6.tar.gz) = aa5476e729f33ddd3f32f38b2565da319fdfe034f11549218
 Size (getopt-1.1.6.tar.gz) = 58926 bytes
 SHA1 (patch-aa) = 5967a6ec48a7a69078fc1e0fca26645fd9870f77
 SHA1 (patch-ab) = 8591f15916b47d3569c79639e6ee9aa82df07f6a
+SHA1 (patch-gnu_getopt.c) = f27194128abce7901232a5d24cdcab225af369d2
