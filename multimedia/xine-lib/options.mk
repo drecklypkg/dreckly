@@ -26,7 +26,7 @@ PKG_SUGGESTED_OPTIONS+=	x11
 PKG_SUGGESTED_OPTIONS+=	wayland
 .endif
 
-PLIST_VARS+=	gl2
+PLIST_VARS+=	glx gl2
 
 .include "../../mk/bsd.options.mk"
 
@@ -70,7 +70,10 @@ CONFIGURE_ARGS+=	--disable-wayland
 PLIST_VARS+=		x11
 .if !empty(PKG_OPTIONS:Mx11)
 PLIST.x11=		yes
+.  if ${OPSYS} != "Darwin"
 PLIST.gl2=		yes
+PLIST.glx=		yes
+.  endif
 CONFIGURE_ARGS+=	--with-x
 .include "../../x11/libXext/buildlink3.mk"
 .include "../../x11/libXt/buildlink3.mk"
