@@ -14,5 +14,7 @@ USE_LIBTOOL=		yes
 GNU_CONFIGURE=		yes
 PKGCONFIG_OVERRIDE+=	libmodplug.pc.in
 
+FORCE_CXX_STD=		gnu++98
+
 .include "../../mk/oss.buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
