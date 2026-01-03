@@ -53,6 +53,13 @@ CONFIGURE_ARGS+=	--disable-ssemath
 CONFIGURE_ARGS+=	--disable-sse2
 .endif
 
+.include "../../mk/compiler.mk"
+
+.if ${CC_VERSION:Mclang-*} || ${CC_VERSION:Mgcc-1*}
+CXXFLAGS+=		-Wno-incompatible-pointer-types
+CFLAGS+=		-Wno-incompatible-pointer-types
+.endif
+
 PKGCONFIG_OVERRIDE+=	sdl2.pc.in
 
 CHECK_PORTABILITY_SKIP+=	build-scripts/androidbuildlibs.sh
