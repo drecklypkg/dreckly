@@ -19,6 +19,7 @@ GNU_CONFIGURE=	yes
 REPLACE_PERL+=	tools/winemaker/winemaker
 REPLACE_PERL+=	tools/winedump/function_grep.pl
 
+MKPIE_SUPPORTED=	no
 CHECK_PIE_SUPPORTED=	no
 
 ONLY_FOR_PLATFORM+=	*-*-i386 *-*-x86_64
@@ -59,6 +60,15 @@ CONFIGURE_ENV+=		ac_cv_cflags__Wl___enable_new_dtags=no
 .  endif
 # gethostbyname_r is in libc, but has a different calling convention
 CONFIGURE_ENV+=		wine_cv_linux_gethostbyname_r_6=no
+.endif
+
+.include "../../mk/compiler.mk"
+
+.if ${CC_VERSION:Mgcc-1*} || ${CC_VERSION:Mclang-*}
+CFLAGS+=	-Wno-incompatible-pointer-types
+CFLAGS+=	-Wno-implicit-function-declaration
+CXXFLAGS+=	-Wno-incompatible-pointer-types
+CXXFLAGS+=	-Wno-implicit-function-declaration
 .endif
 
 .include "../../mk/oss.buildlink3.mk"
