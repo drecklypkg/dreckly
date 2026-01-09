@@ -3,3 +3,4 @@ $NetBSD: distinfo,v 1.33 2024/10/20 14:02:23 wiz Exp $
 BLAKE2s (at-spi2-core-2.54.0.tar.xz) = 8a925502b14e14f5d0265a6e9acc50f208849cb880042d06f3e82385b8a9a6ff
 SHA512 (at-spi2-core-2.54.0.tar.xz) = ac697055f9e31b264da55dc1b7c92c85905bc6c32dcd6ac7a699f9cc0dec933f7bb1323098e7c2f6bdce91bc7195bd8b4625e39216d9671c85df25a0071f0a3e
 Size (at-spi2-core-2.54.0.tar.xz) = 575368 bytes
+SHA1 (patch-tests_at-spi2-atk_atk__test__util.c) = 143b64445b1afad8b2df095e8f8594472c92cb27
