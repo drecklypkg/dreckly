@@ -18,6 +18,8 @@ SUPERSEDES+=	atk-[0-9]*
 CONFLICTS+=	at-spi2-atk-[0-9]*
 CONFLICTS+=	atk-[0-9]*
 
+CFLAGS.NetBSD+=	-D_NETBSD_SOURCE
+
 BUILD_DEFS+=		PKG_SYSCONFDIR
 
 EGDIR=			${PREFIX}/share/examples/${PKGBASE}
