@@ -92,6 +92,11 @@ FILES_SUBST+=		GTK_UPDATE_ICON_CACHE="${PREFIX}/bin/gtk2-update-icon-cache"
 FILES_SUBST+=		ICON_THEME_DIR="${PREFIX}/share/icons"
 INSTALL_TEMPLATES+=	../../x11/gtk2/files/icon-cache.tmpl
 
+.include "../../mk/compiler.mk"
+.if ${PKGSRC_COMPILER:M*gcc*} && empty(PKGSRC_COMPILER:Mgcc[3-4].*)
+CFLAGS+=	-Wno-error=incompatible-pointer-types
+.endif
+
 _BUILDING_GTK2=	yes
 .include "modules.mk"
 
