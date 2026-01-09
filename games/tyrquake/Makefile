@@ -19,6 +19,9 @@ SUBST_MESSAGE.audio=	Fixing path to the audio device.
 SUBST_FILES.audio=	common/snd_oss.c
 SUBST_SED.audio=	-e "s|/dev/dsp|${DEVOSSAUDIO}|"
 
+# Not on i386, and we can't check for arch first.
+MKPIE_SUPPORTED=	no
+
 INSTALLATION_DIRS=	bin
 
 do-install:
