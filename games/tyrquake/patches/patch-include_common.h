@@ -10,7 +10,7 @@ definition.
  #include <stdarg.h>
  #include <stdio.h>
 +#ifdef __NetBSD__
-+#include <sys/bswap.h>
++#include <sys/endian.h>
 +#endif
  
  #include "qtypes.h"
