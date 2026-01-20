@@ -630,6 +630,7 @@ SUBDIR+=	p5-WordPress-XMLRPC
 SUBDIR+=	p5-libapreq2
 SUBDIR+=	p5-libwww
 SUBDIR+=	palemoon
+SUBDIR+=	palemoon-gtk3
 SUBDIR+=	paros
 SUBDIR+=	passenger
 SUBDIR+=	pear-HTML_Common

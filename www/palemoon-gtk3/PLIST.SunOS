@@ -1,0 +1,2 @@
+@comment $NetBSD$
+lib/palemoon-${PKGVERSION}/libfreebl3.so
