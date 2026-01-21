@@ -29,7 +29,6 @@ lib/palemoon-${PKGVERSION}/dictionaries/en-US.aff
 lib/palemoon-${PKGVERSION}/dictionaries/en-US.dic
 lib/palemoon-${PKGVERSION}/fonts/TwemojiMozilla.ttf
 lib/palemoon-${PKGVERSION}/gtk2/libmozgtk.so
-lib/palemoon-${PKGVERSION}/icudt78l.dat
 ${PLIST.be}lib/palemoon-${PKGVERSION}/icudt78b.dat
 ${PLIST.le}lib/palemoon-${PKGVERSION}/icudt78l.dat
 lib/palemoon-${PKGVERSION}/liblgpllibs.so
