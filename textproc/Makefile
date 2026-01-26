@@ -478,6 +478,7 @@ SUBDIR+=	json-schema
 SUBDIR+=	json-yaml
 SUBDIR+=	json2tsv
 SUBDIR+=	jsoncpp
+SUBDIR+=	jstrings
 SUBDIR+=	kakasi
 SUBDIR+=	kapidox
 SUBDIR+=	kbanner
