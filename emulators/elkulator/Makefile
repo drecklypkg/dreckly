@@ -21,6 +21,8 @@ GNU_CONFIGURE=	yes
 
 CONFIGURE_ARGS+=	--disable-allegrotest
 
+LIBS+=			-lm # fmodf, sin...
+
 INSTALLATION_DIRS+=	bin
 INSTALLATION_DIRS+=	libexec
 INSTALLATION_DIRS+=	share/applications
