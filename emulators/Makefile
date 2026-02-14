@@ -176,6 +176,7 @@ SUBDIR+=	nono
 SUBDIR+=	open-simh
 SUBDIR+=	openmsx
 SUBDIR+=	or1ksim
+SUBDIR+=	oricutron
 SUBDIR+=	osf1_lib
 SUBDIR+=	p11
 SUBDIR+=	palmosemulator
