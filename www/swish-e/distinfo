@@ -15,6 +15,7 @@ SHA1 (patch-src_db__native.c) = f845c49a2d5fd6d1436a5b6a52350e6333bb5e74
 SHA1 (patch-src_db__read.c) = f95833b15ee4e797613d7bfd9cd1705eaa4b60c5
 SHA1 (patch-src_db__write.c) = aef2f748675c459086d75f2bf7e3c50963f8a9ec
 SHA1 (patch-src_dump.c) = 4f8a2242cea218aa18b9c8519df54aa7a485630a
+SHA1 (patch-src_filter.c) = 65c93454917fe56bc8a1d9e9b95160455c57860c
 SHA1 (patch-src_index.c) = e9abd6b2c8be0a1aa53166413d1ab37762b5edb6
 SHA1 (patch-src_merge.c) = ab2fe40304697635d01657bdcab6faeb245a4c75
 SHA1 (patch-src_result__sort.c) = 438293733093084926f7e310ef77421055f09ae1
