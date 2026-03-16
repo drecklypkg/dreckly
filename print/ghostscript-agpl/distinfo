@@ -8,5 +8,5 @@ SHA1 (patch-base_lib.mak) = 1a10fc045e2d703095357a4cf40b97d83f90ad6a
 SHA1 (patch-base_mkromfs.c) = 9d9afbd0fbb8c70c8f4f7de3cadc5b54541f0db0
 SHA1 (patch-base_ttobjs.h) = 378ad7d316a4a9dc53b9c8e612582a7c8e9b3688
 SHA1 (patch-base_unix-dll.mak) = 8076ce689807872bf94b552daaf9547b646ca249
-SHA1 (patch-configure) = 8a25a15d4100a7f0d7b8b131f444629ac9b52d21
+SHA1 (patch-configure) = 0f383a036b81baab9b92921ab327715187bdb818
 SHA1 (patch-devices_devs.mak) = e9937d401a278cc6d0a6d4cff78c526375bc18ca
