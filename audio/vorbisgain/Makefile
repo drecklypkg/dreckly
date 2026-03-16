@@ -13,5 +13,11 @@ LICENSE=	gnu-lgpl-v2.1
 GNU_CONFIGURE=	yes
 USE_TOOLS+=	gmake
 
+TOOL_DEPENDS+=	dos2unix-[0-9]*:../../converters/dos2unix
+
+pre-patch:
+	find ${WRKSRC} -name "*.c" -type f | xargs dos2unix
+	find ${WRKSRC} -name "*.h" -type f | xargs dos2unix
+
 .include "../../audio/libvorbis/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
