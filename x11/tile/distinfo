@@ -5,3 +5,4 @@ SHA512 (tile_0.7.3.tar.gz) = 689dc10179c5505fb721091ecc3a09b24820279bbcfc1978c19
 Size (tile_0.7.3.tar.gz) = 111272 bytes
 SHA1 (patch-aa) = fd30d12795bb6b4f344cd251665936fc7285f97f
 SHA1 (patch-ab) = 5de44faad3125de2cbbe90bd11412674a28e75db
+SHA1 (patch-avoid.c) = abcaceab30fbd8d7d31a917de7b900a077a74100
