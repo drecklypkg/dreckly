@@ -6,3 +6,4 @@ Size (p0f-2.0.8.tgz) = 136877 bytes
 SHA1 (patch-aa) = 0e79fc52b7711a8cb31565f2da8a52761947853d
 SHA1 (patch-ad) = 378d9480c88d9a447684323c4a59f3c2f6f10d74
 SHA1 (patch-ae) = ffe38288367a63585be71ee45b4a4859f171523b
+SHA1 (patch-p0f-query.c) = 3d9c6c7f64c3af110399005bf4958dda28c2b059
