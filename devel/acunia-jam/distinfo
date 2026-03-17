@@ -5,4 +5,6 @@ SHA512 (acunia-jam-1.0.tar.gz) = f4da402bccc6c05a692cf77f6b66a3e18a1ba340f41fb5b
 Size (acunia-jam-1.0.tar.gz) = 138340 bytes
 SHA1 (patch-aa) = 45a957df574ffd63f90214500bad33adc0f63826
 SHA1 (patch-ab) = d6e4f102b898a6a144d3686ba664da256e6f9726
-SHA1 (patch-ac) = cbd45ad20628361e95ecd10a2ddad7e1efdc2c5d
+SHA1 (patch-ac) = c7e9a34982ef46977056bc877c41a19e7ba7f2b9
+SHA1 (patch-jam.c) = be8ea55b0d09a274b8ee4fd0e5487a48e71ce011
+SHA1 (patch-mkjambase.c) = 990174586d4daf224b7039380ae348717e9bcc1d
