@@ -18,4 +18,6 @@ MAKE_FLAGS+=	LDFLAGS=${LDFLAGS:Q}
 MAKE_FLAGS+=	prefix=${PREFIX}
 MAKE_FLAGS+=	mandir=${PREFIX}/${PKGMANDIR}
 
+LDFLAGS.SunOS+=	-liconv
+
 .include "../../mk/bsd.pkg.mk"
