@@ -13,7 +13,7 @@ COMMENT=	Scan for a limited set of distributed denial of service (ddos) agents
 
 BUILD_TARGET=	default dds
 
-LIBS.SunOS+=	-lresolv -lsocket -lnsl
+LDFLAGS.SunOS+=	-lresolv -lsocket -lnsl
 
 INSTALLATION_DIRS=	sbin share/doc
 
