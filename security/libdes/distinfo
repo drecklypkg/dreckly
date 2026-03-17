@@ -10,3 +10,5 @@ SHA1 (patch-ad) = a7f7527afc374489f2449ed6742c974c47bb22b4
 SHA1 (patch-ae) = aad951f81125eba388a7c45e79e46531f1a5c650
 SHA1 (patch-af) = b900ed25fa5d396a500998e803d3eadaa02e3fcb
 SHA1 (patch-ag) = 01e994b91989ba1f5a7cc7327c1edeee932031f2
+SHA1 (patch-rpw.c) = e72b89a537e09332279a6b0ed344233d8bd28c65
+SHA1 (patch-speed.c) = 608377ac4d37d6bec2501983608e802c047ac26c
