@@ -21,6 +21,8 @@ GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--enable-strict
 CONFIGURE_ARGS+=	--enable-pedantic
 
+CFLAGS.SunOS+=		-D_XOPEN_SOURCE=500
+
 PKGCONFIG_OVERRIDE+=	lib/libpkcs11-helper-1.pc.in
 
 .include "options.mk"
