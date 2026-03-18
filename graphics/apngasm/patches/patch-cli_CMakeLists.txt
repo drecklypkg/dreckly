@@ -1,0 +1,22 @@
+$NetBSD$
+
+Honour PKGMANDIR.
+
+--- cli/CMakeLists.txt.orig	2026-03-18 09:10:12.050846774 +0000
++++ cli/CMakeLists.txt
+@@ -76,6 +76,8 @@ endif ()
+ include(${PROJECT_BINARY_DIR}/../lib/manifest.txt)
+ configure_file(${PROJECT_SOURCE_DIR}/package/CMakeLists.txt.in ${PACKAGE_DIR}/CMakeLists.txt @ONLY)
+ 
++include(GNUInstallDirs)
++
+ if (UNIX OR APPLE OR MINGW)
+   add_custom_target(
+     package-cli
+@@ -83,5 +85,5 @@ if (UNIX OR APPLE OR MINGW)
+     COMMAND ${CMAKE_MAKE_PROGRAM} package
+     WORKING_DIRECTORY ${PACKAGE_DIR}
+   )
+-  install(FILES ${PROJECT_SOURCE_DIR}/../docs/man/apngasm.1 DESTINATION ${CMAKE_INSTALL_PREFIX}/man/man1)
++  install(FILES ${PROJECT_SOURCE_DIR}/../docs/man/apngasm.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+ endif ()
