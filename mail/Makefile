@@ -58,6 +58,7 @@ SUBDIR+=	courier-unicode
 SUBDIR+=	cucipop
 SUBDIR+=	cue
 SUBDIR+=	cyrus-imapd24
+SUBDIR+=	cyrus-imapd310
 SUBDIR+=	cyrus-imapd32
 SUBDIR+=	dbmail
 SUBDIR+=	dcc
