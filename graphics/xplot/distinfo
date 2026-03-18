@@ -7,3 +7,4 @@ SHA1 (patch-aa) = 3e876d17de714cc1fafa71b5513fb67e7c7778cc
 SHA1 (patch-ab) = 97c7b292a1c1f8d9294c69d4cc2eacbbff411d2e
 SHA1 (patch-ac) = 3313ce11016f06488f7d2f7dc04b940e74c27151
 SHA1 (patch-ad) = fd19823030badf91734fde92b45fcaecc06cf0f8
+SHA1 (patch-signed.c) = a7e6400fdc62df4afb0a0a68da961a11e41bcce1
