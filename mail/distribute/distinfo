@@ -26,5 +26,7 @@ SHA512 (distribute/patch.26e.gz) = c0c1de2467d1b28320585cb4933029182932345e7e8b3
 Size (distribute/patch.26e.gz) = 12560 bytes
 SHA1 (patch-aa) = fd8a98d613fbec3f057a2b9187306cc89eadd2bf
 SHA1 (patch-ac) = 89873e55470070a2ceff7bc06fa63d2673aee766
+SHA1 (patch-archive.c) = 8e24a81fc6210822102ea5cec7656eddb53baccf
 SHA1 (patch-history.c) = f9a42fdeac4c05ff56d672a3f455efe430e9570f
+SHA1 (patch-strutil.c) = 4bb9dab723cf7124507cd547cfd671666150a438
 SHA1 (patch-tmpl2c.pl) = 5cdf21381f98df64b37609173e35448427edf231
