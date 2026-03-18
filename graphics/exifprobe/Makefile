@@ -15,6 +15,7 @@ LICENSE=	modified-bsd
 MAKE_JOBS_SAFE=	no
 
 CFLAGS.SunOS+=		-Du_int32_t=uint32_t
+CFLAGS.SunOS+=		-D__EXTENSIONS__
 
 INSTALL_MAKE_FLAGS=	MANDIR=${PREFIX}/${PKGMANDIR}/man1
 
