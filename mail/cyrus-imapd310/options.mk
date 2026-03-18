@@ -8,8 +8,6 @@ PKG_SUGGESTED_OPTIONS=	pcre
 
 .include "../../mk/bsd.options.mk"
 
-PLIST_VARS+=	ldap
-
 .if !empty(PKG_OPTIONS:Mkerberos)
 .  if empty(PKG_OPTIONS:Mgssapi)
 PKG_OPTIONS+=	gssapi
@@ -66,7 +64,6 @@ generate-compile-et:
 .if !empty(PKG_OPTIONS:Mldap)
 .  include "../../databases/openldap-client/buildlink3.mk"
 CONFIGURE_ARGS+=	--with-ldap=${BUILDLINK_PREFIX.openldap-client}
-PLIST.ldap=		yes
 .else
 CONFIGURE_ARGS+=	--without-ldap
 .endif
