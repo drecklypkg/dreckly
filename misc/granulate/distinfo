@@ -4,3 +4,4 @@ BLAKE2s (granulate-0.2.tar.gz) = e61178627524d8da8fc9129a33a71e8eab98cf86d789c13
 SHA512 (granulate-0.2.tar.gz) = 349dcb564c79d24ad815a89c02d18f206637c11f4fbd6696b26dd389927b21eb0ba761893fcb6a2953177ad5105093c326626024bda0d4bb0caca924e53f5723
 Size (granulate-0.2.tar.gz) = 11098 bytes
 SHA1 (patch-aa) = 75c04296f16da1b3d0a81c08b9534ad1df45d7c2
+SHA1 (patch-granulate.c) = ca59824bd1df05331803f285b2020079faece0f0
