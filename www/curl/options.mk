@@ -1,18 +1,13 @@
-# $NetBSD: options.mk,v 1.22 2024/12/11 12:00:53 ryoon Exp $
+# $NetBSD: options.mk,v 1.27 2026/01/19 19:25:40 gutteridge Exp $
 
 PKG_OPTIONS_VAR=		PKG_OPTIONS.curl
-PKG_SUPPORTED_OPTIONS=		inet6 libssh2 gssapi ldap rtmp idn brotli
-PKG_SUPPORTED_OPTIONS+=		zstd
-PKG_OPTIONS_LEGACY_OPTS=	libidn:idn
-
-.include "../../mk/bsd.fast.prefs.mk"
-
-.if ${OPSYS} != "Cygwin"
-PKG_SUPPORTED_OPTIONS+=		http2
+PKG_SUPPORTED_OPTIONS=		inet6 openssl libssh2 gssapi ldap rtmp idn http2
+PKG_SUPPORTED_OPTIONS+=		brotli zstd
 PKG_SUGGESTED_OPTIONS=		http2 inet6 idn
-.else
-PKG_SUGGESTED_OPTIONS=		inet6 idn
+.if ${OPSYS} != "QNX"
+PKG_SUGGESTED_OPTIONS+=		openssl
 .endif
+PKG_OPTIONS_LEGACY_OPTS=	libidn:idn
 
 .include "../../mk/bsd.options.mk"
 
@@ -20,6 +15,13 @@ PKG_SUGGESTED_OPTIONS=		inet6 idn
 CONFIGURE_ARGS+=	--enable-ipv6
 .else
 CONFIGURE_ARGS+=	--disable-ipv6
+.endif
+
+.if !empty(PKG_OPTIONS:Mopenssl)
+BUILDLINK_API_DEPENDS.openssl+=	openssl>=3.0
+.include "../../security/openssl/buildlink3.mk"
+.else
+CONFIGURE_ARGS+=	--without-ssl
 .endif
 
 .if !empty(PKG_OPTIONS:Mlibssh2)
@@ -30,6 +32,7 @@ CONFIGURE_ARGS+=	--without-libssh2
 .endif
 
 .if !empty(PKG_OPTIONS:Mgssapi)
+# does not support heimdal after 8.17.0
 KRB5_ACCEPTED=		mit-krb5
 .include "../../mk/krb5.buildlink3.mk"
 CONFIGURE_ARGS+=	--with-gssapi=${KRB5BASE}
