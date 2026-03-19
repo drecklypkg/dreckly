@@ -379,3 +379,11 @@ $NetBSD: patch-ac,v 1.10 2012/03/22 14:15:32 taca Exp $
          buf [ n + m ] = '\0';
  
          TRACE ( trace_file, POP_DEBUG, HERE, "...read: (%d) '%.128s'",
+@@ -1651,6 +1741,7 @@ sock_ntop ( p, salen )
+ #endif /* INET6 */
+ }
+ 
++int
+ sock_port ( p, salen )
+     struct sockaddr *p;
+     int salen;
