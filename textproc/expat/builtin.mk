@@ -1,4 +1,4 @@
-# $NetBSD: builtin.mk,v 1.23 2024/02/07 13:19:26 adam Exp $
+# $NetBSD: builtin.mk,v 1.27 2026/01/31 17:39:20 wiz Exp $
 
 BUILTIN_PKG:=	expat
 
@@ -28,9 +28,12 @@ MAKEVARS+=		IS_BUILTIN.expat
     ${IS_BUILTIN.expat:tl} == yes && \
     empty(H_EXPAT:M__nonexistent__)
 BUILTIN_VERSION.expat!=							\
-	${AWK} '/\#define[ 	]*XML_MAJOR_VERSION/ { M = $$3 }	\
-		/\#define[ 	]*XML_MINOR_VERSION/ { m = "."$$3 }	\
-		/\#define[ 	]*XML_MICRO_VERSION/ { u = "."$$3 }	\
+	${AWK} '/\#define[ 	]*XML_MAJOR_VERSION/ { M = $$3 } \
+		/\# [ ]*define[ 	]*XML_MAJOR_VERSION/ { M = $$4 } \
+		/\#define[ 	]*XML_MINOR_VERSION/ { m = "."$$3 } \
+		/\# [ ]*define[ 	]*XML_MINOR_VERSION/ { m = "."$$4 } \
+		/\#define[ 	]*XML_MICRO_VERSION/ { u = "."$$3 } \
+		/\# [ ]*define[ 	]*XML_MICRO_VERSION/ { u = "."$$4 } \
 		END { printf "%s%s%s\n", M, m, u }'			\
 		${_CROSS_DESTDIR:U:Q}${H_EXPAT:Q}
 BUILTIN_PKG.expat=	expat-${BUILTIN_VERSION.expat}
@@ -88,8 +91,8 @@ BUILDLINK_PREFIX.expat=	/boot/common
 # Fake pkg-config for builtin expat on NetBSD
 
 .if ${USE_BUILTIN.expat:tl} == yes
-.  if !empty(USE_TOOLS:C/:.*//:Mpkg-config)
-do-configure-pre-hook: override-expat-pkgconfig
+.  if !empty(USE_TOOLS:C/:[A-z]*//:Mpkg-config)
+pre-configure: override-expat-pkgconfig
 
 BLKDIR_PKGCFG=	${BUILDLINK_DIR}/lib/pkgconfig
 EXPAT_PKGCFGF=	expat.pc
@@ -102,7 +105,7 @@ override-expat-pkgconfig:
 	${RUN}						\
 	${MKDIR} ${BLKDIR_PKGCFG};			\
 	{						\
-	${ECHO} "prefix=${BUILDLINK_PREFIX.expat}";		\
+	${ECHO} "prefix=${BUILDLINK_PREFIX.expat}";	\
 	${ECHO} "exec_prefix=\$${prefix}";		\
 	${ECHO} "libdir=\$${exec_prefix}/lib";		\
 	${ECHO} "includedir=\$${prefix}/include";	\
@@ -112,6 +115,6 @@ override-expat-pkgconfig:
 	${ECHO} "Version: ${BUILTIN_VERSION.expat}";	\
 	${ECHO} "Libs: ${COMPILER_RPATH_FLAG}\$${libdir} -L\$${libdir} -lexpat";	\
 	${ECHO} "Cflags: -I\$${includedir}";		\
-	} >> ${BLKDIR_PKGCFG}/${EXPAT_PKGCFGF};
+	} >> ${BLKDIR_PKGCFG}/${EXPAT_PKGCFGF}
 .  endif
 .endif
