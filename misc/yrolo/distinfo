@@ -5,4 +5,6 @@ SHA512 (yrolo-1.1.tar.gz) = c0a0cf7be0558f1f02d0b4454c524aebde9a6d73fe62aedb2a91
 Size (yrolo-1.1.tar.gz) = 79332 bytes
 SHA1 (patch-aa) = db7853c0af6b305e237ee9f373768f865377a910
 SHA1 (patch-ab) = 11e7bdf23566626da247a1eb11a3351ca6591954
+SHA1 (patch-error.c) = a44b3e3334e7c2e03233d9f79809b385d7cf8b1a
 SHA1 (patch-exptild.c) = 750ac65d3742366a33d74aab899b9c0bdb0704b9
+SHA1 (patch-usage.c) = 442eacc1766792ae5dc5d74d7226eadd8308cc5c
