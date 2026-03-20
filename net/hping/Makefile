@@ -8,7 +8,7 @@ CATEGORIES=		net
 MASTER_SITES=		#
 
 MAINTAINER=		pkgsrc-users@NetBSD.org
-HOMEPAGE=		http://www.hping.org/
+HOMEPAGE=		https://www.hping.org/wiki-sub/index/
 COMMENT=		Command-line oriented TCP/IP packet assembler/analyzer
 LICENSE=		gnu-gpl-v2
 
