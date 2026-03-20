@@ -13,6 +13,8 @@ LICENSE=	lft-license
 USE_PKGLOCALEDIR=	yes
 GNU_CONFIGURE=		yes
 
+CFLAGS.SunOS+=		-Dalloca=__builtin_alloca
+
 INSTALLATION_DIRS+=	bin ${PKGMANDIR}/man8
 
 do-install:
