@@ -4,4 +4,4 @@ BLAKE2s (wdic_wob_v3.0.tar.gz) = e07c91a098f2f9e6e65602a1bb83abd1e22a897e2e93c2c
 SHA512 (wdic_wob_v3.0.tar.gz) = faab7b26a4aa77e32bb5477b905f75a8dc60a88f6ef3e605346d5abc659f7184e94bb8d75154f42db278dd6d2c7289e3d90ec2317a3c41a2076c0ebbbaa954e3
 Size (wdic_wob_v3.0.tar.gz) = 2885 bytes
 SHA1 (patch-aa) = ae02cde47a0004219557eabdd197daf3940f53cd
-SHA1 (patch-ab) = 14e26a1cbd1e9ceac68546f252e8493f48421142
+SHA1 (patch-ab) = 7a547f7b3829aff03d62e27836f623cea80b8cfa
