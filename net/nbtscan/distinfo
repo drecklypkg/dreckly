@@ -6,3 +6,5 @@ Size (nbtscan-1.5.1.tar.gz) = 82107 bytes
 BLAKE2s (nbtscan-jumbo-patch-20141122.gz) = ac8d059f8e33b1d398ef9857203e188c74995fb0892e58f0c1ef16f8ac14f85b
 SHA512 (nbtscan-jumbo-patch-20141122.gz) = ae31dde271769d676bc01f7f493e09a595f39bdfab9fbf45858be3fc543fe9a248c2127a9b45273733c6928828fb157202e72f3ac9f82d52f45e7ec310dd90e0
 Size (nbtscan-jumbo-patch-20141122.gz) = 6069 bytes
+SHA1 (patch-nbtscan.c) = a5e07882fe2e1d193c46a136bea822f574c2d67a
+SHA1 (patch-statusq.c) = 1a95a338c4137168735f607332e0abc5cf61845f
