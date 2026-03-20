@@ -207,6 +207,7 @@ SUBDIR+=	go-dnstap
 SUBDIR+=	go-websocket
 SUBDIR+=	gofish
 SUBDIR+=	gopher
+SUBDIR+=	gopherus
 SUBDIR+=	gping
 SUBDIR+=	grilo
 SUBDIR+=	grilo-plugins
