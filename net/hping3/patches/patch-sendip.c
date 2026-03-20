@@ -9,7 +9,7 @@ Darwin compatibility, from Homebrew.
  	ip->tos		= ip_tos;
  
 -#if defined OSTYPE_FREEBSD || defined OSTYPE_NETBSD || defined OSTYPE_BSDI
-+#if defined OSTYPE_DARWIN || OSTYPE_FREEBSD || defined OSTYPE_NETBSD || defined OSTYPE_BSDI
++#if defined OSTYPE_DARWIN || defined OSTYPE_FREEBSD || defined OSTYPE_NETBSD || defined OSTYPE_BSDI
  /* FreeBSD */
  /* NetBSD */
  	ip->tot_len	= packetsize;
@@ -18,7 +18,7 @@ Darwin compatibility, from Homebrew.
  	}
  
 -#if defined OSTYPE_FREEBSD || defined OSTYPE_NETBSD | defined OSTYPE_BSDI
-+#if defined OSTYPE_DARWIN || OSTYPE_FREEBSD || defined OSTYPE_NETBSD | defined OSTYPE_BSDI
++#if defined OSTYPE_DARWIN || defined OSTYPE_FREEBSD || defined OSTYPE_NETBSD | defined OSTYPE_BSDI
  /* FreeBSD */
  /* NetBSD */
  	ip->frag_off	|= more_fragments;
