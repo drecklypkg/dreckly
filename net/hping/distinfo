@@ -20,3 +20,4 @@ SHA1 (patch-ao) = 52d30d71d91c33174de17dd1d0096c05e533504b
 SHA1 (patch-ap) = 369b03242eb513ba73d75e7102e7aa5491a13e2e
 SHA1 (patch-aq) = 548dd11def5085580ec118bb8ecff43df60a4140
 SHA1 (patch-gethostname.c) = 74bda475731e0750813f555af58908bada13ba7d
+SHA1 (patch-split.c) = 3f5dd49f0787a52ef38ca4710625515d2e1171c2
