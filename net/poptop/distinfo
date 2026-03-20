@@ -15,3 +15,4 @@ SHA1 (patch-ai) = c03b43e2d3c1df51df8ab030560a44949557046f
 SHA1 (patch-aj) = 40f9e760f1812d05fa5a641f7da1325d8dbf7072
 SHA1 (patch-ak) = 3d3135f3ad0596a5391e660352becd8447ecbf63
 SHA1 (patch-al) = 16751276f053b28c2554b79cd12d0a9a1f19667b
+SHA1 (patch-compat.c) = d5ea72961c2ce8562e46e81aa6b25d9394e9438d
