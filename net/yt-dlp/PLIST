@@ -1,4 +1,4 @@
-@comment $NetBSD: PLIST,v 1.56 2026/01/30 06:50:49 mrg Exp $
+@comment $NetBSD: PLIST,v 1.59 2026/03/05 07:39:47 mrg Exp $
 bin/yt-dlp
 ${PYSITELIB}/${WHEEL_INFODIR}/METADATA
 ${PYSITELIB}/${WHEEL_INFODIR}/RECORD
@@ -104,6 +104,9 @@ ${PYSITELIB}/yt_dlp/downloader/rtmp.pyo
 ${PYSITELIB}/yt_dlp/downloader/rtsp.py
 ${PYSITELIB}/yt_dlp/downloader/rtsp.pyc
 ${PYSITELIB}/yt_dlp/downloader/rtsp.pyo
+${PYSITELIB}/yt_dlp/downloader/soop.py
+${PYSITELIB}/yt_dlp/downloader/soop.pyc
+${PYSITELIB}/yt_dlp/downloader/soop.pyo
 ${PYSITELIB}/yt_dlp/downloader/websocket.py
 ${PYSITELIB}/yt_dlp/downloader/websocket.pyc
 ${PYSITELIB}/yt_dlp/downloader/websocket.pyo
@@ -632,8 +635,6 @@ ${PYSITELIB}/yt_dlp/extractor/cracked.pyo
 ${PYSITELIB}/yt_dlp/extractor/craftsy.py
 ${PYSITELIB}/yt_dlp/extractor/craftsy.pyc
 ${PYSITELIB}/yt_dlp/extractor/craftsy.pyo
-${PYSITELIB}/yt_dlp/extractor/croatianfilm.py
-${PYSITELIB}/yt_dlp/extractor/croatianfilm.py
 ${PYSITELIB}/yt_dlp/extractor/croatianfilm.py
 ${PYSITELIB}/yt_dlp/extractor/croatianfilm.pyc
 ${PYSITELIB}/yt_dlp/extractor/croatianfilm.pyo
@@ -1441,6 +1442,9 @@ ${PYSITELIB}/yt_dlp/extractor/livestreamfails.pyo
 ${PYSITELIB}/yt_dlp/extractor/lnk.py
 ${PYSITELIB}/yt_dlp/extractor/lnk.pyc
 ${PYSITELIB}/yt_dlp/extractor/lnk.pyo
+${PYSITELIB}/yt_dlp/extractor/locipo.py
+${PYSITELIB}/yt_dlp/extractor/locipo.pyc
+${PYSITELIB}/yt_dlp/extractor/locipo.pyo
 ${PYSITELIB}/yt_dlp/extractor/loco.py
 ${PYSITELIB}/yt_dlp/extractor/loco.pyc
 ${PYSITELIB}/yt_dlp/extractor/loco.pyo
@@ -1495,6 +1499,9 @@ ${PYSITELIB}/yt_dlp/extractor/massengeschmacktv.pyo
 ${PYSITELIB}/yt_dlp/extractor/masters.py
 ${PYSITELIB}/yt_dlp/extractor/masters.pyc
 ${PYSITELIB}/yt_dlp/extractor/masters.pyo
+${PYSITELIB}/yt_dlp/extractor/matchitv.py
+${PYSITELIB}/yt_dlp/extractor/matchitv.pyc
+${PYSITELIB}/yt_dlp/extractor/matchitv.pyo
 ${PYSITELIB}/yt_dlp/extractor/matchtv.py
 ${PYSITELIB}/yt_dlp/extractor/matchtv.pyc
 ${PYSITELIB}/yt_dlp/extractor/matchtv.pyo
@@ -1918,9 +1925,9 @@ ${PYSITELIB}/yt_dlp/extractor/packtpub.pyo
 ${PYSITELIB}/yt_dlp/extractor/palcomp3.py
 ${PYSITELIB}/yt_dlp/extractor/palcomp3.pyc
 ${PYSITELIB}/yt_dlp/extractor/palcomp3.pyo
-${PYSITELIB}/yt_dlp/extractor/pandatv.pyo
 ${PYSITELIB}/yt_dlp/extractor/pandatv.py
 ${PYSITELIB}/yt_dlp/extractor/pandatv.pyc
+${PYSITELIB}/yt_dlp/extractor/pandatv.pyo
 ${PYSITELIB}/yt_dlp/extractor/panopto.py
 ${PYSITELIB}/yt_dlp/extractor/panopto.pyc
 ${PYSITELIB}/yt_dlp/extractor/panopto.pyo
@@ -2531,7 +2538,6 @@ ${PYSITELIB}/yt_dlp/extractor/taptap.py
 ${PYSITELIB}/yt_dlp/extractor/taptap.pyc
 ${PYSITELIB}/yt_dlp/extractor/taptap.pyo
 ${PYSITELIB}/yt_dlp/extractor/tarangplus.py
-${PYSITELIB}/yt_dlp/extractor/tarangplus.py
 ${PYSITELIB}/yt_dlp/extractor/tarangplus.pyc
 ${PYSITELIB}/yt_dlp/extractor/tarangplus.pyo
 ${PYSITELIB}/yt_dlp/extractor/tass.py
@@ -2618,6 +2624,9 @@ ${PYSITELIB}/yt_dlp/extractor/tf1.pyo
 ${PYSITELIB}/yt_dlp/extractor/tfo.py
 ${PYSITELIB}/yt_dlp/extractor/tfo.pyc
 ${PYSITELIB}/yt_dlp/extractor/tfo.pyo
+${PYSITELIB}/yt_dlp/extractor/thechosen.py
+${PYSITELIB}/yt_dlp/extractor/thechosen.pyc
+${PYSITELIB}/yt_dlp/extractor/thechosen.pyo
 ${PYSITELIB}/yt_dlp/extractor/theguardian.py
 ${PYSITELIB}/yt_dlp/extractor/theguardian.pyc
 ${PYSITELIB}/yt_dlp/extractor/theguardian.pyo
@@ -2774,6 +2783,9 @@ ${PYSITELIB}/yt_dlp/extractor/tvn24.pyo
 ${PYSITELIB}/yt_dlp/extractor/tvnoe.py
 ${PYSITELIB}/yt_dlp/extractor/tvnoe.pyc
 ${PYSITELIB}/yt_dlp/extractor/tvnoe.pyo
+${PYSITELIB}/yt_dlp/extractor/tvo.py
+${PYSITELIB}/yt_dlp/extractor/tvo.pyc
+${PYSITELIB}/yt_dlp/extractor/tvo.pyo
 ${PYSITELIB}/yt_dlp/extractor/tvopengr.py
 ${PYSITELIB}/yt_dlp/extractor/tvopengr.pyc
 ${PYSITELIB}/yt_dlp/extractor/tvopengr.pyo
@@ -2948,6 +2960,9 @@ ${PYSITELIB}/yt_dlp/extractor/viously.pyo
 ${PYSITELIB}/yt_dlp/extractor/viqeo.py
 ${PYSITELIB}/yt_dlp/extractor/viqeo.pyc
 ${PYSITELIB}/yt_dlp/extractor/viqeo.pyo
+${PYSITELIB}/yt_dlp/extractor/visir.py
+${PYSITELIB}/yt_dlp/extractor/visir.pyc
+${PYSITELIB}/yt_dlp/extractor/visir.pyo
 ${PYSITELIB}/yt_dlp/extractor/viu.py
 ${PYSITELIB}/yt_dlp/extractor/viu.pyc
 ${PYSITELIB}/yt_dlp/extractor/viu.pyo
