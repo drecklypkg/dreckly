@@ -1,8 +1,20 @@
 $NetBSD: patch-aa,v 1.8 2003/07/02 18:22:42 jmmv Exp $
 
---- src/options.c.orig	2001-06-16 21:15:04.000000000 +0200
+--- src/options.c.orig	2001-06-16 19:15:04.000000000 +0000
 +++ src/options.c
-@@ -294,13 +294,10 @@ int read_config(void) {
+@@ -8,7 +8,10 @@
+ #include "options.h"
+ 
+ /* System includes */
+-#include "stdio.h"
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <ctype.h>
+ 
+ /**
+  * Global variables, very ugly, watch through sunglasses!
+@@ -294,13 +297,10 @@ int read_config(void) {
  
    /* Try to open config file in current directory */
    if(!(fp = fopen(CONFIGFILE, "r"))) {
