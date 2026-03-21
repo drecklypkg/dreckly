@@ -1,12 +1,11 @@
-# $NetBSD: Makefile,v 1.5 2024/07/19 09:51:36 jperkin Exp $
+# $NetBSD: Makefile,v 1.8 2026/02/24 07:41:41 adam Exp $
 
-DISTNAME=	wireguard-tools-1.0.20210914
-PKGREVISION=	1
+DISTNAME=	wireguard-tools-1.0.20260223
 CATEGORIES=	net
 MASTER_SITES=	https://git.zx2c4.com/wireguard-tools/snapshot/
 EXTRACT_SUFX=	.tar.xz
 
-MAINTAINER=	js@NetBSD.org
+MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	https://git.zx2c4.com/wireguard-tools/about/
 COMMENT=	Userspace tooling for using and configuring WireGuard tunnels
 LICENSE=	gnu-gpl-v2
