@@ -3,7 +3,7 @@ $NetBSD: distinfo,v 1.17 2021/10/26 11:07:07 nia Exp $
 BLAKE2s (upclient-4.2.1.23.tar.gz) = 3ba3c5e0af3466bbf1cd4cbc130940bcd5776549657bcdf89074c94be387d05b
 SHA512 (upclient-4.2.1.23.tar.gz) = 822e1b269861b306e468a196756bba79babf06c89d3a441293f1d418458f2f563c3b18c9bdab587aba81a8bba1dd1db088d01c03a91d3900be485146535fc4fc
 Size (upclient-4.2.1.23.tar.gz) = 29386 bytes
-SHA1 (patch-aa) = de3d78c4aae4b33aad6eca2257828c8e1c64fe4f
+SHA1 (patch-aa) = ced6fd730065b76104779fb7e980f5fd94ddbf1d
 SHA1 (patch-ab) = 208df5f16c002bcf4e2689a1eb7ec46cfc124649
 SHA1 (patch-ac) = 7777617c58b6886484e43b52524494a510f15373
 SHA1 (patch-ad) = 57aac6d38f7f4fcdc1b4545d2f6df0815a9db496
