@@ -20,6 +20,8 @@ MAKE_FLAGS+=	SYSCONFDIR=${PKG_SYSCONFDIR}
 MAKE_FLAGS+=	WITH_BASHCOMPLETION=yes
 MAKE_FLAGS+=	WITH_SYSTEMDUNITS=no
 
+LDFLAGS.SunOS+=	-lsocket -lnsl
+
 SUBST_CLASSES+=		paths
 SUBST_STAGE.paths=	pre-configure
 SUBST_FILES.paths=	completion/wg-quick.bash-completion
