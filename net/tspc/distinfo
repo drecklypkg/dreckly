@@ -8,3 +8,4 @@ SHA1 (patch-ab) = 6dc480d452d433ff4444349bcb1de800cb48e8b5
 SHA1 (patch-ac) = a89fda0331837399062c3486306adbd0b0e78474
 SHA1 (patch-ad) = e138a9a274607cbf8162868596b7399df9041c51
 SHA1 (patch-man-man8-tspc.8) = 9338dca0267de2b9b7ddd90f9631e0c08043c245
+SHA1 (patch-src_lib_cnfchk.c) = 87d34bb36a06426eb13d7b8d5ae87496d4e0d82e
