@@ -7,4 +7,5 @@ SHA1 (patch-aa) = 95971192dea5bee4120b4db3b2f0c7810385bb6e
 SHA1 (patch-ab) = 871de5c826853381eb5b6889d8e3d8b2f310dc6b
 SHA1 (patch-ac) = ece24eec7175c1396d76e2b85ff69a4b995e541e
 SHA1 (patch-ad) = 54fc24c84cc4c3261f1b40faa2124ef5506e5e00
+SHA1 (patch-main.c) = cc33ca02b34b88fe4f3b46080e821f4ea48390dd
 SHA1 (patch-modules_pike_ip__tree.c) = 74c575be92fa9641988e73ecd5ed3c4dc3da4a0c
