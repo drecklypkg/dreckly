@@ -3,13 +3,16 @@ $NetBSD$
 Need to include <string.h> unconditionally since this uses strcpy(3)
 and memset(3).
 
---- compat.c.orig	2026-03-21 09:05:51.854904736 +0000
+Need to include <unistd.h> for close(2).
+
+--- compat.c.orig	2005-08-22 00:48:34.000000000 +0000
 +++ compat.c
-@@ -11,9 +11,9 @@
+@@ -11,9 +11,10 @@
  #endif
  
  #include "compat.h"
 +#include <string.h>
++#include <unistd.h>
  
  #ifndef HAVE_STRLCPY
 -#include <string.h>
