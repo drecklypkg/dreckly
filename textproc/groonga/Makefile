@@ -24,6 +24,8 @@ CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFBASEDIR}
 CONFIGURE_ARGS+=	--localstatedir=${VARBASE}
 CONFIGURE_ARGS+=	--with-ruby=${RUBY}
 
+CPPFLAGS.SunOS+=	-Dalloca=__builtin_alloca
+
 PKGCONFIG_OVERRIDE+=	groonga.pc.in
 
 PKG_SYSCONFSUBDIR=	${PKGBASE}
