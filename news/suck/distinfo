@@ -6,3 +6,5 @@ Size (suck-4.3.2.tar.gz) = 187560 bytes
 SHA1 (patch-aa) = 970ffa385a2b2b3f95944ba9a4321452bb247319
 SHA1 (patch-ab) = c0bfe3946e4e2360ccc85e8bbf4abaf837f4ace4
 SHA1 (patch-ac) = a87364cfc877f2ba782fda6f855da37a1beef09d
+SHA1 (patch-batch.c) = 0992375bf5cb3dca47f9dc02cc8d01d080b62f75
+SHA1 (patch-makephrases.c) = da13569cd015c3d662f94ecb993ba2d114762c6a
