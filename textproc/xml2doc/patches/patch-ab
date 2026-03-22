@@ -30,3 +30,14 @@ $NetBSD: patch-ab,v 1.2 2010/07/07 00:29:32 joerg Exp $
  
  remove:
  	@printf "\e[32mDeinstalling binaries...\e[0m\n"
+@@ -35,10 +31,6 @@ remove:
+ build: $(OBJ)
+ 	@printf "\n\e[32mLinking objects...\e[0m\n"
+ 	$(CC) $(LFLAGS) $(OBJ) -o $(BIN)
+-	@if ( test -z "$(DEBUG)" ); then \
+-	     echo "Stripping symbols..."; \
+-	     strip -s $(BIN); \
+-	 fi
+ 	@printf "\n\n\e[32mCompilation process done.\e[0m\n"
+ 
+ main.o: main.c main.h
