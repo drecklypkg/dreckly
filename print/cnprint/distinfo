@@ -45,4 +45,4 @@ Size (cnprint-3.30b/cc48s.2.gz) = 391896 bytes
 BLAKE2s (cnprint-3.30b/hbf.tar.gz) = c14ae3342845c03137ba51b10681eec5f0a29b3bcf179964a1917bfc876836ef
 SHA512 (cnprint-3.30b/hbf.tar.gz) = 2573cc0c1fa89f65491d8703311b7d9ef3ef5664e9d1b5b73ff9c8bbf4a33a62e01fc61c67e4799cf79a7d1be4424873f39916710f3f2d052ef9f04ee4153e28
 Size (cnprint-3.30b/hbf.tar.gz) = 3512320 bytes
-SHA1 (patch-aa) = b9ab727c530a197bd7a8de75d57f8f163e886dc1
+SHA1 (patch-aa) = c271034007bc82eeb970d27bf3a51b0ca91a244c
