@@ -6,3 +6,4 @@ Size (subtitleripper-0.3-4.tgz) = 47299 bytes
 SHA1 (patch-aa) = f54f4e4a0ec52c20b285547e9391ecb9fba83149
 SHA1 (patch-ab) = 22335a412899b7cdb552185ff051c7d2f2e1ba59
 SHA1 (patch-ac) = 98edef3e84b287ad64fb9054630b0b2aecf2953a
+SHA1 (patch-subtitle2pgm.c) = c410665f17bb34f6d25a1f3a7e64374042e5f66a
