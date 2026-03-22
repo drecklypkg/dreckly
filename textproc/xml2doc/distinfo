@@ -6,3 +6,4 @@ Size (xml2doc-20030510.tgz) = 53307 bytes
 SHA1 (patch-aa) = ca63abf9c7decaec9eb4dcf0afc448378f217060
 SHA1 (patch-ab) = 880e18a8aada22160ae069986ef5f98e8fdea6a2
 SHA1 (patch-ac) = 1b387078c52f17bc2a82a0b43bb3352dcba968fb
+SHA1 (patch-src_defs.h) = 1c0e0b3b30bfd6dfccf3b760472d577384a67a5b
