@@ -89,6 +89,8 @@ LUA_VERSIONS_INCOMPATIBLE=	51
 REPLACE_PERL+=		contrib/dotmcl.pl contrib/dirgraph/dirgraph.pl
 REPLACE_PYTHON+=	cmd/dot/dot_sandbox
 
+CPPFLAGS.SunOS+=	-D__EXTENSIONS__ # flockfile
+
 .include "../../mk/bsd.prefs.mk"
 
 # Override Xaw type configured by user
