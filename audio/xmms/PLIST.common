@@ -17,7 +17,6 @@ lib/xmms/Effect/libvoice.la
 lib/xmms/General/libir.la
 lib/xmms/General/libsong_change.la
 ${PLIST.cdaudio}lib/xmms/Input/libcdaudio.la
-lib/xmms/Input/libmikmod.la
 lib/xmms/Input/libmpg123.la
 lib/xmms/Input/libtonegen.la
 lib/xmms/Input/libvorbis.la

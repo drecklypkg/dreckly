@@ -74,7 +74,6 @@ CONFIGURE_ARGS+=	--disable-oss
 PLIST.oss=		yes
 .endif
 
-.include "../../audio/libmikmod/buildlink3.mk"
 .include "../../audio/libvorbis/buildlink3.mk"
 .include "../../converters/libiconv/buildlink3.mk"
 .include "../../graphics/MesaLib/buildlink3.mk"
