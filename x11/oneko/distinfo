@@ -8,3 +8,5 @@ SHA512 (oneko-1.2.diff.gz) = eca934d174dd924ad279a103ca81cf3eea97e24f0bf59df4dd7
 Size (oneko-1.2.diff.gz) = 12637 bytes
 SHA1 (patch-aa) = d4818a97e0f8c0c3ef41b31019d8e0ac18190a5f
 SHA1 (patch-ab) = 8f2e9bbb490e47094bd934f8b4badea94daed795
+SHA1 (patch-oneko.c) = 40886403951c62cc3f34b11ecb2c697ecbda1d33
+SHA1 (patch-oneko.h) = cf2504c6b44bc4b90af0c4bc7aa051a7c7130d67
