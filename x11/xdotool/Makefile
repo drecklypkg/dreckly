@@ -19,6 +19,8 @@ USE_TOOLS+=	gmake pod2man pkg-config
 
 USE_LANGUAGES=	c99
 
+CFLAGS.SunOS+=	-D__EXTENSIONS__
+
 SUBST_CLASSES+=			fix-getopt
 SUBST_STAGE.fix-getopt=		pre-build
 SUBST_MESSAGE.fix-getopt=	Fixing getopt
