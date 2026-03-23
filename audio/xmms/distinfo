@@ -16,3 +16,6 @@ SHA1 (patch-aq) = 2a16fbd747e03df4ef0fbb94e45c79e9c3de9ac8
 SHA1 (patch-ar) = b9cf22e3ab585ef255a533e56a3430f49f2fba4f
 SHA1 (patch-aw) = eed1a2b95f8d92bb75c118f64a4e33b97b9b4ee5
 SHA1 (patch-ax) = 252a76fe3d0c96b850cd6cec5a8a7d02f80912ee
+SHA1 (patch-libxmms_xmmsctrl.c) = 5ce53132af08eb454373d760a7ab5411aeb99759
+SHA1 (patch-wmxmms_getopt.c) = 66f1d787bef53cce9021f698f59b77b3acc3deff
+SHA1 (patch-xmms_getopt.c) = aa8cb2f75296697098b81da70c3510c6430f06a7
