@@ -3,6 +3,7 @@ $NetBSD: distinfo,v 1.39 2021/10/26 09:59:37 nia Exp $
 BLAKE2s (xmms-1.2.11.tar.bz2) = 5cbc0d28ee4f9c8c7c77b5870d2e6ae193992814088a1567a27b61a8d68b1c29
 SHA512 (xmms-1.2.11.tar.bz2) = cc813f5e060b890aabc9d73f427daa94c474e2858390d336eba1d48bd082aeb295ce508d08d01067fe6341d0888af0dc6de185c54d0d2ee8519c915d7b849b94
 Size (xmms-1.2.11.tar.bz2) = 2581032 bytes
+SHA1 (patch-Output_solaris_Sun.h) = 53f48f24b8842156c4c372ed02f86a832881b438
 SHA1 (patch-aa) = 91b17156a2d0a48d8610552993357bf522aacbd0
 SHA1 (patch-ab) = 806b1e8e974fe1100be90eca1ce582b9d80f3ab2
 SHA1 (patch-ac) = 3f09b5522d37e682cac13735b12f625a2c1e71c8
