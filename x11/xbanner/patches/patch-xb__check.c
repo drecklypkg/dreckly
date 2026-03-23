@@ -2,7 +2,9 @@ $NetBSD$
 
 Fix build on FreeBSD, which has isnumber(3).
 
---- xb_check.c.orig	2026-03-23 10:36:17.981411661 +0000
+gets(3) considered harmful.
+
+--- xb_check.c.orig	1997-05-15 20:38:25.000000000 +0000
 +++ xb_check.c
 @@ -145,7 +145,7 @@ char *elem(char *s, int elnum)
  }
@@ -22,3 +24,12 @@ Fix build on FreeBSD, which has isnumber(3).
  /* return true if the resource is a color resource */
  int iscolorres(int i)
  {
+@@ -303,7 +305,7 @@ even 'appres <progname/classname> | xb_c
+     }
+   }
+ 
+-  while(gets(line)!=NULL)
++  while(fgets(line, sizeof(line), stdin)!=NULL)
+   {
+     if(line[0]=='!')
+       continue;
