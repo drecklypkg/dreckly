@@ -20,6 +20,8 @@ MAKE_FLAGS=	prefix=${PREFIX}
 TEST_TARGET=	test
 AUTO_MKDIRS=	yes
 
+CFLAGS+=	-fPIC
+
 # Requires C11 atomics support
 USE_CC_FEATURES=	c11
 
