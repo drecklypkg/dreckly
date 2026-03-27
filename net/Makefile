@@ -1087,6 +1087,7 @@ SUBDIR+=	yaydl
 SUBDIR+=	yaz
 SUBDIR+=	youtube-dl
 SUBDIR+=	yt-dlp
+SUBDIR+=	yt-dlp-ejs
 SUBDIR+=	ytalk
 SUBDIR+=	ywho
 SUBDIR+=	zenmap

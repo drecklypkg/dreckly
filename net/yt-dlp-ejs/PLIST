@@ -1,0 +1,11 @@
+@comment $NetBSD: PLIST,v 1.3 2025/12/20 22:33:49 wiz Exp $
+${PYSITELIB}/yt_dlp_ejs-${PKGVERSION}.dist-info/METADATA
+${PYSITELIB}/yt_dlp_ejs-${PKGVERSION}.dist-info/RECORD
+${PYSITELIB}/yt_dlp_ejs-${PKGVERSION}.dist-info/WHEEL
+${PYSITELIB}/yt_dlp_ejs-${PKGVERSION}.dist-info/licenses/LICENSE
+${PYSITELIB}/yt_dlp_ejs/__init__.py
+${PYSITELIB}/yt_dlp_ejs/_version.py
+${PYSITELIB}/yt_dlp_ejs/yt/__init__.py
+${PYSITELIB}/yt_dlp_ejs/yt/solver/__init__.py
+${PYSITELIB}/yt_dlp_ejs/yt/solver/core.min.js
+${PYSITELIB}/yt_dlp_ejs/yt/solver/lib.min.js
