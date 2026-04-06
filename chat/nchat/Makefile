@@ -50,6 +50,7 @@ post-install:
 .include "../../graphics/png/buildlink3.mk"
 .include "../../lang/python/application.mk"
 .include "../../security/openssl/buildlink3.mk"
+.include "../../sysutils/file/buildlink3.mk"
 .include "../../mk/atomic64.mk"
 PTHREAD_OPTS?=		require
 .include "../../mk/pthread.buildlink3.mk"
