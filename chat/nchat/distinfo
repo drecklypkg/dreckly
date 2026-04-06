@@ -7,3 +7,4 @@ SHA1 (patch-lib_ncutil_ext_sqlite__modern__cpp_configure) = 03abb00974428a1fbda2
 SHA1 (patch-lib_ncutil_src_fileutil.cpp) = ae1ce3ca1f8ebc7c53be7690323f60af7107392d
 SHA1 (patch-lib_tgchat_ext_td_tdutils_td_utils_port_detail_KQueue.cpp) = de142a044e3a03186ff493c8fa72218221251ef7
 SHA1 (patch-src_main.cpp) = 83fcdbaaa9f41a372f5b7c5477e28a43e5e9cce3
+SHA1 (patch-src_uicontroller.cpp) = 42c9ee8d91b7f72c4df9b76c09b1c577e68db168
