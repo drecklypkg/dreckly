@@ -11,6 +11,7 @@ COMMENT=	Terminal-based Telegram messaging client
 LICENSE=	mit
 
 DEPENDS+=		${PYPKGPREFIX}-urllib3>=0:../../www/py-urllib3
+TOOL_DEPENDS+=		gperf-[0-9]*:../../devel/gperf
 
 USE_TOOLS+=		pkg-config
 USE_LANGUAGES=		c c++
