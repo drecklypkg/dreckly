@@ -76,6 +76,7 @@ SUBDIR+=	mcabber
 SUBDIR+=	meanwhile
 SUBDIR+=	miniircd
 SUBDIR+=	mumble
+SUBDIR+=	nchat
 SUBDIR+=	neonmodem
 SUBDIR+=	ngircd
 SUBDIR+=	ninja
