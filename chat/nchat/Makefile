@@ -42,7 +42,8 @@ BUILDLINK_TRANSFORM+=	l:gnuform:form
 INSTALLATION_DIRS+=	lib/${PKGBASE}
 
 post-install:
-	${MV} ${DESTDIR}${PREFIX}/lib/*.so* ${DESTDIR}${PREFIX}/lib/${PKGBASE}
+	${MV} ${DESTDIR}${PREFIX}/lib/*.${SHLIB_EXT}* \
+		${DESTDIR}${PREFIX}/lib/${PKGBASE}
 
 .include "../../devel/cmake/build.mk"
 .include "../../databases/sqlite3/buildlink3.mk"

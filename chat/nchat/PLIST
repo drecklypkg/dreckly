@@ -1,9 +1,9 @@
 @comment $NetBSD$
 bin/nchat
-lib/nchat/libduchat.so
-lib/nchat/libncutil.so
-lib/nchat/libtdclientshared.so
-lib/nchat/libtgchat.so
+lib/nchat/libduchat.${SHLIB_EXT}
+lib/nchat/libncutil.${SHLIB_EXT}
+lib/nchat/libtdclientshared.${SHLIB_EXT}
+lib/nchat/libtgchat.${SHLIB_EXT}
 libexec/nchat/compose
 man/man1/nchat.1
 share/nchat/themes/basic-color/color.conf
