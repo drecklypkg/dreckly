@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.42 2025/06/04 14:14:17 adam Exp $
+# $NetBSD: Makefile,v 1.47 2026/03/25 22:52:08 wiz Exp $
 
 .include "dist.mk"
 
@@ -32,9 +32,9 @@ PRINT_PLIST_AWK+=	sub(/\.cpython-311/, "")}
 PRINT_PLIST_AWK+=	/^[^@]/ && /[^\/]+\.opt-1.pyc$$/ {
 PRINT_PLIST_AWK+=	sub(/.opt-[12].pyc$$/, ".pyo")}
 
+USE_CC_FEATURES=	c11
 USE_LANGUAGES=		c c++
 USE_TOOLS+=		pkg-config
-USE_CC_FEATURES+=	c11
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--enable-shared
 CONFIGURE_ARGS+=	--with-openssl=${BUILDLINK_PREFIX.openssl}
@@ -57,7 +57,7 @@ USE_CURSES=		getsyx wide
 FAKE_NCURSES=		yes
 .endif
 
-.if ${USE_CROSS_COMPILE:U:tl} == yes
+.if ${USE_CROSS_COMPILE:tl} == yes
 TOOL_DEPENDS+=		${PKGNAME}:../../${PKGPATH}
 CONFIGURE_ARGS+=	\
 	--with-build-python=${TOOLBASE:Q}/bin/python${PY_VER_SUFFIX}
@@ -250,6 +250,9 @@ CONFIGURE_ENV+=		ac_cv_lib_intl_textdomain=yes
 .include "../../devel/libuuid/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"
+.if ${OPSYS} == NetBSD && ${OPSYS_VERSION} < 119905
+PREFER.expat=	pkgsrc # needs expat_config.h
+.endif
 .include "../../textproc/expat/buildlink3.mk"
 .include "../../mk/bdb.buildlink3.mk"
 .include "../../mk/curses.buildlink3.mk"
