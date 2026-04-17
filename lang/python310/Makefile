@@ -1,4 +1,4 @@
-# $NetBSD: Makefile,v 1.42 2025/06/04 14:13:37 adam Exp $
+# $NetBSD: Makefile,v 1.45 2026/03/25 22:52:07 wiz Exp $
 
 .include "dist.mk"
 
@@ -38,9 +38,9 @@ GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--enable-shared
 CONFIGURE_ARGS+=	--with-openssl=${BUILDLINK_PREFIX.openssl}
 CONFIGURE_ARGS+=	--with-readline=readline # XXX editline?
-CONFIGURE_ARGS+=	--with-system-expat
 CONFIGURE_ARGS+=	--with-system-ffi
 CONFIGURE_ARGS+=	--without-ensurepip
+CONFIGURE_ARGS+=	--with-system-expat
 CONFIGURE_ENV+=		OPT=${CFLAGS:M*:Q}
 CONFIGURE_ENV+=		ac_cv_path_mkdir=${TOOLS_PATH.mkdir}
 PKGCONFIG_OVERRIDE+=	Misc/python.pc.in Misc/python-embed.pc.in
@@ -55,7 +55,7 @@ PTHREAD_OPTS+=	require
 
 .include "../../mk/bsd.prefs.mk"
 
-.if ${USE_CROSS_COMPILE:U:tl} == "yes"
+.if ${USE_CROSS_COMPILE:tl} == "yes"
 TOOL_DEPENDS+=		${PKGNAME}:../../${PKGPATH}
 CONFIGURE_ARGS+=	\
 	PYTHON_FOR_BUILD=${TOOLBASE:Q}/bin/python${PY_VER_SUFFIX}
@@ -240,6 +240,9 @@ CONFIGURE_ENV+=		ac_cv_lib_intl_textdomain=yes
 .include "../../devel/readline/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"
+.if ${OPSYS} == NetBSD && ${OPSYS_VERSION} < 119905
+PREFER.expat=	pkgsrc # needs expat_config.h
+.endif
 .include "../../textproc/expat/buildlink3.mk"
 .include "../../mk/bdb.buildlink3.mk"
 .include "../../mk/curses.buildlink3.mk"
