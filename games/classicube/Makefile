@@ -15,6 +15,8 @@ USE_TOOLS+=	gmake
 
 TOOL_DEPENDS+=	dos2unix-[0-9]*:../../converters/dos2unix
 
+FORCE_C_STD=	gnu89
+
 BUILD_TARGET=	default
 
 SUBST_CLASSES+=		paths
