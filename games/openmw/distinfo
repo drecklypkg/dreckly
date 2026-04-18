@@ -16,3 +16,4 @@ SHA1 (patch-components_crashcatcher_crashcatcher.hpp) = f2810b26463edf56391c4d51
 SHA1 (patch-components_files_fixedpath.hpp) = c4047ee90e1771228ce5179d8a082345a0310e03
 SHA1 (patch-components_files_linuxpath.cpp) = 706543e2a684dda0e21b39b35c829baf314deedf
 SHA1 (patch-components_files_linuxpath.hpp) = 0627dc0a15e62b2e3c7314d19d1bb2b099af576e
+SHA1 (patch-components_vfs_filesystemarchive.cpp) = a31b97e3fb4e2861276adb2cc2e07191dbccc57f
