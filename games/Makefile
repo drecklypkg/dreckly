@@ -205,6 +205,7 @@ SUBDIR+=	iortcw
 SUBDIR+=	ironwail
 SUBDIR+=	ivan
 SUBDIR+=	jetpack
+SUBDIR+=	jfsw
 SUBDIR+=	jin
 SUBDIR+=	jools
 SUBDIR+=	julius

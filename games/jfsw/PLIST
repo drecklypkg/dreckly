@@ -1,0 +1,6 @@
+@comment $NetBSD$
+bin/jfsw
+bin/jfsw-build
+share/applications/jfsw.desktop
+share/pixmaps/jfsw.png
+@pkgdir share/jfsw
