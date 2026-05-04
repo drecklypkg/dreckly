@@ -40,8 +40,10 @@ INSTALLATION_DIRS+=	share/applications
 INSTALLATION_DIRS+=	share/pixmaps
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/sw ${DESTDIR}${PREFIX}/bin/${PKGBASE}
-	${INSTALL_PROGRAM} ${WRKSRC}/build ${DESTDIR}${PREFIX}/bin/${PKGBASE}-build
+	${INSTALL_PROGRAM} ${WRKSRC}/sw \
+		${DESTDIR}${PREFIX}/bin/${PKGBASE}
+	${INSTALL_PROGRAM} ${WRKSRC}/build \
+		${DESTDIR}${PREFIX}/bin/${PKGBASE}-build
 	${INSTALL_DATA} ${WRKSRC}/rsrc/game.png \
 		${DESTDIR}${PREFIX}/share/pixmaps/${PKGBASE}.png
 	${INSTALL_DATA} ${FILESDIR}/jfsw.desktop \
