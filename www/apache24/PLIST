@@ -1,4 +1,4 @@
-@comment $NetBSD: PLIST,v 1.37 2025/01/24 08:57:05 adam Exp $
+@comment $NetBSD: PLIST,v 1.39 2026/05/05 00:12:30 taca Exp $
 bin/ab
 bin/apxs
 bin/dbmmanage
@@ -553,6 +553,8 @@ share/httpd/manual/developer/hooks.html.en
 share/httpd/manual/developer/index.html
 share/httpd/manual/developer/index.html.en
 share/httpd/manual/developer/index.html.zh-cn.utf8
+share/httpd/manual/developer/mod_example_1.c
+share/httpd/manual/developer/mod_example_2.c
 share/httpd/manual/developer/modguide.html
 share/httpd/manual/developer/modguide.html.en
 share/httpd/manual/developer/modules.html
@@ -684,6 +686,7 @@ share/httpd/manual/images/caching_fig1.tr.png
 share/httpd/manual/images/custom_errordocs.png
 share/httpd/manual/images/down.gif
 share/httpd/manual/images/favicon.ico
+share/httpd/manual/images/favicon.png
 share/httpd/manual/images/feather.gif
 share/httpd/manual/images/feather.png
 share/httpd/manual/images/filter_arch.png
@@ -1376,10 +1379,6 @@ share/httpd/manual/platform/netware.html
 share/httpd/manual/platform/netware.html.en
 share/httpd/manual/platform/netware.html.fr.utf8
 share/httpd/manual/platform/netware.html.ko.euc-kr
-share/httpd/manual/platform/perf-hp.html
-share/httpd/manual/platform/perf-hp.html.en
-share/httpd/manual/platform/perf-hp.html.fr.utf8
-share/httpd/manual/platform/perf-hp.html.ko.euc-kr
 share/httpd/manual/platform/rpm.html
 share/httpd/manual/platform/rpm.html.en
 share/httpd/manual/platform/rpm.html.fr.utf8
