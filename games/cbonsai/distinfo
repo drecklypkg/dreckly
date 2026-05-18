@@ -3,5 +3,5 @@ $NetBSD$
 BLAKE2s (cbonsai-1.4.2.tar.gz) = 8e3b0ac3d48bd2fc901e24f011080ce93a8a47ebbc89e15d254c80277fbc3c05
 SHA512 (cbonsai-1.4.2.tar.gz) = e7abe46f027a74d4b8958066839ece870499124fa874f8507b775eb1cdc55d59134835ee573c6820de1a8b5db2ded50b4bdada5127f73851d1a4ff5ca05cc71c
 Size (cbonsai-1.4.2.tar.gz) = 24393 bytes
-SHA1 (patch-Makefile) = 1b7c95b9ca990491faa8f2748d4b5486fb369e8c
+SHA1 (patch-Makefile) = 56fee387547afaf68ba5310c25f5ccfb4d209b36
 SHA1 (patch-cbonsai.c) = d053b13da0f4627199389acbb71bf3efd798555e
