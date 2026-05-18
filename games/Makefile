@@ -64,6 +64,7 @@ SUBDIR+=	burgerspace
 SUBDIR+=	bzflag
 SUBDIR+=	cataclysm-dda
 SUBDIR+=	cataclysm-dda-sdl
+SUBDIR+=	cbonsai
 SUBDIR+=	cbzone
 SUBDIR+=	ccgo
 SUBDIR+=	ccleste
