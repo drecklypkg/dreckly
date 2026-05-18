@@ -1,3 +1,4 @@
 @comment $NetBSD$
 bin/cbonsai
 man/man6/cbonsai.6
+share/bash-completion/completions/cbonsai

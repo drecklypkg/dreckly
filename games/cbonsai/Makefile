@@ -21,7 +21,6 @@ BUILD_TARGET=	cbonsai cbonsai.6
 MAKE_FLAGS+=	CC=${CC:Q}
 MAKE_FLAGS+=	PREFIX=${PREFIX}
 MAKE_FLAGS+=	MANDIR=${PREFIX}/${PKGMANDIR}
-MAKE_FLAGS+=	WITH_BASH=0
 
 .include "../../mk/curses.buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
