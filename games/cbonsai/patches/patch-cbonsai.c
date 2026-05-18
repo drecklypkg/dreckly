@@ -2,6 +2,8 @@ $NetBSD$
 
 Support for NetBSD curses and wcwidth(3) visibility.
 
+https://gitlab.com/jallbrit/cbonsai/-/merge_requests/26
+
 --- cbonsai.c.orig	2025-06-20 02:28:16.000000000 +0000
 +++ cbonsai.c
 @@ -1,5 +1,5 @@
