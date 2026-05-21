@@ -267,7 +267,6 @@ SUBDIR+=	nghttp2
 SUBDIR+=	nghttp2-tools
 SUBDIR+=	nghttp3
 SUBDIR+=	nginx
-SUBDIR+=	nginx-devel
 SUBDIR+=	nostromo
 SUBDIR+=	ns-plugger-common
 SUBDIR+=	ns-remote
