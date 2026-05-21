@@ -1,6 +1,6 @@
-# $NetBSD: Makefile,v 1.127 2025/07/16 21:53:27 he Exp $
+# $NetBSD: Makefile,v 1.135 2026/05/21 09:11:02 adam Exp $
 
-DISTNAME=	unbound-1.23.1
+DISTNAME=	unbound-1.25.1
 CATEGORIES=	net
 MASTER_SITES=	https://nlnetlabs.nl/downloads/unbound/
 
@@ -32,7 +32,7 @@ USE_TOOLS+=	pkg-config
 # unbound uses some OpenBSD libc functions such as reallocarray(3).
 # The existing tests just look for the symbol in libc regardless
 # of anything in stdlib.h
-CPPFLAGS.NetBSD+=		-D_OPENBSD_SOURCE
+CPPFLAGS.NetBSD+=	-D_OPENBSD_SOURCE
 
 # Add the same logic as for ldns, so sha2/gost is configured automatically
 CHECK_BUILTIN.openssl=	yes
