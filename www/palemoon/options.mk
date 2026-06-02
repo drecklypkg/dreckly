@@ -8,7 +8,6 @@ PKG_SUPPORTED_OPTIONS=		dbus pulseaudio
 .if !empty(PKG_OPTIONS:Mdbus)
 CONFIGURE_ARGS+=	--enable-dbus
 .  include "../../sysutils/dbus/buildlink3.mk"
-.  include "../../sysutils/dbus-glib/buildlink3.mk"
 .else
 CONFIGURE_ARGS+=	--disable-dbus
 .endif
