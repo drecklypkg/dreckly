@@ -1,4 +1,4 @@
-$NetBSD: patch-SharedMemory.cpp,v 1.2 2023/08/29 21:49:57 bacon Exp $
+$NetBSD$
 
 # Portability
 
