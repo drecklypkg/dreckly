@@ -1,4 +1,4 @@
-$NetBSD: patch-opal_opal.cpp,v 1.1 2023/08/29 21:49:57 bacon Exp $
+$NetBSD$
 
 # Fix compile error on Darwin 21.6.0
 

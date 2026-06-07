@@ -1,12 +1,12 @@
-# $NetBSD: Makefile,v 1.2 2023/08/29 21:49:56 bacon Exp $
+# $NetBSD$
 
-DISTNAME=	STAR-2.7.10b
-PKGNAME=	rna-star-2.7.10b
+DISTNAME=	STAR-${PKGVERSION_NOREV}
+PKGNAME=	rna-star-2.7.11b
 CATEGORIES=	biology
 MASTER_SITES=	${MASTER_SITE_GITHUB:=alexdobin/}
 GITHUB_PROJECT=	STAR
 
-OWNER=		bacon@NetBSD.org
+MAINTAINER=	bacon@NetBSD.org
 HOMEPAGE=	https://github.com/alexdobin/STAR
 COMMENT=	Spliced Transcripts Alignment to a Reference
 LICENSE=	gnu-gpl-v3
@@ -27,6 +27,8 @@ SUBST_FILES.htslib+=	signalFromBAM.h
 # May work on other 64-bit processors, but untested
 ONLY_FOR_PLATFORM=	*-*-x86_64 *-*-aarch64 *-*-powerpc64
 
+TOOL_DEPENDS=	vim-share>0:../../editors/vim-share
+
 USE_LANGUAGES=	c c++
 USE_TOOLS+=	gmake
 
@@ -45,7 +47,15 @@ do-install:
 # Maybe a libomp package would suffice?
 .if ${OPSYS} == Darwin
 SUBST_CLASSES+=		openmp
-SUBST_SED.openmp=	-e 's|-fopenmp|-Xpreprocessor &|g'
+
+# https://projects.blender.org/blender/blender/pulls/136816
+.include "../../mk/compiler/clang.mk"
+.if ${_CC_MAJOR} >= 17
+SUBST_SED.openmp=	-e 's|-fopenmp|-Xpreprocessor -fopenmp=libiomp5|g'
+.else
+SUBST_SED.openmp=	-e 's|-fopenmp|-Xpreprocessor -fopenmp|g'
+.endif
+
 SUBST_STAGE.openmp=	pre-configure
 SUBST_FILES.openmp=	Makefile
 LDFLAGS+= 		-L${PREFIX}/lib -lomp -lm
