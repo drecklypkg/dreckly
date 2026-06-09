@@ -4,7 +4,7 @@
 # used by databases/mariadb1011-server/Makefile
 # used by databases/mariadb1011-embedded/Makefile
 
-DISTNAME=	mariadb-10.11.13
+DISTNAME=	mariadb-10.11.18
 CATEGORIES=	databases
 MASTER_SITES=	https://archive.mariadb.org/${DISTNAME}/source/
 
