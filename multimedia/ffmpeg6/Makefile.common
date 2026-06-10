@@ -2,7 +2,7 @@
 # used by multimedia/ffmpeg6/Makefile
 # used by multimedia/ffplay6/Makefile
 
-DISTNAME=	ffmpeg-6.1.4
+DISTNAME=	ffmpeg-6.1.5
 CATEGORIES=	multimedia
 MASTER_SITES=	http://www.ffmpeg.org/releases/
 EXTRACT_SUFX=	.tar.xz
