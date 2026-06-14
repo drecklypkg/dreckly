@@ -14,6 +14,9 @@ MAINTAINER=	brook@nmsu.edu
 HOMEPAGE=	http://blt.sourceforge.net/
 COMMENT=	Extension to Tcl/Tk
 
+# Uses "old-style function definitions".
+FORCE_C_STD=	gnu89
+
 MAKE_JOBS_SAFE=	no
 
 WRKSRC=			${WRKDIR}/blt2.4z
