@@ -14,6 +14,7 @@ LICENSE=	w3c
 
 USE_LIBTOOL=		yes
 USE_TOOLS+=		gmake gzcat perl
+FORCE_C_STD=		gnu89
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--with-expat=${BUILDLINK_PREFIX.expat}
 CONFIGURE_ARGS+=	--with-ssl #=${SSLBASE:Q}
