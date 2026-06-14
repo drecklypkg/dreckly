@@ -66,6 +66,13 @@ MAKE_FLAGS.SunOS+=	LDSHLIB=-shared
 MAKE_FLAGS.SunOS+=	NEED_RUNTIME_PATH=Y
 MAKE_FLAGS.SunOS+=	NETWORKLD="-lsocket -lnsl"
 
+# Uses "old-style function definitions" in getopt.c.
+FORCE_C_STD=		gnu89
+
+# Fix implicit function declarations.
+CFLAGS.NetBSD+=		-D_NETBSD_SOURCE
+CFLAGS.SunOS+=		-D__EXTENSIONS__
+
 .if ${OS_VARIANT} == "SCOOSR5"
 MAKE_FLAGS+=	NETWORKLD="-lsocket -lresolv"
 .endif
