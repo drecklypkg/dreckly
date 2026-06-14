@@ -11,7 +11,7 @@ HOMEPAGE=	http://c-icap.sourceforge.net/
 COMMENT=	Implementation of an ICAP server
 LICENSE=	gnu-lgpl-v2.1
 
-USE_LANGUAGES=		c
+FORCE_C_STD=		gnu89
 USE_LIBTOOL=		yes
 USE_TOOLS+=		gmake
 GNU_CONFIGURE=		yes
