@@ -18,6 +18,10 @@ USE_LIBTOOL=		yes
 USE_PKGLOCALEDIR=	yes
 PKGCONFIG_OVERRIDE+=	src/libp11.pc.in
 
+# Uses "true" and "false" as variable names, which conflict with the
+# C23 keywords.
+FORCE_C_STD=		gnu99
+
 CONFIGURE_ARGS+=	--with-enginesdir=${PREFIX}/lib/engines-1.1
 
 CHECK_PORTABILITY_SKIP+=	tests/search-all-matching-tokens.softhsm
