@@ -8,10 +8,12 @@ MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=mtx/mtx-stable/1.3.12/}
 MAINTAINER=	bouyer@NetBSD.org
 #HOMEPAGE=	http://mtx.badtux.net/
 COMMENT=	Control SCSI media changer devices
+LICENSE=	gnu-gpl-v2
 
 USE_TOOLS+=	gmake 
 GNU_CONFIGURE=	yes
 
-LICENSE=	gnu-gpl-v2
+# Defines its own boolean type which conflicts with C23 types.
+FORCE_C_STD=	gnu89
 
 .include "../../mk/bsd.pkg.mk"
