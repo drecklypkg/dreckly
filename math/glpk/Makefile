@@ -15,6 +15,9 @@ GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--with-gmp
 TEST_TARGET=		check
 
+# defines its own bool type which conflicts with the C23 keyword
+FORCE_C_STD=		gnu89
+
 .include "../../devel/gmp/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
