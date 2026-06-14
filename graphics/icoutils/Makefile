@@ -16,6 +16,7 @@ DEPENDS+=	p5-libwww-[0-9]*:../../www/p5-libwww
 GNU_CONFIGURE=	yes
 USE_TOOLS+=	perl:run
 USE_TOOLS+=	msgfmt msgmerge xgettext
+FORCE_C_STD=	gnu89
 
 REPLACE_PERL+=		extresso/extresso.in
 REPLACE_PERL+=		extresso/genresscript.in

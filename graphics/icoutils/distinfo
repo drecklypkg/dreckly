@@ -5,3 +5,4 @@ SHA512 (icoutils-0.32.3.tar.bz2) = 982a051a5dc4a63bb2a9f23e78e5a88e481e5c7a9c257
 Size (icoutils-0.32.3.tar.bz2) = 609286 bytes
 SHA1 (patch-common_hmap.c) = 0ee879db27f6bf632e2ce171a1fcf44194b5a6ab
 SHA1 (patch-common_string-utils.c) = 8fe8ce50925101331623e3719ffab51016146e2b
+SHA1 (patch-configure) = c3f4d219ae35764f27fc2d241b44de395af093f4
