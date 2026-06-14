@@ -7,6 +7,9 @@ PKGREVISION=	1
 
 CPPFLAGS+=	-DPIC -fPIC
 
+# Uses "old-style function definitions".
+FORCE_C_STD=	gnu89
+
 .include "options.mk"
 
 BUILD_DEFS+=		VARBASE
