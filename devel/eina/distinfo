@@ -5,3 +5,4 @@ SHA512 (eina-1.7.10.tar.bz2) = c1195ec9f2cd79777912ba3c8b6e69a206d035c9a7f2c3876
 Size (eina-1.7.10.tar.bz2) = 9703289 bytes
 SHA1 (patch-src_lib_eina__inarray.c) = 50ed04a751689cdcaff28fdaed9177708759f529
 SHA1 (patch-src_lib_eina__str.c) = 1c350117eb953a10d7663154b9b03a84e3f9de04
+SHA1 (patch-src_modules_mp_chained__pool_eina__chained__mempool.c) = 07bd79e6bd1b3c75e9815b16a41ac9195c455c34

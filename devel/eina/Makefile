@@ -13,6 +13,7 @@ LICENSE=	gnu-lgpl-v2.1
 
 GNU_CONFIGURE=	yes
 USE_LIBTOOL=	yes
+FORCE_C_STD=	gnu89
 
 PKGCONFIG_OVERRIDE=	eina.pc.in
 
