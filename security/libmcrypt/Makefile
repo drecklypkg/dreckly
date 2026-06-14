@@ -13,6 +13,9 @@ USE_LANGUAGES=		c c++
 USE_LIBTOOL=		yes
 GNU_CONFIGURE=		yes
 
+# Uses "old-style function definitions" everywhere.
+FORCE_C_STD=		gnu89
+
 INSTALLATION_DIRS=	include/mutils
 
 post-install:
