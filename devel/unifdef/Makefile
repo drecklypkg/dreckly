@@ -13,4 +13,8 @@ LICENSE=	2-clause-bsd AND modified-bsd
 MAKE_FLAGS+=	prefix=${PREFIX}
 MAKE_FLAGS+=	mandir=${PREFIX}/${PKGMANDIR}
 
+# Uses constexpr as a variable name, which conflicts with the
+# C23 keyword.
+FORCE_C_STD=	gnu99
+
 .include "../../mk/bsd.pkg.mk"
