@@ -16,13 +16,18 @@ CONFLICTS+=	gphoto<2.1.1
 USE_LIBTOOL=		yes
 USE_PKGLOCALEDIR=	yes
 USE_TOOLS+=		pkg-config
+# Uses bool as a variable name, which conflicts with the C23 keyword.
+FORCE_C_STD=		gnu99
 GNU_CONFIGURE=		yes
 CONFIGURE_ENV+=		DOXYGEN=
+CONFIGURE_ARGS+=	ac_cv_path_DOXYGEN=no
 CONFIGURE_ARGS+=	--with-gdlib=no
 # Build very old camera libraries (outdated set)
 CONFIGURE_ARGS+=	--with-camlibs=standard,outdated
 PKGCONFIG_OVERRIDE+=	libgphoto2.pc.in libgphoto2_port/libgphoto2_port.pc.in
 TEST_TARGET=		check
+
+CFLAGS.NetBSD+=		-D_NETBSD_SOURCE
 
 REPLACE_SH=		packaging/generic/check-ptp-camera
 
