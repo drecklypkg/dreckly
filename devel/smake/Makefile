@@ -19,6 +19,8 @@ MAKE_FLAGS+=	DESTDIR=${DESTDIR} INS_BASE=${PREFIX} DEFMANBASE=. MANDIR=${PKGMAND
 # Honor CPPFLAGS, CFLAGS and LDFLAGS
 MAKE_FLAGS+=	CPPOPTX=${CPPFLAGS:Q} COPTX=${CFLAGS:Q} LDOPTX=${LDFLAGS:Q}
 
+FORCE_C_STD=	gnu89 # Uses "old-style-definitions"
+
 .include "../../mk/bsd.prefs.mk"
 
 # Platform specific code (for sharing with other packages based on schilytools)
