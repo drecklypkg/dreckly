@@ -16,6 +16,10 @@ CONFIGURE_ARGS+=	--localstatedir=${VARBASE}
 CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFBASE}
 CONFIGURE_ARGS+=	--with-ssl=${SSLBASE:Q}
 
+# The libwrap usage conflicts with a C23 default language
+# version.
+FORCE_C_STD=		gnu99
+
 .include "../../mk/bsd.prefs.mk"
 
 STUNNEL_USER?=		stunnel
