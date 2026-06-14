@@ -25,6 +25,9 @@ CONFIGURE_ARGS+=	--with-default-path=${PKG_SYSCONFDIR}
 CONFIGURE_ARGS+=	--enable-audio=${TIMIDITY_NATIVE_AUDIO},ao,vorbis,flac,speex
 CONFIGURE_ARGS+=	--enable-network
 
+# Uses "old-style function definitions".
+FORCE_C_STD=		gnu89
+
 FAKE_NCURSES=		yes
 
 .include "../../mk/bsd.prefs.mk"
