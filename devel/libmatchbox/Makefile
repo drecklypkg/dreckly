@@ -14,6 +14,9 @@ USE_LIBTOOL=	yes
 GNU_CONFIGURE=	yes
 USE_TOOLS+=	pkg-config
 
+# Uses "old-style function definitions".
+FORCE_C_STD=	gnu89
+
 SUBST_CLASSES+=		pc
 SUBST_SED.pc+=		-e "s/libpng12/libpng16/"
 SUBST_FILES.pc+=	configure
