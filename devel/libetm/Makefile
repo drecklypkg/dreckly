@@ -17,6 +17,9 @@ INSTALLATION_DIRS=	include lib
 
 USE_TOOLS+=		groff
 
+# Uses "old-style function definitions".
+FORCE_C_STD=		gnu89
+
 post-patch:
 	${MV} ${WRKSRC}/Makefile ${WRKSRC}/Makefile.bak
 	${SED} <${WRKSRC}/Makefile.bak >${WRKSRC}/Makefile \

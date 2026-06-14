@@ -1,8 +1,17 @@
 $NetBSD: patch-aa,v 1.2 2004/04/14 15:08:32 ben Exp $
 
---- Makefile.orig	1997-04-10 13:15:36.000000000 -0700
+--- Makefile.orig	1997-04-10 20:15:36.000000000 +0000
 +++ Makefile
-@@ -383,7 +383,8 @@ depend:: etm.h
+@@ -121,7 +121,7 @@ PROJECTMINORRELEASE = 09
+              MSUB = msub
+         MKDIRHIER = mkdirhier
+ 
+-               AR = ar clq
++               AR = ar cq
+                CC = cc
+               CPP = /lib/cpp $(STD_CPP_DEFINES)
+                LD = ld
+@@ -383,7 +383,8 @@ etm.h.new:: etm.h.dist
  all:: etm.h.new
  etm.h.new:: etm.h.dist
  	$(RM) $@
@@ -12,7 +21,7 @@ $NetBSD: patch-aa,v 1.2 2004/04/14 15:08:32 ben Exp $
  
  clean::
  	$(RM) etm.h.new
-@@ -417,7 +418,8 @@ depend:: etm.internal.h
+@@ -417,7 +418,8 @@ etm.internal.h.new:: etm.internal.h.dist
  all:: etm.internal.h.new
  etm.internal.h.new:: etm.internal.h.dist
  	$(RM) $@
