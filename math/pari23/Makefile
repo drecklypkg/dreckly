@@ -15,6 +15,11 @@ MAKE_JOBS_SAFE=	no
 USE_LIBTOOL=		yes
 USE_TOOLS+=		perl
 USE_LANGUAGES+=		c c++
+
+# Tons of problems compiling with newer language versions.
+# Uses "old-style function definitions".
+FORCE_C_STD=		gnu89
+
 HAS_CONFIGURE=		yes
 CONFIGURE_ENV+=		LOCALBASE=${LOCALBASE}
 CONFIGURE_ENV+=		PERL5=${PERL5:Q}
