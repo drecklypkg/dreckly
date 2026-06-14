@@ -11,6 +11,8 @@ HOMEPAGE=		https://cr.yp.to/libtai.html
 COMMENT=		Library for storing and manipulating dates and times
 LICENSE=		public-domain
 
+FORCE_C_STD=		gnu89
+
 CONFLICTS=		libowfat<0.32nb1
 
 EGDIR=			share/examples/${PKGBASE}
