@@ -13,6 +13,8 @@ COMMENT=	Easy to use, fast C API for creating charts and graphs
 USE_LIBTOOL=		yes
 INSTALLATION_DIRS=	include lib
 
+FORCE_C_STD=	gnu89
+
 #TEST_TARGET=	gdc_samp1 gdc_samp2 gdc_pie_samp ft_samp
 
 post-patch:
