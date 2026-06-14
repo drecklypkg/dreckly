@@ -12,6 +12,8 @@ COMMENT=	The "Sensible" Unix Password Cracker
 
 WRKSRC=		${WRKDIR}/c50a
 
+FORCE_C_STD=	gnu89 # Uses "old-style function definitions"
+
 INSTALLATION_DIRS=	sbin
 
 REPLACE_INTERPRETER+=	xdawg
