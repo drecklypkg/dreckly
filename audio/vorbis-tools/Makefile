@@ -17,6 +17,9 @@ USE_LIBTOOL=		yes
 USE_PKGLOCALEDIR=	yes
 GNU_CONFIGURE=		yes
 
+# Uses "old-style function definitions" in getopt support files.
+FORCE_C_STD=		gnu89
+
 PLIST_SUBST+=	DISTNAME=${DISTNAME}
 
 PTHREAD_OPTS+=	require
