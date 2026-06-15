@@ -9,5 +9,6 @@ Size (netpbm-docs-r4908.tar.gz) = 529814 bytes
 SHA1 (patch-buildtools_libopt.c) = 0e361618eba1bf23c324d047461885471e8f3645
 SHA1 (patch-common.mk) = f37a95014c04ad50fab09da61608590a63a06386
 SHA1 (patch-lib_Makefile) = dc9d14d911773b282d1f0169f665baccb5247337
+SHA1 (patch-lib_pm.h) = 363e8b35382793d5ba5301cac354f0432ea9771b
 SHA1 (patch-lib_util_nstring.c) = 9b18383f498d2c78a577553cfbbe97f18ce7ec1e
 SHA1 (patch-pm__config.in.h) = dfe51691507a2c7be2946013b1f1b6bdd9b39f49
