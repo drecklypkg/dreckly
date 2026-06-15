@@ -15,6 +15,9 @@ LICENSE=	gnu-gpl-v2
 GNU_CONFIGURE=		yes
 USE_LIBTOOL=		yes
 
+# Uses "old-style function definitions", but also restrict keyword.
+FORCE_C_STD=		gnu99
+
 CONFIGURE_ARGS+=	--disable-oss
 CONFIGURE_ARGS+=	--disable-mlib
 CONFIGURE_ARGS+=	--enable-shared
