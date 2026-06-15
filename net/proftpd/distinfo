@@ -10,3 +10,4 @@ SHA1 (patch-contrib_mod__load_mod__load.h.in) = 37b6d7eaeeb0ec68dfdd48e4bf5c0338
 SHA1 (patch-contrib_mod__sftp_Makefile.in) = cda07c1d8836071f1d86ea07cb1d8d09d036bd43
 SHA1 (patch-locale_en__US.po) = 6c8c55130072dccc8cdda18fa2a70a7aab13c328
 SHA1 (patch-src_pidfile.c) = fbe032bf1d9fbe089c44851e4da008d2a1c2945f
+SHA1 (patch-src_table.c) = 51b2c302ba5f2cdc198e05212f2b93a041174be1
