@@ -12,6 +12,9 @@ HOMEPAGE=	https://codeberg.org/schilytools/schilytools/
 COMMENT=	Software for creating ISO9660 images and writing CD/DVD/Blu-ray
 LICENSE=	cddl-1.0 AND gnu-gpl-v2 AND gnu-lgpl-v2.1 AND 2-clause-bsd
 
+# Uses "old-style function definitions".
+FORCE_C_STD=	gnu89
+
 LDFLAGS.Darwin+=	-L${PREFIX}/lib -lintl -liconv
 
 .include "../../mk/bsd.prefs.mk"
