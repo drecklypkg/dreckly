@@ -6,6 +6,7 @@ Size (rsyslog-8.38.0.tar.gz) = 2721798 bytes
 SHA1 (patch-configure) = 8c27c4eae410050a82ae98f32343f980b06e5164
 SHA1 (patch-m4_atomic__operations.m4) = 8f9ca068552263fab12507c0861729c48df7275b
 SHA1 (patch-platform_redhat_rsyslog.conf) = 8cfce2df2551dc2ea81802c4cc1b52933cdda153
+SHA1 (patch-plugins_omelasticsearch_omelasticsearch.c) = 0a84317e3bede4d0360d4aebbfbdb5c39b8892b3
 SHA1 (patch-tools_iminternal.c) = 76e140343456b120cd9f0743e6f10e78f9baaa5d
 SHA1 (patch-tools_rsyslogd.8) = a0eea2ee7832fcb19babca24c7a198ca91386e53
 SHA1 (patch-tools_rsyslogd.c) = b2a295da0b6b667d8913bf9e73f6b2e87923e8be
