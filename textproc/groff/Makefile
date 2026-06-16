@@ -1,7 +1,6 @@
-# $NetBSD: Makefile,v 1.99 2023/08/14 05:25:22 wiz Exp $
+# $NetBSD: Makefile,v 1.102 2025/01/29 10:31:53 jperkin Exp $
 
-DISTNAME=	groff-1.22.4
-PKGREVISION=	8
+DISTNAME=	groff-1.23.0
 CATEGORIES=	textproc
 MASTER_SITES=	${MASTER_SITE_GNU:=groff/}
 
@@ -16,8 +15,6 @@ OVERRIDE_DIRDEPTH=	4
 
 DEPENDS+=		urw-fonts-[0-9]*:../../fonts/urw-fonts
 
-INSTALLATION_DIRS=	share/groff/site-tmac
-
 USE_LANGUAGES=		c c++
 GNU_CONFIGURE=		YES
 CONFIGURE_ENV+=		PERLPATH=${PERL5:Q}
@@ -26,8 +23,6 @@ USE_TOOLS+=		perl sed:run awk:run gmake makeinfo yacc
 EXTRACT_USING=		bsdtar
 USE_FEATURES=		getopt_long
 CONFIGURE_ARGS+=	--with-urw-fonts-dir=${PREFIX}/share/fonts/urw
-
-FORCE_CXX_STD=		gnu++03
 
 INFO_FILES=		YES
 
@@ -52,8 +47,6 @@ BUILD_DEFS+=	PAPERSIZE
 .if defined(PAPERSIZE)
 CONFIGURE_ENV+=	PAGE=${PAPERSIZE:Q}
 .endif
-
-CONFIGURE_ENV+=	with_doc=no
 
 post-extract:
 	${CP} -p ${FILESDIR}/*.c ${WRKSRC}
@@ -82,6 +75,7 @@ SYMLINK_MANFILES=	chem.1 eqn.1 grn.1 indxbib.1 lookbib.1 neqn.1 nroff.1 \
 			pic.1 refer.1 soelim.1 tbl.1 troff.1
 
 INSTALLATION_DIRS=	${PKGGNUDIR}bin ${PKGGNUDIR}${PKGMANDIR}/man1
+INSTALLATION_DIRS+=	share/groff/site-tmac
 
 post-install:
 	${INSTALL_DATA} ${WRKDIR}/mdoc.local \
