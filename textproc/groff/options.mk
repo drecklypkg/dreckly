@@ -2,7 +2,6 @@
 
 PKG_OPTIONS_VAR=	PKG_OPTIONS.groff
 PKG_SUPPORTED_OPTIONS=	groff-docs x11
-PKG_SUGGESTED_OPTIONS=	groff-docs x11
 
 .include "../../mk/bsd.options.mk"
 
