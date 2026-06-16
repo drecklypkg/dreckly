@@ -1,14 +1,14 @@
-# $NetBSD: Makefile,v 1.14 2022/06/28 11:34:48 wiz Exp $
+# $NetBSD: Makefile,v 1.16 2025/12/26 11:10:46 adam Exp $
 
-DISTNAME=	libcdio-paranoia-10.2+2.0.1
-PKGNAME=	libcdio-paranoia-2.0.1
-PKGREVISION=	3
+DISTNAME=	libcdio-paranoia-10.2+2.0.2
+PKGNAME=	libcdio-paranoia-2.0.2
 CATEGORIES=	misc
-MASTER_SITES=	${MASTER_SITE_GNU:=libcdio/}
+MASTER_SITES=	${MASTER_SITE_GITHUB:=libcdio/}
+GITHUB_RELEASE=	release-10.2+2.0.2
 EXTRACT_SUFX=	.tar.bz2
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
-HOMEPAGE=	https://www.gnu.org/software/libcdio/
+HOMEPAGE=	https://github.com/libcdio/libcdio-paranoia
 COMMENT=	CD-ROM access library: CDDA support
 LICENSE=	gnu-gpl-v3
 
@@ -22,6 +22,13 @@ INFO_FILES=		yes
 PKGCONFIG_OVERRIDE+=	libcdio_cdda.pc.in
 PKGCONFIG_OVERRIDE+=	libcdio_paranoia.pc.in
 TEST_TARGET=		check
+
+# getopt.c uses "old-style function definitions",
+# which are incompatible with C23 as a default language.
+#
+# gnu99 is chosen for being the minimum bootstrap requirement
+# and safety against APIs being hidden in standards mode.
+FORCE_C_STD=		gnu99
 
 .include "../../mk/compiler.mk"
 
