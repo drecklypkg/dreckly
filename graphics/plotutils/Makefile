@@ -20,6 +20,13 @@ CONFIGURE_ARGS+=	--enable-libplotter
 MAKE_JOBS_SAFE=		no
 INFO_FILES=		yes
 
+# This defines its own bool type, which is incompatible
+# with C23 having it as a built-in keyword.
+#
+# gnu99 is chosen for being the minimum bootstrap requirement
+# and safety against APIs being hidden in standards mode.
+FORCE_C_STD=		gnu99
+
 .include "options.mk"
 
 .include "../../converters/libiconv/buildlink3.mk"
