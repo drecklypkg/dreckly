@@ -778,9 +778,7 @@ SunOS)
 	need_bsd_install=yes
 	use_bsdinstall=yes
 
-	# Use native nawk and sed if available on newer illumos.
-	/usr/bin/nawk --version 2>/dev/null | grep "awk version " >/dev/null
-	if [ $? -eq 0 ]; then
+	if [ -x "/usr/bin/nawk" ]; then
 		bootstrap_awk="/usr/bin/nawk"
 	elif [ ! -x "/usr/gnu/bin/awk" ]; then
 		need_awk=yes

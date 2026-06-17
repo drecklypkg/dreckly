@@ -212,6 +212,9 @@ TOOLS_PLATFORM.uniq?=		/usr/bin/uniq
 TOOLS_PLATFORM.unzip?=		/usr/bin/unzip
 .endif
 TOOLS_PLATFORM.wc?=		/usr/bin/wc
+.if exists(/usr/sfw/bin/wget)
+TOOLS_PLATFORM.wget?=		/usr/sfw/bin/wget
+.endif
 TOOLS_PLATFORM.xargs?=		/usr/bin/xargs
 .if exists(/usr/bin/xz)
 TOOLS_PLATFORM.xz?=		/usr/bin/xz
