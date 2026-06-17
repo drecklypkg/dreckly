@@ -899,7 +899,6 @@ SUBDIR+=	py-scgi
 SUBDIR+=	py-scrapy
 SUBDIR+=	py-selenium
 SUBDIR+=	py-sigal
-SUBDIR+=	py-simpletal
 SUBDIR+=	py-soupsieve
 SUBDIR+=	py-sparqlwrapper
 SUBDIR+=	py-starlette

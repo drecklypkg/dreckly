@@ -369,7 +369,6 @@ SUBDIR+=	py-cassa
 SUBDIR+=	py-cassandra-driver
 SUBDIR+=	py-cdb
 SUBDIR+=	py-ckanclient
-SUBDIR+=	py-cx_Oracle
 SUBDIR+=	py-datapkg
 SUBDIR+=	py-dbf
 SUBDIR+=	py-dbfread
