@@ -5,5 +5,6 @@ SHA512 (wmii+ixp-3.9.2.tbz) = c75d6d3f80e2b263c8d7b9eb6d0e700a1ad642209fc0984908
 Size (wmii+ixp-3.9.2.tbz) = 432032 bytes
 SHA1 (patch-aa) = e8f5445fce699ba438753cefd4ec250018ce6985
 SHA1 (patch-ab) = cdb5ae1f02497852a5c965bdfb106e1b3a77853e
+SHA1 (patch-cmd_wmii___util.c) = c5caf458d57ec1c027009fea87cbf8a25012998c
 SHA1 (patch-cmd_wmii_main.c) = 2e52a5861b197b9ffa8b7df83230e7bc74059256
 SHA1 (patch-util_compile) = 5b4815086c36789ad53c795ab26057b1066f5113
