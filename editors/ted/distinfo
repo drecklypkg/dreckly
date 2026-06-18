@@ -5,4 +5,4 @@ SHA512 (ted-2.23.src.tar.gz) = c6541e5a07545a08b30cb9b33429d9a7675f9252df32ccca5
 Size (ted-2.23.src.tar.gz) = 4672208 bytes
 SHA1 (patch-Ted_configure) = e307c07ba3cfa30879a974bf93e153c0b37e28c5
 SHA1 (patch-bitmap_configure) = 36dcc05b25828f02168edf1800cf0f2860103039
-SHA1 (patch-textEncoding_textConverter.c) = 2d811c60aedab837b84c86f425a183af6d577c47
+SHA1 (patch-textEncoding_textConverter.c) = 9723870fe7e5924e250905747a0ba8ba77464aae
