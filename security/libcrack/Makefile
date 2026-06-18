@@ -13,6 +13,12 @@ COMMENT=	Password checking library
 
 USE_LIBTOOL=	YES
 
+# This uses K&R style function definitions and is unlikely to
+# be happy with an evolving C standard. gnu99 is chosen for
+# being the minimum bootstrap requirement and safety against
+# APIs being hidden in strict standards mode.
+FORCE_C_STD=	gnu99
+
 INSTALLATION_DIRS=	bin include/cracklib lib libdata
 
 post-install:
