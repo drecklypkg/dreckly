@@ -14,6 +14,13 @@ GNU_CONFIGURE=	yes
 
 USE_TOOLS+=	pkg-config flex bison m4
 
+# vtwm contains old (K&R) style function definitions which
+# are forbidden in C23. As safety against further developments
+# in the C standard, pick a reasonable one, in this case
+# the minimum bootstrap requirement with extensions enabled
+# to expose all system APIs.
+FORCE_C_STD=		gnu99
+
 CONFIGURE_ARGS+=	--disable-esd-sound
 CONFIGURE_ARGS+=	--disable-rplay-sound
 
