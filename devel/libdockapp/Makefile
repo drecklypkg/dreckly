@@ -16,6 +16,8 @@ USE_TOOLS+=		pkg-config
 post-install:
 	${RM} -f ${DESTDIR}${PREFIX}/share/fonts/X11/misc/fonts.dir
 
+CFLAGS.SunOS+=		-D__EXTENSIONS__ # getline
+
 FONTS_DIRS.x11=		share/fonts/X11/misc
 
 BUILDLINK_DEPMETHOD.libXt?=	build
