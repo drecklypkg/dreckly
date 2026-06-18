@@ -18,6 +18,12 @@ WRKSRC=			${WRKDIR}/xmix
 USE_IMAKE=		yes
 INSTALLATION_DIRS=	lib/X11/app-defaults
 
+.include "../../mk/oss.buildlink3.mk"
+
+.if ${OSS_TYPE} == "none"
+PKG_SKIP_REASON+=	"Requires an OSS implementation"
+.endif
+
 pre-configure:
 	${CP} ${WRKSRC}/xmix.1 ${WRKSRC}/xmix.man
 
@@ -26,5 +32,4 @@ pre-install:
 
 .include "../../x11/libXaw/buildlink3.mk"
 .include "../../x11/libXt/buildlink3.mk"
-.include "../../mk/oss.buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"

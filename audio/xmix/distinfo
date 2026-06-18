@@ -7,4 +7,4 @@ BLAKE2s (xmix-2.1.tar.gz) = 65bb2b4fa75fbede97bc54c4dbfc755943bf373afc271df3f38c
 SHA512 (xmix-2.1.tar.gz) = 1acdb835ed5791b7642910909ea932c9750935d795e14dcc88da011ece8e303e20610945f8f7382b4e141311de42c16df2626d8b313bf187ee08f7bfcfa1b988
 Size (xmix-2.1.tar.gz) = 34835 bytes
 SHA1 (patch-Imakefile) = ddaa95bd48632bff826d1da484d0360a6b3e720e
-SHA1 (patch-xmix.c) = 449734b8de82dda37c61d8703ecafcf1d8921607
+SHA1 (patch-xmix.c) = 11240bd7b4d26207bc79cf9771249fc31ea62ec0
