@@ -5,3 +5,4 @@ SHA512 (xgrk-1.6.3.tar.gz) = 929be2fcc2a08d537a0b0c4991849a9d5c377e89a7e8a305b72
 Size (xgrk-1.6.3.tar.gz) = 25039 bytes
 SHA1 (patch-aa) = a0031b6ddda14c9b9803c2e2b18df7a5fdf17f3b
 SHA1 (patch-ab) = 493d021068e09cdce68d9bfa99f2738950663650
+SHA1 (patch-xgrk.c) = 469edb82270f752fed40355447adc46835ff1776
