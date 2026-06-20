@@ -15,4 +15,6 @@ BUILD_TARGET=	samu
 MAKE_FLAGS+=	PREFIX=${PREFIX}
 MAKE_FLAGS+=	MANDIR=${PREFIX}/${PKGMANDIR}
 
+CFLAGS.SunOS+=	-D__EXTENSIONS__
+
 .include "../../mk/bsd.pkg.mk"
