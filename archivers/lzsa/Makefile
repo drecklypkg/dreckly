@@ -12,7 +12,12 @@ LICENSE=	zlib
 
 USE_TOOLS+=	gmake
 
+TOOL_DEPENDS+=	dos2unix-[0-9]*:../../converters/dos2unix
+
 INSTALLATION_DIRS=	bin
+
+pre-patch:
+	dos2unix ${WRKSRC}/src/*.c
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/lzsa ${DESTDIR}${PREFIX}/bin

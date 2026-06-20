@@ -1,0 +1,13 @@
+$NetBSD$
+
+Don't override the user's choice of compiler.
+
+--- Makefile.orig	2023-02-27 17:23:00.000000000 +0000
++++ Makefile
+@@ -1,5 +1,4 @@
+-CC=clang
+-CFLAGS=-O3 -g -fomit-frame-pointer -Isrc/libdivsufsort/include -Isrc
++CFLAGS+=-Isrc/libdivsufsort/include -Isrc
+ OBJDIR=obj
+ LDFLAGS=
+ 
