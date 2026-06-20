@@ -20,6 +20,11 @@ USE_LIBTOOL=		yes
 
 PLIST_SUBST+=		DISTNAME=${DISTNAME:Q}
 
+# doesn't include <alloca.h> which is needed on SunOS,
+# just define the function to the compiler builtin to avoid
+# needing a patch.
+CFLAGS.SunOS+=		-Dalloca=__builtin_alloca
+
 pre-configure:
 	touch ${WRKSRC}/config.h.in
 	cd ${WRKSRC} && aclocal
