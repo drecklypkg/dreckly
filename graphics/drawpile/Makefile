@@ -18,6 +18,8 @@ USE_CMAKE=	yes
 USE_TOOLS+=	pkg-config
 USE_LANGUAGES=	c c++
 
+LDFLAGS.SunOS+=	-lsocket
+
 CMAKE_CONFIGURE_ARGS+=	-DINITSYS=""
 
 .include "../../archivers/karchive/buildlink3.mk"
