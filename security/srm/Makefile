@@ -14,6 +14,11 @@ GNU_CONFIGURE=	yes
 
 CONFLICTS+=	sr-[0-9]* # bin/srm
 
+# doesn't include <alloca.h> which is needed on SunOS,
+# just define the function to the compiler builtin to avoid
+# needing a patch.
+CFLAGS.SunOS+=	-Dalloca=__builtin_alloca
+
 do-test:
 	${RUN} cd ${WRKSRC} && ${SETENV} ${TEST_ENV} ./test.sh
 
