@@ -18,4 +18,11 @@ EXTRACT_OPTS=		-f shar
 MAKE_FILE=		makefile
 WRKSRC=			${WRKDIR}
 
+# This is old code that uses K&R style function definitions.
+# Since an evolving C standard is likely to cause compatibility
+# problems with it, we force a "known working" standard, in this
+# case, the minimum bootstrap requirement, not in strict standard
+# mode to ensure no APIs are hidden.
+FORCE_C_STD=		gnu99
+
 .include "../../mk/bsd.pkg.mk"
