@@ -2,7 +2,7 @@
 
 DISTNAME=	sslproxy-1.1.2
 PKGREVISION=	4
-CATEGORIES=	net
+CATEGORIES=	security net
 MASTER_SITES=	${MASTER_SITE_SOURCEFORGE:=sslproxy/1.1.2/}
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
