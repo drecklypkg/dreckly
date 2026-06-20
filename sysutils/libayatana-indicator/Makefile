@@ -18,6 +18,8 @@ PKGCONFIG_OVERRIDE+=	data/ayatana-indicator.pc.in
 PKGCONFIG_OVERRIDE+=	data/ayatana-indicator3-no-IDO.pc.in
 PKGCONFIG_OVERRIDE+=	data/ayatana-indicator3.pc.in
 
+BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,--version-script=${WRKSRC}/src/indicator.symbols
+
 .include "../../devel/cmake/build.mk"
 .include "../../devel/glib2/buildlink3.mk"
 .include "../../sysutils/ayatana-ido/buildlink3.mk"
