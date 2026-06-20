@@ -5,4 +5,6 @@ SHA512 (tcpd-tools-0.8.tar.gz) = 2fef3b9fae296a938ea4b4aa73833902ece7c08cab61458
 Size (tcpd-tools-0.8.tar.gz) = 468856 bytes
 SHA1 (patch-Makefile) = b77ceb25ed320a221ce3a8fd3b0ccc64d35b4b25
 SHA1 (patch-aa) = 1d4eb35cc8231321325e40b5bc265eaa0e78ff0f
-SHA1 (patch-ip_flow.c) = a1b35b10b055e6da0a4e12b6226a1fa6b06c1154
+SHA1 (patch-ip_flow.c) = 452828ad8db8b0618f6c10fb656967266db20554
+SHA1 (patch-net__read.c) = 1a584f8866ff320973c95310cd6a97305d54e829
+SHA1 (patch-stat.c) = f1effa18ff70b2460b48b848aa16fefb9015299a
