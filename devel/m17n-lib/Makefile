@@ -15,6 +15,11 @@ GNU_CONFIGURE=	yes
 USE_LIBTOOL=	yes
 USE_TOOLS+=	pkg-config
 
+# doesn't include <alloca.h> which is needed on SunOS,
+# just define the function to the compiler builtin to avoid
+# needing a patch.
+CFLAGS.SunOS+=	-Dalloca=__builtin_alloca
+
 PKGCONFIG_OVERRIDE+=	m17n-core.pc.in m17n-shell.pc.in m17n-flt.pc.in
 PKGCONFIG_OVERRIDE+=	m17n-gui.pc.in
 
