@@ -29,6 +29,8 @@ RCD_SCRIPTS=	sslh
 AUTO_MKDIRS=	yes
 REPLACE_SH+=	genver.sh
 
+CFLAGS.SunOS+=	-D__EXTENSIONS__ # vasprintf
+
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/sslh-fork ${DESTDIR}${PREFIX}/sbin/sslh
 	${INSTALL_PROGRAM} ${WRKSRC}/sslh-select ${DESTDIR}${PREFIX}/sbin
