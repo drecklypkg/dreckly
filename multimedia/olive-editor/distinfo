@@ -13,4 +13,5 @@ SHA1 (patch-CMakeLists.txt) = 6995fddfb1dfb3c7e663f8a1c61db701c9601f85
 SHA1 (patch-app_CMakeLists.txt) = d01fc5269c79fef9f8b4aa65dd128c58f2e0dc61
 SHA1 (patch-app_render_renderer.cpp) = 5dcf685ab7c9f3a84a0d5df13b4b2058bda320cf
 SHA1 (patch-cmake_FindFFMPEG.cmake) = 2f2aef426f7a3e93e66ff500840dcadec5e499e3
+SHA1 (patch-ext_core_src_util_rational.cpp) = f701a87c2e6bc374d90dc61931a9432b605a332b
 SHA1 (patch-ext_core_src_util_timecodefunctions.cpp) = 81e20605774b8463f7d53fe1dc448dee2cb3e5e9
