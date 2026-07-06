@@ -1,12 +1,11 @@
-# $NetBSD: Makefile,v 1.29 2024/11/28 19:44:25 ryoon Exp $
+# $NetBSD: Makefile,v 1.45 2026/05/14 16:41:21 ryoon Exp $
 
 DISTNAME=	jdk17u-${GITHUB_TAG:C/\+/-/}
 PKGNAME=	openjdk17-1.${GITHUB_TAG:C/\+/./:C/jdk-([.0-9]+).*/\1/}
-PKGREVISION=	1
 CATEGORIES=	lang
 MASTER_SITES=	${MASTER_SITE_GITHUB:=battleblow/}
 GITHUB_PROJECT=	jdk17u
-GITHUB_TAG=	jdk-17.0.13+11-1
+GITHUB_TAG=	jdk-17.0.18+8-1
 
 MAINTAINER=	pkgsrc-users@NetBSD.org
 HOMEPAGE=	https://openjdk.java.net/
@@ -41,6 +40,7 @@ BUILDLINK_TRANSFORM+=	opt:-Wl,--hash-style=gnu:-Wl,--hash-style=sysv
 
 GNU_CONFIGURE=		yes
 GNU_CONFIGURE_STRICT=	no # generates the configure script during the build
+GNU_CONFIGURE_ICONV=	no
 USE_GNU_CONFIGURE_HOST=	no
 CONFIGURE_SCRIPT=	configure
 CONFIG_SHELL=		bash
@@ -49,6 +49,7 @@ CONFIG_GUESS_OVERRIDE+=	make/autoconf/build-aux/config.guess
 CONFIG_SUB_OVERRIDE+=	make/autoconf/build-aux/autoconf-config.sub
 CONFIG_GUESS_OVERRIDE+=	make/autoconf/build-aux/autoconf-config.guess
 USE_LANGUAGES=		c c++
+USE_CXX_FEATURES=	c++14
 USE_TOOLS+=		bash gmake pax pkg-config unzip:run zip:run autoconf automake
 UNLIMIT_RESOURCES=	datasize stacksize virtualsize cputime
 
@@ -57,7 +58,10 @@ BUILDLINK_PASSTHRU_DIRS+=	${ALT_BOOTDIR}
 # Try to use less POSIX semaphores (large MAKE_JOBS can consume them all)
 BOOT_JVMARGS=	-XX:+UnlockDiagnosticVMOptions
 
-CONFIGURE_ARGS+=	--prefix=${PREFIX}
+# ${WRKSRC}/doc/building.mk explicitly states that its Makefiles are unsafe
+# to use -j.
+MAKE_JOBS_SAFE=	no
+
 CONFIGURE_ARGS+=	--openjdk-target=${MACHINE_GNU_PLATFORM}
 CONFIGURE_ARGS+=	--with-boot-jdk=${ALT_BOOTDIR}
 CONFIGURE_ARGS+=	--with-boot-jdk-jvmargs=${BOOT_JVMARGS:Q}
