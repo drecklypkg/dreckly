@@ -14,11 +14,13 @@ HOMEPAGE=	http://ysflight.in.coocan.jp/FM/towns/Tsugaru/e.html
 COMMENT=	FM Towns emulator
 LICENSE=	modified-bsd
 
-CMAKE_CONFIGURE_ARGS=	${WRKSRC}/gui/src
+TOOL_DEPENDS+=	icoutils-[0-9]*:../../graphics/icoutils
 
 USE_LANGUAGES=	c c++
 
 USE_CXX_FEATURES+=	c++17
+
+CMAKE_CONFIGURE_ARGS=	${WRKSRC}/gui/src
 
 CFLAGS.NetBSD+=	-DEBADFD=EBADF
 CFLAGS.NetBSD+=	-DESTRPIPE=EPIPE
