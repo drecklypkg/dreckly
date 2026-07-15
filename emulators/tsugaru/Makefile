@@ -14,7 +14,7 @@ HOMEPAGE=	http://ysflight.in.coocan.jp/FM/towns/Tsugaru/e.html
 COMMENT=	FM Towns emulator
 LICENSE=	modified-bsd
 
-TOOL_DEPENDS+=	icoutils-[0-9]*:../../graphics/icoutils
+TOOL_DEPENDS+=	ImageMagick-[0-9]*:../../graphics/ImageMagick
 
 USE_LANGUAGES=	c c++
 
@@ -30,14 +30,13 @@ INSTALLATION_DIRS+=	share/applications
 INSTALLATION_DIRS+=	share/pixmaps
 
 pre-build:
-	${PREFIX}/bin/icotool -x -i 1 \
-		${WRKSRC}/src/resources/tsugaru_icon.ico \
-		-o ${WRKDIR}/256.png
+	${PREFIX}/bin/magick ${WRKSRC}/src/resources/tsugaru_icon.ico \
+		${WRKDIR}/${PKGBASE}.png
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/${CMAKE_BUILD_DIR}/main_gui/Tsugaru_GUI \
 		${DESTDIR}${PREFIX}/bin/${PKGBASE}
-	${INSTALL_DATA} ${WRKDIR}/256.png \
+	${INSTALL_DATA} ${WRKDIR}/${PKGBASE}.png \
 		${DESTDIR}${PREFIX}/share/pixmaps/${PKGBASE}.png
 	${INSTALL_DATA} ${FILESDIR}/${PKGBASE}.desktop \
 		${DESTDIR}${PREFIX}/share/applications
