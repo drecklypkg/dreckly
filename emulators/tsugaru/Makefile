@@ -43,7 +43,10 @@ do-install:
 		${DESTDIR}${PREFIX}/share/applications
 
 .include "../../devel/cmake/build.mk"
-.include "../../audio/alsa-lib/buildlink3.mk"
+.include "../../mk/bsd.fast.prefs.mk"
+.if ${OPSYS} != "Darwin"
+.  include "../../audio/alsa-lib/buildlink3.mk"
+.endif
 .include "../../graphics/glu/buildlink3.mk"
 .include "../../sysutils/desktop-file-utils/desktopdb.mk"
 .include "../../x11/libX11/buildlink3.mk"
