@@ -431,6 +431,7 @@ SUBDIR+=	swarm
 SUBDIR+=	sys161
 SUBDIR+=	tcl-hp-15c
 SUBDIR+=	tme
+SUBDIR+=	tsugaru
 SUBDIR+=	tuxnes
 SUBDIR+=	uae
 SUBDIR+=	ucon64

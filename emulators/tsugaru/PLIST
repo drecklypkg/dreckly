@@ -1,0 +1,4 @@
+@comment $NetBSD$
+bin/tsugaru
+share/applications/tsugaru.desktop
+share/pixmaps/tsugaru.png
