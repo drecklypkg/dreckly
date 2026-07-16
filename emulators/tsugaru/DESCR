@@ -1,8 +1,6 @@
-Tsugaru is an emulator of legendary Fujitsu FM TOWNS computer including Marty.
-
-The goal is to emulate model II MX, which was the last computer I pledged
-allegiance. Also I am trying to find and document undocumented features of
-FM TOWNS system as much as possible while writing the emulator.
+Tsugaru is an emulator of the legendary Fujitsu FM TOWNS computer,
+including the Marty video game console. It primarily targets emulating
+Model II MX, including undocumented hardware features.
 
 If you do not own your FM TOWNS hardware, you can use the following free
 version of the ROM:
