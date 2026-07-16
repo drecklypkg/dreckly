@@ -33,16 +33,22 @@ pre-build:
 	${PREFIX}/bin/magick ${WRKSRC}/src/resources/tsugaru_icon.ico \
 		${WRKDIR}/${PKGBASE}.png
 
+.include "../../mk/bsd.fast.prefs.mk"
+
 do-install:
+.if ${OPSYS} != "Darwin"
 	${INSTALL_PROGRAM} ${WRKSRC}/${CMAKE_BUILD_DIR}/main_gui/Tsugaru_GUI \
 		${DESTDIR}${PREFIX}/bin/${PKGBASE}
+.else
+	${INSTALL_PROGRAM} ${WRKSRC}/${CMAKE_BUILD_DIR}/main_gui/Tsugaru_GUI.app/Contents/MacOS/Tsugaru_GUI \
+		${DESTDIR}${PREFIX}/bin/${PKGBASE}
+.endif
 	${INSTALL_DATA} ${WRKDIR}/${PKGBASE}.png \
 		${DESTDIR}${PREFIX}/share/pixmaps/${PKGBASE}.png
 	${INSTALL_DATA} ${FILESDIR}/${PKGBASE}.desktop \
 		${DESTDIR}${PREFIX}/share/applications
 
 .include "../../devel/cmake/build.mk"
-.include "../../mk/bsd.fast.prefs.mk"
 .if ${OPSYS} != "Darwin"
 .  include "../../audio/alsa-lib/buildlink3.mk"
 .endif
