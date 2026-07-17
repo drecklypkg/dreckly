@@ -3,7 +3,7 @@
 # used by devel/libevent/Makefile
 # used by devel/py-libevent-rpcgen/Makefile
 
-DISTNAME=	libevent-2.1.12-stable
+DISTNAME=	libevent-2.1.13-stable
 CATEGORIES=	devel
 MASTER_SITES=	${MASTER_SITE_GITHUB:=libevent/}
 GITHUB_PROJECT=	libevent

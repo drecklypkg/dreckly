@@ -1,6 +1,5 @@
 # $NetBSD: Makefile,v 1.59 2024/03/15 18:07:32 nia Exp $
 
-PKGREVISION= 2
 .include "../../devel/libevent/Makefile.common"
 
 PKGNAME=	${DISTNAME:S/-stable//}
