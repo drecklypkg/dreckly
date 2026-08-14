@@ -1,6 +1,7 @@
 # $NetBSD: options.mk,v 1.33 2025/01/09 09:43:45 jperkin Exp $
 
 PKG_OPTIONS_VAR=	PKG_OPTIONS.weechat
+# mk/curses will handle wide-curses
 PKG_SUPPORTED_OPTIONS=	python lua wide-curses perl ruby
 PKG_SUGGESTED_OPTIONS=	python lua wide-curses perl ruby
 
