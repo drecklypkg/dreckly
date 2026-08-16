@@ -18,6 +18,7 @@ USE_TOOLS+=	gdbus-codegen intltool msgfmt perl pkg-config readlink
 TEST_ENV+=	LD_LIBRARY_PATH=${WRKSRC}/output/gck
 TEST_ENV+=	DYLD_LIBRARY_PATH=${WRKSRC}/output/gck
 
+CPPFLAGS.NetBSD+=	-D_NETBSD_SOURCE # timegm
 CPPFLAGS.SunOS+=	-D__EXTENSIONS__
 LDFLAGS.SunOS+=		-lsocket
 
