@@ -2,6 +2,9 @@ $NetBSD$
 
 Fix implicit function declarations.
 
+Fix incompatible pointer type warnings, fatal with gcc14
+(from RavenPorts)
+
 --- mpcenc/mpcenc.c.orig	2009-08-26 20:39:06.000000000 +0000
 +++ mpcenc/mpcenc.c
 @@ -23,6 +23,7 @@

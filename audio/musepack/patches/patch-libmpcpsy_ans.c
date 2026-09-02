@@ -1,5 +1,8 @@
 $NetBSD$
 
+Fix incompatible pointer type warnings, fatal with gcc14
+(from RavenPorts)
+
 --- libmpcpsy/ans.c.orig	2026-09-02 08:08:07.460737514 +0000
 +++ libmpcpsy/ans.c
 @@ -288,12 +288,12 @@ NS_Analyse ( PsyModel* m,
