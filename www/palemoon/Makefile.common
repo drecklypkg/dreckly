@@ -5,7 +5,7 @@
 # for build instructions see
 # https://developer.palemoon.org/build/linux/
 
-PM_VER=		35.0.0
+PM_VER=		35.0.1
 CATEGORIES=	www
 
 DISTINFO_FILE=	${.CURDIR}/../../www/palemoon/distinfo
