@@ -29,8 +29,8 @@ MASTER_SITE_GNUSTEP+=   \
 MASTER_SITE_GNUPG+=	\
 	https://mirrors.dotsrc.org/gcrypt/ \
 	https://www.mirrorservice.org/sites/ftp.gnupg.org/gcrypt/ \
-	http://gnupg.org/ftp/gcrypt/ \
-	http://www.ring.gr.jp/pub/net/gnupg/
+	https://www.gnupg.org/ftp/gcrypt/ \
+	http://www.dnsbalance.ring.gr.jp/pub/net/gnupg/
 
 MASTER_SITE_OSDN+=	\
 	http://jaist.dl.osdn.jp/ \
