@@ -63,7 +63,7 @@ CONFIGURE_ARGS+=	--disable-asm
 CPPFLAGS+=	-D__powerpc__
 .endif
 
-BUILDLINK_API_DEPENDS.libgpg-error+=	libgpg-error>=1.13
+BUILDLINK_API_DEPENDS.libgpg-error+=   libgpg-error>=1.56
 .include "../../security/libgpg-error/buildlink3.mk"
 .include "../../mk/pthread.buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
