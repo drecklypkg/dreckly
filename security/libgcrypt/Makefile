@@ -19,6 +19,8 @@ TEST_TARGET=		check
 TEXINFO_REQD+=		4.0
 INFO_FILES=		yes
 
+DEPENDS_TARGET=		reinstall
+
 .include "../../mk/compiler.mk"
 
 .if !empty(PKGSRC_COMPILER:Mclang)
