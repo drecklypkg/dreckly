@@ -1,4 +1,4 @@
-# $NetBSD: options.mk,v 1.9 2023/04/07 09:15:55 adam Exp $
+# $NetBSD: options.mk,v 1.10 2025/03/03 21:32:27 nia Exp $
 
 PKG_OPTIONS_VAR=	PKG_OPTIONS.libgcrypt
 PKG_SUPPORTED_OPTIONS=
