@@ -31,6 +31,8 @@ CONFIGURE_ARGS+=	--localstatedir=${VARBASE}
 CONFIGURE_ARGS.SunOS+=	ac_cv_func_getaddrinfo=yes
 TEST_TARGET=		check
 
+DEPENDS_TARGET=		reinstall
+
 CPPFLAGS.SunOS+=	-D_XOPEN_SOURCE=600	# socklen_t
 LDFLAGS.Darwin+=	-lintl
 
