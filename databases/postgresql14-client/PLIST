@@ -1,4 +1,4 @@
-@comment $NetBSD: PLIST,v 1.4 2024/11/16 10:13:48 adam Exp $
+@comment $NetBSD: PLIST,v 1.6 2026/02/13 10:52:21 adam Exp $
 bin/clusterdb
 bin/createdb
 bin/createuser
@@ -463,8 +463,8 @@ include/postgresql/server/libpq/be-gssapi-common.h
 include/postgresql/server/libpq/crypt.h
 include/postgresql/server/libpq/hba.h
 include/postgresql/server/libpq/ifaddr.h
-include/postgresql/server/libpq/libpq-be.h
 include/postgresql/server/libpq/libpq-be-fe-helpers.h
+include/postgresql/server/libpq/libpq-be.h
 include/postgresql/server/libpq/libpq-fs.h
 include/postgresql/server/libpq/libpq.h
 include/postgresql/server/libpq/pqcomm.h
@@ -1055,7 +1055,9 @@ ${PLIST.nls}share/locale/ko/LC_MESSAGES/pgscripts-14.mo
 ${PLIST.nls}share/locale/ko/LC_MESSAGES/psql-14.mo
 ${PLIST.nls}share/locale/pl/LC_MESSAGES/ecpg-14.mo
 ${PLIST.nls}share/locale/pl/LC_MESSAGES/ecpglib6-14.mo
+${PLIST.nls}share/locale/pl/LC_MESSAGES/pg_amcheck-14.mo
 ${PLIST.nls}share/locale/pl/LC_MESSAGES/pg_config-14.mo
+${PLIST.nls}share/locale/pl/LC_MESSAGES/pg_ctl-14.mo
 ${PLIST.nls}share/locale/pl/LC_MESSAGES/pg_test_fsync-14.mo
 ${PLIST.nls}share/locale/pt_BR/LC_MESSAGES/ecpg-14.mo
 ${PLIST.nls}share/locale/pt_BR/LC_MESSAGES/ecpglib6-14.mo
