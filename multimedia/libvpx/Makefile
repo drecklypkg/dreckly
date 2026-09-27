@@ -1,6 +1,6 @@
-# $NetBSD: Makefile,v 1.108 2025/07/14 10:44:45 adam Exp $
+# $NetBSD: Makefile,v 1.111 2026/03/27 21:35:19 tnn Exp $
 
-DISTNAME=	libvpx-1.15.2
+DISTNAME=	libvpx-1.16.0
 CATEGORIES=	multimedia
 MASTER_SITES=	${MASTER_SITE_GITHUB:=webmproject/}
 GITHUB_TAG=	v${PKGVERSION_NOREV}
@@ -24,8 +24,7 @@ CONFIGURE_ARGS+=	--disable-unit-tests
 
 .include "../../mk/bsd.prefs.mk"
 
-.if ${MACHINE_ARCH} == "i386" || ${MACHINE_ARCH} == "x86_64" || \
-    (${OPSYS} == "Darwin" && ${MACHINE_ARCH} == "aarch64")
+.if ${MACHINE_ARCH} == "i386" || ${MACHINE_ARCH} == "x86_64"
 TOOL_DEPENDS+=		yasm-[0-9]*:../../devel/yasm
 .endif
 
