@@ -31,6 +31,9 @@ BUILDLINK_TRANSFORM.SunOS+=	rm:-Wl,--as-needed
 CPPFLAGS.SunOS+=		-D_POSIX_PTHREAD_SEMANTICS -D__EXTENSIONS__
 LDFLAGS.SunOS+=			-lsocket
 
+# FreeBSD does not have ENODATA.
+CPPFLAGS.FreeBSD+=		-DENODATA=ENOATTR
+
 .include "../../mk/bsd.prefs.mk"
 
 POLKITD_USER?=			polkitd
