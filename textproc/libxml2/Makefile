@@ -9,12 +9,13 @@ USE_FEATURES=		glob
 USE_LANGUAGES=		c
 FORCE_C_STD=		c99
 USE_LIBTOOL=		yes
-USE_TOOLS+=		gmake
+USE_TOOLS+=		gmake pkg-config
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFDIR}
 CONFIGURE_ARGS+=	--with-zlib=${BUILDLINK_PREFIX.zlib}
-CONFIGURE_ARGS+=	--with-lzma=${BUILDLINK_PREFIX.xz}
+CONFIGURE_ARGS+=	--with-http
 CONFIGURE_ARGS+=	--with-legacy
+CONFIGURE_ARGS+=	--without-docs
 CONFIGURE_ARGS+=	--without-python
 TEST_TARGET=		check
 
@@ -43,7 +44,6 @@ SUBST_VARS.rpath=	COMPILER_RPATH_FLAG
 
 .include "options.mk"
 
-.include "../../archivers/xz/buildlink3.mk"
 .include "../../converters/libiconv/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .include "../../textproc/xmlcatmgr/catalogs.mk"

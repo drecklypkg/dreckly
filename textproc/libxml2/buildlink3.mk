@@ -20,7 +20,6 @@ pkgbase := libxml2
 .include "../../textproc/icu/buildlink3.mk"
 .endif
 
-.include "../../archivers/xz/buildlink3.mk"
 .include "../../converters/libiconv/buildlink3.mk"
 .include "../../devel/zlib/buildlink3.mk"
 .endif # LIBXML2_BUILDLINK3_MK
