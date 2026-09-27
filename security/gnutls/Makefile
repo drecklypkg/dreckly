@@ -1,6 +1,6 @@
-# $NetBSD: Makefile,v 1.262 2024/11/14 22:21:29 wiz Exp $
+# $NetBSD: Makefile,v 1.276 2026/05/14 16:41:59 ryoon Exp $
 
-DISTNAME=	gnutls-3.8.10
+DISTNAME=	gnutls-3.8.13
 CATEGORIES=	security devel
 MASTER_SITES=	${MASTER_SITE_GNUPG:=gnutls/v${PKGVERSION_NOREV:R}/}
 EXTRACT_SUFX=	.tar.xz
@@ -36,8 +36,8 @@ CONFIGURE_ARGS.FreeBSD+=	ac_cv_type_max_align_t=yes
 
 .include "options.mk"
 
-# Four failures on NetBSD 9.4_STABLE as of 3.8.8:
-# simple, crq_apis, gnutls-strcodes, system-override-allow-rsa-pkcs1-encrypt.sh
+# Failures on NetBSD 11 as of 3.8.13:
+# test-parse-datetime
 TEST_TARGET=		check
 
 INFO_FILES=		yes
@@ -59,7 +59,7 @@ INSTALLATION_DIRS=	${EGDIR} include/gnutls
 
 .include "../../mk/bsd.prefs.mk"
 
-.if ${MACHINE_ARCH} == "x86_64"
+.if ${MACHINE_ARCH} == "x86_64" && ${OPSYS} != "NetBSD"
 GNUTLS_GAS_VERSION!=	\
 	( env LC_ALL=C as --version 2>&1 | ${GREP} 'GNU assembler version' | ${AWK} '{print $$4}') 2>/dev/null || ${ECHO} 0
 .  if ${GNUTLS_GAS_VERSION} != 0
@@ -105,7 +105,7 @@ CHECK_BUILTIN.zlib:=yes
 .include "../../devel/zlib/buildlink3.mk"
 BUILDLINK_API_DEPENDS.libtasn1+=	libtasn1>=4.9
 .include "../../security/libtasn1/buildlink3.mk"
-BUILDLINK_API_DEPENDS.nettle+=		nettle>=3.6
+BUILDLINK_API_DEPENDS.nettle+=		nettle>=3.10
 .include "../../security/nettle/buildlink3.mk"
 .include "../../textproc/libunistring/buildlink3.mk"
 .include "../../mk/readline.buildlink3.mk"

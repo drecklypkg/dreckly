@@ -1,6 +1,8 @@
-$NetBSD: distinfo,v 1.166 2024/11/11 02:03:54 gutteridge Exp $
+$NetBSD: distinfo,v 1.173 2026/04/30 05:33:42 wiz Exp $
 
-BLAKE2s (gnutls-3.8.10.tar.xz) = 33a7ef08a81bbecb5f66a5eb52a685bb018e8351e507bbd2fb03f0d25e001b21
-SHA512 (gnutls-3.8.10.tar.xz) = d453bd4527af95cb3905ce8753ceafd969e3f442ad1d148544a233ebf13285b999930553a805a0511293cc25390bb6a040260df5544a7c55019640f920ad3d92
-Size (gnutls-3.8.10.tar.xz) = 6909856 bytes
+BLAKE2s (gnutls-3.8.13.tar.xz) = 8b5813133f08bd3014e84efda901eaa67c2edd5b2b93809675a9c5e0cec7c634
+SHA512 (gnutls-3.8.13.tar.xz) = 71bf189a836fd18d58b9e995d4bfcecdb0aae6129dfd44247b98422b2f127dd868f9905d28fad2ca05afd919a0e6b3c8eebb6b95804067d3a8dab31ebdc72453
+Size (gnutls-3.8.13.tar.xz) = 7275324 bytes
 SHA1 (patch-configure) = 866d8a365b8338348230e47518788f494279b139
+SHA1 (patch-doc_examples_tlsproxy_tlsproxy.c) = 5062df3a73e69abca25710d016b949eef62af453
+SHA1 (patch-lib_crau_crau.h) = 751202b8eab1ef903faba6fc4281e75f1d394a66
