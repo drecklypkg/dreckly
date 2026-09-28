@@ -2,13 +2,13 @@ $NetBSD$
 
 For some reason FreeBSD defiles AF_INET6 in <sys/socket.h>.
 
---- src/libslirp.h.orig	2025-03-02 12:05:26.270555064 +0000
+--- src/libslirp.h.orig	2026-09-28 13:00:56.753737129 +0000
 +++ src/libslirp.h
-@@ -11,6 +11,7 @@
- #include <ws2tcpip.h>
- #include <in6addr.h>
+@@ -25,6 +25,7 @@ typedef ssize_t slirp_ssize_t;
  #else
+ #include <sys/types.h>
+ typedef ssize_t slirp_ssize_t;
 +#include <sys/socket.h>
  #include <netinet/in.h>
  #include <arpa/inet.h>
- #endif
+ #define SLIRP_EXPORT
