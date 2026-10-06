@@ -1,7 +1,8 @@
-# $NetBSD: options.mk,v 1.18 2024/05/20 21:21:38 wiz Exp $
+# $NetBSD: options.mk,v 1.21 2026/05/15 17:00:57 wiz Exp $
 
 PKG_OPTIONS_VAR=	PKG_OPTIONS.harfbuzz
 PKG_SUPPORTED_OPTIONS+=	introspection
+PKG_SUGGESTED_OPTIONS=
 
 PKG_SUGGESTED_OPTIONS+=	${${USE_CROSS_COMPILE:tl} == "yes":?:introspection}
 
