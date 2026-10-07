@@ -5,14 +5,13 @@
 # for build instructions see
 # https://developer.palemoon.org/build/linux/
 
-PM_VER=		35.0.1
-PKGREVISION=	1
+PM_VER=		35.0.2
 CATEGORIES=	www
 
 DISTINFO_FILE=	${.CURDIR}/../../www/palemoon/distinfo
 PATCHDIR=	${.CURDIR}/../../www/palemoon/patches
 
-DIST_SUBDIR=	palemoon-${PM_VER}nb1
+DIST_SUBDIR=	palemoon-${PM_VER}
 DISTFILES+=	palemoon.tar.gz
 DISTFILES+=	uxp.tar.gz
 
@@ -25,7 +24,7 @@ SITES.palemoon.tar.gz= \
 	-https://repo.palemoon.org/MoonchildProductions/Pale-Moon/archive/${PM_VER}_Release.tar.gz
 
 SITES.uxp.tar.gz= \
-	-https://repo.palemoon.org/MoonchildProductions/UXP/archive/RB_20260922.tar.gz
+	-https://repo.palemoon.org/MoonchildProductions/UXP/archive/RB_20261006.tar.gz
 
 SITES.icudt${ICU_MAJOR}b.dat.gz=	${MASTER_SITE_LOCAL}
 
