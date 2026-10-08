@@ -1,13 +1,12 @@
-# $NetBSD: Makefile,v 1.101 2024/03/16 20:38:43 nia Exp $
-#
+# $NetBSD: Makefile,v 1.104 2026/05/03 22:04:04 mrg Exp $
 
-DISTNAME=	bozohttpd-20240126
+DISTNAME=	bozohttpd-20260503
 CATEGORIES=	www
 MASTER_SITES=	${MASTER_SITE_LOCAL}
 EXTRACT_SUFX=	.tar.bz2
 
-MAINTAINER=	mrg@eterna.com.au
-HOMEPAGE=	http://www.eterna.com.au/bozohttpd/
+MAINTAINER=	mrg@eterna23.net
+HOMEPAGE=	http://www.eterna23.net/bozohttpd/
 COMMENT=	Bozotic HTTP server; small and secure
 LICENSE=	2-clause-bsd
 

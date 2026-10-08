@@ -1,0 +1,30 @@
+$NetBSD$
+
+--- bozohttpd.8.orig	2026-05-03 21:54:07.000000000 +0000
++++ bozohttpd.8
+@@ -110,16 +110,21 @@ should be a full path to an interpreter.
+ should be any normal file suffix, and the
+ .Ar cgihandler
+ should be a full path to an interpreter.
+-This option is the only way to enable CGI programs that exist
+-outside of the cgibin directory to be executed.
++This option is the only way to enable CGI programs to be executed
++outside of the
++.Ql /cgi-bin
++prefix.
+ Multiple
+ .Fl C
+ options may be passed.
++.Pp
++Note that ordinary script interpreters that are not CGI-aware can not
++be used directly, see the examples below.
+ .It Fl c Ar cgibin
+ Enables the CGI/1.1 interface.
+-The
+ .Ar cgibin
+-directory is expected to contain the CGI programs to be used.
++is an absolute path to a file system directory expected to contain
++the CGI programs to be used.
+ .Nm
+ looks for URLs in the form of
+ .Ql /cgi-bin/ Ns Ar scriptname
