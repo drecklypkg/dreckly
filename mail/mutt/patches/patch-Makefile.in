@@ -3,9 +3,9 @@ $NetBSD: patch-Makefile.in,v 1.1 2020/11/08 17:42:45 tron Exp $
 - Fix location of locale files
 - Allow build as an unpriviliged user
 
---- Makefile.in.orig	2020-11-07 20:18:32.000000000 +0000
-+++ Makefile.in	2020-11-08 14:57:59.053299992 +0000
-@@ -393,7 +393,7 @@
+--- Makefile.in.orig	1970-01-01 00:00:00.000000000 +0000
++++ Makefile.in
+@@ -405,7 +405,7 @@ DEFS = -DPKGDATADIR=\"$(pkgdatadir)\" -DSYSCONFDIR=\"$
  DBX = @DBX@
  DEBUGGER = @DEBUGGER@
  DEFS = -DPKGDATADIR=\"$(pkgdatadir)\" -DSYSCONFDIR=\"$(sysconfdir)\" \
@@ -14,15 +14,15 @@ $NetBSD: patch-Makefile.in,v 1.1 2020/11/08 17:42:45 tron Exp $
  	-DHAVE_CONFIG_H=1
  
  DEPDIR = @DEPDIR@
-@@ -1680,11 +1680,6 @@
+@@ -1756,11 +1756,6 @@ install-exec-hook:
+ 	if test -f $(DESTDIR)$(bindir)/mutt.dotlock && test -f $(DESTDIR)$(bindir)/mutt_dotlock ; then	\
  		rm -f $(DESTDIR)$(bindir)/mutt.dotlock ;		\
  		ln -sf $(DESTDIR)$(bindir)/mutt_dotlock $(DESTDIR)$(bindir)/mutt.dotlock ; \
- 	fi
+-	fi
 -	if test -f $(DESTDIR)$(bindir)/mutt_dotlock && test x$(DOTLOCK_GROUP) != x ; then \
 -		chgrp $(DOTLOCK_GROUP) $(DESTDIR)$(bindir)/mutt_dotlock && \
 -		chmod $(DOTLOCK_PERMISSION) $(DESTDIR)$(bindir)/mutt_dotlock || \
 -		{ echo "Can't fix mutt_dotlock's permissions!  This is required to lock mailboxes in the mail spool directory." >&2 ; exit 1 ; } \
--	fi
+ 	fi
  
  install-data-local:
- 	$(MKDIR_P) $(DESTDIR)$(sysconfdir)

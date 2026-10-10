@@ -3,9 +3,9 @@ $NetBSD: patch-doc_Makefile.in,v 1.1 2020/11/08 17:42:46 tron Exp $
 Install manual package under unique name to avoid package conflicts
 Stop installing HTML documentation.
 
---- doc/Makefile.in.orig	2025-02-20 05:50:43.000000000 +0000
+--- doc/Makefile.in.orig	1970-01-01 00:00:00.000000000 +0000
 +++ doc/Makefile.in
-@@ -560,7 +560,7 @@ install-data-local: makedoc-all instdoc
+@@ -568,7 +568,7 @@ install-data-local: makedoc-all instdoc
  	elif [ -f $(srcdir)/muttrc.man ] ; then \
  	  ./instdoc $(srcdir)/muttrc.man $(DESTDIR)$(mandir)/man5/muttrc.5 ; \
  	fi
@@ -14,7 +14,7 @@ Stop installing HTML documentation.
  	./instdoc $(srcdir)/mmdf.man $(DESTDIR)$(mandir)/man5/mmdf.5
  	$(MKDIR_P) $(DESTDIR)$(docdir)
  	for f in $(topsrcdir_DOCFILES) ; do \
-@@ -572,13 +572,6 @@ install-data-local: makedoc-all instdoc
+@@ -580,13 +580,6 @@ install-data-local: makedoc-all instdoc
  	-if [ -s manual.txt ] ; then \
  	  $(INSTALL) -m 644 manual.txt $(DESTDIR)$(docdir) ; \
  	fi

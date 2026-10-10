@@ -1,4 +1,4 @@
-# $NetBSD: options.mk,v 1.38 2024/05/06 13:33:23 wiz Exp $
+# $NetBSD: options.mk,v 1.39 2025/01/06 21:56:34 wiz Exp $
 
 # Global and legacy options
 
@@ -105,13 +105,13 @@ CONFIGURE_ARGS+=	--disable-smime
 .  if !empty(PKG_OPTIONS:Mlmdb)
 .    include "../../databases/lmdb/buildlink3.mk"
 CONFIGURE_ARGS+=	--enable-hcache
-CONFIGURE_ARGS+=	--with-lmdb
+CONFIGURE_ARGS+=	--enable-lmdb
 CONFIGURE_ARGS+=	--without-gdbm
 CONFIGURE_ARGS+=	--without-bdb
 .  elif !empty(PKG_OPTIONS:Mtokyocabinet)
 .    include "../../databases/tokyocabinet/buildlink3.mk"
 CONFIGURE_ARGS+=	--enable-hcache
-CONFIGURE_ARGS+=	--with-tokyocabinet
+CONFIGURE_ARGS+=	--enable-tokyocabinet
 CONFIGURE_ARGS+=	--without-gdbm
 CONFIGURE_ARGS+=	--without-bdb
 .  else
