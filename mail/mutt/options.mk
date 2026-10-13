@@ -10,9 +10,8 @@ PKG_OPTIONS_GROUP.display=	curses slang
 PKG_OPTIONS_GROUP.ssl=		gnutls openssl
 PKG_SUPPORTED_OPTIONS=		debug gpgme idn smime sasl
 PKG_SUPPORTED_OPTIONS+=		mutt-hcache mutt-compressed-mbox mutt-smtp
-PKG_SUPPORTED_OPTIONS+=		gssapi
 PKG_SUGGESTED_OPTIONS=		curses gpgme mutt-hcache mutt-smtp smime openssl
-PKG_SUGGESTED_OPTIONS+=		gssapi mutt-compressed-mbox sasl
+PKG_SUGGESTED_OPTIONS+=		mutt-compressed-mbox sasl
 
 # remove after pkgsrc-2024Q3
 PKG_OPTIONS_LEGACY_OPTS+=	wide-curses:curses
@@ -20,6 +19,13 @@ PKG_OPTIONS_LEGACY_OPTS+=	wide-curses:curses
 # Must be at the top; some other buildlink files indirectly
 # include bdb.buildlink3.mk.
 BDB_ACCEPTED=		db4 db5
+
+.include "../../mk/bsd.fast.prefs.mk"
+
+.if ${OPSYS} != "FreeBSD"
+PKG_SUPPORTED_OPTIONS+=		gssapi
+PKG_SUGGESTED_OPTIONS+=		gssapi
+.endif
 
 .include "../../mk/bsd.options.mk"
 
