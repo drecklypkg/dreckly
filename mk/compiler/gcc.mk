@@ -350,18 +350,21 @@ _COMPILER_VERSION:=	${_CC_MAJOR}${_CC_MINOR}${_CC_PATCH}
 
 _GCC_PKG=	gcc-${_GCC_VERSION:C/-.*$//}
 
+.if ${_COMPILER_VERSION} < 040200
 # A lot of packages attempt to do this as a workaround for a
 # well-intentioned default in XCode 12+, but it's a common cause of
 # build failures on old versions of Darwin which use gcc and don't
 # understand this syntax.
 #
 # Note that pkgsrc also sets this flag itself for Darwin+clang.
-.if ${_COMPILER_VERSION} < 040200
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=implicit-function-declaration
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=sign-conversion
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=incompatible-pointer-types
 BUILDLINK_TRANSFORM+=	rm:-Wno-error=implicit-int
 BUILDLINK_TRANSFORM+=	rm:-Wno-array-bounds
+
+# Warning flag introduced with GCC 4.2.
+BUILDLINK_TRANSFORM+=	rm:-Woverlength-strings
 .endif
 
 .if ${_COMPILER_VERSION} < 040100
