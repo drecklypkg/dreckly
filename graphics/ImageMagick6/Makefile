@@ -1,6 +1,5 @@
-# $NetBSD: Makefile,v 1.75 2024/11/14 22:20:04 wiz Exp $
+# $NetBSD: Makefile,v 1.95 2026/09/29 06:05:31 wiz Exp $
 
-PKGREVISION= 7
 .include "Makefile.common"
 
 PKGNAME=	ImageMagick6-${DISTVERSION}
@@ -13,6 +12,7 @@ CONFLICTS=	geomview<1.8.1nb2  # used to have a program named 'animate'
 USE_LANGUAGES=		c c++
 USE_TOOLS+=		gmake pkg-config:run
 CONFIGURE_ARGS+=	--disable-assert
+CONFIGURE_ARGS+=	--disable-docs
 CONFIGURE_ARGS+=	--with-xml=yes
 CONFIGURE_ARGS+=	--without-perl
 CONFIGURE_ARGS+=	--sysconfdir=${PKG_SYSCONFBASEDIR}
@@ -26,6 +26,7 @@ PKGCONFIG_OVERRIDE+=	magick/MagickCore.pc.in
 PKGCONFIG_OVERRIDE+=	wand/MagickWand.pc.in
 PKGCONFIG_OVERRIDE+=	wand/Wand.pc.in
 
+CXXFLAGS.Darwin+=	-D__STDC_LIMIT_MACROS
 LDFLAGS.SunOS+=		-lsendfile
 
 SUBST_CLASSES+=		pkgcfg

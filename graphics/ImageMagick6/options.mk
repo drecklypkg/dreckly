@@ -1,22 +1,16 @@
 # $NetBSD: options.mk,v 1.9 2024/04/02 22:37:53 nia Exp $
 
 PKG_OPTIONS_VAR=		PKG_OPTIONS.ImageMagick6
-PKG_SUPPORTED_OPTIONS=		doc fontconfig ghostscript x11 jp2 djvu openexr
+PKG_SUPPORTED_OPTIONS=		fontconfig ghostscript x11 jp2 djvu openexr
 PKG_SUPPORTED_OPTIONS+=		wmf fpx pango
 PKG_OPTIONS_REQUIRED_GROUPS=	policy
 PKG_OPTIONS_GROUP.policy=	imagemagick-policy-limited imagemagick-policy-open imagemagick-policy-secure imagemagick-policy-websafe
-PKG_SUGGESTED_OPTIONS=		doc fontconfig ghostscript x11 jp2 imagemagick-policy-open pango
+PKG_SUGGESTED_OPTIONS=		fontconfig ghostscript x11 jp2 imagemagick-policy-open pango
 PKG_OPTIONS_LEGACY_OPTS+=	jasper:jp2
 
 .include "../../mk/bsd.options.mk"
 
 PLIST_SRC+=		PLIST
-
-.if !empty(PKG_OPTIONS:Mdoc)
-PLIST_SRC+=		PLIST.doc
-.else
-CONFIGURE_ARGS+=	--disable-docs
-.endif
 
 .if !empty(PKG_OPTIONS:Mfontconfig)
 CONFIGURE_ARGS+=	--with-fontconfig
