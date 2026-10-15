@@ -28,6 +28,13 @@ PKGCONFIG_OVERRIDE+=	expat.pc.in
 
 DOCDIR=	${PREFIX}/share/doc/expat
 
+.include "../../mk/bsd.prefs.mk"
+
+# Darwin prior to 10.7 lacks O_CLOEXEC.
+.if ${OPSYS} == "Darwin" && ${OPSYS_VERSION} < 100700
+CPPFLAGS+=		-DO_CLOEXEC=0
+.endif
+
 post-install:
 	${INSTALL_DATA_DIR} ${DESTDIR}${DOCDIR}
 	${INSTALL_DATA} ${WRKSRC}/doc/reference.html ${DESTDIR}${DOCDIR}

@@ -3,3 +3,4 @@ $NetBSD: distinfo,v 1.62 2026/08/31 18:16:39 wiz Exp $
 BLAKE2s (expat-2.8.5.tar.gz) = ccdc5ad5b74b398cb9ec7e0268121bc5442a1a9092635f26612a3f10881f9479
 SHA512 (expat-2.8.5.tar.gz) = 9ebd87922feaa609ca223d5b1083ec7d905826cdec1aa51a016177abe87cdfe1b5ab27f6872c929817898a2bd00867685c8dea43720d2b457056cb96555ca577
 Size (expat-2.8.5.tar.gz) = 838183 bytes
+SHA1 (patch-lib_expat__external.h) = 550db9b2a0604f6047b1f47d6fb1a347e5443c8b
