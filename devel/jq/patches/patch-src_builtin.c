@@ -1,17 +1,21 @@
-$NetBSD: patch-src_builtin.c,v 1.1 2024/07/11 19:59:08 riastradh Exp $
+$NetBSD: patch-src_builtin.c,v 1.7 2026/07/02 15:26:35 wiz Exp $
 
-Fix ctype(3) abuse.
-https://github.com/jqlang/jq/issues/3151
-https://github.com/jqlang/jq/pull/3152
+Workaround for timezone problem.
+https://github.com/jqlang/jq/issues/3568
 
---- src/builtin.c.orig	2023-12-13 19:24:02.000000000 +0000
+--- src/builtin.c.orig	2026-06-20 13:36:30.000000000 +0000
 +++ src/builtin.c
-@@ -1440,7 +1440,7 @@ static jv f_strptime(jq_state *jq, jv a,
-   }
+@@ -1847,7 +1847,13 @@ static jv f_strftime(jq_state *jq, jv a, jv b) {
+    * account ... */
+   tzset();
  #endif
-   const char *end = strptime(input, fmt, &tm);
--  if (end == NULL || (*end != '\0' && !isspace(*end))) {
-+  if (end == NULL || (*end != '\0' && !isspace((unsigned char)*end))) {
-     return ret_error2(a, b, jv_string_fmt("date \"%s\" does not match format \"%s\"", input, fmt));
-   }
-   jv_free(b);
++#ifdef __NetBSD__
++  timezone_t tz_utc = tzalloc("UTC");
++  size_t n = strftime_z(tz_utc, buf, max_size, fmt, &tm);
++  tzfree(tz_utc);
++#else
+   size_t n = strftime(buf, max_size, fmt, &tm);
++#endif
+ #if defined(__APPLE__) || defined(__sun)
+   if (tz) {
+     setenv("TZ", tz, 1);

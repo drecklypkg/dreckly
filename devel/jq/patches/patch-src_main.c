@@ -1,17 +1,16 @@
-$NetBSD: patch-src_main.c,v 1.1 2024/07/11 19:59:08 riastradh Exp $
+$NetBSD: patch-src_main.c,v 1.4 2026/06/30 13:43:04 wiz Exp $
 
-Fix ctype(3) abuse.
-https://github.com/jqlang/jq/issues/3151
-https://github.com/jqlang/jq/pull/3152
+ctype(3) usage
+https://github.com/jqlang/jq/pull/3574
 
---- src/main.c.orig	2023-12-13 19:24:02.000000000 +0000
+--- src/main.c.orig	2026-06-23 06:02:47.113070826 +0000
 +++ src/main.c
-@@ -126,7 +126,7 @@ static void die() {
- }
- 
- static int isoptish(const char* text) {
--  return text[0] == '-' && (text[1] == '-' || isalpha(text[1]));
-+  return text[0] == '-' && (text[1] == '-' || isalpha((unsigned char)text[1]));
- }
- 
- static int isoption(const char* text, char shortopt, const char* longopt, size_t *short_opts) {
+@@ -437,7 +437,7 @@ int main(int argc, char* argv[]) {
+           errno = 0;
+           long indent = strtol(argv[i+1], &end, 10);
+           if (errno || indent < -1 || indent > 7 ||
+-              isspace(*argv[i+1]) || end == argv[i+1] || *end) {
++              isspace((unsigned char)*argv[i+1]) || end == argv[i+1] || *end) {
+             fprintf(stderr, "jq: --indent takes a number between -1 and 7\n");
+             die();
+           }
