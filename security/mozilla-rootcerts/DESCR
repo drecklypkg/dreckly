@@ -11,8 +11,8 @@ NB: This package provides certificates, but does not as a consequence
 of installation place them in a location that makes them immediately
 usable by SSL/TLS implementations.
 
-Use the 'mozilla-rootcerts install' script or mozilla-rootcerts-openssl
-package if you want to use these certificates.
+Use the 'mozilla-rootcerts install' script if you want to use these
+certificates.
 
 This package includes instructions for configuring gnupg2 to use the
 certificates.

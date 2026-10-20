@@ -249,7 +249,6 @@ SUBDIR+=	mit-krb5
 SUBDIR+=	mit-krb5-appl
 SUBDIR+=	monocypher
 SUBDIR+=	mozilla-rootcerts
-SUBDIR+=	mozilla-rootcerts-openssl
 SUBDIR+=	msu
 SUBDIR+=	msudir
 SUBDIR+=	multigest
