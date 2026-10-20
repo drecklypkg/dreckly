@@ -44,7 +44,6 @@ SUBDIR+=	bitstir
 SUBDIR+=	botan1
 SUBDIR+=	botan2
 SUBDIR+=	botan3
-SUBDIR+=	ca-certificates
 SUBDIR+=	caff
 SUBDIR+=	cargo-audit
 SUBDIR+=	ccid
