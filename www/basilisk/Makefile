@@ -3,6 +3,7 @@
 # same backend.  However, several key things are different.
 
 PKGNAME=	basilisk-2026.06.12
+PKGREVISION=	1
 CATEGORIES=	www
 
 DIST_SUBDIR=	basilisk-${PKGVERSION_NOREV}
