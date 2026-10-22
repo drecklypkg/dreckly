@@ -5,6 +5,7 @@
 
 DISTNAME=		nss-${NSS_RELEASE:S/.0$//}
 NSS_RELEASE=		3.107.0
+PKGREVISION=		1
 CATEGORIES=		devel security
 MASTER_SITES=		${MASTER_SITE_MOZILLA_ALL:=security/nss/releases/NSS_${NSS_DIST_DIR_VERSION:S/_0$//}_RTM/src/}
 
