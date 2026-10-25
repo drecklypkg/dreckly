@@ -11,6 +11,6 @@ LICENSE=	isc
 
 USE_TOOLS+=	pkg-config
 
-.include "../../devel/cmake/build.mk"
+.include "../../devel/cmake39/build.mk"
 .include "../../security/libsodium/buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
