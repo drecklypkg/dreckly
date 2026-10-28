@@ -1,11 +1,10 @@
-# $NetBSD: Makefile,v 1.95 2024/11/14 22:18:46 wiz Exp $
+# $NetBSD: Makefile,v 1.106 2026/06/14 17:56:00 nia Exp $
 
-DISTNAME=	vorbis-tools-1.4.2
-PKGREVISION=	14
+DISTNAME=	vorbis-tools-1.4.3
 CATEGORIES=	audio
 MASTER_SITES=	https://ftp.osuosl.org/pub/xiph/releases/vorbis/
 
-MAINTAINER=	pkgsrc-users@NetBSD.org
+MAINTAINER=	drixter@e-utp.net
 HOMEPAGE=	http://www.vorbis.com/
 COMMENT=	Ogg Vorbis encoder and player
 LICENSE=	gnu-gpl-v2
@@ -18,7 +17,8 @@ USE_PKGLOCALEDIR=	yes
 GNU_CONFIGURE=		yes
 
 # Uses "old-style function definitions" in getopt support files.
-FORCE_C_STD=		gnu89
+# Uses 'for' loop initial declarations.
+FORCE_C_STD=		gnu99
 
 PLIST_SUBST+=	DISTNAME=${DISTNAME}
 
@@ -31,6 +31,5 @@ PTHREAD_OPTS+=	require
 .include "../../converters/libiconv/buildlink3.mk"
 .include "../../multimedia/libogg/buildlink3.mk"
 .include "../../www/curl/buildlink3.mk"
-
 .include "../../mk/pthread.buildlink3.mk"
 .include "../../mk/bsd.pkg.mk"
