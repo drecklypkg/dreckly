@@ -6,7 +6,6 @@ PM_GTK_VER=	3
 .include "../../www/palemoon/hacks.mk"
 
 PKGNAME=	palemoon-gtk3-${PM_VER}
-PKGREVISION=	1
 
 CONFLICTS+=	palemoon-[0-9]*
 
