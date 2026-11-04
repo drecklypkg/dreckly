@@ -17,6 +17,7 @@ lib/basilisk-52.9.0/browser/internal-userscripts/getanimations-polyfill.user.js
 lib/basilisk-52.9.0/browser/internal-userscripts/imagedecode-polyfill.user.js
 lib/basilisk-52.9.0/browser/internal-userscripts/intl-displaynames-polyfill.user.js
 lib/basilisk-52.9.0/browser/internal-userscripts/intl-listformat-polyfill.user.js
+lib/basilisk-52.9.0/browser/internal-userscripts/intl-relativetimeformat-formattoparts-polyfill.user.js
 lib/basilisk-52.9.0/browser/internal-userscripts/intl-segmenter-polyfill.user.js
 lib/basilisk-52.9.0/browser/internal-userscripts/readablestream-pipethrough-polyfill.user.js
 lib/basilisk-52.9.0/browser/internal-userscripts/readablestream-pipeto-polyfill.user.js
