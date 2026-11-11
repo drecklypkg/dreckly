@@ -6,6 +6,7 @@ Size (fontconfig-2.15.0.tar.xz) = 1447820 bytes
 SHA1 (patch-aa) = 8fec573ffd4bcc976681cae51a4ead1647e521e8
 SHA1 (patch-ac) = 10372dec9a5b7d2949798f3a4f45f437ab5b077c
 SHA1 (patch-af) = d351265c894738284215f0bb38d47cc1c8f28ec7
+SHA1 (patch-conf.d_60-latin.conf) = 616b9c1a61054810c320cb5427cb70d55a9e4b78
 SHA1 (patch-configure) = 1fb33ba5c2cdac74eb3d30792cf762bd061bd8d2
 SHA1 (patch-scandir.c) = e35f4c005f635dd0d8bb949cd32aa34f5e314200
 SHA1 (patch-src_fccharset.c) = a292088633030a67627cc73db501c504bc4ffd94

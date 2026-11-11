@@ -1,6 +1,7 @@
 # $NetBSD: Makefile,v 1.132 2023/12/30 10:21:52 wiz Exp $
 
 DISTNAME=	fontconfig-2.15.0
+PKGREVISION=	1
 CATEGORIES=	fonts
 MASTER_SITES=	https://www.fontconfig.org/release/
 EXTRACT_SUFX=	.tar.xz
@@ -68,7 +69,7 @@ TMPLDIR=	${PREFIX}/share/fontconfig/conf.avail
 MAKE_DIRS+=	${PKG_SYSCONFDIR}/conf.d
 # following list from ${WRKSRC}/conf.d/Makefile.am
 FC_STDCONF=	\
-	10-hinting-full.conf	\
+	10-hinting-slight.conf	\
 	10-scale-bitmap-fonts.conf \
 	10-yes-antialias.conf	\
 	10-sub-pixel-none.conf	\
