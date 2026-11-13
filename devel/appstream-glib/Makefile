@@ -18,7 +18,6 @@ USE_TOOLS+=		pkg-config msgfmt xgettext
 USE_PKGLOCALEDIR=	yes
 USE_LANGUAGES=		c c++
 
-MESON_ARGS+=		-Dlocaledir=${PKGLOCALEDIR}/locale
 MESON_ARGS+=		-Drpm=false
 
 PKGCONFIG_OVERRIDE_STAGE=	pre-install
