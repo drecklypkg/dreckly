@@ -2,17 +2,20 @@ dreckly
 =======
 
 dreckly is a framework for building software for a variety of UNIX-like
-systems.  dreckly is a fork of pkgsrc, with a specific focus on the following
-mission:
+systems.  dreckly is a fork of pkgsrc, with a specific focus on the following:
 
-**To provide a useful collection of software for all UNIX-like systems.**
-
-To achieve that mission we are guided by our principle values:
-
-  * **Portability**
-  * **Stability**
-  * **Robustness**
-  * **Maintainability**
+  * **Portability** - pkgsrc has grown to focus more on providing as many
+    bleeding-edge packages as possible for the most recent releases of NetBSD.
+    Instead, dreckly focuses on providing a tight collection of mature packages
+    that are expected to work everywhere.
+  * **Bootstrappability** - dreckly stays focused on supporting C99 compilers
+    to allow bootstrapping on any Unix-like system, without growing low-level
+    dependencies on the latest C++2x and Rust compilers.
+  * **Stability** - rejecting the "unstable -current" strategy, with an aim
+    towards building a useful collection of software packages that moves slowly
+    and prioritizes avoiding breaking changes. We prefer long-term support
+    versions of packages where possible, and avoid the need for constant
+    recursive revbumps, keeping updates small and rebuilds infrequent.
 
 Further background on our mission and values can be found
 [here](https://github.com/drecklypkg/dreckly/discussions/5).
@@ -63,7 +66,3 @@ Tutorials and guides related to pkgsrc are still applicable to dreckly.
 - [pkgsrc guide](https://www.NetBSD.org/docs/pkgsrc/) - the authoritative document on pkgsrc, also available as `doc/pkgsrc.txt`
 - [pkgsrc in the NetBSD Wiki](https://wiki.NetBSD.org/pkgsrc/) - miscellaneous articles and tutorials
 - [pkgsrc.se](https://pkgsrc.se/) - a searchable web index of pkgsrc
-- [pkgsrc-wip](https://pkgsrc.org/wip/) - a project to get more people actively involved with creating packages for pkgsrc
-- [pkgsrc on Twitter](https://twitter.com/pkgsrc) - announcements to the world
-- [pkgsrcCon](https://pkgsrc.org/pkgsrcCon) - we get together
-- [BulkTracker](https://releng.netbsd.org/bulktracker/) - a web application that tracks pkgsrc bulk builds
