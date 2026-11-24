@@ -251,6 +251,7 @@ SUBDIR+=	mate-terminal
 SUBDIR+=	mcookie
 SUBDIR+=	mkcomposecache
 SUBDIR+=	mlterm
+SUBDIR+=	mocu-xcursor
 SUBDIR+=	modeline
 SUBDIR+=	modular-xorg-server
 SUBDIR+=	modular-xorg-xephyr
