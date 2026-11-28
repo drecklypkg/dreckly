@@ -9,4 +9,5 @@ SHA1 (patch-documentation_Makefile) = 4c0c4243311c170d6c645db41b8bb1821d053712
 SHA1 (patch-fluid_Makefile) = 6033e485a8ea7590fe68d9049645a1035326f8ce
 SHA1 (patch-makeinclude.in) = c8edcedd4b75c8a53ef0be4a303cebd069a917ee
 SHA1 (patch-src_Makefile) = 13784fa633306f3a3f358d6a6600da7c3e3a3352
+SHA1 (patch-src_fl__set__fonts__xft.cxx) = b38c1b8c7a1d36ee0e1437bb7465373736b939ee
 SHA1 (patch-test_Makefile) = c41d0184eed167e1ab8261fbee6cba96595c6c16

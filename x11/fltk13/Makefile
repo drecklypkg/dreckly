@@ -2,6 +2,7 @@
 
 DISTNAME=	fltk-1.3.10-source
 PKGNAME=	${DISTNAME:S/-source//}
+PKGREVISION=	1
 VERS=		${DISTNAME:S/fltk-//:S/-source//}
 CATEGORIES=	x11
 MASTER_SITES=	https://fltk.org/pub/fltk/${VERS}/
