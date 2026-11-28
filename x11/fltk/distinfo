@@ -13,3 +13,4 @@ SHA1 (patch-ag) = aaeb376acf79b695e8376e7610534d125dff6a86
 SHA1 (patch-ah) = 876f79b4d0523035307ecc7d76460cad44b40704
 SHA1 (patch-fluid_Fl__Type.h) = b2ea0bebf152ab0755135fbe8cc6179d2f6d79e1
 SHA1 (patch-src_fl__draw.cxx) = 824ee95fe997ed553b88801569b35f3698d11898
+SHA1 (patch-src_fl__set__fonts__xft.cxx) = b38c1b8c7a1d36ee0e1437bb7465373736b939ee

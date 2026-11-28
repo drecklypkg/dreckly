@@ -3,7 +3,7 @@
 DISTNAME=	fltk-1.1.10-source
 PKGNAME=	${DISTNAME:S/-source//}
 VERS=		${DISTNAME:S/fltk-//:S/-source//}
-PKGREVISION=	7
+PKGREVISION=	8
 CATEGORIES=	x11
 MASTER_SITES=	http://ftp.funet.fi/pub/mirrors/ftp.easysw.com/pub/fltk/${VERS}/
 MASTER_SITES+=	ftp://ftp.rz.tu-bs.de/pub/mirror/ftp.easysw.com/ftp/pub/fltk/${VERS}/
